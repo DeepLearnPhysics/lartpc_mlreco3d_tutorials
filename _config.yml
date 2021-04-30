@@ -4,6 +4,7 @@
 title: lartpc_mlreco3d Tutorials
 author: SLAC Neutrino Group
 logo: logo.png
+copyright: "2021"
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -45,13 +46,12 @@ parse:
   myst_enable_extensions:
     # don't forget to list any other extensions you want enabled,
     # including those that are enabled by default!
-    - html_image
     # - amsmath
     - colon_fence
     # - deflist
     - dollarmath
     # - html_admonition
-    # - html_image
+    - html_image
     - linkify
     # - replacements
     # - smartquotes

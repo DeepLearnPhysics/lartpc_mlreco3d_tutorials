@@ -15,16 +15,23 @@
     - file: Prerequisites/Python-06-MNIST-CIFAR10.ipynb
       title: Practice with MNIST
     
-- part: Physics
+- part: Some Physics
   chapters:
     - file: Physics/Neutrinos.md
     - file: Physics/Lartpc.md
     
 - part: lartpc_mlreco3d
   chapters:
-    - file: Code/Data1.md
-    - file: Code/Data2.md
+    - file: Code/Data.md
+      sections:
+        - file: Code/Data1.md
+        - file: Code/Data2.md
     - file: Code/Output.md
+      sections:
+      - file: Code/UResNet_PPN.md
+      - file: Code/Clustering.md
+      - file: Code/Interaction.md
+      - file: Code/PID.md
     
 - part: Using SDF
   chapters:
