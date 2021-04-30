@@ -129,7 +129,7 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Physics
+  Some Physics
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -150,20 +150,64 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../Code/Data1.html">
-   Data I/O (without lartpc_mlreco3d, using ROOT)
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Code/Data.html">
+   Data I/O
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Data1.html">
+     Using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       lartpc_mlreco3d
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Data2.html">
+     Using ROOT only
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Code/Data2.html">
-   Data I/O (using lartpc_mlreco3d)
-  </a>
- </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Code/Output.html">
    Reconstruction outputs
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/UResNet_PPN.html">
+     Semantics &amp; points of interest
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Clustering.html">
+     Particle clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Interaction.html">
+     Interaction clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/PID.html">
+     Particle identification
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p class="caption">
@@ -1042,7 +1086,7 @@ min -2.2828199504343605 max 2.9948563458247133
         
           By SLAC Neutrino Group<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>

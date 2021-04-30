@@ -52,7 +52,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data I/O (without lartpc_mlreco3d, using ROOT)" href="../Code/Data1.html" />
+    <link rel="next" title="Data I/O" href="../Code/Data.html" />
     <link rel="prev" title="Neutrinos" href="Neutrinos.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -129,7 +129,7 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Physics
+  Some Physics
  </span>
 </p>
 <ul class="current nav bd-sidenav">
@@ -150,20 +150,64 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../Code/Data1.html">
-   Data I/O (without lartpc_mlreco3d, using ROOT)
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Code/Data.html">
+   Data I/O
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Data1.html">
+     Using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       lartpc_mlreco3d
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Data2.html">
+     Using ROOT only
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Code/Data2.html">
-   Data I/O (using lartpc_mlreco3d)
-  </a>
- </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Code/Output.html">
    Reconstruction outputs
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/UResNet_PPN.html">
+     Semantics &amp; points of interest
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Clustering.html">
+     Particle clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Interaction.html">
+     Interaction clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/PID.html">
+     Particle identification
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p class="caption">
@@ -259,6 +303,19 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#glossary">
+   Glossary
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -269,6 +326,14 @@
                 
   <div class="section" id="liquid-argon-time-projection-chamber-aka-lartpc">
 <h1>Liquid Argon Time Projection Chamber (aka LArTPC)<a class="headerlink" href="#liquid-argon-time-projection-chamber-aka-lartpc" title="Permalink to this headline">¶</a></h1>
+<p>Explain here many things, including what is a <a class="reference internal" href="#term-ghost-point"><span class="xref std std-term">ghost point</span></a>.</p>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<dl class="glossary simple">
+<dt id="term-ghost-point">ghost point<a class="headerlink" href="#term-ghost-point" title="Permalink to this term">¶</a></dt><dd><p>A 3D point not meant to be</p>
+</dd>
+</dl>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -297,7 +362,7 @@
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="Neutrinos.html" title="previous page">Neutrinos</a>
-    <a class='right-next' id="next-link" href="../Code/Data1.html" title="next page">Data I/O (without lartpc_mlreco3d, using ROOT)</a>
+    <a class='right-next' id="next-link" href="../Code/Data.html" title="next page">Data I/O</a>
 
         </div>
         
@@ -309,7 +374,7 @@
         
           By SLAC Neutrino Group<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
