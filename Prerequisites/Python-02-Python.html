@@ -1,0 +1,1937 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to Python &#8212; lartpc_mlreco3d Tutorials</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Up and Running with Python3" href="Python-03-Numpy.html" />
+    <link rel="prev" title="Notebook of code" href="Python-01-Jupyter.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">lartpc_mlreco3d Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Getting started
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Prerequisites
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-01-Jupyter.html">
+   Using Jupyter
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-03-Numpy.html">
+   Up and Running with Python3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-04-ScientificPython.html">
+   Visualization, Fitting, and File Format
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-05-PyTorch.html">
+   Pytorch
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-06-MNIST-CIFAR10.html">
+   Practice with MNIST
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Physics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Physics/Neutrinos.html">
+   Neutrinos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Physics/Lartpc.html">
+   Liquid Argon Time Projection Chamber (aka LArTPC)
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  lartpc_mlreco3d
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Data1.html">
+   Data I/O (without lartpc_mlreco3d, using ROOT)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Data2.html">
+   Data I/O (using lartpc_mlreco3d)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Output.html">
+   Reconstruction outputs
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Using SDF
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ComputeAccess/README.html">
+   Set up your computing environment
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Prerequisites/Python-02-Python.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Temigo/lartpc_mlreco3d_tutorials"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/Temigo/lartpc_mlreco3d_tutorials/issues/new?title=Issue%20on%20page%20%2FPrerequisites/Python-02-Python.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Temigo/lartpc_mlreco3d_tutorials/master?urlpath=tree/Prerequisites/Python-02-Python.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/Temigo/lartpc_mlreco3d_tutorials/blob/master/Prerequisites/Python-02-Python.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hello-world">
+   Hello World
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-a-module-from-the-python-library">
+   Import a module from the Python library
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wait-what-is-import">
+   Wait, what is “import”?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datatypes">
+   Datatypes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strings">
+     Strings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lists">
+     Lists
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dictionaries">
+     Dictionaries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lists-and-dictionaries-conclusions">
+     Lists and Dictionaries: Conclusions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#blocks-and-functions">
+   Blocks and Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arguments">
+     Arguments
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#argument-list">
+     Argument List
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#keyword-arguments">
+     Keyword Arguments
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#everything-is-an-object">
+     Everything is an object
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classes">
+   Classes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#next-we-will-create-an-instance-of-a-class">
+     Next, we will create an instance of a class.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#class-constructor">
+     Class constructor
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#let-s-print-a-class">
+     Let’s print a class!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#class-inheritance">
+     Class Inheritance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application-a-variable-collections">
+     Application: a variable collections
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hasattr-and-getattr">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         hasattr
+        </span>
+       </code>
+       and
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         getattr
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application-an-iteratable-class">
+     Application: an iteratable class
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-comprehensions">
+   List Comprehensions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dict-comprehensions">
+   Dict Comprehensions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#defining-your-module">
+   Defining your module
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-script-as-a-module">
+     A script as a module
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-directory-as-a-module">
+     A directory as a module
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#renaming-a-module">
+     Renaming a module
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#where-are-the-module-source">
+     Where are the module source?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusions">
+   Conclusions
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="introduction-to-python">
+<h1>Introduction to Python<a class="headerlink" href="#introduction-to-python" title="Permalink to this headline">¶</a></h1>
+<p>Python is a modern, object-oriented scripting language.
+Developed in the late 1980s by Dutch research programmer Guido van Rossum. Guido wrote the first Python interpreter over his Christmas holiday in 1989. Guido remains Python’s principal author to this day. The Python community refers to him as BDFL, Benevolent Dictator For Life. It is named after “Monty Python’s Flying Circus” because of its developers’ intent that programming should be fun.</p>
+<p><strong>Python’s core philosophy</strong>:</p>
+<ul class="simple">
+<li><p>Beautiful is better than ugly.</p></li>
+<li><p>It’s always a good idea to make your code elegant and readable.</p></li>
+<li><p>Explicit is better than implicit. Don’t make your readers guess what your code does, make it obvious.</p></li>
+<li><p>Simple is better than complex. If you can make it simple, do.</p></li>
+<li><p>Complex is better than complicated. If complexity is necessary, don’t complicate it.</p></li>
+<li><p>Readability counts.</p></li>
+</ul>
+<p>As a casual reader with a good understanding of the Python language, you should be able to understand the code with a minimal amount of effort. For complete philosophy, simply execute a command <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">this</span></code>.  Python 3 is very close to Guido’s ideal vision for Python.</p>
+<p><strong>Python is a rich language</strong>, and it would be impossible to cover all of it in just one hour. But the online documentation is both accessible and exhaustive.</p>
+<p><strong>Python is a very powerful and versatile language.</strong> It’s supported on virtually all common operating systems and it’s easy to learn and to support.</p>
+<img alt="../_images/python-powered-h-140x182.png" src="../_images/python-powered-h-140x182.png" />
+<p>This notebook is partially taken from a <a class="reference external" href="https://github.com/marcodeltutto/Python-Tutorial-SBN-Workshop">tutorial</a> by Marco Del Tutto for an introductory workshop.</p>
+<div class="section" id="hello-world">
+<h2>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello world!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello world!
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="import-a-module-from-the-python-library">
+<h2>Import a module from the Python library<a class="headerlink" href="#import-a-module-from-the-python-library" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">platform</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;We are using python&#39;</span><span class="p">,</span> <span class="n">platform</span><span class="o">.</span><span class="n">python_version</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We are using python 3.6.9
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="wait-what-is-import">
+<h2>Wait, what is “import”?<a class="headerlink" href="#wait-what-is-import" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">import</span></code> is used to load a python <em>module</em>, and is probably the most important syntax in Python. A <em>module</em> is a predefined set of tools (i.e. constants, functions, classes). In other languages, it’s called sometimes a <em>package</em> or a <em>library</em>. If you are familiar with C++ compiler, you could consider <code class="docutils literal notranslate"><span class="pre">import</span></code> close to <code class="docutils literal notranslate"><span class="pre">#include</span></code> preprocessor directive.</p>
+<p>The syntax to load a certain module named <code class="docutils literal notranslate"><span class="pre">X</span></code> goes by <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">X</span></code>. So in the above cell, we imported a module named <code class="docutils literal notranslate"><span class="pre">platform</span></code> which includes information about the very Python kernel we are running this program on.</p>
+<p>Let’s try another one.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.141592653589793
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>You can define your own module, and it’s a good thing.</strong> As you become more mature with Python (literally by the end of this notebook), you start defining many useful functions and may want to organize them under your own module name like <code class="docutils literal notranslate"><span class="pre">DanielRatnerLoveThis</span></code>. That’s natural! We come back to this later in this notebook.</p>
+</div>
+<div class="section" id="datatypes">
+<h2>Datatypes<a class="headerlink" href="#datatypes" title="Permalink to this headline">¶</a></h2>
+<p>There are just a few fundamental data types in Python.</p>
+<p>Python is designed to be extensible so it’s easy to create your own types within its object system.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mf">7.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="n">j</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;7&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;int&#39;&gt;
+&lt;class &#39;float&#39;&gt;
+&lt;class &#39;complex&#39;&gt;
+&lt;class &#39;str&#39;&gt;
+&lt;class &#39;bool&#39;&gt;
+&lt;class &#39;NoneType&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is no <code class="docutils literal notranslate"><span class="pre">double</span></code> in Python. A <code class="docutils literal notranslate"><span class="pre">float</span></code> in Python has double precision (like a <code class="docutils literal notranslate"><span class="pre">double</span></code> in C).</p>
+<div class="section" id="strings">
+<h3>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h3>
+<p>Strings are objects, even literal strings. Here we start with literal string, the <code class="docutils literal notranslate"><span class="pre">'neutrino'</span></code> in quotes.
+Since this is an object, we can run methods on it. Let’s start with <code class="docutils literal notranslate"><span class="pre">capitalize()</span></code> here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;neutrino&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>neutrino
+Neutrino
+NEUTRINO
+neutrino
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can treat strings as <em>array-like objects</em> and access them using indexes with <code class="docutils literal notranslate"><span class="pre">[2]</span></code> to access the third index for example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXCERCISE: Access the fifth index of the above string</span>
+
+<span class="n">x</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;r&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can print a string with the <code class="docutils literal notranslate"><span class="pre">print</span></code> function, and format it to also show values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neutrinos</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;We currently know there are </span><span class="si">{}</span><span class="s1"> neutrinos.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_neutrinos</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Or even easier with f-strings (Python &gt;= 3.6)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Or maybe there are more than </span><span class="si">{</span><span class="n">n_neutrinos</span><span class="si">}</span><span class="s1">?&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We currently know there are 3 neutrinos.
+Or maybe there are more than 3?
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="lists">
+<h3>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h3>
+<p>Lists in Python represent ordered sequences of values. Here is an example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">particles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;up&#39;</span><span class="p">,</span> <span class="s1">&#39;down&#39;</span><span class="p">,</span> <span class="s1">&#39;electron&#39;</span><span class="p">,</span> <span class="s1">&#39;electron_neutrino&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;charm&#39;</span><span class="p">,</span> <span class="s1">&#39;strange&#39;</span><span class="p">,</span> <span class="s1">&#39;muon&#39;</span><span class="p">,</span> <span class="s1">&#39;muon_neutrino&#39;</span><span class="p">,</span> 
+             <span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;tau&#39;</span><span class="p">,</span> <span class="s1">&#39;tau_neutrino&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;gluon&#39;</span><span class="p">,</span> <span class="s1">&#39;photon&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;higgs&#39;</span><span class="p">]</span>
+
+<span class="n">masses</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">4.7</span><span class="p">,</span> <span class="mf">0.511</span><span class="p">,</span> <span class="s1">&#39;less than 1 eV&#39;</span><span class="p">,</span>
+          <span class="mf">1.28</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mf">105.66</span><span class="p">,</span> <span class="s1">&#39;less than 0.17 eV&#39;</span><span class="p">,</span>
+          <span class="mf">173e3</span><span class="p">,</span> <span class="mf">4.18e3</span><span class="p">,</span> <span class="mf">1.78e3</span><span class="p">,</span> <span class="s1">&#39;less than 18.2 eV&#39;</span><span class="p">,</span>
+          <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">91.19e3</span><span class="p">,</span> <span class="mf">80.39e3</span><span class="p">,</span>
+          <span class="mf">124.97e3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lists: <code class="docutils literal notranslate"><span class="pre">[]</span></code> - mutable</p>
+<p>Tuples: <code class="docutils literal notranslate"><span class="pre">()</span></code> - unmutable</p>
+<p>Here are some useful operations that can be applied on lists.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Indexing</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">particles</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>strange
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can use negative indexes too. Negative indexes start counting from the end.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXERCISE: Try to slice the particle array with negative indexes.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">particles</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">particles</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>higgs
+w
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also “slice” lists. More details on this will be given in the next notebook on numpy</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># From the first element to the end</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">particles</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+
+<span class="c1"># From the second to the fourth element </span>
+<span class="nb">print</span><span class="p">(</span><span class="n">particles</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;down&#39;, &#39;electron&#39;, &#39;electron_neutrino&#39;, &#39;charm&#39;, &#39;strange&#39;, &#39;muon&#39;, &#39;muon_neutrino&#39;, &#39;top&#39;, &#39;bottom&#39;, &#39;tau&#39;, &#39;tau_neutrino&#39;, &#39;gluon&#39;, &#39;photon&#39;, &#39;z&#39;, &#39;w&#39;, &#39;higgs&#39;]
+[&#39;electron&#39;, &#39;electron_neutrino&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">len</span></code> you can get the lenght of the vector:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lenght</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">particles</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dictionaries">
+<h3>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h3>
+<p>Dictionaries are a built-in Python data structure for mapping keys to values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">par_to_mass</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;electron_neutrino&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> 
+               <span class="s1">&#39;muon_neutrino&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+               <span class="s1">&#39;tau_neutrino&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">par_to_mass</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;electron_neutrino&#39;: 0, &#39;muon_neutrino&#39;: 0, &#39;tau_neutrino&#39;: 0}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Query a dictionary</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Electron-neutrino mass is&#39;</span><span class="p">,</span> <span class="n">par_to_mass</span><span class="p">[</span><span class="s1">&#39;electron_neutrino&#39;</span><span class="p">])</span>
+
+<span class="c1"># Change a value</span>
+<span class="n">par_to_mass</span><span class="p">[</span><span class="s1">&#39;electron_neutrino&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;less than 1 eV&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No, we only know it is&#39;</span><span class="p">,</span> <span class="n">par_to_mass</span><span class="p">[</span><span class="s1">&#39;electron_neutrino&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Electron-neutrino mass is 0
+No, we only know it is less than 1 eV
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">get()</span></code> is a useful function that can set a default return value if a specified key does not exist.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">par_to_mass</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;kazu&#39;</span><span class="p">,</span><span class="s1">&#39;very heavy&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;very heavy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s construct the full dictionary to go from particles to masses</span>
+<span class="n">par_to_mass</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">particles</span><span class="p">,</span> <span class="n">masses</span><span class="p">):</span>
+    <span class="n">par_to_mass</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To retrieve a list of keys and/or values from a dictionary:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.items()</span></code> applied to a dictionary return a pair of keys and values</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.keys()</span></code> applied to a dictionary return all the keys</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.values()</span></code> applied to a dictionary return all the values</p></li>
+</ul>
+<p>Let’s try looping over all key-value pairs using <code class="docutils literal notranslate"><span class="pre">items()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">par_to_mass</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="c1"># for key in par_to_mass.keys():</span>
+<span class="c1">#     print(key)</span>
+<span class="c1"># for value in par_to_mass.values():</span>
+<span class="c1">#     print(value)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>up 2.2
+down 4.7
+electron 0.511
+electron_neutrino less than 1 eV
+charm 1.28
+strange 96
+muon 105.66
+muon_neutrino less than 0.17 eV
+top 173000.0
+bottom 4180.0
+tau 1780.0
+tau_neutrino less than 18.2 eV
+gluon 0
+photon 0
+z 91190.0
+w 80390.0
+higgs 124970.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">in</span></code> operator allows to check is a key is in the dictionary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXCERCISE: Try to use &quot;in&quot; to check is a key is in the dictionary</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Do I know the mass of Marco?&#39;</span><span class="p">,</span> <span class="s1">&#39;Marco&#39;</span> <span class="ow">in</span> <span class="n">par_to_mass</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Do I know the mass of Marco? False
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="lists-and-dictionaries-conclusions">
+<h3>Lists and Dictionaries: Conclusions<a class="headerlink" href="#lists-and-dictionaries-conclusions" title="Permalink to this headline">¶</a></h3>
+<p>Python provides a number of collection types useful for creating structured data.</p>
+<ul class="simple">
+<li><p>The <em>list</em> type is a basic sequence. It’s created using a pair of square brackets around a list of <strong>objects</strong> separated by commas. The list is mutable, which means that you may add, delete, and change values.</p></li>
+<li><p>A <em>dictionary</em> is a sequence of key-value pairs. In other languages, this may be called an associative array or a hashed array. It is indicated with curly brackets.</p></li>
+<li><p>A <em>tuple</em> is like a list, but it’s immutable. You cannot change it once it’s been created. A tuple is created using parentheses.</p></li>
+<li><p>A <em>set</em> is is an unordered list of unique values. It’s useful for finding and operating upon unique values within a sequence.</p></li>
+</ul>
+<p>Any of these collection types may contain any object or type.</p>
+</div>
+</div>
+<div class="section" id="blocks-and-functions">
+<h2>Blocks and Functions<a class="headerlink" href="#blocks-and-functions" title="Permalink to this headline">¶</a></h2>
+<p>Functions are the basic unit of reusable code in Python. So, let’s take a look at how they work.
+A couple of examples of functions in python: <code class="docutils literal notranslate"><span class="pre">round</span></code> and <code class="docutils literal notranslate"><span class="pre">abs</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="mf">3.2</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="mf">3.6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x = 3
+y = 4
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">help()</span></code> function is possibly the most important Python function you can learn.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="nb">round</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on built-in function round in module builtins:
+
+round(...)
+    round(number[, ndigits]) -&gt; number
+    
+    Round a number to a given precision in decimal digits (default 0 digits).
+    This returns an int when called with one argument, otherwise the
+    same type as the number. ndigits may be negative.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXCERCISE:</span>
+<span class="c1"># You can also get help in jupyter by using `?`. Try `round?`</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Python differs from many languages in how <strong>blocks</strong> are delimited. Python does not use brackets or any special characters for blocks, instead it uses indentation.</p>
+<p>A function is defined with the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword, then the name of the function, and then always parenthesis, even if it does not take any arguments. And any arguments are separated by commas inside of those parentheses.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check_temperature</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Checks if the argon is in liquid state</span>
+<span class="sd">    give a certain temperature T.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">T_c</span> <span class="o">=</span> <span class="mi">87</span> <span class="c1"># K</span>
+
+    <span class="k">if</span> <span class="n">T</span> <span class="o">&gt;</span> <span class="n">T_c</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Argon is NOT in liquid state!&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Argon is in liquid state!&#39;</span><span class="p">)</span>
+        
+<span class="n">check_temperature</span><span class="p">(</span><span class="mi">88</span><span class="p">)</span>
+<span class="n">check_temperature</span><span class="p">(</span><span class="mi">86</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Argon is NOT in liquid state!
+Argon is in liquid state!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">check_temperature</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function check_temperature in module __main__:
+
+check_temperature(T)
+    Checks if the argon is in liquid state
+    give a certain temperature T.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="arguments">
+<h3>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_mass</span><span class="p">(</span><span class="n">particle_name</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">par_to_mass</span><span class="p">[</span><span class="n">particle_name</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Not found!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_mass</span><span class="p">(</span><span class="n">particle_name</span><span class="o">=</span><span class="s1">&#39;higgs&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>124970.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXCERCISE: Define get_mass(particle_name) function implementation in 1 line only</span>
+<span class="c1"># (hint: use dictionary &quot;get&quot; function, or 1 liner if statement)</span>
+
+<span class="k">def</span> <span class="nf">get_mass</span><span class="p">(</span><span class="n">particle_name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">par_to_mass</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">particle_name</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">get_mass</span><span class="p">(</span><span class="s1">&#39;higgs&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>124970.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="argument-list">
+<h3>Argument List<a class="headerlink" href="#argument-list" title="Permalink to this headline">¶</a></h3>
+<p>Python functions allow variable length argument lists.</p>
+<p>If you add an argument with an asterisk <code class="docutils literal notranslate"><span class="pre">*</span></code> before it (as done below with <code class="docutils literal notranslate"><span class="pre">*args</span></code>), this is a variable length argument list. It is a <code class="docutils literal notranslate"><span class="pre">tuple</span></code>.</p>
+<p>Below we check if it has non-zero length, and then we loop over the arguments.</p>
+<p>Note that we don’t have to specify how many arguments or what kind of arguments we are passing. This feature is useful for situations where you want a function that may be called with different numbers of arguments.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_mass_2</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span> 
+                <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;mass is&#39;</span><span class="p">,</span> <span class="n">par_to_mass</span><span class="p">[</span><span class="n">p</span><span class="p">],</span><span class="s1">&#39;MeV/c^2&#39;</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span> 
+                <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;not found!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXCERCISE: Try calling the function above</span>
+
+<span class="n">get_mass_2</span><span class="p">(</span><span class="s1">&#39;higgs&#39;</span><span class="p">,</span> <span class="s1">&#39;electron&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>higgs mass is 124970.0 MeV/c^2
+electron mass is 0.511 MeV/c^2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="keyword-arguments">
+<h3>Keyword Arguments<a class="headerlink" href="#keyword-arguments" title="Permalink to this headline">¶</a></h3>
+<p>Keyword arguments are like list arguments that are dictionaries instead of tuples. This allows functions to have a variable number of named arguments.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_mass_3</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Particle&#39;</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="s1">&#39;has mass&#39;</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXCERICE: Try to get the mass of the Higgs by passing Higgs=124970.0 as argument</span>
+<span class="n">get_mass_3</span><span class="p">(</span><span class="n">Higgs</span><span class="o">=</span><span class="mf">124970.0</span><span class="p">,</span> <span class="n">Electron</span><span class="o">=</span><span class="mf">0.511</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Particle Higgs has mass 124970.0
+Particle Electron has mass 0.511
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="everything-is-an-object">
+<h3>Everything is an object<a class="headerlink" href="#everything-is-an-object" title="Permalink to this headline">¶</a></h3>
+<p>A list can contain a mix of different types of variables. It can also contain a function!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here it contains a string, a float, a dictionary, and a function!</span>
+<span class="n">miscellaneous</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;neutrino&#39;</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="n">par_to_mass</span><span class="p">,</span> <span class="n">get_mass</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">miscellaneous</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">](</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4180.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<p>A class is the basis of all data in Python.</p>
+<p>Everything is an object in Python, and a class is how an object is defined.</p>
+<p>A class definition beginning with the keyword <code class="docutils literal notranslate"><span class="pre">class</span></code>, the name of the class, and a colon, and then everything that defines the class is indented under that declaration.</p>
+<p>Inside the clasee you can have data in the form of <strong>variables</strong>, and <strong>methods</strong> in the form of function definitions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Computer</span><span class="p">:</span>
+    
+    <span class="n">_name</span> <span class="o">=</span> <span class="s1">&#39;dell xps15&#39;</span>
+    <span class="n">_desktop</span> <span class="o">=</span> <span class="kc">False</span>
+    
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">is_desktop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_desktop</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You’ll notice that:</p>
+<ul class="simple">
+<li><p>The first parameter of a method is always <code class="docutils literal notranslate"><span class="pre">self</span></code>. <code class="docutils literal notranslate"><span class="pre">self</span></code> is not a keyword. You can actually name that first parameter whatever you want to, but self is traditional and it is highly recommend that you use <code class="docutils literal notranslate"><span class="pre">self</span></code> so that as people are reading your code, they know what you’re talking about. <code class="docutils literal notranslate"><span class="pre">self</span></code> is a reference to the object, not the class. And so, when an object is created from the class, <code class="docutils literal notranslate"><span class="pre">self</span></code> will reference that object. And then everything that references anything defined in the class is dereferenced off itself to get the instantiated object version of it. And the period operator is used to dereference the object. And the same is true outside of the class.</p></li>
+<li><p>All class variables start with an underscore <code class="docutils literal notranslate"><span class="pre">_</span></code>. This is a convention to remember ourselves that those variables belong to the class. Python doesn’t have private variables, and so there is no way to actually prevent somebody from using these from outside of the class. But this indicates that it is a private variable and it should not be set or retrieved outside of the a setter or getter.</p></li>
+</ul>
+<div class="section" id="next-we-will-create-an-instance-of-a-class">
+<h3>Next, we will create an instance of a class.<a class="headerlink" href="#next-we-will-create-an-instance-of-a-class" title="Permalink to this headline">¶</a></h3>
+<p>An instance of a class is called an object. It’s creating by calling the class itself as if it were a function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXCERCISE: Try to instantiate the class and call both class methods</span>
+
+<span class="n">me</span> <span class="o">=</span> <span class="n">Computer</span><span class="p">()</span>
+<span class="n">me</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This is a desktop.&#39;</span> <span class="k">if</span> <span class="n">me</span><span class="o">.</span><span class="n">is_desktop</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;This is a laptop.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am dell xps15!
+This is a laptop.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="class-constructor">
+<h3>Class constructor<a class="headerlink" href="#class-constructor" title="Permalink to this headline">¶</a></h3>
+<p>The class constructor allows us to <strong>initialize</strong> class member variables when we instantiate the class.</p>
+<p>The constructor can be defined in a special  class method name called <code class="docutils literal notranslate"><span class="pre">init</span></code>, with double underscores before and after: <code class="docutils literal notranslate"><span class="pre">__init__(self,</span> <span class="pre">var1,</span> <span class="pre">var2,</span> <span class="pre">...)</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXCERCISE: Add a constructor to the Computer class where you initialize the two variables _name and _near_det</span>
+
+<span class="k">class</span> <span class="nc">Computer</span><span class="p">:</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;dell xps15&#39;</span><span class="p">,</span> <span class="n">desktop</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_desktop</span> <span class="o">=</span> <span class="n">desktop</span>
+    
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">is_desktop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_desktop</span>
+    
+<span class="n">me</span> <span class="o">=</span> <span class="n">Computer</span><span class="p">(</span><span class="s1">&#39;imac&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">me</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am imac!
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="let-s-print-a-class">
+<h3>Let’s print a class!<a class="headerlink" href="#let-s-print-a-class" title="Permalink to this headline">¶</a></h3>
+<p>The method <code class="docutils literal notranslate"><span class="pre">__str__</span></code> allows to tell the class how it should behave inside a <code class="docutils literal notranslate"><span class="pre">print()</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXCERCISE: Try to add a the __str__ method and print some informaion from the Computer class, like this</span>
+<span class="c1"># def __str__(self):</span>
+<span class="c1">#     s = &#39;I am a desktop&#39; if self._near_det else &#39;I am a laptop&#39;</span>
+<span class="c1">#     return f&#39;Hi! I am {self._name}, and &#39; + s</span>
+<span class="c1"># Also add a new method that returns the number of CPUs </span>
+
+<span class="k">class</span> <span class="nc">Computer</span><span class="p">:</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;dell xps15&#39;</span><span class="p">,</span> <span class="n">desktop</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_desktop</span> <span class="o">=</span> <span class="n">desktop</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_n_cpus</span> <span class="o">=</span> <span class="mi">8</span>
+    
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">is_desktop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_desktop</span>
+    
+    <span class="k">def</span> <span class="nf">n_cpus</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_n_cpus</span>
+    
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;I am a desktop.&#39;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_desktop</span> <span class="k">else</span> <span class="s1">&#39;I am a laptop.&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Hi! I am </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">}</span><span class="s1">, and &#39;</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39; I have </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n_cpus</span><span class="p">()</span><span class="si">}</span><span class="s1"> CPUs.&#39;</span>
+
+<span class="n">me</span> <span class="o">=</span> <span class="n">Computer</span><span class="p">(</span><span class="s1">&#39;imac&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hi! I am imac, and I am a desktop. I have 8 CPUs.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we looked at a couple of special methods: <code class="docutils literal notranslate"><span class="pre">init</span></code> and <code class="docutils literal notranslate"><span class="pre">str</span></code>.</p>
+<p>You can find a list of all the special method names in the <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#basic-customization">Python3 documentation</a>.</p>
+<p>Methods are the primary interface for classes and objects. They work exactly like functions, except they are bound to the object through their first argument, commonly named self.</p>
+</div>
+<div class="section" id="class-inheritance">
+<h3>Class Inheritance<a class="headerlink" href="#class-inheritance" title="Permalink to this headline">¶</a></h3>
+<p>Class inheritance is a fundamental part of object-oriented programming.</p>
+<p>This allows you to extend your classes by driving properties and methods from parent classes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">iMac</span><span class="p">(</span><span class="n">Computer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="s1">&#39;imac&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_desktop</span> <span class="o">=</span> <span class="kc">True</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_n_cpus</span> <span class="o">=</span> <span class="mi">16</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">iMac</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+ 
+<span class="k">class</span> <span class="nc">XPS15</span><span class="p">(</span><span class="n">Computer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">XPS15</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hi! I am imac, and I am a desktop. I have 16 CPUs.
+Hi! I am dell xps15, and I am a laptop. I have 8 CPUs.
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">super()</span></code> function above allows to call the parent class (<code class="docutils literal notranslate"><span class="pre">Computer</span></code>). <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code> calls the constructor of the <code class="docutils literal notranslate"><span class="pre">Computer</span></code> class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXCERCISE: (my) xps15 has also 1 GPU. Extend the XPS15 class to also return the number of GPUs</span>
+
+<span class="k">class</span> <span class="nc">XPS15</span><span class="p">(</span><span class="n">Computer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;dell xps15&#39;</span><span class="p">,</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_n_gpus</span> <span class="o">=</span> <span class="mi">1</span>
+    
+    <span class="k">def</span> <span class="nf">n_gpus</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_n_gpus</span>
+    
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;I am a desktop.&#39;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_desktop</span> <span class="k">else</span> <span class="s1">&#39;I am a laptop.&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Hi! I am </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">}</span><span class="s1">, and &#39;</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39; I have </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n_cpus</span><span class="p">()</span><span class="si">}</span><span class="s1"> CPUs and </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_n_gpus</span><span class="si">}</span><span class="s1"> GPUs.&#39;</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">iMac</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">XPS15</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hi! I am imac, and I am a desktop. I have 16 CPUs.
+Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 GPUs.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="application-a-variable-collections">
+<h3>Application: a variable collections<a class="headerlink" href="#application-a-variable-collections" title="Permalink to this headline">¶</a></h3>
+<p>In C++, for quick encapsulation, we often use a <em>struct</em> container. A hacky but handy way of achieving something similar in Python is to define an empty class, and dyncamically attach attributes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BLOB</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="n">blob</span><span class="o">=</span><span class="n">BLOB</span><span class="p">()</span>
+<span class="n">blob</span><span class="o">.</span><span class="n">data</span>   <span class="o">=</span> <span class="n">XPS15</span><span class="p">()</span>
+<span class="n">blob</span><span class="o">.</span><span class="n">number</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="hasattr-and-getattr">
+<h4><code class="docutils literal notranslate"><span class="pre">hasattr</span></code> and <code class="docutils literal notranslate"><span class="pre">getattr</span></code><a class="headerlink" href="#hasattr-and-getattr" title="Permalink to this headline">¶</a></h4>
+<p>Since this blob object is dynamic, you might want a capability to check, when given a blob object, a certain attribute exists or not. Python has a handy built-in functions <code class="docutils literal notranslate"><span class="pre">hasattr</span></code> and <code class="docutils literal notranslate"><span class="pre">getattr</span></code> (“attr” stands for “attributes”).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;does it have &quot;tracy&quot;?&#39;</span><span class="p">,</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">blob</span><span class="p">,</span> <span class="s2">&quot;tracy&quot;</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">__str__ of tracy...&#39;</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">blob</span><span class="p">,</span><span class="s2">&quot;tracy&quot;</span><span class="p">,</span> <span class="s1">&#39;no it does not exist&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">does it have &quot;data&quot;?&#39;</span><span class="p">,</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">blob</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span> <span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">__str__ of data...&#39;</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">blob</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s1">&#39;no it does not exist&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>does it have &quot;tracy&quot;? False
+
+__str__ of tracy... no it does not exist
+
+does it have &quot;data&quot;? True
+
+__str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 GPUs.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="application-an-iteratable-class">
+<h3>Application: an iteratable class<a class="headerlink" href="#application-an-iteratable-class" title="Permalink to this headline">¶</a></h3>
+<p>An array-like data container in which individual data element can be accessed by an index (i.e. “[]”) or iterate over would be very handy. Such a structure also helps to generalize a design of data streaming tools. We practice to design such a Python class below.</p>
+<p>First, let’s define a iterable container. For an iteration in Python, you need two built-in functions: a <em>len</em> which returns the “length of array-like data” and <em>getitem</em> which arrows a random-access operator (i.e. “[ ]”).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">dataset</span><span class="p">:</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+        
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">index</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The above example class <code class="docutils literal notranslate"><span class="pre">dataset</span></code> constructs a simple data, an array of length 100 filled with numbers 0 to 99. The length of the dataset is accordingly 100, and the random access operator returns the corresponding index entry of the array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Length:&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;10th element:&#39;</span><span class="p">,</span><span class="n">data</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Length: 100
+10th element: 10
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also slice this data object</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10, 11, 12, 13, 14, 15, 16, 17, 18, 19)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s how you can create an iterator for an iterable object using <em>iter</em> built-in function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">iter</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iterator at 0x7fb06042bfd0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can move the iterator to the next object using the <em>next</em> built-in function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">),</span> <span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">),</span> <span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 1 2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="list-comprehensions">
+<h2>List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Permalink to this headline">¶</a></h2>
+<p>List comprehensions are one of Python’s most beloved and unique features. The easiest way to understand them is probably to just look at a an example.</p>
+<p>Let’s assume we want to calculate all the squarer of the numbers between 0 and 9. With a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop we would do:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">squares</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">squares</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Instead, with list comprehension we can just do:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="n">squares</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="o">%</span><span class="k">timeit</span> for n in range(1000): squares.append(n**2)
+<span class="o">%</span><span class="k">timeit</span> squares = [n**2 for n in range(1000)]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>255 µs ± 6.83 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+200 µs ± 2.37 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">particles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;up&#39;</span><span class="p">,</span> <span class="s1">&#39;down&#39;</span><span class="p">,</span> <span class="s1">&#39;electron&#39;</span><span class="p">,</span> <span class="s1">&#39;electron_neutrino&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;charm&#39;</span><span class="p">,</span> <span class="s1">&#39;strange&#39;</span><span class="p">,</span> <span class="s1">&#39;muon&#39;</span><span class="p">,</span> <span class="s1">&#39;muon_neutrino&#39;</span><span class="p">,</span> 
+             <span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;tau&#39;</span><span class="p">,</span> <span class="s1">&#39;tau_neutrino&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;gluon&#39;</span><span class="p">,</span> <span class="s1">&#39;photon&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;higgs&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">short_particles</span> <span class="o">=</span> <span class="p">[</span><span class="n">particle</span> <span class="k">for</span> <span class="n">particle</span> <span class="ow">in</span> <span class="n">particles</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">particle</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">short_particles</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;up&#39;, &#39;down&#39;, &#39;charm&#39;, &#39;muon&#39;, &#39;top&#39;, &#39;tau&#39;, &#39;gluon&#39;, &#39;z&#39;, &#39;w&#39;, &#39;higgs&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXCERCISE:</span>
+<span class="c1"># Get a list of antiparticles</span>
+
+<span class="n">antiparticles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;anti_&#39;</span> <span class="o">+</span> <span class="n">particle</span> <span class="k">for</span> <span class="n">particle</span> <span class="ow">in</span> <span class="n">particles</span><span class="p">]</span>
+<span class="n">antiparticles</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;anti_up&#39;,
+ &#39;anti_down&#39;,
+ &#39;anti_electron&#39;,
+ &#39;anti_electron_neutrino&#39;,
+ &#39;anti_charm&#39;,
+ &#39;anti_strange&#39;,
+ &#39;anti_muon&#39;,
+ &#39;anti_muon_neutrino&#39;,
+ &#39;anti_top&#39;,
+ &#39;anti_bottom&#39;,
+ &#39;anti_tau&#39;,
+ &#39;anti_tau_neutrino&#39;,
+ &#39;anti_gluon&#39;,
+ &#39;anti_photon&#39;,
+ &#39;anti_z&#39;,
+ &#39;anti_w&#39;,
+ &#39;anti_higgs&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXCERCISE:</span>
+<span class="c1"># Get all the particles that contain character &#39;o&#39;, and capitalize them.</span>
+
+<span class="n">selected</span> <span class="o">=</span> <span class="p">[</span><span class="n">particle</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="k">for</span> <span class="n">particle</span> <span class="ow">in</span> <span class="n">particles</span> <span class="k">if</span> <span class="s1">&#39;o&#39;</span> <span class="ow">in</span> <span class="n">particle</span><span class="p">]</span>
+<span class="n">selected</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Down&#39;,
+ &#39;Electron&#39;,
+ &#39;Electron_neutrino&#39;,
+ &#39;Muon&#39;,
+ &#39;Muon_neutrino&#39;,
+ &#39;Top&#39;,
+ &#39;Bottom&#39;,
+ &#39;Tau_neutrino&#39;,
+ &#39;Gluon&#39;,
+ &#39;Photon&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dict-comprehensions">
+<h2>Dict Comprehensions<a class="headerlink" href="#dict-comprehensions" title="Permalink to this headline">¶</a></h2>
+<p>Dict comprehensions expands the idea of a list comprehension but for python dictionaries!</p>
+<p>Lets create a dictionary of the squares of numbers 0 through 9 inclusive, could write a loop like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">squares</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">squares</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or we can write it as a dict comprehension as follows (note the special syntax “key: value” to assign the key and value of the dict)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">{</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">}</span>
+<span class="n">squares</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lets do a speed test again, it’s not as fast as list comprehensions tho…:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="o">%</span><span class="k">timeit</span> for n in range(1000): squares[n] = n**2
+<span class="o">%</span><span class="k">timeit</span> squares = { n: n**2 for n in range(1000) }
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>241 µs ± 1.82 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+222 µs ± 1.43 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<p>So why should I bother you may ask! But we do can a lot more… say we wanted only the even numbers to be squared:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">{</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="k">2</span> == 0}
+<span class="n">squares</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 0, 2: 4, 4: 16, 6: 36, 8: 64}
+</pre></div>
+</div>
+</div>
+</div>
+<p>or if we just want to do a simple count of each entry in a list:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">particles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;positron&#39;</span><span class="p">,</span> <span class="s1">&#39;electron&#39;</span><span class="p">,</span> <span class="s1">&#39;electron&#39;</span><span class="p">,</span> <span class="s1">&#39;positron&#39;</span><span class="p">,</span> <span class="s1">&#39;electron&#39;</span><span class="p">,</span> <span class="s1">&#39;positron&#39;</span><span class="p">,</span> <span class="s1">&#39;electron&#39;</span><span class="p">,</span> <span class="s1">&#39;electron&#39;</span><span class="p">,</span> <span class="s1">&#39;electron&#39;</span><span class="p">,</span> <span class="s1">&#39;positron&#39;</span><span class="p">,</span> <span class="s1">&#39;electron&#39;</span><span class="p">,</span> <span class="s1">&#39;positron&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="p">{</span> <span class="n">k</span><span class="p">:</span> <span class="n">particles</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">particles</span> <span class="p">}</span>
+<span class="n">counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;positron&#39;: 5, &#39;electron&#39;: 7}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="defining-your-module">
+<h2>Defining your module<a class="headerlink" href="#defining-your-module" title="Permalink to this headline">¶</a></h2>
+<p>Now that we know all basics, let’s come back to defining our own module that can be loaded through <code class="docutils literal notranslate"><span class="pre">import</span></code>!</p>
+<p>There are two ways to do this: a module can be deifned within a single script OR within a directory with multiple scripts. Let’s practice both cases.</p>
+<div class="section" id="a-script-as-a-module">
+<h3>A script as a module<a class="headerlink" href="#a-script-as-a-module" title="Permalink to this headline">¶</a></h3>
+<p>You can import a script with <code class="docutils literal notranslate"><span class="pre">.py</span></code> suffix as a module. In this same directory, we prepared <code class="docutils literal notranslate"><span class="pre">DanielRatner.py</span></code>. It has a minimal content (unlike real Daniel who is full of features).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;DanielRatner.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>age=20
+trend=&#39;machine learning initiative lead at SLAC&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can import <code class="docutils literal notranslate"><span class="pre">DanielRatner</span></code> as a module, and access attributes under this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">DanielRatner</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;age:&#39;</span><span class="p">,</span><span class="n">DanielRatner</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>age: 20
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also import a specific attribute from the module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">DanielRatner</span> <span class="kn">import</span> <span class="n">trend</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trend:&#39;</span><span class="p">,</span><span class="n">trend</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>trend: machine learning initiative lead at SLAC
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="a-directory-as-a-module">
+<h3>A directory as a module<a class="headerlink" href="#a-directory-as-a-module" title="Permalink to this headline">¶</a></h3>
+<p>As you go down the path, you might end up defining 100 useful functions, and maybe group them into multiple python scripts, yet you may want to group them into one module. You can then define a whole directory containing multiple Python script as a module.</p>
+<p>We prepare another example to exercise importing a whole directory as a module.
+The directory name is called <code class="docutils literal notranslate"><span class="pre">RealDanielRatner</span></code> and contains three python scripts.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> … signifies to Python that this directory should be treated as a module. Define what attributes to be available within the module.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">age.py</span></code> … first module that contains Daniel’s real age</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">favorite.py</span></code> … second module that contains Daniel’s favorite</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trend.py</span></code> … third module that contains Daniel’s real trend</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> ls RealDanielRatner
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__init__.py  age.py  favorite.py  trend.py
+</pre></div>
+</div>
+</div>
+</div>
+<p>The contents of <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> defines what should be available under <code class="docutils literal notranslate"><span class="pre">RealDanielRatner</span></code> module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;RealDanielRatner/__init__.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>from .age import age
+from .trend import trend
+</pre></div>
+</div>
+</div>
+</div>
+<p>The rest of scripts contain just 1 line information about Daniel.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;RealDanielRatner/age.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;RealDanielRatner/favorite.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;RealDanielRatner/trend.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>age=40
+
+favorite=&#39;ski conference&#39;
+
+trend=&#39;Loving, caring, and changing a diaper for his baby&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s import <code class="docutils literal notranslate"><span class="pre">RealDanielRatner</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">RealDanielRatner</span>
+<span class="n">help</span><span class="p">(</span><span class="n">RealDanielRatner</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on package RealDanielRatner:
+
+NAME
+    RealDanielRatner
+
+PACKAGE CONTENTS
+    age
+    favorite
+    trend
+
+DATA
+    age = 40
+    trend = &#39;Loving, caring, and changing a diaper for his baby&#39;
+
+FILE
+    /home/drinkingkazu/sw/slacml-kmi2020/Prerequisites/RealDanielRatner/__init__.py
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">age</span></code> and <code class="docutils literal notranslate"><span class="pre">trend</span></code> are available in <code class="docutils literal notranslate"><span class="pre">DATA</span></code> field and can be accessed directly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;age:&#39;</span><span class="p">,</span><span class="n">RealDanielRatner</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trend:&#39;</span><span class="p">,</span><span class="n">RealDanielRatner</span><span class="o">.</span><span class="n">trend</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>age: 40
+trend: Loving, caring, and changing a diaper for his baby
+</pre></div>
+</div>
+</div>
+</div>
+<p>… but not <code class="docutils literal notranslate"><span class="pre">favorite</span></code> which is recognized as a module under <code class="docutils literal notranslate"><span class="pre">RealDanielRatner</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">hasattr</span><span class="p">(</span><span class="n">RealDanielRatner</span><span class="p">,</span><span class="s1">&#39;favorite&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is because <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>, which defines <code class="docutils literal notranslate"><span class="pre">RealDanielRatner</span></code> module from the whole directory, did not include a syntax to <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">favorite</span></code>. Here is the content of <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> cat RealDanielRatner/__init__.py
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>from .age import age
+from .trend import trend
+</pre></div>
+</div>
+</div>
+</div>
+<p>But you can certainly <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">RealDanielRatner</span> <span class="pre">import</span> <span class="pre">favorite</span></code>, which would mean to load <code class="docutils literal notranslate"><span class="pre">favorite</span></code> module from <code class="docutils literal notranslate"><span class="pre">RealDanielRatner</span></code> (=directory).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">RealDanielRatner</span> <span class="kn">import</span> <span class="n">favorite</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;favorite:&#39;</span><span class="p">,</span><span class="n">favorite</span><span class="o">.</span><span class="n">favorite</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>favorite: ski conference
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="renaming-a-module">
+<h3>Renaming a module<a class="headerlink" href="#renaming-a-module" title="Permalink to this headline">¶</a></h3>
+<p>Finally, <code class="docutils literal notranslate"><span class="pre">RealDanielRatner</span></code> is … too long, right? You can rename the module upon import:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">RealDanielRatner</span> <span class="k">as</span> <span class="nn">dan</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Daniels age is&#39;</span><span class="p">,</span><span class="n">dan</span><span class="o">.</span><span class="n">age</span><span class="p">,</span><span class="s1">&#39;and his trend:&#39;</span><span class="p">,</span><span class="n">dan</span><span class="o">.</span><span class="n">trend</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Daniels age is 40 and his trend: Loving, caring, and changing a diaper for his baby
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="where-are-the-module-source">
+<h3>Where are the module source?<a class="headerlink" href="#where-are-the-module-source" title="Permalink to this headline">¶</a></h3>
+<p>So we just demonstrated that we could import <code class="docutils literal notranslate"><span class="pre">DanielRatner</span></code> from the <code class="docutils literal notranslate"><span class="pre">DanielRatner.py</span></code> in the same directory. But would the same work if <code class="docutils literal notranslate"><span class="pre">DanielRatner.py</span></code> is somewhere else? Where does <code class="docutils literal notranslate"><span class="pre">import</span></code> syntax looks up the location of the source modules?</p>
+<p>The answer is your current directory and a list of paths in <code class="docutils literal notranslate"><span class="pre">sys.path</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/app/larcv2/python&#39;,
+ &#39;/app/geant4/lib&#39;,
+ &#39;/app/root/lib&#39;,
+ &#39;/usr/local/root/lib&#39;,
+ &#39;/home/drinkingkazu/sw/slacml-kmi2020/Prerequisites&#39;,
+ &#39;/usr/lib/python36.zip&#39;,
+ &#39;/usr/lib/python3.6&#39;,
+ &#39;/usr/lib/python3.6/lib-dynload&#39;,
+ &#39;&#39;,
+ &#39;/home/drinkingkazu/.local/lib/python3.6/site-packages&#39;,
+ &#39;/usr/local/lib/python3.6/dist-packages&#39;,
+ &#39;/usr/lib/python3/dist-packages&#39;,
+ &#39;/usr/local/lib/python3.6/dist-packages/IPython/extensions&#39;,
+ &#39;/home/drinkingkazu/.ipython&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you wonder where an imported module came from, you can look up a <code class="docutils literal notranslate"><span class="pre">__file__</span></code> attribute where it is available. For instance,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">platform</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/lib/python3.6/platform.py
+</pre></div>
+</div>
+</div>
+</div>
+<p>… which tells you where the <code class="docutils literal notranslate"><span class="pre">platform</span></code> module we imporeted first in this notebook is defined.</p>
+</div>
+</div>
+<div class="section" id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
+<p>And now, just for fun, let’s import this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">this</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren&#39;t special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you&#39;re Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it&#39;s a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let&#39;s do more of those!
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Prerequisites"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="Python-01-Jupyter.html" title="previous page">Notebook of code</a>
+    <a class='right-next' id="next-link" href="Python-03-Numpy.html" title="next page">Up and Running with Python3</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By SLAC Neutrino Group<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

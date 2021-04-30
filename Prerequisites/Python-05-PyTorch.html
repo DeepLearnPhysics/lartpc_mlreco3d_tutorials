@@ -1,0 +1,1081 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pytorch &#8212; lartpc_mlreco3d Tutorials</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Streaming Input Dataset" href="Python-06-MNIST-CIFAR10.html" />
+    <link rel="prev" title="Visualization, Fitting, and File Format" href="Python-04-ScientificPython.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">lartpc_mlreco3d Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Getting started
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Prerequisites
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-01-Jupyter.html">
+   Using Jupyter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-02-Python.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-03-Numpy.html">
+   Up and Running with Python3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-04-ScientificPython.html">
+   Visualization, Fitting, and File Format
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Pytorch
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-06-MNIST-CIFAR10.html">
+   Practice with MNIST
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Physics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Physics/Neutrinos.html">
+   Neutrinos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Physics/Lartpc.html">
+   Liquid Argon Time Projection Chamber (aka LArTPC)
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  lartpc_mlreco3d
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Data1.html">
+   Data I/O (without lartpc_mlreco3d, using ROOT)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Data2.html">
+   Data I/O (using lartpc_mlreco3d)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Output.html">
+   Reconstruction outputs
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Using SDF
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ComputeAccess/README.html">
+   Set up your computing environment
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Prerequisites/Python-05-PyTorch.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Temigo/lartpc_mlreco3d_tutorials"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/Temigo/lartpc_mlreco3d_tutorials/issues/new?title=Issue%20on%20page%20%2FPrerequisites/Python-05-PyTorch.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Temigo/lartpc_mlreco3d_tutorials/master?urlpath=tree/Prerequisites/Python-05-PyTorch.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/Temigo/lartpc_mlreco3d_tutorials/blob/master/Prerequisites/Python-05-PyTorch.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tensor-data-types-in-pytorch">
+   1. Tensor data types in PyTorch
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-a-torch-tensor">
+     Creating a torch.Tensor
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tensor-addition-and-multiplication">
+     Tensor addition and multiplication
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reshaping">
+     Reshaping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-slicing">
+     Indexing (Slicing)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-loading-tools-in-pytorch">
+   2. Data loading tools in Pytorch
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computation-graph">
+   3. Computation graph
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extra-gpu-acceleration">
+   Extra: GPU acceleration
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="pytorch">
+<h1>Pytorch<a class="headerlink" href="#pytorch" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://pytorch.org/">Pytorch</a> is one of open-source, modern deep learning libraries out there and what we will use in this workshop. Other popular libraries include <a class="reference external" href="https://www.tensorflow.org/">Tensorflow</a>, <a class="reference external" href="https://keras.io">Keras</a>, <a class="reference external" href="https://mxnet.apache.org">MXNet</a>, <a class="reference external" href="https://spark.apache.org/mllib/">Spark ML</a>, etc. …</p>
+<p>All of those libraries works very similar in terms of implementing your neural network architecture. If you are new, probably any of Pytorch/Keras/Tensorflow would work well with lots of guidance/examples/discussion-forums online! Common things you have to learn include:</p>
+<ol class="simple">
+<li><p><a class="reference external" href="#datatype">Data types</a> (typically arbitrary dimension matrix, or <em>tensor</em> )</p></li>
+<li><p><a class="reference external" href="#dataloader">Data loading tools</a> (streamline prepping data into appropraite types from input files)</p></li>
+<li><p><a class="reference external" href="#graph">Chaining operations</a> = a <em>computation graph</em></p></li>
+</ol>
+<p>In this notebook, we cover the basics part in each of topics above.</p>
+<p><a href="datatype"></a></p>
+<div class="section" id="tensor-data-types-in-pytorch">
+<h2>1. Tensor data types in PyTorch<a class="headerlink" href="#tensor-data-types-in-pytorch" title="Permalink to this headline">¶</a></h2>
+<p>In <code class="docutils literal notranslate"><span class="pre">pytorch</span></code>, we use <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> object to represent data matrix. It is a lot like <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array but not quite the same. <code class="docutils literal notranslate"><span class="pre">torch</span></code> provide APIs to easily convert data between <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array and <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>. Let’s play a little bit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">SEED</span><span class="o">=</span><span class="mi">123</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch._C.Generator at 0x7f811406d810&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>… yep, that’s how we set pytorch random number seed! (see Python-03-Numpy if you don’t know about a seed)</p>
+<div class="section" id="creating-a-torch-tensor">
+<h3>Creating a torch.Tensor<a class="headerlink" href="#creating-a-torch-tensor" title="Permalink to this headline">¶</a></h3>
+<p>Pytorch provides constructors similar to numpy (and named same way where possible to avoid users having to look-up function names). Here are some examples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tensor of 0s = numpy.zeros</span>
+<span class="n">t</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;torch.zeros:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># Tensor of 1s = numpy.ones</span>
+<span class="n">t</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">torch.ones:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># Tensor from a sequential integers = numpy.arange</span>
+<span class="n">t</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">torch.arange:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># Normal distribution centered at 0.0 and sigma=1.0 = numpy.rand.randn</span>
+<span class="n">t</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">torch.randn:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.zeros:
+ tensor([[0., 0., 0.],
+        [0., 0., 0.]])
+
+torch.ones:
+ tensor([[1., 1., 1.],
+        [1., 1., 1.]])
+
+torch.arange:
+ tensor([[0., 1., 2.],
+        [3., 4., 5.]])
+
+torch.randn:
+ tensor([[-0.1115,  0.1204, -0.3696],
+        [-0.2404, -1.1969,  0.2093]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>… or you can create from a simple list, tuple, and numpy arrays.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create numpy array</span>
+<span class="n">data_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="c1"># Fill something</span>
+<span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">data_np</span><span class="p">,</span><span class="mf">1.</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Numpy data</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">data_np</span><span class="p">)</span>
+
+<span class="c1"># Create torch.Tensor</span>
+<span class="n">data_torch</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">data_np</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">torch.Tensor data</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">data_torch</span><span class="p">)</span>
+
+<span class="c1"># One can make also from a list</span>
+<span class="n">data_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">data_list_torch</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">data_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Python list :&#39;</span><span class="p">,</span><span class="n">data_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;torch.Tensor:&#39;</span><span class="p">,</span><span class="n">data_list_torch</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Numpy data
+ [[1. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 1. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]]
+
+torch.Tensor data
+ tensor([[1., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+        [0., 1., 0., 0., 0., 0., 0., 0., 0., 0.],
+        [0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 1., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 0., 1., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+        [0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+        [0., 0., 0., 0., 0., 0., 0., 0., 0., 1.]])
+
+Python list : [1, 2, 3]
+torch.Tensor: tensor([1., 2., 3.])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Converting back from <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> to a numpy array can be easily done</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bringing back into numpy array</span>
+<span class="n">data_np</span> <span class="o">=</span> <span class="n">data_torch</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Numpy data (converted back from torch.Tensor)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">data_np</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Numpy data (converted back from torch.Tensor)
+ [[1. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 1. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ordinary operations to an array also exists like <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mean &amp; std</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span><span class="n">data_torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="s1">&#39;std&#39;</span><span class="p">,</span><span class="n">data_torch</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span><span class="n">data_torch</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean tensor(0.1000) std tensor(0.3015) sum tensor(10.)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see the return of those functions (<code class="docutils literal notranslate"><span class="pre">mean</span></code>,<code class="docutils literal notranslate"><span class="pre">std</span></code>,<code class="docutils literal notranslate"><span class="pre">sum</span></code>) are tensor objects. If you would like a single scalar value, you can call <code class="docutils literal notranslate"><span class="pre">item</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mean &amp; std</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span><span class="n">data_torch</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span><span class="s1">&#39;std&#39;</span><span class="p">,</span><span class="n">data_torch</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span><span class="n">data_torch</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean 0.10000000149011612 std 0.30151134729385376 sum 10.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="tensor-addition-and-multiplication">
+<h3>Tensor addition and multiplication<a class="headerlink" href="#tensor-addition-and-multiplication" title="Permalink to this headline">¶</a></h3>
+<p>Common operations include element-wise multiplication, matrix multiplication, and reshaping. Read the <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html">documentation</a> to find the right function for what you want to do!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Two matrices </span>
+<span class="n">data_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">data_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">data_a</span><span class="p">,</span><span class="mf">1.</span><span class="p">)</span>
+<span class="n">data_b</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span><span class="o">=</span><span class="mf">1.</span>
+<span class="c1"># print them</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Two numpy matrices&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_b</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Make torch.Tensor</span>
+<span class="n">torch_a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">data_a</span><span class="p">)</span>
+<span class="n">torch_b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">data_b</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;torch.Tensor element-wise multiplication:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">torch_a</span><span class="o">*</span><span class="n">torch_b</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">torch.Tensor matrix multiplication:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">torch_a</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">torch_b</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">torch.Tensor matrix addition:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">torch_a</span><span class="o">-</span><span class="n">torch_b</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">adding a scalar 1:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">torch_a</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Two numpy matrices
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+[[1. 1. 1.]
+ [0. 0. 0.]
+ [0. 0. 0.]] 
+
+torch.Tensor element-wise multiplication:
+tensor([[1., 0., 0.],
+        [0., 0., 0.],
+        [0., 0., 0.]])
+
+torch.Tensor matrix multiplication:
+tensor([[1., 1., 1.],
+        [0., 0., 0.],
+        [0., 0., 0.]])
+
+torch.Tensor matrix addition:
+tensor([[ 0., -1., -1.],
+        [ 0.,  1.,  0.],
+        [ 0.,  0.,  1.]])
+
+adding a scalar 1:
+tensor([[2., 1., 1.],
+        [1., 2., 1.],
+        [1., 1., 2.]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reshaping">
+<h3>Reshaping<a class="headerlink" href="#reshaping" title="Permalink to this headline">¶</a></h3>
+<p>You can access the tensor shape via <code class="docutils literal notranslate"><span class="pre">.shape</span></code> attribute like numpy</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;torch_a shape:&#39;</span><span class="p">,</span><span class="n">torch_a</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The 0th dimension size:&#39;</span><span class="p">,</span><span class="n">torch_a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch_a shape: torch.Size([3, 3])
+The 0th dimension size: 3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Similarly, there is a <code class="docutils literal notranslate"><span class="pre">reshape</span></code> function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">torch_a</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([1, 9])
+</pre></div>
+</div>
+</div>
+</div>
+<p>… and you can also use -1 in the same way you used for numpy</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">torch_a</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([3, 3])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="indexing-slicing">
+<h3>Indexing (Slicing)<a class="headerlink" href="#indexing-slicing" title="Permalink to this headline">¶</a></h3>
+<p>We can use a similar indexing trick like we tried with a numpy array</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">torch_a</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([1., 0., 0.])
+</pre></div>
+</div>
+</div>
+</div>
+<p>or a boolean mask generation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">torch_a</span> <span class="o">==</span> <span class="mf">0.</span>
+<span class="n">mask</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[False,  True,  True],
+        [ True, False,  True],
+        [ True,  True, False]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>… and slicing with it using <code class="docutils literal notranslate"><span class="pre">masked_select</span></code> function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">torch_a</span><span class="o">.</span><span class="n">masked_select</span><span class="p">(</span><span class="o">~</span><span class="n">mask</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([1., 1., 1.])
+</pre></div>
+</div>
+</div>
+</div>
+<p><a href="dataloader"></a></p>
+</div>
+</div>
+<div class="section" id="data-loading-tools-in-pytorch">
+<h2>2. Data loading tools in Pytorch<a class="headerlink" href="#data-loading-tools-in-pytorch" title="Permalink to this headline">¶</a></h2>
+<p>In Python-02-Python, we covered an iteratable class and how it could be useful to generalize a design of data access tools. Pytorch (and any other ML libraries out there) provides a generalized tool to interface such iteratable data instance called <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code>. Desired capabilities of such tools include ability to choose random vs. ordered subset in data, parallelized workers to simultaneously prepare multiple batch data, etc..</p>
+<p>Let’s practice the use of <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code>.</p>
+<p>First, we define the same iteretable class mentioned in Python-02-Python notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">dataset</span><span class="p">:</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+        
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">index</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    
+<span class="n">data</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here is how you can instantiate a <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code>. We construct an instance called <code class="docutils literal notranslate"><span class="pre">loader</span></code> that can automatically packs 10 elements of data (<code class="docutils literal notranslate"><span class="pre">batch_size=10</span></code>) that is randomly selected (<code class="docutils literal notranslate"><span class="pre">shuffle=True</span></code>) using 1 parallel worker to prepare such data (<code class="docutils literal notranslate"><span class="pre">num_workers=1</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The dataloader itself is an iterable object. We created a dataloader with batch size 10 where the dataset instance has the length 100. This means, if we iterate on the dataloader instance, we get 10 separate batch data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">batch_data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">loader</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Batch entry&#39;</span><span class="p">,</span><span class="n">index</span><span class="p">,</span><span class="s1">&#39;... batch data&#39;</span><span class="p">,</span><span class="n">batch_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Batch entry 0 ... batch data tensor([14,  7, 53, 63, 50, 96, 39, 64, 19,  8])
+Batch entry 1 ... batch data tensor([31,  3, 52, 22, 78, 20,  9, 49, 72, 38])
+Batch entry 2 ... batch data tensor([91, 13, 92, 48, 80, 76, 32,  1, 45, 33])
+Batch entry 3 ... batch data tensor([18, 30, 10, 37, 77, 23, 90,  2, 47, 54])
+Batch entry 4 ... batch data tensor([93,  5, 88, 59, 94, 36, 25, 98,  4, 27])
+Batch entry 5 ... batch data tensor([ 6, 46, 81, 89, 58, 84, 67, 74, 43, 71])
+Batch entry 6 ... batch data tensor([57, 97, 24, 73, 15, 16, 28, 41, 82, 60])
+Batch entry 7 ... batch data tensor([21, 62, 83, 61, 11, 65, 87, 95, 69, 12])
+Batch entry 8 ... batch data tensor([29, 35, 68, 79, 85, 40, 75, 44,  0, 55])
+Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that data elements are chosen randomly as we chose “shuffle=True”. Does this cover all data elements in the dataset? Let’s check this by combining all iterated data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_collection</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span><span class="n">batch_data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">loader</span><span class="p">):</span>
+    <span class="n">data_collection</span> <span class="o">+=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">batch_data</span><span class="p">]</span>
+    
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">data_collection</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16,
+       17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33,
+       34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
+       51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67,
+       68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84,
+       85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99])
+</pre></div>
+</div>
+</div>
+</div>
+<p>This covers the minimal concept of <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> you need to know in order to follow the workshop. You can read more about <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> in pytorch documentation <a class="reference external" href="https://pytorch.org/docs/stable/data.html">here</a> and also more extended example in <a class="reference external" href="https://pytorch.org/tutorials/beginner/data_loading_tutorial.html">their tutorial</a> if you are interested in exploring yourself.</p>
+<p><a href="graph"></a></p>
+</div>
+<div class="section" id="computation-graph">
+<h2>3. Computation graph<a class="headerlink" href="#computation-graph" title="Permalink to this headline">¶</a></h2>
+<p>The last point to cover is how to chain modularized mathematical operations.</p>
+<p>To get started, let’s introduce a few, well used mathematical operations in pytorch.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">torch.nn.ReLU</span></code> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.ReLU.html#torch.nn.ReLU">link</a>) … a function that takes an input tenor and outputs a tensor of the same shape where elements are 0 if the corresponding input element has a value below 0, and otherwise the same value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">torch.nn.Softmax</span></code> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Softmax.html#torch.nn.Softmax">link</a>) … a function that applies a <a class="reference external" href="https://en.wikipedia.org/wiki/Softmax_function">softmax function</a> on the specified dimension of an input data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">torch.nn.MaxPool2d</span></code> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html#torch.nn.MaxPool2d">link</a>) … a function that down-sample the input matrix by taking maximum value from sub-matrices of a specified shape.</p></li>
+</ul>
+<p>Let’s see what each of these functions do first using a simple 2D matrix data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 2D tensor of shape (1,5,5) with some negative and positive values</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[-0.0215,  1.0731, -0.1408, -0.5394, -1.2782],
+         [-0.8107,  1.3818, -0.0694,  1.2088, -0.0086],
+         [ 1.8576,  2.1321, -0.5056, -0.7988, -1.8127],
+         [ 1.1846,  1.7602,  1.2117, -0.8632,  1.3337],
+         [ 0.0771, -0.0522, -1.0565,  1.1510, -0.4669]]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s how <code class="docutils literal notranslate"><span class="pre">ReLU</span></code> works</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">op0</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+<span class="n">op0</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[0.0000, 1.0731, 0.0000, 0.0000, 0.0000],
+         [0.0000, 1.3818, 0.0000, 1.2088, 0.0000],
+         [1.8576, 2.1321, 0.0000, 0.0000, 0.0000],
+         [1.1846, 1.7602, 1.2117, 0.0000, 1.3337],
+         [0.0771, 0.0000, 0.0000, 1.1510, 0.0000]]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s how <code class="docutils literal notranslate"><span class="pre">Softmax</span></code> works</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">op1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">op1</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[0.1737, 0.5191, 0.1542, 0.1035, 0.0494],
+         [0.0458, 0.4105, 0.0962, 0.3453, 0.1022],
+         [0.3991, 0.5251, 0.0376, 0.0280, 0.0102],
+         [0.1963, 0.3490, 0.2016, 0.0253, 0.2278],
+         [0.1752, 0.1540, 0.0564, 0.5128, 0.1017]]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s how <code class="docutils literal notranslate"><span class="pre">MaxPool2d</span></code> works with a kernel shape (5,1)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">op2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">op2</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[1.0731],
+         [1.3818],
+         [2.1321],
+         [1.7602],
+         [1.1510]]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>So if we want to define a computation graph that applies these operations in a sequential order, we could try:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">op2</span><span class="p">(</span><span class="n">op1</span><span class="p">(</span><span class="n">op0</span><span class="p">(</span><span class="n">data</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[0.4223],
+         [0.3854],
+         [0.4726],
+         [0.3373],
+         [0.4366]]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pytorch provides tools called <em>containers</em> to make this easy. Let’s try <code class="docutils literal notranslate"><span class="pre">torch.nn.Sequential</span></code> (see different type of containers <a class="reference external" href="https://pytorch.org/docs/stable/nn.html#containers">here</a>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">myop</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">op0</span><span class="p">,</span><span class="n">op1</span><span class="p">,</span><span class="n">op2</span><span class="p">)</span>
+<span class="n">myop</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[0.4223],
+         [0.3854],
+         [0.4726],
+         [0.3373],
+         [0.4366]]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We might wonder “Can I add a custom operation to this graph?” Yes, we can add any <em>module</em> that inherits from <code class="docutils literal notranslate"><span class="pre">torch.nn.Module</span></code> class. Let’s define one for ourself.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AddOne</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+
+    <span class="c1"># always call the base class constructor for defining your torch.nn.Module inherit class!</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        
+    <span class="c1"># forward needs to be defined. This is called by &quot;()&quot; function call.</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">input</span><span class="p">):</span>
+        
+        <span class="k">return</span> <span class="nb">input</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s add our operation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">myop</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">op0</span><span class="p">,</span><span class="n">op1</span><span class="p">,</span><span class="n">op2</span><span class="p">,</span><span class="n">AddOne</span><span class="p">())</span>
+<span class="n">myop</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[1.4223],
+         [1.3854],
+         [1.4726],
+         [1.3373],
+         [1.4366]]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Of course, you can also embed <code class="docutils literal notranslate"><span class="pre">op0</span></code>, <code class="docutils literal notranslate"><span class="pre">op1</span></code>, and <code class="docutils literal notranslate"><span class="pre">op2</span></code> inside one module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyOp</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sequence</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span> 
+                                             <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> 
+                                             <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)),</span>
+                                             <span class="n">AddOne</span><span class="p">(),</span>
+                                            <span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">input</span><span class="p">):</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sequence</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">myop</span> <span class="o">=</span> <span class="n">MyOp</span><span class="p">()</span>
+<span class="n">myop</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[1.4223],
+         [1.3854],
+         [1.4726],
+         [1.3373],
+         [1.4366]]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you have questions, <a class="reference external" href="mailto:kterao&#37;&#52;&#48;slac&#46;stanford&#46;edu">contact me</a>.</p>
+</div>
+<div class="section" id="extra-gpu-acceleration">
+<h2>Extra: GPU acceleration<a class="headerlink" href="#extra-gpu-acceleration" title="Permalink to this headline">¶</a></h2>
+<p><strong>This section only works if you run this notebook on a GPU-enabled machine (not on the binder unfortunately)</strong></p>
+<p>Putting <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> on GPU is as easy as calling <code class="docutils literal notranslate"><span class="pre">.cuda()</span></code> function (and if you want to bring it back to cpu, call <code class="docutils literal notranslate"><span class="pre">.cpu()</span></code> on a <code class="docutils literal notranslate"><span class="pre">cuda.Tensor</span></code>). Let’s do a simple speed comparison.</p>
+<p>Create two arrays with an identical data type, shape, and values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create 1000x1000 matrix</span>
+<span class="n">data_np</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">data_cpu</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">data_np</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+<span class="n">data_gpu</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">data_np</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Time fifth power of the matrix on CPU</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">mean</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_cpu</span> <span class="o">**</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.44 ms ± 65.6 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<p>… and next on GPU</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">mean</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_gpu</span> <span class="o">**</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>48.3 µs ± 1.65 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<p>… which is more than x10 faster than the cpu counter part :)</p>
+<p>But there’s a catch you should be aware! Preparing a data on GPU does take time because data needs to be sent to GPU, which could take some time. Let’s compare the time it takes to create a tensor on CPU v.s. GPU.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">data_np</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">data_cpu</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">data_np</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>191 µs ± 6.48 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">data_np</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">data_gpu</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">data_np</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.16 ms ± 4.67 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see, it takes nearly 10 times longer time to create this particular data tensor on our GPU. This speed depends on many factors including your hardware configuration (e.g. CPU-GPU communication via PCI-e or NVLINK). It makes sense to move computation that takes longer than this data transfer time to perform on GPU.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Prerequisites"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="Python-04-ScientificPython.html" title="previous page">Visualization, Fitting, and File Format</a>
+    <a class='right-next' id="next-link" href="Python-06-MNIST-CIFAR10.html" title="next page">Streaming Input Dataset</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By SLAC Neutrino Group<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

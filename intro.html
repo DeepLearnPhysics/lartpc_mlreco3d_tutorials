@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to your Jupyter Book &#8212; lartpc_mlreco3d Tutorials</title>
+    <title>Getting started &#8212; lartpc_mlreco3d Tutorials</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -49,9 +49,10 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Content in Jupyter Book" href="content.html" />
+    <link rel="next" title="Notebook of code" href="Prerequisites/Python-01-Jupyter.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -84,32 +85,96 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1 current">
   <a class="reference internal" href="#">
-   Welcome to your Jupyter Book
+   Getting started
   </a>
  </li>
 </ul>
+<p class="caption">
+ <span class="caption-text">
+  Prerequisites
+ </span>
+</p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="content.html">
-   Content in Jupyter Book
+ <li class="toctree-l1">
+  <a class="reference internal" href="Prerequisites/Python-01-Jupyter.html">
+   Using Jupyter
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="markdown.html">
-     Markdown Files
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="notebooks.html">
-     Content with notebooks
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Prerequisites/Python-02-Python.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Prerequisites/Python-03-Numpy.html">
+   Up and Running with Python3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Prerequisites/Python-04-ScientificPython.html">
+   Visualization, Fitting, and File Format
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Prerequisites/Python-05-PyTorch.html">
+   Pytorch
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Prerequisites/Python-06-MNIST-CIFAR10.html">
+   Practice with MNIST
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Physics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Physics/Neutrinos.html">
+   Neutrinos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Physics/Lartpc.html">
+   Liquid Argon Time Projection Chamber (aka LArTPC)
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  lartpc_mlreco3d
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Code/Data1.html">
+   Data I/O (without lartpc_mlreco3d, using ROOT)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Code/Data2.html">
+   Data I/O (using lartpc_mlreco3d)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Code/Output.html">
+   Reconstruction outputs
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Using SDF
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ComputeAccess/README.html">
+   Set up your computing environment
+  </a>
  </li>
 </ul>
 
@@ -168,11 +233,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/Temigo/lartpc_mlreco3d_tutorials"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/Temigo/lartpc_mlreco3d_tutorials/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -201,11 +266,20 @@
         
               <div>
                 
-  <div class="section" id="welcome-to-your-jupyter-book">
-<h1>Welcome to your Jupyter Book<a class="headerlink" href="#welcome-to-your-jupyter-book" title="Permalink to this headline">¶</a></h1>
-<p>This is a small sample book to give you a feel for how book content is
-structured.</p>
-<p>Check out the content pages bundled with this sample book to get started.</p>
+  <div class="section" id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>This is a collection of Jupyter notebooks and tutorials to get you up to speed on <a class="reference external" href="https://github.com/DeepLearnPhysics/lartpc_mlreco3d"><code class="docutils literal notranslate"><span class="pre">lartpc_mlreco3d</span></code></a>.</p>
+<p>If you are not familiar yet with Jupyter, Python, Numpy, or PyTorch, please take a look at the <span class="xref myst">Prerequisites</span>.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Work in progress.</p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -235,7 +309,7 @@ structured.</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='right-next' id="next-link" href="content.html" title="next page">Content in Jupyter Book</a>
+    <a class='right-next' id="next-link" href="Prerequisites/Python-01-Jupyter.html" title="next page">Notebook of code</a>
 
         </div>
         

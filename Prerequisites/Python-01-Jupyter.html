@@ -1,0 +1,634 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notebook of code &#8212; lartpc_mlreco3d Tutorials</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction to Python" href="Python-02-Python.html" />
+    <link rel="prev" title="Getting started" href="../intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">lartpc_mlreco3d Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Getting started
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Prerequisites
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Using Jupyter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-02-Python.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-03-Numpy.html">
+   Up and Running with Python3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-04-ScientificPython.html">
+   Visualization, Fitting, and File Format
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-05-PyTorch.html">
+   Pytorch
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-06-MNIST-CIFAR10.html">
+   Practice with MNIST
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Physics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Physics/Neutrinos.html">
+   Neutrinos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Physics/Lartpc.html">
+   Liquid Argon Time Projection Chamber (aka LArTPC)
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  lartpc_mlreco3d
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Data1.html">
+   Data I/O (without lartpc_mlreco3d, using ROOT)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Data2.html">
+   Data I/O (using lartpc_mlreco3d)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Output.html">
+   Reconstruction outputs
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Using SDF
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ComputeAccess/README.html">
+   Set up your computing environment
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Prerequisites/Python-01-Jupyter.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Temigo/lartpc_mlreco3d_tutorials"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/Temigo/lartpc_mlreco3d_tutorials/issues/new?title=Issue%20on%20page%20%2FPrerequisites/Python-01-Jupyter.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Temigo/lartpc_mlreco3d_tutorials/master?urlpath=tree/Prerequisites/Python-01-Jupyter.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/Temigo/lartpc_mlreco3d_tutorials/blob/master/Prerequisites/Python-01-Jupyter.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#default-code-engine">
+   Default code engine
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shell-commands">
+   Shell commands
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#different-language">
+   Different language
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modifyng-shell-environment">
+   Modifyng shell environment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-a-python-script">
+   Run a python script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-your-program">
+   Time your program
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#latex">
+   Latex
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#executing-a-web-script">
+   Executing a web script
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="notebook-of-code">
+<h1>Notebook of code<a class="headerlink" href="#notebook-of-code" title="Permalink to this headline">¶</a></h1>
+<p>Probably many of you know know this software better than I know :) but let’s share 5 minutes together to make sure we all are on the same page.</p>
+<p>Jupyter notebook (formerly known as IPython notebook) has been developed for the concept of <em>literate programming</em> and it has become extremely popular within last seveal years (<a class="reference external" href="https://www.nature.com/news/interactive-notebooks-sharing-the-code-1.16261">article on Nature</a>). As its name says (“notebook”), it is designed for users to program with readability and modularization in mind.</p>
+<p>In a notebook, individual block of code execution is done within a <em>cell</em>. All cells in the same notebook live within the same process and namespace scope. You can put explanation of the code (or beyond, like physics for which the code is developed) in a <em>markdown</em> cell. Such explanation can go per code cell. We don’t write a software in a notebook, but usually a higher level program (such as <em>main</em> function) with an explanation of what’s going on.</p>
+<p>Though originally developed for Julia, Python and R (hence “Jupyter”), now it supports all kinds of programming language including shell and even fortran(!). Many scientific blog posts are also done in a notebook and blogs to teach you about Jupyter (like <a class="reference external" href="http://arogozhnikov.github.io/2016/09/10/jupyter-features.html#Writing-formulae-in-latex">this one</a>).</p>
+<div class="section" id="default-code-engine">
+<h2>Default code engine<a class="headerlink" href="#default-code-engine" title="Permalink to this headline">¶</a></h2>
+<p>When you start a notebook, you choose the default backend of the notebook. Pick Python3!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the state of the process are shared among cells. What I just imported is accessible in the next cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="p">)</span>
+<span class="n">np</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span> <span class="c1"># after you execute this cell, np no longer points to numpy module</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;module &#39;numpy&#39; from &#39;/usr/local/lib/python3.6/dist-packages/numpy/__init__.py&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>… which means the execution order of cells matter (yes, you can execute whichever cell in any order you want). The object <code class="docutils literal notranslate"><span class="pre">np</span></code> no longer points to a numpy module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>foo
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="shell-commands">
+<h2>Shell commands<a class="headerlink" href="#shell-commands" title="Permalink to this headline">¶</a></h2>
+<p>You can run shell commands with <code class="docutils literal notranslate"><span class="pre">!</span></code> in front.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls <span class="nv">$HOME</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Untitled.ipynb	Untitled1.ipynb  ondemand  slacml-school  tmp_slacml
+</pre></div>
+</div>
+</div>
+</div>
+<p>So if you want to install another python module and feel lazy, you can just execute <code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">--user</span> <span class="pre">whatever</span></code> within a cell.</p>
+</div>
+<div class="section" id="different-language">
+<h2>Different language<a class="headerlink" href="#different-language" title="Permalink to this headline">¶</a></h2>
+<p>You can switch to a different language within a cell by specifying with <code class="docutils literal notranslate"><span class="pre">%%</span></code>, given that the language is supported by your environment. The software container we use doesn’t have much options, but we got bash ;)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span>
+ls $HOME
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Untitled.ipynb
+Untitled1.ipynb
+ondemand
+slacml-school
+tmp_slacml
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="modifyng-shell-environment">
+<h2>Modifyng shell environment<a class="headerlink" href="#modifyng-shell-environment" title="Permalink to this headline">¶</a></h2>
+<p>Another thing we often feel lazy about is to change the shell environment variable. You can do this within the notebook like shown below (or stop the notebook, change environment value, then restart notebook … not good for lazy people).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> CUDA_VISIBLE_DEVICES=0
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: CUDA_VISIBLE_DEVICES=0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> <span class="nb">echo</span> <span class="nv">$CUDA_VISIBLE_DEVICES</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Voila!</em> … but note, the following is not the same</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> <span class="nb">export</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s check.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> <span class="nb">echo</span> <span class="nv">$CUDA_VISIBLE_DEVICES</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<p>… and that’s because <code class="docutils literal notranslate"><span class="pre">!</span> <span class="pre">export</span> </code> executes the command in a <em>sub-shell</em> and the scope is only within the cell.</p>
+</div>
+<div class="section" id="run-a-python-script">
+<h2>Run a python script<a class="headerlink" href="#run-a-python-script" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">%run</span></code> is a handy command to run another python script (or even jupyter notebook actually!)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> sqrt2.py
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>square root of 2 is 1.4142135623730951
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="time-your-program">
+<h2>Time your program<a class="headerlink" href="#time-your-program" title="Permalink to this headline">¶</a></h2>
+<p>You have a code execution cell and want to measure how much time it takes. Sure you can add such profiling feature to your code, but here’s how you can do in the notebook using <code class="docutils literal notranslate"><span class="pre">%%time</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="nb">sum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 782 µs, sys: 4.45 ms, total: 5.23 ms
+Wall time: 4.17 ms
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="latex">
+<h2>Latex<a class="headerlink" href="#latex" title="Permalink to this headline">¶</a></h2>
+<p>Jupyter supports <code class="docutils literal notranslate"><span class="pre">MathJax</span></code>:</p>
+<p>I have to write a formula like $<span class="math notranslate nohighlight">\( \sin^22\theta\left(\frac{1.27\Delta m^2L}{E_\nu}\right) \)</span>$ to get my Ph.D.</p>
+<p>… or you can also just type <code class="docutils literal notranslate"><span class="pre">%%latex</span></code> in the cell to “execute latex code” :)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%latex</span>
+
+I have to write a formula like <span class="s">$</span><span class="nv">\sin</span><span class="nb">^</span><span class="m">22</span><span class="nv">\theta\left</span><span class="o">(</span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">.</span><span class="m">27</span><span class="nv">\Delta</span><span class="nb"> m^</span><span class="m">2</span><span class="nb">L}{E_</span><span class="nv">\nu</span><span class="nb">}</span><span class="nv">\right</span><span class="o">)</span><span class="s">$</span> to get Ph.D.
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[I have to write a formula like $\sin^22\theta\left(\frac{1.27\Delta m^2L}{E_\nu}\right)$ to get Ph.D.\]</div>
+</div>
+</div>
+<p>from IPython.display import HTML
+HTML(‘’’<script>
+code_show=false;
+function code_toggle() {
+if (code_show){
+<span class="math notranslate nohighlight">\(('div.input').hide();
+ } else {
+ \)</span>(‘div.input’).show();
+}
+code_show = !code_show
+}
+$( document ).ready(code_toggle);
+</script>
+To toggle on/off the raw code, click <a href="javascript:code_toggle()">here</a>.’’’)</p>
+</div>
+<div class="section" id="executing-a-web-script">
+<h2>Executing a web script<a class="headerlink" href="#executing-a-web-script" title="Permalink to this headline">¶</a></h2>
+<p>Well, all of these fun things are running using <code class="docutils literal notranslate"><span class="pre">javascript</span></code> on <code class="docutils literal notranslate"><span class="pre">html</span></code>… can we run our own webscript execution command? Sure we can! Here’s an example to hide all Jupyter code blocks using that feature.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;&lt;script&gt;</span>
+<span class="s1">code_show=false; </span>
+<span class="s1">function code_toggle() {</span>
+<span class="s1"> if (code_show){</span>
+<span class="s1"> $(&#39;div.input&#39;).hide();</span>
+<span class="s1"> } else {</span>
+<span class="s1"> $(&#39;div.input&#39;).show();</span>
+<span class="s1"> }</span>
+<span class="s1"> code_show = !code_show</span>
+<span class="s1">} </span>
+<span class="s1">$( document ).ready(code_toggle);</span>
+<span class="s1">&lt;/script&gt;</span>
+<span class="s1">To toggle on/off the raw code, click &lt;a href=&quot;javascript:code_toggle()&quot;&gt;here&lt;/a&gt;.&#39;&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><script>
+code_show=false; 
+function code_toggle() {
+ if (code_show){
+ $('div.input').hide();
+ } else {
+ $('div.input').show();
+ }
+ code_show = !code_show
+} 
+$( document ).ready(code_toggle);
+</script>
+To toggle on/off the raw code, click <a href="javascript:code_toggle()">here</a>.</div></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Prerequisites"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">Getting started</a>
+    <a class='right-next' id="next-link" href="Python-02-Python.html" title="next page">Introduction to Python</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By SLAC Neutrino Group<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

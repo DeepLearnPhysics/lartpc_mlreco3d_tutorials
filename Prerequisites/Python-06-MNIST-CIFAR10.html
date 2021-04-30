@@ -1,0 +1,749 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Streaming Input Dataset &#8212; lartpc_mlreco3d Tutorials</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Neutrinos" href="../Physics/Neutrinos.html" />
+    <link rel="prev" title="Pytorch" href="Python-05-PyTorch.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">lartpc_mlreco3d Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Getting started
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Prerequisites
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-01-Jupyter.html">
+   Using Jupyter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-02-Python.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-03-Numpy.html">
+   Up and Running with Python3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-04-ScientificPython.html">
+   Visualization, Fitting, and File Format
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-05-PyTorch.html">
+   Pytorch
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Practice with MNIST
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Physics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Physics/Neutrinos.html">
+   Neutrinos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Physics/Lartpc.html">
+   Liquid Argon Time Projection Chamber (aka LArTPC)
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  lartpc_mlreco3d
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Data1.html">
+   Data I/O (without lartpc_mlreco3d, using ROOT)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Data2.html">
+   Data I/O (using lartpc_mlreco3d)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Output.html">
+   Reconstruction outputs
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Using SDF
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ComputeAccess/README.html">
+   Set up your computing environment
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Prerequisites/Python-06-MNIST-CIFAR10.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Temigo/lartpc_mlreco3d_tutorials"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/Temigo/lartpc_mlreco3d_tutorials/issues/new?title=Issue%20on%20page%20%2FPrerequisites/Python-06-MNIST-CIFAR10.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Temigo/lartpc_mlreco3d_tutorials/master?urlpath=tree/Prerequisites/Python-06-MNIST-CIFAR10.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/Temigo/lartpc_mlreco3d_tutorials/blob/master/Prerequisites/Python-06-MNIST-CIFAR10.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mnist-dataset">
+   MNIST dataset
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-mnist-dataset">
+     Creating MNIST Dataset
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-dataloader">
+     Creating DataLoader
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#details-ignore-if-wished-other-constructor-arguments">
+       Details (ignore if wished): other constructor arguments
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-streaming-with-dataloader">
+     Data streaming with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataLoader
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cifar10">
+   CIFAR10
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="streaming-input-dataset">
+<h1>Streaming Input Dataset<a class="headerlink" href="#streaming-input-dataset" title="Permalink to this headline">¶</a></h1>
+<p>We already covered the basics of an iterable dataset (<span class="xref myst">Python-02-Python</span>) and pytorch’s <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> (<span class="xref myst">Python-05-Pytorch.ipynb</span>). In this notebook, we introduce a few datasets that will be used during the hands-on sessions, and practic looping over the dataset using <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code>!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">SEED</span><span class="o">=</span><span class="mi">123</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="mnist-dataset">
+<h2>MNIST dataset<a class="headerlink" href="#mnist-dataset" title="Permalink to this headline">¶</a></h2>
+<p>MNIST is widely used for an introductory machine learning (ML) courses/lectures. Most, if not all, ML libraries provide an easy way (API) to access MNIST and many publicly available dataset. This is true in <code class="docutils literal notranslate"><span class="pre">pytorch</span></code> as well. MNIST dataset in <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> instance is available from <code class="docutils literal notranslate"><span class="pre">torchvision</span></code>.</p>
+<div class="section" id="creating-mnist-dataset">
+<h3>Creating MNIST Dataset<a class="headerlink" href="#creating-mnist-dataset" title="Permalink to this headline">¶</a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">torchvision</span></code> is a supporting module that has many image-related APIs including an interface (and management) of MNIST dataset. Let’s see how we can construct:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span>
+<span class="c1"># Data file download directory</span>
+<span class="n">LOCAL_DATA_DIR</span> <span class="o">=</span> <span class="s1">&#39;./mnist-data&#39;</span>
+<span class="c1"># Use prepared data handler from pytorch (torchvision)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">LOCAL_DATA_DIR</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                         <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./mnist-data/MNIST/raw/train-images-idx3-ubyte.gz
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "9d35aa326aa8438f8b62c137b2120486", "version_major": 2, "version_minor": 0}
+</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./mnist-data/MNIST/raw/train-images-idx3-ubyte.gz to ./mnist-data/MNIST/raw
+Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz to ./mnist-data/MNIST/raw/train-labels-idx1-ubyte.gz
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "b63653dbcd6741ed9bafba8fd00fc0dc", "version_major": 2, "version_minor": 0}
+</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./mnist-data/MNIST/raw/train-labels-idx1-ubyte.gz to ./mnist-data/MNIST/raw
+Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz to ./mnist-data/MNIST/raw/t10k-images-idx3-ubyte.gz
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "ddf5d5f5552a4da0bc61c96f9b22dba3", "version_major": 2, "version_minor": 0}
+</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./mnist-data/MNIST/raw/t10k-images-idx3-ubyte.gz to ./mnist-data/MNIST/raw
+Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz to ./mnist-data/MNIST/raw/t10k-labels-idx1-ubyte.gz
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "64ce5cfd24be4a5c8560552b223a1b48", "version_major": 2, "version_minor": 0}
+</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./mnist-data/MNIST/raw/t10k-labels-idx1-ubyte.gz to ./mnist-data/MNIST/raw
+Processing...
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/pytorch/torch/csrc/utils/tensor_numpy.cpp:141: UserWarning: The given NumPy array is not writeable, and PyTorch does not support non-writeable tensors. This means you can write to the underlying (supposedly non-writeable) NumPy array using the tensor. You may want to copy the array to protect its data or make it writeable before converting it to a tensor. This type of warning will be suppressed for the rest of this program.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done!
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, MNIST is also a type <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> (how? through class inheritance). All torch <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> instance have tow useful and common functions: the length representations and data element access via index.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>  <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="nb">type</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60000
+&lt;class &#39;tuple&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>That being said, how each data element is presented depends on a particular <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> implementation. In case of MNIST, it is a tuple of length 2: <strong>data</strong> and <strong>label</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ENTRY</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">ENTRY</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Type of data  :&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>  <span class="s1">&#39;shape&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Type of label :&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">label</span><span class="p">),</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Type of data  : &lt;class &#39;torch.Tensor&#39;&gt; shape torch.Size([1, 28, 28])
+Type of label : &lt;class &#39;int&#39;&gt; value 5
+</pre></div>
+</div>
+</div>
+</div>
+<p>MNIST is an image of a hand-written digit in 28x28 pixels, gray scale. Note that the data <code class="docutils literal notranslate"><span class="pre">shape</span></code> is <code class="docutils literal notranslate"><span class="pre">[1,28,28]</span></code>. This follows the convention in Pytorch for image data represented as <span class="math notranslate nohighlight">\((Cannel,Height,Width)\)</span>, or in short <span class="math notranslate nohighlight">\((C,H,W)\)</span>. Let’s visualize using <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.imshow</span></code>. This function can take <span class="math notranslate nohighlight">\((H,W)\)</span> of a gray scale image.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="c1"># Draw data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/Python-06-MNIST-CIFAR10_9_1.png" src="../_images/Python-06-MNIST-CIFAR10_9_1.png" />
+</div>
+</div>
+<p>Let us define a function that can list images and labels in the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_dataset</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span><span class="n">num_image_per_class</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="n">num_class</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">classes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span><span class="s1">&#39;classes&#39;</span><span class="p">):</span>
+        <span class="n">classes</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">classes</span>
+        <span class="n">num_class</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span> <span class="c1">#brute force</span>
+        <span class="k">for</span> <span class="n">data</span><span class="p">,</span><span class="n">label</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span> <span class="k">continue</span>
+            <span class="n">classes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">num_class</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span>
+    
+    <span class="n">shape</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">big_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">num_class</span><span class="p">,</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">num_image_per_class</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    
+    <span class="n">finish_count_per_class</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">num_class</span>
+    <span class="k">for</span> <span class="n">data</span><span class="p">,</span><span class="n">label</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">finish_count_per_class</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">num_image_per_class</span><span class="p">:</span> <span class="k">continue</span>
+        <span class="n">img_ctr</span> <span class="o">=</span> <span class="n">finish_count_per_class</span><span class="p">[</span><span class="n">label</span><span class="p">]</span>
+        <span class="n">big_image</span><span class="p">[:,</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">label</span><span class="p">:</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">label</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">img_ctr</span><span class="p">:</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">img_ctr</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span><span class="o">=</span><span class="n">data</span>
+        <span class="n">finish_count_per_class</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">finish_count_per_class</span><span class="p">)</span> <span class="o">==</span> <span class="n">num_class</span><span class="o">*</span><span class="n">num_image_per_class</span><span class="p">:</span> <span class="k">break</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+    <span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span><span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">top</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">left</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">labelleft</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">big_image</span><span class="p">,(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">)):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">big_image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">c</span><span class="o">+</span><span class="mf">0.6</span><span class="p">),</span><span class="nb">str</span><span class="p">(</span><span class="n">classes</span><span class="p">[</span><span class="n">c</span><span class="p">]),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_dataset</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Python-06-MNIST-CIFAR10_12_0.png" src="../_images/Python-06-MNIST-CIFAR10_12_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="creating-dataloader">
+<h3>Creating DataLoader<a class="headerlink" href="#creating-dataloader" title="Permalink to this headline">¶</a></h3>
+<p>Since the MNIST dataset is an iteratable one, we can create pytorch DataLoader!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span>
+                                     <span class="n">batch_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+                                     <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                     <span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                     <span class="n">pin_memory</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Review</strong>: the first argument is you dataset, and it can be anything but requires two attributes: <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#object.__len__"><code class="docutils literal notranslate"><span class="pre">__len__</span></code></a> and <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#object.__getitem__"><code class="docutils literal notranslate"><span class="pre">__getitem__</span></code></a>. In case you wonder, these attributes allow you to call <code class="docutils literal notranslate"><span class="pre">len(dataset)</span></code> and access dataset elements  by <code class="docutils literal notranslate"><span class="pre">dataset[X]</span></code> where <code class="docutils literal notranslate"><span class="pre">X</span></code> is an index integer.</p>
+<div class="section" id="details-ignore-if-wished-other-constructor-arguments">
+<h4>Details (ignore if wished): other constructor arguments<a class="headerlink" href="#details-ignore-if-wished-other-constructor-arguments" title="Permalink to this headline">¶</a></h4>
+<p>The other constructor arguments used above are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code> … the same of the subset data to be provided at once</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shuffle</span></code> … whether or not to randomize the choice of subset dataset (False will provide dataset</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">num_workers</span></code> … number of parallel data-reader processes to be run (for making data read faster using <code class="docutils literal notranslate"><span class="pre">multiprocessing</span></code> module)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pin_memory</span></code> … speed up data transfer to GPU by avoiding a necessity to copy data from pageable memory to page-locked (pinned) memory. Read <a class="reference external" href="https://devblogs.nvidia.com/how-optimize-data-transfers-cuda-cc/">here</a> for more details. If you are not sure about the details, set to <code class="docutils literal notranslate"><span class="pre">True</span></code> when using GPU.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="data-streaming-with-dataloader">
+<h3>Data streaming with <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code><a class="headerlink" href="#data-streaming-with-dataloader" title="Permalink to this headline">¶</a></h3>
+<p>So let’s play with it! First of all, it has the concept of “length”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;length of DataLoader:&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">loader</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;By the way, batch size * length =&#39;</span><span class="p">,</span> <span class="mi">20</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">loader</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>length of DataLoader: 3000
+By the way, batch size * length = 60000
+</pre></div>
+</div>
+</div>
+</div>
+<p>We know the data total statistics is 60,000 which coincides with the length of <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> instance and the batch size where the latter is the unit of batch data. <strong>Yep, as you guessed</strong>, <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> is iterable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an iterator for playin in this notebook</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">cycle</span>
+<span class="nb">iter</span> <span class="o">=</span> <span class="n">cycle</span><span class="p">(</span><span class="n">loader</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">)</span>    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Iteration&#39;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># accessing the labels</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 0
+tensor([8, 3, 5, 2, 9, 2, 3, 7, 2, 6, 8, 4, 1, 0, 4, 7, 6, 7, 3, 2])
+Iteration 1
+tensor([5, 0, 5, 2, 7, 2, 7, 7, 3, 7, 0, 9, 8, 9, 0, 7, 4, 7, 3, 3])
+Iteration 2
+tensor([0, 6, 1, 2, 3, 8, 2, 6, 3, 2, 5, 9, 2, 9, 5, 9, 2, 0, 5, 6])
+Iteration 3
+tensor([5, 2, 7, 7, 7, 3, 1, 1, 0, 1, 1, 7, 6, 5, 9, 3, 0, 5, 6, 2])
+Iteration 4
+tensor([5, 2, 4, 9, 6, 8, 4, 1, 5, 8, 1, 7, 5, 5, 9, 3, 1, 7, 8, 5])
+Iteration 5
+tensor([7, 1, 9, 3, 3, 2, 2, 4, 1, 5, 4, 6, 1, 8, 2, 5, 3, 8, 0, 2])
+Iteration 6
+tensor([1, 3, 3, 6, 2, 7, 5, 8, 7, 6, 4, 2, 0, 1, 3, 3, 1, 1, 7, 4])
+Iteration 7
+tensor([4, 9, 8, 4, 4, 7, 1, 1, 5, 3, 5, 1, 8, 0, 7, 2, 7, 5, 3, 3])
+Iteration 8
+tensor([3, 0, 8, 2, 2, 0, 2, 3, 0, 9, 0, 2, 6, 6, 1, 3, 0, 7, 4, 3])
+Iteration 9
+tensor([8, 1, 1, 7, 2, 4, 8, 2, 2, 7, 0, 2, 5, 3, 7, 1, 2, 9, 1, 5])
+</pre></div>
+</div>
+</div>
+</div>
+<p>… and this is how <code class="docutils literal notranslate"><span class="pre">data</span></code> looks like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Shape of an image batch data&#39;</span><span class="p">,</span><span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape of an image batch data torch.Size([20, 1, 28, 28])
+</pre></div>
+</div>
+</div>
+</div>
+<p>… which is quite naturally 20 of 28x28 image</p>
+</div>
+</div>
+<div class="section" id="cifar10">
+<h2>CIFAR10<a class="headerlink" href="#cifar10" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">CIFAR10</span></code> is yet another public dataset of 32x32 pixels RGB photographs. It contains 10 classes like MNIST but it is much more complicated than a gray scale, hand-written digits.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span>
+<span class="c1"># Data file download directory</span>
+<span class="n">LOCAL_DATA_DIR</span> <span class="o">=</span> <span class="s1">&#39;./cifar10-data&#39;</span>
+<span class="c1"># Create the dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">CIFAR10</span><span class="p">(</span><span class="n">LOCAL_DATA_DIR</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                           <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()]))</span>
+
+<span class="n">plot_dataset</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to ./cifar10-data/cifar-10-python.tar.gz
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "cb7849d95a3d484fb5ad447c54641be0", "version_major": 2, "version_minor": 0}
+</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./cifar10-data/cifar-10-python.tar.gz to ./cifar10-data
+</pre></div>
+</div>
+<img alt="../_images/Python-06-MNIST-CIFAR10_23_3.png" src="../_images/Python-06-MNIST-CIFAR10_23_3.png" />
+</div>
+</div>
+<p>Nothing new in terms of how-to, but let’s also create a <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> with <code class="docutils literal notranslate"><span class="pre">CIFAR10</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">pin_memory</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">cycle</span><span class="p">(</span><span class="n">loader</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s take a look at the <code class="docutils literal notranslate"><span class="pre">batch</span></code> data. Recall the shape of this image <span class="math notranslate nohighlight">\((C,H,W)\)</span> where <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.imshow</span></code> takes the format <span class="math notranslate nohighlight">\((H,W,C)\)</span> just like how an ordinary photograph is presented. We use <code class="docutils literal notranslate"><span class="pre">torch.permute</span></code> function to swap the axis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">photos</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="n">batch</span>
+<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">photos</span><span class="p">)):</span>
+    <span class="n">photo</span> <span class="o">=</span> <span class="n">photos</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">classes</span><span class="p">[</span><span class="n">label</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">photo</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dog
+</pre></div>
+</div>
+<img alt="../_images/Python-06-MNIST-CIFAR10_27_1.png" src="../_images/Python-06-MNIST-CIFAR10_27_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>frog
+</pre></div>
+</div>
+<img alt="../_images/Python-06-MNIST-CIFAR10_27_3.png" src="../_images/Python-06-MNIST-CIFAR10_27_3.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>frog
+</pre></div>
+</div>
+<img alt="../_images/Python-06-MNIST-CIFAR10_27_5.png" src="../_images/Python-06-MNIST-CIFAR10_27_5.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>horse
+</pre></div>
+</div>
+<img alt="../_images/Python-06-MNIST-CIFAR10_27_7.png" src="../_images/Python-06-MNIST-CIFAR10_27_7.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>truck
+</pre></div>
+</div>
+<img alt="../_images/Python-06-MNIST-CIFAR10_27_9.png" src="../_images/Python-06-MNIST-CIFAR10_27_9.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>airplane
+</pre></div>
+</div>
+<img alt="../_images/Python-06-MNIST-CIFAR10_27_11.png" src="../_images/Python-06-MNIST-CIFAR10_27_11.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>deer
+</pre></div>
+</div>
+<img alt="../_images/Python-06-MNIST-CIFAR10_27_13.png" src="../_images/Python-06-MNIST-CIFAR10_27_13.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>horse
+</pre></div>
+</div>
+<img alt="../_images/Python-06-MNIST-CIFAR10_27_15.png" src="../_images/Python-06-MNIST-CIFAR10_27_15.png" />
+</div>
+</div>
+<p>Any questions? As usual feel free to <a class="reference external" href="mailto:kterao&#37;&#52;&#48;slac&#46;stanford&#46;edu">hit Kazu</a>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Prerequisites"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="Python-05-PyTorch.html" title="previous page">Pytorch</a>
+    <a class='right-next' id="next-link" href="../Physics/Neutrinos.html" title="next page">Neutrinos</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By SLAC Neutrino Group<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
