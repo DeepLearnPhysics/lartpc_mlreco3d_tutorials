@@ -2,7 +2,30 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 #
 - file: intro
-- file: content
-  sections:
-    - file: markdown
-    - file: notebooks
+
+- part: Prerequisites
+  chapters:
+    - file: Prerequisites/Python-01-Jupyter.ipynb
+      title: Using Jupyter
+    - file: Prerequisites/Python-02-Python.ipynb
+    - file: Prerequisites/Python-03-Numpy.ipynb
+      title: Introduction to Numpy
+    - file: Prerequisites/Python-04-ScientificPython.ipynb
+    - file: Prerequisites/Python-05-PyTorch.ipynb
+    - file: Prerequisites/Python-06-MNIST-CIFAR10.ipynb
+      title: Practice with MNIST
+    
+- part: Physics
+  chapters:
+    - file: Physics/Neutrinos.md
+    - file: Physics/Lartpc.md
+    
+- part: lartpc_mlreco3d
+  chapters:
+    - file: Code/Data1.md
+    - file: Code/Data2.md
+    - file: Code/Output.md
+    
+- part: Using SDF
+  chapters:
+    - file: ComputeAccess/README.md
