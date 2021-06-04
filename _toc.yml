@@ -14,6 +14,7 @@
     - file: Prerequisites/Python-05-PyTorch.ipynb
     - file: Prerequisites/Python-06-MNIST-CIFAR10.ipynb
       title: Practice with MNIST
+    - file: Prerequisites/Git.md
     
 - part: Some Physics
   chapters:

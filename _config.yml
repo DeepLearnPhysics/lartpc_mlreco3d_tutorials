@@ -50,7 +50,7 @@ parse:
     # including those that are enabled by default!
     # - amsmath
     - colon_fence
-    # - deflist
+    - deflist
     - dollarmath
     # - html_admonition
     - html_image
