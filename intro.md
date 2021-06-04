@@ -4,16 +4,14 @@ This is a collection of Jupyter notebooks and tutorials to get you up to speed o
 
 If you are not familiar yet with Jupyter, Python, Numpy, or PyTorch, please take a look at the [Prerequisites](./Prerequisites/README.md).
 
+If you want to know more about the why: [neutrinos](./Physics/Neutrinos.md) and [LArTPCs detectors](./Physics/Lartpc.md).
+
+A bird's view of the reconstruction chain is [here](./Code/README.md).
+
+There are several [exercises](./Exercises/README.md) that you can do to familiarize yourself further with `lartpc_mlreco3d`.
+
 ```{caution}
-Work in progress.
+Work in progress. Feedback welcome!
 ```
 
-```{margin} Margin note
-this is a test
-```
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. {cite}`FullChain` Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-```{bibliography}
-:style: alpha
-```
+You can edit directly this Jupyter book on [Github](https://github.com/Temigo/lartpc_mlreco3d_tutorials).

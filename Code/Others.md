@@ -15,7 +15,7 @@ execution:
   timeout: 60
 ---
 
-# Interaction clustering, PID and primary particles
+# Others
 
 ## Imports and configuration
 The usual imports, click to see the details.
@@ -89,87 +89,39 @@ ghost_mask = output['ghost'][entry].argmax(axis=1) == 0
 segment_pred = output['segmentation'][entry].argmax(axis=1)
 ```
 
-## Visualization of interaction clustering
+
+## Cosmic vs Neutrino discrimination
 
 ```{code-cell}
 clust_label_adapted = adapt_labels(output, data['segment_label'], data['cluster_label'])[entry]
 
-clust_ids_true = get_cluster_label(torch.tensor(clust_label_adapted), output['particles'][entry], column=7)
-clust_ids_pred = output['inter_group_pred'][entry]
+cosmic_true = get_cluster_label(torch.tensor(clust_label_adapted), output['interactions'][entry], column=8)
+cosmic_pred = np.argmax(output['inter_cosmic_pred'][entry], axis=1)
 ```
 
 ```{code-cell}
 trace = []
 
 trace += network_topology(data['input_data'][entry][ghost_mask],
-                         output['particles'][entry],
+                         output['interactions'][entry],
                          #edge_index=output['frag_edge_index'][entry],
-                         clust_labels=clust_ids_true,
+                         clust_labels=cosmic_true,
                          markersize=2, cmin=0, cmax=10, colorscale=plotly.colors.qualitative.Dark24)
-trace[-1].name = 'True interactions'
-
-
-trace+= scatter_points(clust_label_adapted,markersize=1,color=clust_label_adapted[:, 7], colorscale=plotly.colors.qualitative.Dark24)
-trace[-1].name = 'Adapted cluster labels'
+trace[-1].name = 'True interaction clusters'
 
 trace += network_topology(data['input_data'][entry][ghost_mask],
-                         output['particles'][entry],
+                         output['interactions'][entry],
                          #edge_index=output['frag_edge_index'][entry],
-                         clust_labels=clust_ids_pred,
+                         clust_labels=(cosmic_true >= 0).astype(int),
+                         markersize=2, cmin=0, cmax=10, colorscale=plotly.colors.qualitative.Dark24)
+trace[-1].name = 'True cosmic vs nu interactions'
+
+trace += network_topology(data['input_data'][entry][ghost_mask],
+                         output['interactions'][entry],
+                         #edge_index=output['frag_edge_index'][entry],
+                         clust_labels=cosmic_pred,
                          markersize=2, cmin=0, cmax=10, colorscale=plotly.colors.qualitative.Dark24)
 trace[-1].name = 'Predicted interactions'
-
-fig = go.Figure(data=trace,layout=plotly_layout3d())
-fig.update_layout(legend=dict(x=1.1, y=0.9))
-
-iplot(fig)
-```
-
-## Primary particles predictions
-We need to get the true labels first:
-```{code-cell}
-kinematics_label = data['kinematics_label'][entry]
-true_vtx, inv = np.unique(kinematics_label[:, 9:12], axis=0, return_index=True)
-true_vtx_primary = kinematics_label[inv, 12]
-```
-And the predictions:
-```{code-cell}
-vtx_primary_pred = output['node_pred_vtx'][entry][:, 3:].argmax(axis=1)
-```
-
-```{code-cell}
-trace = []
-
-trace+= scatter_points(kinematics_label,markersize=1,color=kinematics_label[:, 12], colorscale=plotly.colors.qualitative.Dark24)
-trace[-1].name = 'True vertex primary particles'
-
-trace += network_topology(data['input_data'][entry][ghost_mask],
-                         output['particles'][entry],
-                         #edge_index=output['frag_edge_index'][entry],
-                         clust_labels=vtx_primary_pred,
-                         markersize=2, cmin=0, cmax=10, colorscale=plotly.colors.qualitative.Dark24)
-trace[-1].name = 'Predicted vertex primary particles'
-
-fig = go.Figure(data=trace,layout=plotly_layout3d())
-fig.update_layout(legend=dict(x=1.1, y=0.9))
-
-iplot(fig)
-```
-
-## Particle identification (PID)
-The predictions are in `node_pred_type`:
-```{code-cell}
-type_pred = output['node_pred_type'][entry].argmax(axis=1)
-```
-
-```{code-cell}
-trace = []
-
-trace+= scatter_points(clust_label,markersize=1,color=kinematics_label[:, -2], colorscale=plotly.colors.qualitative.Dark24)
-trace[-1].name = 'True particle type'
-
-trace+= scatter_points(clust_label,markersize=1,color=type_pred, colorscale=plotly.colors.qualitative.Dark24)
-trace[-1].name = 'Predicted particle type'
 
 fig = go.Figure(data=trace,layout=plotly_layout3d())
 fig.update_layout(legend=dict(x=1.1, y=0.9))

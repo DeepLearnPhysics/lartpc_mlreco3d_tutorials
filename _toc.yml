@@ -22,6 +22,7 @@
     
 - part: lartpc_mlreco3d
   chapters:
+    - file: Code/README.md
     - file: Code/Data.md
       sections:
         - file: Code/Data1.md
@@ -31,7 +32,13 @@
       - file: Code/UResNet_PPN.md
       - file: Code/Clustering.md
       - file: Code/Interaction.md
-      - file: Code/PID.md
+      - file: Code/Kinematics.md
+      - file: Code/Others.md
+    - file: Exercises/README.md
+      sections:
+        - file: Exercises/Michel_electron.md
+        - file: Exercises/dEdx.md
+        - file: Exercises/Electron_gamma.md
     
 - part: Using SDF
   chapters:
