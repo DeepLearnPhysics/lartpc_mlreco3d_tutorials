@@ -1,0 +1,746 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Version control with Git &#8212; lartpc_mlreco3d Tutorials</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Neutrinos" href="../Physics/Neutrinos.html" />
+    <link rel="prev" title="Streaming Input Dataset" href="Python-06-MNIST-CIFAR10.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">lartpc_mlreco3d Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Getting started
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Prerequisites
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-01-Jupyter.html">
+   Using Jupyter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-02-Python.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-03-Numpy.html">
+   Up and Running with Python3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-04-ScientificPython.html">
+   Visualization, Fitting, and File Format
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-05-PyTorch.html">
+   Pytorch
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python-06-MNIST-CIFAR10.html">
+   Practice with MNIST
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Version control with Git
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Some Physics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Physics/Neutrinos.html">
+   Neutrinos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Physics/Lartpc.html">
+   Liquid Argon Time Projection Chamber (aka LArTPC)
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  lartpc_mlreco3d
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/README.html">
+   Overview of the reconstruction chain
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Code/Data.html">
+   Data I/O
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Data1.html">
+     Using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       lartpc_mlreco3d
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Data2.html">
+     Using ROOT only
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Code/Output.html">
+   Reconstruction outputs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/UResNet_PPN.html">
+     Semantics &amp; points of interest
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Clustering.html">
+     Particle clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Interaction.html">
+     Interaction clustering, PID and primary particles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Kinematics.html">
+     Kinematics and particle hierarchy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Others.html">
+     Others
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Exercises/README.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Michel_electron.html">
+     Exercise 1: Finding Michel electrons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/dEdx.html">
+     Exercise 2: muon dEdx
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Electron_gamma.html">
+     Exercise 3: electron vs gamma separation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Using SDF
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ComputeAccess/README.html">
+   Set up your computing environment
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Prerequisites/Git.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/DeepLearnPhysics/lartpc_mlreco3d_tutorials"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/DeepLearnPhysics/lartpc_mlreco3d_tutorials/issues/new?title=Issue%20on%20page%20%2FPrerequisites/Git.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-basics">
+   Git basics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-jargon">
+     The jargon
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#git-status">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       git
+      </span>
+      <span class="pre">
+       status
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#git-add">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       git
+      </span>
+      <span class="pre">
+       add
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#git-commit">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       git
+      </span>
+      <span class="pre">
+       commit
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#git-log">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       git
+      </span>
+      <span class="pre">
+       log
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-branches">
+   Working with branches
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#git-checkout">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       git
+      </span>
+      <span class="pre">
+       checkout
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#git-merge">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       git
+      </span>
+      <span class="pre">
+       merge
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-remote-repositories">
+   Working with remote repositories
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#git-clone">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       git
+      </span>
+      <span class="pre">
+       clone
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#git-remote-v">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       git
+      </span>
+      <span class="pre">
+       remote
+      </span>
+      <span class="pre">
+       -v
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#git-fetch-origin">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       git
+      </span>
+      <span class="pre">
+       fetch
+      </span>
+      <span class="pre">
+       origin
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#git-pull-origin">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       git
+      </span>
+      <span class="pre">
+       pull
+      </span>
+      <span class="pre">
+       origin
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#git-push-origin-master">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       git
+      </span>
+      <span class="pre">
+       push
+      </span>
+      <span class="pre">
+       origin
+      </span>
+      <span class="pre">
+       master
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read-more">
+   Read more
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="version-control-with-git">
+<h1>Version control with Git<a class="headerlink" href="#version-control-with-git" title="Permalink to this headline">¶</a></h1>
+<p>If you ever started commenting old code “just in case” it turns out to be useful one day in the future,
+or if you think that sharing a code base between several people is a headache…
+you need to start using version control. Git is one of the most popular options, and
+it is the one we use to develop <code class="docutils literal notranslate"><span class="pre">lartpc_mlreco3d</span></code>.</p>
+<div class="section" id="git-basics">
+<h2>Git basics<a class="headerlink" href="#git-basics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-jargon">
+<h3>The jargon<a class="headerlink" href="#the-jargon" title="Permalink to this headline">¶</a></h3>
+<div class="margin sidebar">
+<p class="sidebar-title">Basic workflow in short</p>
+<ol class="simple">
+<li><p>If you work with Git, you code on your local machine for a while.</p></li>
+<li><p>When you have done a meaningful chunk of code changes,
+you <code class="docutils literal notranslate"><span class="pre">add</span></code> them to a staging area and <code class="docutils literal notranslate"><span class="pre">commit</span></code> them.</p></li>
+<li><p>To share with other developers, you <code class="docutils literal notranslate"><span class="pre">push</span></code> your commit to the remote repository.</p></li>
+<li><p>Other developers can <code class="docutils literal notranslate"><span class="pre">pull</span></code> your commit from the remote repository. Git can <code class="docutils literal notranslate"><span class="pre">merge</span></code> your commit into their local repositories.</p></li>
+</ol>
+</div>
+<dl class="simple myst">
+<dt>Repository (repo in short)</dt><dd><p>the folder that hosts all of your library / code is called a repository.</p>
+</dd>
+<dt>Local vs remote repository</dt><dd><p>although it is not necessary, usually repositories are hosted on a website such as
+Github. The repository exists in Github (remote) and on your computer or local machine (local). You can start with
+a local repository that you use later to create the remote repository, or you can <em>clone</em> the remote repository onto your
+local machine and start working locally.</p>
+</dd>
+<dt>Staging area</dt><dd><p>when you are happy with changes that you made in your working directory, you put the files that you want to be tracked in
+the so-called staging area. This lets Git know which files to look at to make its snapshot of the code changes.</p>
+</dd>
+<dt>Commit</dt><dd><p>a snapshot of the changes that you made since the last commit. Git is smart enough to only save the differences.
+Each commit is identified with a unique hash number that looks like <code class="docutils literal notranslate"><span class="pre">a97931de9e0be8de3b2910c3339bf29e01ca6fdc</span></code>.</p>
+</dd>
+</dl>
+<div class="figure align-default" id="id1">
+<a class="reference internal image-reference" href="https://www.edureka.co/blog/wp-content/uploads/2016/11/Git-Architechture-Git-Tutorial-Edureka-2.png"><img alt="https://www.edureka.co/blog/wp-content/uploads/2016/11/Git-Architechture-Git-Tutorial-Edureka-2.png" src="https://www.edureka.co/blog/wp-content/uploads/2016/11/Git-Architechture-Git-Tutorial-Edureka-2.png" style="height: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">How Git works in a nutshell.
+Credit: Edureka.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All the git commands start with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">xxx</span></code> where <code class="docutils literal notranslate"><span class="pre">xxx</span></code> is the operation you are trying to perform (add, commit, etc).</p>
+</div>
+</div>
+<div class="section" id="git-status">
+<h3><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code><a class="headerlink" href="#git-status" title="Permalink to this headline">¶</a></h3>
+<p>When you want to see which files have changes, which files are in the staging area ready to be committed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Singularity&gt; git status
+On branch master
+Your branch is up to date with <span class="s1">&#39;origin/master&#39;</span>.
+
+Changes not staged <span class="k">for</span> commit:
+  <span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed<span class="o">)</span>
+  <span class="o">(</span>use <span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span> to discard changes <span class="k">in</span> working directory<span class="o">)</span>
+
+        modified:   _toc.yml
+
+Untracked files:
+  <span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to include <span class="k">in</span> what will be committed<span class="o">)</span>
+
+        .ipynb_checkpoints/
+        
+no changes added to commit <span class="o">(</span>use <span class="s2">&quot;git add&quot;</span> and/or <span class="s2">&quot;git commit -a&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="git-add">
+<h3><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code><a class="headerlink" href="#git-add" title="Permalink to this headline">¶</a></h3>
+<p>When you want to add files to be part of the next commit.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">-u</span></code> to add all changed files that are tracked (i.e. were part of a previous commit).</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">your_file</span></code> to add a new file to the staging area.</p>
+</div>
+<div class="section" id="git-commit">
+<h3><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code><a class="headerlink" href="#git-commit" title="Permalink to this headline">¶</a></h3>
+<p>Will take all files in the staging area, compute the changes and store them in a commit.</p>
+<p>You have to give a title to your commit. Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;your_message&quot;</span></code> to go fast.</p>
+<p>If you have more to say than can be said in a title, you optionally can write a whole text
+body to your commit. Just use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> and it will open a text editor for you. Write your
+message, save and exit to complete the commit.</p>
+</div>
+<div class="section" id="git-log">
+<h3><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code><a class="headerlink" href="#git-log" title="Permalink to this headline">¶</a></h3>
+<p>Will show you the history of commits.</p>
+</div>
+</div>
+<div class="section" id="working-with-branches">
+<h2>Working with branches<a class="headerlink" href="#working-with-branches" title="Permalink to this headline">¶</a></h2>
+<p>Branches allow you to develop in parallel several versions of the same codebase, and to merge them seamlessly
+when you decide to. For example, if you want to work on an experimental feature that might break everything,
+it is easier to fork from the code base, create a new branch and develop the feature there. It allows you to keep
+evolving the code base in a stable way, fixing minor bugs, sharing with collaborators etc. When your feature is ready
+then you can merge it back, and voila !</p>
+<div class="figure align-default" id="id2">
+<a class="reference internal image-reference" href="https://www.nobledesktop.com/image/blog/git-branches-merge.png"><img alt="https://www.nobledesktop.com/image/blog/git-branches-merge.png" src="https://www.nobledesktop.com/image/blog/git-branches-merge.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Each circle is a commit. Credit: <a class="reference external" href="http://nobledesktop.com">nobledesktop.com</a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="git-checkout">
+<h3><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code><a class="headerlink" href="#git-checkout" title="Permalink to this headline">¶</a></h3>
+<p>Extremely useful command that allows you to navigate between branches and commits.</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">my_new_branch</span></code> will create a new branch called <code class="docutils literal notranslate"><span class="pre">my_new_branch</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">existing_branch</span></code> will switch the code in your folder to the branch <code class="docutils literal notranslate"><span class="pre">existing_branch</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">a97931de9e0be8de3b2910c3339bf29e01ca6fdc</span></code> will switch to the commit whose hash code you provided.</p>
+</div>
+<div class="section" id="git-merge">
+<h3><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code><a class="headerlink" href="#git-merge" title="Permalink to this headline">¶</a></h3>
+<p>When you are ready, you can merge a branch (local or remote branch) into your current branch.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">other_branch</span></code> to merge <code class="docutils literal notranslate"><span class="pre">other_branch</span></code> into the current one.</p>
+<p>If everything is clear to Git, it will proceed to make the merge automatically. There might however be <em>merge conflicts</em>
+which happen when something is ambiguous and Git is unsure which version of the code to keep in a file. It will tell you
+which files have merge conflicts, and you have to manually open the file, find the problematic code blocks that have been
+highlighted by Git, and erase what you do not want to keep.</p>
+</div>
+</div>
+<div class="section" id="working-with-remote-repositories">
+<h2>Working with remote repositories<a class="headerlink" href="#working-with-remote-repositories" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="git-clone">
+<h3><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code><a class="headerlink" href="#git-clone" title="Permalink to this headline">¶</a></h3>
+<p>You want to use an existing repository? You need its Git URL.
+In Github, you click on the green <code class="docutils literal notranslate"><span class="pre">Code</span></code> button to get the repository URL.
+It will look something like this: <code class="docutils literal notranslate"><span class="pre">https://github.com/DeepLearnPhysics/lartpc_mlreco3d_tutorials.git</span></code>
+Then you do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">YOUR_URL</span></code>. This will clone the remote repository into a new folder in your current working directory.</p>
+</div>
+<div class="section" id="git-remote-v">
+<h3><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">-v</span></code><a class="headerlink" href="#git-remote-v" title="Permalink to this headline">¶</a></h3>
+<p>See the list of remote repositories, their names and their URLs.
+By default, if you cloned a repository, it will appear here under the default name of <code class="docutils literal notranslate"><span class="pre">origin</span></code>.</p>
+</div>
+<div class="section" id="git-fetch-origin">
+<h3><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span> <span class="pre">origin</span></code><a class="headerlink" href="#git-fetch-origin" title="Permalink to this headline">¶</a></h3>
+<p>This will download the latest changes from the remote repository called <code class="docutils literal notranslate"><span class="pre">origin</span></code>, but will not
+attempt to merge them yet.</p>
+</div>
+<div class="section" id="git-pull-origin">
+<h3><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span></code><a class="headerlink" href="#git-pull-origin" title="Permalink to this headline">¶</a></h3>
+<p>Oh, useful command! This will fetch the latest changes from the remote repository (assuming it is called <code class="docutils literal notranslate"><span class="pre">origin</span></code> as usual) and
+attempt to merge them with the current branch.</p>
+</div>
+<div class="section" id="git-push-origin-master">
+<h3><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">origin</span> <span class="pre">master</span></code><a class="headerlink" href="#git-push-origin-master" title="Permalink to this headline">¶</a></h3>
+<p>This will push your changes (commits) from the branch <code class="docutils literal notranslate"><span class="pre">master</span></code> to the remote repository called <code class="docutils literal notranslate"><span class="pre">origin</span></code>.</p>
+</div>
+</div>
+<div class="section" id="read-more">
+<h2>Read more<a class="headerlink" href="#read-more" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://learngitbranching.js.org/">https://learngitbranching.js.org/</a> or how to learn Git branching through an online game</p></li>
+<li><p><a class="reference external" href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a> Pro Git book</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "DeepLearnPhysics/lartpc_mlreco3d_tutorials",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Prerequisites"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="Python-06-MNIST-CIFAR10.html" title="previous page">Streaming Input Dataset</a>
+    <a class='right-next' id="next-link" href="../Physics/Neutrinos.html" title="next page">Neutrinos</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By SLAC Neutrino Group<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

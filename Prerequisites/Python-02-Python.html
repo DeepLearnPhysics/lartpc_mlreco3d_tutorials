@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -124,6 +126,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="Python-06-MNIST-CIFAR10.html">
    Practice with MNIST
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Git.html">
+   Version control with Git
   </a>
  </li>
 </ul>
@@ -1223,10 +1230,7 @@ This is a laptop.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>imac!
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am imac!
 </pre></div>
 </div>
 </div>
@@ -1305,7 +1309,9 @@ This is a laptop.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hi! I am imac, and I am a desktop. I have 16 CPUs.
-Hi! I am dell xps15, and I am a laptop. I have 8 CPUs.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hi! I am dell xps15, and I am a laptop. I have 8 CPUs.
 </pre></div>
 </div>
 </div>
@@ -1443,7 +1449,7 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iterator at 0x7fcfd56a5780&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iterator at 0x7fa6344f19e8&gt;
 </pre></div>
 </div>
 </div>
@@ -1506,10 +1512,10 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>286 µs ± 1.65 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>296 µs ± 12.7 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>235 µs ± 6.3 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>231 µs ± 2.2 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1639,10 +1645,10 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>273 µs ± 4.15 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>267 µs ± 942 ns per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>249 µs ± 452 ns per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>248 µs ± 1.67 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>

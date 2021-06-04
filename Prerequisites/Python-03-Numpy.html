@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -124,6 +126,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="Python-06-MNIST-CIFAR10.html">
    Practice with MNIST
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Git.html">
+   Version control with Git
   </a>
  </li>
 </ul>
@@ -822,7 +829,7 @@ Numpy allows to resphape it easily. For example, we can transform it into a 2-D 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 ldomine ki 730 Jun  3 22:54 erase.npz
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 ldomine ki 730 Jun  4 12:30 erase.npz
 </pre></div>
 </div>
 </div>
@@ -989,8 +996,8 @@ Here’s an example of a <strong>flat random number</strong> between 0 to 1.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape (100000,)
-mean 0.5010515125358332 std 0.28836249535223923
-min 2.1601216767086484e-05 max 0.9999984961069415
+mean 0.5005627378430716 std 0.2887923078118963
+min 3.4335770404680943e-07 max 0.9999974595064113
 </pre></div>
 </div>
 </div>
@@ -1007,8 +1014,8 @@ min 2.1601216767086484e-05 max 0.9999984961069415
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape (100,)
-mean -0.06329889437467034 std 1.1097771041638387
-min -2.7844022420636647 max 2.37731333520608
+mean -0.07815157031891701 std 0.9425496046993824
+min -3.1800115825634934 max 2.1308888682328444
 </pre></div>
 </div>
 </div>
