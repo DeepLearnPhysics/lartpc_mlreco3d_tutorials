@@ -1,0 +1,38 @@
+Traceback (most recent call last):
+  File "/sdf/home/l/ldomine/.local/lib/python3.6/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/usr/local/lib/python3.6/dist-packages/nbclient/client.py", line 1087, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/local/lib/python3.6/dist-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/usr/local/lib/python3.6/dist-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/lib/python3.6/asyncio/base_events.py", line 484, in run_until_complete
+    return future.result()
+  File "/usr/local/lib/python3.6/dist-packages/nbclient/client.py", line 541, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/usr/local/lib/python3.6/dist-packages/nbclient/client.py", line 832, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/usr/local/lib/python3.6/dist-packages/nbclient/client.py", line 740, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from mlreco.visualization import scatter_points, plotly_layout3d
+from mlreco.visualization.gnn import scatter_clusters, network_topology, network_schematic
+from mlreco.main_funcs import process_config, prepare
+from mlreco.utils.gnn.cluster import get_cluster_label
+from mlreco.utils.deghosting import adapt_labels_numpy as adapt_labels
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+[0;32m<ipython-input-3-767c3775dc4f>[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0;32mfrom[0m [0mmlreco[0m[0;34m.[0m[0mvisualization[0m [0;32mimport[0m [0mscatter_points[0m[0;34m,[0m [0mplotly_layout3d[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      2[0m [0;32mfrom[0m [0mmlreco[0m[0;34m.[0m[0mvisualization[0m[0;34m.[0m[0mgnn[0m [0;32mimport[0m [0mscatter_clusters[0m[0;34m,[0m [0mnetwork_topology[0m[0;34m,[0m [0mnetwork_schematic[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m [0;32mfrom[0m [0mmlreco[0m[0;34m.[0m[0mmain_funcs[0m [0;32mimport[0m [0mprocess_config[0m[0;34m,[0m [0mprepare[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0;32mfrom[0m [0mmlreco[0m[0;34m.[0m[0mutils[0m[0;34m.[0m[0mgnn[0m[0;34m.[0m[0mcluster[0m [0;32mimport[0m [0mget_cluster_label[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0;32mfrom[0m [0mmlreco[0m[0;34m.[0m[0mutils[0m[0;34m.[0m[0mdeghosting[0m [0;32mimport[0m [0madapt_labels_numpy[0m [0;32mas[0m [0madapt_labels[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mModuleNotFoundError[0m: No module named 'mlreco'
+ModuleNotFoundError: No module named 'mlreco'
+

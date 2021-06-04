@@ -42,11 +42,13 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -150,6 +152,11 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/README.html">
+   Overview of the reconstruction chain
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Code/Data.html">
    Data I/O
@@ -199,12 +206,44 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Code/Interaction.html">
-     Interaction clustering
+     Interaction clustering, PID and primary particles
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Code/PID.html">
-     Particle identification
+    <a class="reference internal" href="../Code/Kinematics.html">
+     Kinematics and particle hierarchy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Others.html">
+     Others
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Exercises/README.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Michel_electron.html">
+     Exercise 1: Finding Michel electrons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/dEdx.html">
+     Exercise 2: muon dEdx
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Electron_gamma.html">
+     Exercise 3: electron vs gamma separation
     </a>
    </li>
   </ul>
@@ -316,6 +355,9 @@
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
         
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
         
     </div>
 </div>
@@ -409,7 +451,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch._C.Generator at 0x7f811406d810&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch._C.Generator at 0x7f60817e7810&gt;
 </pre></div>
 </div>
 </div>
@@ -1017,7 +1059,7 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.44 ms ± 65.6 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.39 ms ± 8.75 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -1031,7 +1073,7 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>48.3 µs ± 1.65 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49.2 µs ± 908 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1047,7 +1089,7 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>191 µs ± 6.48 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>180 µs ± 1.42 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1061,7 +1103,7 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.16 ms ± 4.67 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.14 ms ± 5.72 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1074,7 +1116,7 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
+            repo: "Temigo/lartpc_mlreco3d_tutorials",
             ref: "master",
         },
         codeMirrorConfig: {

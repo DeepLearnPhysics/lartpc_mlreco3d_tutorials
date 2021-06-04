@@ -42,11 +42,13 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -152,6 +154,11 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/README.html">
+   Overview of the reconstruction chain
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Code/Data.html">
    Data I/O
@@ -201,12 +208,44 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Code/Interaction.html">
-     Interaction clustering
+     Interaction clustering, PID and primary particles
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Code/PID.html">
-     Particle identification
+    <a class="reference internal" href="../Code/Kinematics.html">
+     Kinematics and particle hierarchy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Others.html">
+     Others
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Exercises/README.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Michel_electron.html">
+     Exercise 1: Finding Michel electrons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/dEdx.html">
+     Exercise 2: muon dEdx
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Electron_gamma.html">
+     Exercise 3: electron vs gamma separation
     </a>
    </li>
   </ul>
@@ -318,6 +357,9 @@
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
         
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
         
     </div>
 </div>
@@ -395,6 +437,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch._C.Generator at 0x7fb83a38dde0&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="mnist-dataset">
 <h2>MNIST dataset<a class="headerlink" href="#mnist-dataset" title="Permalink to this headline">¶</a></h2>
@@ -418,33 +465,99 @@
 </pre></div>
 </div>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "9d35aa326aa8438f8b62c137b2120486", "version_major": 2, "version_minor": 0}
-</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./mnist-data/MNIST/raw/train-images-idx3-ubyte.gz to ./mnist-data/MNIST/raw
-Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz to ./mnist-data/MNIST/raw/train-labels-idx1-ubyte.gz
-</pre></div>
-</div>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "b63653dbcd6741ed9bafba8fd00fc0dc", "version_major": 2, "version_minor": 0}
-</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./mnist-data/MNIST/raw/train-labels-idx1-ubyte.gz to ./mnist-data/MNIST/raw
-Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz to ./mnist-data/MNIST/raw/t10k-images-idx3-ubyte.gz
-</pre></div>
-</div>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "ddf5d5f5552a4da0bc61c96f9b22dba3", "version_major": 2, "version_minor": 0}
-</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./mnist-data/MNIST/raw/t10k-images-idx3-ubyte.gz to ./mnist-data/MNIST/raw
-Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz to ./mnist-data/MNIST/raw/t10k-labels-idx1-ubyte.gz
-</pre></div>
-</div>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "64ce5cfd24be4a5c8560552b223a1b48", "version_major": 2, "version_minor": 0}
-</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./mnist-data/MNIST/raw/t10k-labels-idx1-ubyte.gz to ./mnist-data/MNIST/raw
-Processing...
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/pytorch/torch/csrc/utils/tensor_numpy.cpp:141: UserWarning: The given NumPy array is not writeable, and PyTorch does not support non-writeable tensors. This means you can write to the underlying (supposedly non-writeable) NumPy array using the tensor. You may want to copy the array to protect its data or make it writeable before converting it to a tensor. This type of warning will be suppressed for the rest of this program.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done!
+{"version_major": 2, "version_minor": 0, "model_id": "426400187de9453ca1bac7df4db6ccda"}
+</script><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">HTTPError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">c0990185e37e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Use prepared data handler from pytorch (torchvision)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">LOCAL_DATA_DIR</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="ne">----&gt; </span><span class="mi">6</span>                          <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()]))</span>
+
+<span class="nn">/usr/local/lib/python3.6/dist-packages/torchvision/datasets/mnist.py</span> in <span class="ni">__init__</span><span class="nt">(self, root, train, transform, target_transform, download)</span>
+<span class="g g-Whitespace">     </span><span class="mi">77</span> 
+<span class="g g-Whitespace">     </span><span class="mi">78</span>         <span class="k">if</span> <span class="n">download</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">79</span>             <span class="bp">self</span><span class="o">.</span><span class="n">download</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">80</span> 
+<span class="g g-Whitespace">     </span><span class="mi">81</span>         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_exists</span><span class="p">():</span>
+
+<span class="nn">/usr/local/lib/python3.6/dist-packages/torchvision/datasets/mnist.py</span> in <span class="ni">download</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">144</span>         <span class="k">for</span> <span class="n">url</span><span class="p">,</span> <span class="n">md5</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">resources</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span>             <span class="n">filename</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">rpartition</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">146</span>             <span class="n">download_and_extract_archive</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">download_root</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_folder</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">md5</span><span class="o">=</span><span class="n">md5</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">147</span> 
+<span class="g g-Whitespace">    </span><span class="mi">148</span>         <span class="c1"># process and save as torch files</span>
+
+<span class="nn">/usr/local/lib/python3.6/dist-packages/torchvision/datasets/utils.py</span> in <span class="ni">download_and_extract_archive</span><span class="nt">(url, download_root, extract_root, filename, md5, remove_finished)</span>
+<span class="g g-Whitespace">    </span><span class="mi">254</span>         <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">255</span> 
+<span class="ne">--&gt; </span><span class="mi">256</span>     <span class="n">download_url</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">download_root</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">md5</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">257</span> 
+<span class="g g-Whitespace">    </span><span class="mi">258</span>     <span class="n">archive</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">download_root</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.6/dist-packages/torchvision/datasets/utils.py</span> in <span class="ni">download_url</span><span class="nt">(url, root, filename, md5)</span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span>                 <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span>             <span class="k">else</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">84</span>                 <span class="k">raise</span> <span class="n">e</span>
+<span class="g g-Whitespace">     </span><span class="mi">85</span>         <span class="c1"># check integrity of downloaded file</span>
+<span class="g g-Whitespace">     </span><span class="mi">86</span>         <span class="k">if</span> <span class="ow">not</span> <span class="n">check_integrity</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="n">md5</span><span class="p">):</span>
+
+<span class="nn">/usr/local/lib/python3.6/dist-packages/torchvision/datasets/utils.py</span> in <span class="ni">download_url</span><span class="nt">(url, root, filename, md5)</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span>             <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>                 <span class="n">url</span><span class="p">,</span> <span class="n">fpath</span><span class="p">,</span>
+<span class="ne">---&gt; </span><span class="mi">72</span>                 <span class="n">reporthook</span><span class="o">=</span><span class="n">gen_bar_updater</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span>             <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span>         <span class="k">except</span> <span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">URLError</span><span class="p">,</span> <span class="ne">IOError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>  <span class="c1"># type: ignore[attr-defined]</span>
+
+<span class="nn">/usr/lib/python3.6/urllib/request.py</span> in <span class="ni">urlretrieve</span><span class="nt">(url, filename, reporthook, data)</span>
+<span class="g g-Whitespace">    </span><span class="mi">246</span>     <span class="n">url_type</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="n">splittype</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">247</span> 
+<span class="ne">--&gt; </span><span class="mi">248</span>     <span class="k">with</span> <span class="n">contextlib</span><span class="o">.</span><span class="n">closing</span><span class="p">(</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">))</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">249</span>         <span class="n">headers</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">250</span> 
+
+<span class="nn">/usr/lib/python3.6/urllib/request.py</span> in <span class="ni">urlopen</span><span class="nt">(url, data, timeout, cafile, capath, cadefault, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span>         <span class="n">opener</span> <span class="o">=</span> <span class="n">_opener</span>
+<span class="ne">--&gt; </span><span class="mi">223</span>     <span class="k">return</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span> 
+<span class="g g-Whitespace">    </span><span class="mi">225</span> <span class="k">def</span> <span class="nf">install_opener</span><span class="p">(</span><span class="n">opener</span><span class="p">):</span>
+
+<span class="nn">/usr/lib/python3.6/urllib/request.py</span> in <span class="ni">open</span><span class="nt">(self, fullurl, data, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">530</span>         <span class="k">for</span> <span class="n">processor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">protocol</span><span class="p">,</span> <span class="p">[]):</span>
+<span class="g g-Whitespace">    </span><span class="mi">531</span>             <span class="n">meth</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">processor</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">532</span>             <span class="n">response</span> <span class="o">=</span> <span class="n">meth</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">533</span> 
+<span class="g g-Whitespace">    </span><span class="mi">534</span>         <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">/usr/lib/python3.6/urllib/request.py</span> in <span class="ni">http_response</span><span class="nt">(self, request, response)</span>
+<span class="g g-Whitespace">    </span><span class="mi">640</span>         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">200</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">641</span>             <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+<span class="ne">--&gt; </span><span class="mi">642</span>                 <span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">643</span> 
+<span class="g g-Whitespace">    </span><span class="mi">644</span>         <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">/usr/lib/python3.6/urllib/request.py</span> in <span class="ni">error</span><span class="nt">(self, proto, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">568</span>         <span class="k">if</span> <span class="n">http_err</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">569</span>             <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="s1">&#39;http_error_default&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">orig_args</span>
+<span class="ne">--&gt; </span><span class="mi">570</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">571</span> 
+<span class="g g-Whitespace">    </span><span class="mi">572</span> <span class="c1"># XXX probably also want an abstract factory that knows when it makes</span>
+
+<span class="nn">/usr/lib/python3.6/urllib/request.py</span> in <span class="ni">_call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">502</span>         <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">503</span>             <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">504</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">505</span>             <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">506</span>                 <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">/usr/lib/python3.6/urllib/request.py</span> in <span class="ni">http_error_default</span><span class="nt">(self, req, fp, code, msg, hdrs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">648</span> <span class="k">class</span> <span class="nc">HTTPDefaultErrorHandler</span><span class="p">(</span><span class="n">BaseHandler</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">649</span>     <span class="k">def</span> <span class="nf">http_error_default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">650</span>         <span class="k">raise</span> <span class="n">HTTPError</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">full_url</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">651</span> 
+<span class="g g-Whitespace">    </span><span class="mi">652</span> <span class="k">class</span> <span class="nc">HTTPRedirectHandler</span><span class="p">(</span><span class="n">BaseHandler</span><span class="p">):</span>
+
+<span class="ne">HTTPError</span>: HTTP Error 503: Service Unavailable
 </pre></div>
 </div>
 </div>
@@ -458,8 +571,13 @@ Processing...
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60000
-&lt;class &#39;tuple&#39;&gt;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">c6d5ad7eade7</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>  <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span> <span class="nb">type</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;dataset&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -475,8 +593,15 @@ Processing...
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Type of data  : &lt;class &#39;torch.Tensor&#39;&gt; shape torch.Size([1, 28, 28])
-Type of label : &lt;class &#39;int&#39;&gt; value 5
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="n">c08f7aa4034a</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">ENTRY</span><span class="o">=</span><span class="mi">0</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">data</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">ENTRY</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Type of data  :&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>  <span class="s1">&#39;shape&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Type of label :&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">label</span><span class="p">),</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;dataset&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -495,10 +620,18 @@ Type of label : &lt;class &#39;int&#39;&gt; value 5
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="n">abd864214b5c</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Draw data</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;data&#39; is not defined
 </pre></div>
 </div>
-<img alt="../_images/Python-06-MNIST-CIFAR10_9_1.png" src="../_images/Python-06-MNIST-CIFAR10_9_1.png" />
 </div>
 </div>
 <p>Let us define a function that can list images and labels in the dataset.</p>
@@ -545,7 +678,14 @@ Type of label : &lt;class &#39;int&#39;&gt; value 5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python-06-MNIST-CIFAR10_12_0.png" src="../_images/Python-06-MNIST-CIFAR10_12_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="mi">5546</span><span class="n">dde387fa</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plot_dataset</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;dataset&#39; is not defined
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -560,6 +700,20 @@ Type of label : &lt;class &#39;int&#39;&gt; value 5
                                      <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                                      <span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                                      <span class="n">pin_memory</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="n">bd30eaf8542b</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">torch</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>                                      <span class="n">batch_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>                                      <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>                                      <span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+
+<span class="ne">NameError</span>: name &#39;dataset&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -587,8 +741,13 @@ Type of label : &lt;class &#39;int&#39;&gt; value 5
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>length of DataLoader: 3000
-By the way, batch size * length = 60000
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">9</span><span class="o">-</span><span class="n">e7a7ab091225</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;length of DataLoader:&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">loader</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;By the way, batch size * length =&#39;</span><span class="p">,</span> <span class="mi">20</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">loader</span><span class="p">))</span>
+
+<span class="ne">NameError</span>: name &#39;loader&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -608,26 +767,16 @@ By the way, batch size * length = 60000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 0
-tensor([8, 3, 5, 2, 9, 2, 3, 7, 2, 6, 8, 4, 1, 0, 4, 7, 6, 7, 3, 2])
-Iteration 1
-tensor([5, 0, 5, 2, 7, 2, 7, 7, 3, 7, 0, 9, 8, 9, 0, 7, 4, 7, 3, 3])
-Iteration 2
-tensor([0, 6, 1, 2, 3, 8, 2, 6, 3, 2, 5, 9, 2, 9, 5, 9, 2, 0, 5, 6])
-Iteration 3
-tensor([5, 2, 7, 7, 7, 3, 1, 1, 0, 1, 1, 7, 6, 5, 9, 3, 0, 5, 6, 2])
-Iteration 4
-tensor([5, 2, 4, 9, 6, 8, 4, 1, 5, 8, 1, 7, 5, 5, 9, 3, 1, 7, 8, 5])
-Iteration 5
-tensor([7, 1, 9, 3, 3, 2, 2, 4, 1, 5, 4, 6, 1, 8, 2, 5, 3, 8, 0, 2])
-Iteration 6
-tensor([1, 3, 3, 6, 2, 7, 5, 8, 7, 6, 4, 2, 0, 1, 3, 3, 1, 1, 7, 4])
-Iteration 7
-tensor([4, 9, 8, 4, 4, 7, 1, 1, 5, 3, 5, 1, 8, 0, 7, 2, 7, 5, 3, 3])
-Iteration 8
-tensor([3, 0, 8, 2, 2, 0, 2, 3, 0, 9, 0, 2, 6, 6, 1, 3, 0, 7, 4, 3])
-Iteration 9
-tensor([8, 1, 1, 7, 2, 4, 8, 2, 2, 7, 0, 2, 5, 3, 7, 1, 2, 9, 1, 5])
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">79</span><span class="n">b295870f7d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Create an iterator for playin in this notebook</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">cycle</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="nb">iter</span> <span class="o">=</span> <span class="n">cycle</span><span class="p">(</span><span class="n">loader</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+
+<span class="ne">NameError</span>: name &#39;loader&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -640,7 +789,12 @@ tensor([8, 1, 1, 7, 2, 4, 8, 2, 2, 7, 0, 2, 5, 3, 7, 1, 2, 9, 1, 5])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape of an image batch data torch.Size([20, 1, 28, 28])
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">2</span><span class="n">c02471056cb</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Shape of an image batch data&#39;</span><span class="p">,</span><span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;batch&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -669,7 +823,7 @@ tensor([8, 1, 1, 7, 2, 4, 8, 2, 2, 7, 0, 2, 5, 3, 7, 1, 2, 9, 1, 5])
 </pre></div>
 </div>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "cb7849d95a3d484fb5ad447c54641be0", "version_major": 2, "version_minor": 0}
+{"version_major": 2, "version_minor": 0, "model_id": "7ac463444d81455d88e5fea6f6a78aa5"}
 </script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./cifar10-data/cifar-10-python.tar.gz to ./cifar10-data
 </pre></div>
 </div>
@@ -700,11 +854,11 @@ tensor([8, 1, 1, 7, 2, 4, 8, 2, 2, 7, 0, 2, 5, 3, 7, 1, 2, 9, 1, 5])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dog
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cat
 </pre></div>
 </div>
 <img alt="../_images/Python-06-MNIST-CIFAR10_27_1.png" src="../_images/Python-06-MNIST-CIFAR10_27_1.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>frog
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>horse
 </pre></div>
 </div>
 <img alt="../_images/Python-06-MNIST-CIFAR10_27_3.png" src="../_images/Python-06-MNIST-CIFAR10_27_3.png" />
@@ -716,19 +870,19 @@ tensor([8, 1, 1, 7, 2, 4, 8, 2, 2, 7, 0, 2, 5, 3, 7, 1, 2, 9, 1, 5])
 </pre></div>
 </div>
 <img alt="../_images/Python-06-MNIST-CIFAR10_27_7.png" src="../_images/Python-06-MNIST-CIFAR10_27_7.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>truck
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>automobile
 </pre></div>
 </div>
 <img alt="../_images/Python-06-MNIST-CIFAR10_27_9.png" src="../_images/Python-06-MNIST-CIFAR10_27_9.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>airplane
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>automobile
 </pre></div>
 </div>
 <img alt="../_images/Python-06-MNIST-CIFAR10_27_11.png" src="../_images/Python-06-MNIST-CIFAR10_27_11.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>deer
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ship
 </pre></div>
 </div>
 <img alt="../_images/Python-06-MNIST-CIFAR10_27_13.png" src="../_images/Python-06-MNIST-CIFAR10_27_13.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>horse
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bird
 </pre></div>
 </div>
 <img alt="../_images/Python-06-MNIST-CIFAR10_27_15.png" src="../_images/Python-06-MNIST-CIFAR10_27_15.png" />
@@ -738,11 +892,17 @@ tensor([8, 1, 1, 7, 2, 4, 8, 2, 2, 7, 0, 2, 5, 3, 7, 1, 2, 9, 1, 5])
 </div>
 </div>
 
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"887ff7f8fec840ac96de7912ec65bb00": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "20px"}}, "5a97750226f744bb80a71d9cf4e128af": {"model_name": "ProgressStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "9ca875a587784189b648e0ed22819f5d": {"model_name": "FloatProgressModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "info", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_887ff7f8fec840ac96de7912ec65bb00", "max": 1.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_5a97750226f744bb80a71d9cf4e128af", "value": 0.0}}, "0cdaf9b9f9854be98a1acb1b764543ea": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c4783917fee745faa96e4b65727a43b5": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "f0eb6968b57a46b9b0266fc8d557a57d": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_0cdaf9b9f9854be98a1acb1b764543ea", "placeholder": "\u200b", "style": "IPY_MODEL_c4783917fee745faa96e4b65727a43b5", "value": ""}}, "ba505050a46149b693d40c7c12719191": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "fd2ff66571b948b08464527d21845518": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "d4afad3b15384fd095c7632dfd0b6da1": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_ba505050a46149b693d40c7c12719191", "placeholder": "\u200b", "style": "IPY_MODEL_fd2ff66571b948b08464527d21845518", "value": " 0/? [00:00&lt;?, ?it/s]"}}, "fdf2e34bc60549a09603d45090d55b9a": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "426400187de9453ca1bac7df4db6ccda": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_f0eb6968b57a46b9b0266fc8d557a57d", "IPY_MODEL_9ca875a587784189b648e0ed22819f5d", "IPY_MODEL_d4afad3b15384fd095c7632dfd0b6da1"], "layout": "IPY_MODEL_fdf2e34bc60549a09603d45090d55b9a"}}, "76e8a60da8924644be7078114c135d44": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "20px"}}, "8072e727a86243c9bf079734788cac82": {"model_name": "ProgressStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "540f5ff767cc40879f365e107fecbf2d": {"model_name": "FloatProgressModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "info", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_76e8a60da8924644be7078114c135d44", "max": 1.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_8072e727a86243c9bf079734788cac82", "value": 1.0}}, "9884a0960fa3437da94bbfa85aec8e97": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "caf7920e3c344a6ea5c247da86562075": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "17434952b2b84a5b8afd69ef3095ab48": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_9884a0960fa3437da94bbfa85aec8e97", "placeholder": "\u200b", "style": "IPY_MODEL_caf7920e3c344a6ea5c247da86562075", "value": " 99%"}}, "544b22ff70584dc79a0f4d2c14a98a01": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5a82d30835724f20be705861c35054b4": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "b041d782f1c242a08f3ec375be00a97c": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_544b22ff70584dc79a0f4d2c14a98a01", "placeholder": "\u200b", "style": "IPY_MODEL_5a82d30835724f20be705861c35054b4", "value": " 169320448/170498071 [00:06&lt;00:00, 27236981.32it/s]"}}, "32a2ec34f4964fa094a1beb475dd9964": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7ac463444d81455d88e5fea6f6a78aa5": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_17434952b2b84a5b8afd69ef3095ab48", "IPY_MODEL_540f5ff767cc40879f365e107fecbf2d", "IPY_MODEL_b041d782f1c242a08f3ec375be00a97c"], "layout": "IPY_MODEL_32a2ec34f4964fa094a1beb475dd9964"}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
+            repo: "Temigo/lartpc_mlreco3d_tutorials",
             ref: "master",
         },
         codeMirrorConfig: {

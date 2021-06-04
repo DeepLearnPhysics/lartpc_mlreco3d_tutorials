@@ -42,11 +42,13 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -150,6 +152,11 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/README.html">
+   Overview of the reconstruction chain
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Code/Data.html">
    Data I/O
@@ -199,12 +206,44 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Code/Interaction.html">
-     Interaction clustering
+     Interaction clustering, PID and primary particles
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Code/PID.html">
-     Particle identification
+    <a class="reference internal" href="../Code/Kinematics.html">
+     Kinematics and particle hierarchy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Others.html">
+     Others
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Exercises/README.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Michel_electron.html">
+     Exercise 1: Finding Michel electrons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/dEdx.html">
+     Exercise 2: muon dEdx
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Electron_gamma.html">
+     Exercise 3: electron vs gamma separation
     </a>
    </li>
   </ul>
@@ -316,6 +355,9 @@
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
         
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
         
     </div>
 </div>
@@ -1183,7 +1225,10 @@ This is a laptop.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am imac!
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>imac!
 </pre></div>
 </div>
 </div>
@@ -1294,7 +1339,9 @@ Hi! I am dell xps15, and I am a laptop. I have 8 CPUs.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hi! I am imac, and I am a desktop. I have 16 CPUs.
-Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 GPUs.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 GPUs.
 </pre></div>
 </div>
 </div>
@@ -1398,7 +1445,7 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iterator at 0x7fb06042bfd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iterator at 0x7fcfd56a5780&gt;
 </pre></div>
 </div>
 </div>
@@ -1461,8 +1508,10 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>255 µs ± 6.83 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
-200 µs ± 2.37 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>286 µs ± 1.65 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>235 µs ± 6.3 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1592,8 +1641,10 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>241 µs ± 1.82 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
-222 µs ± 1.43 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>273 µs ± 4.15 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>249 µs ± 452 ns per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1648,8 +1699,12 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>age=20
-trend=&#39;machine learning initiative lead at SLAC&#39;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">59</span><span class="o">-</span><span class="n">fa16b7499ace</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;DanielRatner.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;DanielRatner.py&#39;
 </pre></div>
 </div>
 </div>
@@ -1663,7 +1718,13 @@ trend=&#39;machine learning initiative lead at SLAC&#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>age: 20
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">60</span><span class="o">-</span><span class="mi">18</span><span class="n">c58a918d5d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">DanielRatner</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;age:&#39;</span><span class="p">,</span><span class="n">DanielRatner</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;DanielRatner&#39;
 </pre></div>
 </div>
 </div>
@@ -1677,7 +1738,13 @@ trend=&#39;machine learning initiative lead at SLAC&#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>trend: machine learning initiative lead at SLAC
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">61</span><span class="o">-</span><span class="mi">2</span><span class="n">ffc377c6d3d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">DanielRatner</span> <span class="kn">import</span> <span class="n">trend</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trend:&#39;</span><span class="p">,</span><span class="n">trend</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;DanielRatner&#39;
 </pre></div>
 </div>
 </div>
@@ -1701,7 +1768,7 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__init__.py  age.py  favorite.py  trend.py
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ls: cannot access &#39;RealDanielRatner&#39;: No such file or directory
 </pre></div>
 </div>
 </div>
@@ -1714,8 +1781,12 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>from .age import age
-from .trend import trend
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">63</span><span class="o">-</span><span class="n">af6a97faa849</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;RealDanielRatner/__init__.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;RealDanielRatner/__init__.py&#39;
 </pre></div>
 </div>
 </div>
@@ -1730,11 +1801,14 @@ from .trend import trend
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>age=40
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">64</span><span class="o">-</span><span class="n">fb22218dbaf8</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;RealDanielRatner/age.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;RealDanielRatner/favorite.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;RealDanielRatner/trend.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 
-favorite=&#39;ski conference&#39;
-
-trend=&#39;Loving, caring, and changing a diaper for his baby&#39;
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;RealDanielRatner/age.py&#39;
 </pre></div>
 </div>
 </div>
@@ -1748,22 +1822,13 @@ trend=&#39;Loving, caring, and changing a diaper for his baby&#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on package RealDanielRatner:
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">65</span><span class="o">-</span><span class="n">ebd15886c817</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">RealDanielRatner</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">help</span><span class="p">(</span><span class="n">RealDanielRatner</span><span class="p">)</span>
 
-NAME
-    RealDanielRatner
-
-PACKAGE CONTENTS
-    age
-    favorite
-    trend
-
-DATA
-    age = 40
-    trend = &#39;Loving, caring, and changing a diaper for his baby&#39;
-
-FILE
-    /home/drinkingkazu/sw/slacml-kmi2020/Prerequisites/RealDanielRatner/__init__.py
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;RealDanielRatner&#39;
 </pre></div>
 </div>
 </div>
@@ -1777,8 +1842,13 @@ FILE
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>age: 40
-trend: Loving, caring, and changing a diaper for his baby
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">66</span><span class="o">-</span><span class="mi">0</span><span class="n">b7b39630eb6</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;age:&#39;</span><span class="p">,</span><span class="n">RealDanielRatner</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trend:&#39;</span><span class="p">,</span><span class="n">RealDanielRatner</span><span class="o">.</span><span class="n">trend</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;RealDanielRatner&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1791,7 +1861,12 @@ trend: Loving, caring, and changing a diaper for his baby
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">67</span><span class="o">-</span><span class="mf">8577e21</span><span class="n">b2404</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">RealDanielRatner</span><span class="p">,</span><span class="s1">&#39;favorite&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;RealDanielRatner&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1804,8 +1879,7 @@ trend: Loving, caring, and changing a diaper for his baby
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>from .age import age
-from .trend import trend
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cat: RealDanielRatner/__init__.py: No such file or directory
 </pre></div>
 </div>
 </div>
@@ -1819,7 +1893,13 @@ from .trend import trend
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>favorite: ski conference
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">69</span><span class="o">-</span><span class="mi">399</span><span class="n">b3ac3dbf2</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">RealDanielRatner</span> <span class="kn">import</span> <span class="n">favorite</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;favorite:&#39;</span><span class="p">,</span><span class="n">favorite</span><span class="o">.</span><span class="n">favorite</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;RealDanielRatner&#39;
 </pre></div>
 </div>
 </div>
@@ -1836,7 +1916,13 @@ from .trend import trend
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Daniels age is 40 and his trend: Loving, caring, and changing a diaper for his baby
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">70</span><span class="o">-</span><span class="n">cfc9d21d8093</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">RealDanielRatner</span> <span class="k">as</span> <span class="nn">dan</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Daniels age is&#39;</span><span class="p">,</span><span class="n">dan</span><span class="o">.</span><span class="n">age</span><span class="p">,</span><span class="s1">&#39;and his trend:&#39;</span><span class="p">,</span><span class="n">dan</span><span class="o">.</span><span class="n">trend</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;RealDanielRatner&#39;
 </pre></div>
 </div>
 </div>
@@ -1855,19 +1941,21 @@ from .trend import trend
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/app/larcv2/python&#39;,
- &#39;/app/geant4/lib&#39;,
  &#39;/app/root/lib&#39;,
  &#39;/usr/local/root/lib&#39;,
- &#39;/home/drinkingkazu/sw/slacml-kmi2020/Prerequisites&#39;,
+ &#39;/sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/Prerequisites&#39;,
+ &#39;&#39;,
+ &#39;/sdf/home/l/ldomine/.local/lib/python3.6/site-packages&#39;,
  &#39;/usr/lib/python36.zip&#39;,
  &#39;/usr/lib/python3.6&#39;,
  &#39;/usr/lib/python3.6/lib-dynload&#39;,
- &#39;&#39;,
- &#39;/home/drinkingkazu/.local/lib/python3.6/site-packages&#39;,
+ &#39;/sdf/home/l/ldomine/.local/lib/python3.6/site-packages/RoIAlign_extension_3D-0.0.0-py3.6-linux-x86_64.egg&#39;,
+ &#39;/sdf/home/l/ldomine/.local/lib/python3.6/site-packages/nms_extension-0.0.0-py3.6-linux-x86_64.egg&#39;,
  &#39;/usr/local/lib/python3.6/dist-packages&#39;,
  &#39;/usr/lib/python3/dist-packages&#39;,
+ &#39;/usr/local/root/lib&#39;,
  &#39;/usr/local/lib/python3.6/dist-packages/IPython/extensions&#39;,
- &#39;/home/drinkingkazu/.ipython&#39;]
+ &#39;/sdf/home/l/ldomine/.ipython&#39;]
 </pre></div>
 </div>
 </div>
@@ -1930,7 +2018,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
+            repo: "Temigo/lartpc_mlreco3d_tutorials",
             ref: "master",
         },
         codeMirrorConfig: {

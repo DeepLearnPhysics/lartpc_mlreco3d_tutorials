@@ -42,17 +42,19 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data I/O" href="../Code/Data.html" />
+    <link rel="next" title="Overview of the reconstruction chain" href="../Code/README.html" />
     <link rel="prev" title="Neutrinos" href="Neutrinos.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -150,6 +152,11 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/README.html">
+   Overview of the reconstruction chain
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Code/Data.html">
    Data I/O
@@ -199,12 +206,44 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Code/Interaction.html">
-     Interaction clustering
+     Interaction clustering, PID and primary particles
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Code/PID.html">
-     Particle identification
+    <a class="reference internal" href="../Code/Kinematics.html">
+     Kinematics and particle hierarchy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Others.html">
+     Others
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Exercises/README.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Michel_electron.html">
+     Exercise 1: Finding Michel electrons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/dEdx.html">
+     Exercise 2: muon dEdx
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Electron_gamma.html">
+     Exercise 3: electron vs gamma separation
     </a>
    </li>
   </ul>
@@ -309,6 +348,70 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-detector">
+   The detector
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-lartpc-stands-for">
+     What LArTPC stands for
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-it-looks-like">
+     What it looks like
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-tale-of-two-signals">
+     A tale of two signals
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-do-you-do-with-charge-and-light-signals">
+     What do you do with charge and light signals?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-does-it-have-to-do-with-neutrinos">
+   What does it have to do with neutrinos?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#misc-questions">
+   Misc. questions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-argon">
+     Why argon?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-liquid-rather-than-gas">
+     Why liquid rather than gas?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-does-argon-purity-matter">
+     Why does argon purity matter?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-fun-facts-about-lartpcs">
+   Other fun facts about LArTPCs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#neutrino-lartpc-experiments-in-our-group">
+   Neutrino LArTPC experiments in our group
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#glossary">
    Glossary
   </a>
@@ -326,11 +429,122 @@
                 
   <div class="section" id="liquid-argon-time-projection-chamber-aka-lartpc">
 <h1>Liquid Argon Time Projection Chamber (aka LArTPC)<a class="headerlink" href="#liquid-argon-time-projection-chamber-aka-lartpc" title="Permalink to this headline">¶</a></h1>
-<p>Explain here many things, including what is a <a class="reference internal" href="#term-ghost-point"><span class="xref std std-term">ghost point</span></a>.</p>
+<p>Where you can learn more about the type of detector that creates the images we are trying to analyze
+with <code class="docutils literal notranslate"><span class="pre">lartpc_mlreco3d</span></code>.</p>
+<div class="section" id="the-detector">
+<h2>The detector<a class="headerlink" href="#the-detector" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="what-lartpc-stands-for">
+<h3>What LArTPC stands for<a class="headerlink" href="#what-lartpc-stands-for" title="Permalink to this headline">¶</a></h3>
+<p>LArTPC is not the name of a new cryptocurrency (it’s too hard to pronounce for that),
+it stands for <em>Liquid Argon Time Projection Chamber</em>. It is a type of particle detector
+that provides us with high resolution 2D or 3D images of charged particle trajectories.</p>
+<div class="figure align-default" id="directive-fig">
+<a class="reference internal image-reference" href="https://temigo.github.io/static/MicroBooNE3DEvent-b69f63c7bfc599f9e6fb16743c5e09d5-79df8.jpg"><img alt="https://temigo.github.io/static/MicroBooNE3DEvent-b69f63c7bfc599f9e6fb16743c5e09d5-79df8.jpg" src="https://temigo.github.io/static/MicroBooNE3DEvent-b69f63c7bfc599f9e6fb16743c5e09d5-79df8.jpg" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Example of LArTPC 3D reconstructed image from MicroBooNE experiment</span><a class="headerlink" href="#directive-fig" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="what-it-looks-like">
+<h3>What it looks like<a class="headerlink" href="#what-it-looks-like" title="Permalink to this headline">¶</a></h3>
+<p>The detector is a huge tank filled with liquid argon. Huge can mean 700 tons
+(ICARUS detector, running now) or as much as  70,000 tons (DUNE detector, coming up) of liquid argon.
+It works like a modern bubble chamber. Particles - whether coming from cosmic rays, the accelerator beam, etc - travel through
+the detector volume. Some of them also interact with the argon atoms, sending new particles
+on their way.</p>
+<div class="figure align-default" id="id1">
+<a class="reference internal image-reference" href="https://sites.slac.stanford.edu/neutrino/sites/neutrino.sites.slac.stanford.edu/files/styles/fix_height_400/public/icarus_cryostat.png?itok=39f-0Swu"><img alt="https://sites.slac.stanford.edu/neutrino/sites/neutrino.sites.slac.stanford.edu/files/styles/fix_height_400/public/icarus_cryostat.png?itok=39f-0Swu" src="https://sites.slac.stanford.edu/neutrino/sites/neutrino.sites.slac.stanford.edu/files/styles/fix_height_400/public/icarus_cryostat.png?itok=39f-0Swu" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">That is only half of the ICARUS detector in Fermilab</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="id2">
+<a class="reference internal image-reference" href="https://icarus.fnal.gov/wp-content/uploads/2018/04/ICARUS-PR-7--1440x492.jpg"><img alt="https://icarus.fnal.gov/wp-content/uploads/2018/04/ICARUS-PR-7--1440x492.jpg" src="https://icarus.fnal.gov/wp-content/uploads/2018/04/ICARUS-PR-7--1440x492.jpg" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">This is what ICARUS looks like inside (without the liquid argon).</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="a-tale-of-two-signals">
+<h3>A tale of two signals<a class="headerlink" href="#a-tale-of-two-signals" title="Permalink to this headline">¶</a></h3>
+<p>Whenever a charged particle travels through the LArTPC detector, it ionizes the argon atoms on its way.
+This has 2 consequences:</p>
+<ol class="simple">
+<li><p>it knocks off some ionization electrons that all drift (slowly) in the same direction because of an electric field
+that we create inside the detector. These electrons will eventually meet either wires (if 2D detector, organized in 3 planes of parallel wires, each plane at a different angle, at the edges of the detector) or “pixels” (if 3D, new detector, placed at regular spacing within the volume) sensors.</p></li>
+<li><p>as they lose energy these ionization electrons create scintillation photons which travel fast (speed of light!)
+and are detected by an array of PMTs (photomultipliers) on the walls of the detector.</p></li>
+</ol>
+<div class="margin sidebar">
+<p class="sidebar-title">In summary</p>
+<p>LArTPC detectors are modern bubble chambers (filled with liquid argon) that
+measure both charge and light signals to reconstruct images of charged particle trajectories.</p>
+</div>
+<div class="figure align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/lartpc.jpg"><img alt="../_images/lartpc.jpg" src="../_images/lartpc.jpg" style="height: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Schematic of a LArTPC detector, in this example ICARUS. Credit: Adrian Cho, Science. 10.1126/science.365.6453.532</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="what-do-you-do-with-charge-and-light-signals">
+<h3>What do you do with charge and light signals?<a class="headerlink" href="#what-do-you-do-with-charge-and-light-signals" title="Permalink to this headline">¶</a></h3>
+<p>The charge signal provides us with two informations: spatial (inferred depending on which wire or pixel it hits) and quantitative (how many electrons, i.e. how much charge did we read out). We can reconstruct a lot of information about the particles based on this. So far <code class="docutils literal notranslate"><span class="pre">lartpc_mlreco3d</span></code> has been focused on this part of the story.</p>
+<p>Light signal is also processed and organized into <em>optical flashes</em> which should match (in spatial location and intensity) with the reconstructed particles in the TPC volume. For example, it can help to weed out cosmic rays that happen outside of the beam time window (no chance that
+it could be a neutrino).</p>
+</div>
+</div>
+<div class="section" id="what-does-it-have-to-do-with-neutrinos">
+<h2>What does it have to do with neutrinos?<a class="headerlink" href="#what-does-it-have-to-do-with-neutrinos" title="Permalink to this headline">¶</a></h2>
+<p>We can use a LArTPC to study cosmic rays, but this would not be very exciting.
+Things become interesting when neutrinos cross the detector volume. Neutrinos have no charge, so we
+cannot see them directly. Bummer. Neutrinos however might knock off a proton or a neutron
+from an argon atom. Protons have a positive charge, so we will see them - both in charge and light.
+Neutrons will only be seen through the light signal and the potential secondary protons that they
+knock off (if they have enough energy).</p>
+<p>In long baseline neutrino oscillation experiments, we are counting neutrinos flavors and energy
+at both a near- and far-detector to see if some neutrinos have changed flavor as they were traveling,
+and for example to measure the neutrino oscillation parameters with high precision. This means that there are two
+fundamental quantities that we are trying to infer about the neutrinos that travel
+through our LArTPC detectors: the <strong>neutrino flavor and energy</strong>.</p>
+<p>We have to <em>reconstruct</em> various intermediate particles: that means identify which energy deposits belong to each of them,
+what kind of particle they were and what kinematics they had, where they interacted with each other, etc.
+That allows further downstream physics analysis (not included in <code class="docutils literal notranslate"><span class="pre">lartpc_mlreco3d</span></code> but hopefully greatly simplified by its output) in order
+to infer these two key properties (flavor and energy) about the original neutrino that was wandering through our LArTPC and luckily set
+off these chains of interactions.</p>
+</div>
+<div class="section" id="misc-questions">
+<h2>Misc. questions<a class="headerlink" href="#misc-questions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="why-argon">
+<h3>Why argon?<a class="headerlink" href="#why-argon" title="Permalink to this headline">¶</a></h3>
+<p>Excellent question! Argon is widely available (most abundant noble gas on Earth) and its liquid phase has excellent scintillation properties (amount of light emitted per unit of energy deposited by the ionizing particle ~ 40,000 photons per MeV). Also, it is cheap and we need loads of it. (See <a class="reference external" href="https://en.wikipedia.org/wiki/Noble_gas#Occurrence_and_production">https://en.wikipedia.org/wiki/Noble_gas#Occurrence_and_production</a>)</p>
+</div>
+<div class="section" id="why-liquid-rather-than-gas">
+<h3>Why liquid rather than gas?<a class="headerlink" href="#why-liquid-rather-than-gas" title="Permalink to this headline">¶</a></h3>
+<p>The cross-section of particle interactions scales with the density of the material. The density of gaseous Ar is a thousandth of liquid Ar (see <a class="reference external" href="https://lar.bnl.gov/properties/">https://lar.bnl.gov/properties/</a>). Hence liquid argon is much more effective to observe particle interactions!</p>
+</div>
+<div class="section" id="why-does-argon-purity-matter">
+<h3>Why does argon purity matter?<a class="headerlink" href="#why-does-argon-purity-matter" title="Permalink to this headline">¶</a></h3>
+<p>The higher the liquid argon purity is, the less likely the ionization electrons (which are free electrons
+as they drift) are to be captured by an argon atom before they reach the wire planes.</p>
+</div>
+</div>
+<div class="section" id="other-fun-facts-about-lartpcs">
+<h2>Other fun facts about LArTPCs<a class="headerlink" href="#other-fun-facts-about-lartpcs" title="Permalink to this headline">¶</a></h2>
+<p>Ask Kazu about it. He has a whole list.</p>
+</div>
+<div class="section" id="neutrino-lartpc-experiments-in-our-group">
+<h2>Neutrino LArTPC experiments in our group<a class="headerlink" href="#neutrino-lartpc-experiments-in-our-group" title="Permalink to this headline">¶</a></h2>
+<p>You might hear about them quite often if you work with us. As a quick overview to clear out the confusion,
+without going into the details of the physics they are each looking for and measuring. The main experiments
+that we are involved into include (in increasing LAr volume and historical order):</p>
+<ul class="simple">
+<li><p>MicroBooNE (not running anymore, still analyzing data), 170 ton of LAr</p></li>
+<li><p>ICARUS (760 tons) + SBND (112 tons) = SBN program (currently running)</p></li>
+<li><p>DUNE-ND + DUNE-FD = DUNE program (flagship LArtPC neutrino experiment in the US, under construction, will be 70,000 tons of LAr)</p></li>
+</ul>
+<p>You might also hear about ArgonCube (modular prototype of LArTPC for DUNE-ND) and ProtoDUNE (R&amp;D prototype for DUNE).</p>
+</div>
 <div class="section" id="glossary">
 <h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
 <dl class="glossary simple">
 <dt id="term-ghost-point">ghost point<a class="headerlink" href="#term-ghost-point" title="Permalink to this term">¶</a></dt><dd><p>A 3D point not meant to be</p>
+</dd>
+<dt id="term-wire-plane">wire plane<a class="headerlink" href="#term-wire-plane" title="Permalink to this term">¶</a></dt><dd><p>A set of wires parallel to each other, all in the same geometrical plane.</p>
+</dd>
+<dt id="term-time-projection-chamber-TPC">time projection chamber (TPC)<a class="headerlink" href="#term-time-projection-chamber-TPC" title="Permalink to this term">¶</a></dt><dd><p>Detector that images a particle 3D trajectory using electromagnetic fields and a volume of sensitive liquid/gas.</p>
 </dd>
 </dl>
 </div>
@@ -340,7 +554,7 @@
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
+            repo: "Temigo/lartpc_mlreco3d_tutorials",
             ref: "master",
         },
         codeMirrorConfig: {
@@ -362,7 +576,7 @@
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="Neutrinos.html" title="previous page">Neutrinos</a>
-    <a class='right-next' id="next-link" href="../Code/Data.html" title="next page">Data I/O</a>
+    <a class='right-next' id="next-link" href="../Code/README.html" title="next page">Overview of the reconstruction chain</a>
 
         </div>
         

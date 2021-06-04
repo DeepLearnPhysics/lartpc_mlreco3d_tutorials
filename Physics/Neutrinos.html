@@ -42,11 +42,13 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -150,6 +152,11 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/README.html">
+   Overview of the reconstruction chain
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Code/Data.html">
    Data I/O
@@ -199,12 +206,44 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Code/Interaction.html">
-     Interaction clustering
+     Interaction clustering, PID and primary particles
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Code/PID.html">
-     Particle identification
+    <a class="reference internal" href="../Code/Kinematics.html">
+     Kinematics and particle hierarchy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Others.html">
+     Others
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Exercises/README.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Michel_electron.html">
+     Exercise 1: Finding Michel electrons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/dEdx.html">
+     Exercise 2: muon dEdx
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Electron_gamma.html">
+     Exercise 3: electron vs gamma separation
     </a>
    </li>
   </ul>
@@ -303,6 +342,73 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#neutrinos-in-particle-physics">
+   Neutrinos in particle physics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#think-tiny-tiny-particles">
+     Think tiny, tiny particles
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fundamental-interactions">
+     Fundamental interactions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-wave-of-particles">
+     A wave of particles
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#so-i-still-don-t-know-what-neutrinos-are">
+     So… I still don’t know what neutrinos are.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-do-we-know-that-neutrinos-even-exist">
+   How do we know that neutrinos even exist?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-neutrinos-real">
+     Are neutrinos real?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-many-neutrinos-are-there-really">
+     How many neutrinos are there, really?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anomalies">
+     Anomalies
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-galaxy-hitchhikers">
+     The galaxy hitchhikers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#so-we-know-everything-about-neutrinos-right">
+   So we know everything about neutrinos, right?
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -313,13 +419,74 @@
                 
   <div class="section" id="neutrinos">
 <h1>Neutrinos<a class="headerlink" href="#neutrinos" title="Permalink to this headline">¶</a></h1>
+<p>With fancy machine learning algorithms and LArTPC detectors, what are we actually looking for? Neutrinos? That sounds cute, but what is it about exactly?</p>
+<div class="section" id="neutrinos-in-particle-physics">
+<h2>Neutrinos in particle physics<a class="headerlink" href="#neutrinos-in-particle-physics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="think-tiny-tiny-particles">
+<h3>Think tiny, tiny particles<a class="headerlink" href="#think-tiny-tiny-particles" title="Permalink to this headline">¶</a></h3>
+<p>You will also meet people who call it <code class="docutils literal notranslate"><span class="pre">high</span> <span class="pre">energy</span> <span class="pre">physics</span></code> or <code class="docutils literal notranslate"><span class="pre">hep</span></code> in short. What is our universe made of? Why is there matter around us? Particle physics is a field of physics that tries to answer these questions by studying the smallest and irreducible (i.e. that cannot be broken down into smaller particles, as far as we know) <code class="docutils literal notranslate"><span class="pre">particles</span></code> and their interactions, often called <code class="docutils literal notranslate"><span class="pre">fundamental</span> <span class="pre">interactions</span></code>.</p>
+<div class="margin sidebar">
+<p class="sidebar-title">Example</p>
+<p>A hydrogen atom is the simplest possible atom. It contains 1 proton, 1 electron, 1 neutron.
+<a class="reference internal" href="https://lh3.googleusercontent.com/proxy/6ug77eNDTYMOYm2xzPuTLjW4SCeZF_Kun0K3gforD-glGhsUbm7Lhtyc0xslZAng1n19EcEetFvCo7YM5_wQXm0noXp_rPkVbyZ9abczInuDho89cr_eyS48VPQlCTZwoOllVjXb"><img alt="https://lh3.googleusercontent.com/proxy/6ug77eNDTYMOYm2xzPuTLjW4SCeZF_Kun0K3gforD-glGhsUbm7Lhtyc0xslZAng1n19EcEetFvCo7YM5_wQXm0noXp_rPkVbyZ9abczInuDho89cr_eyS48VPQlCTZwoOllVjXb" src="https://lh3.googleusercontent.com/proxy/6ug77eNDTYMOYm2xzPuTLjW4SCeZF_Kun0K3gforD-glGhsUbm7Lhtyc0xslZAng1n19EcEetFvCo7YM5_wQXm0noXp_rPkVbyZ9abczInuDho89cr_eyS48VPQlCTZwoOllVjXb" style="width: 150px;" /></a></p>
+</div>
+<p>Most of you have probably heard of atoms and molecules in high school. For example, water is made of <code class="docutils literal notranslate"><span class="pre">H2O</span></code> molecules. <code class="docutils literal notranslate"><span class="pre">H2O</span></code> is made of two hydrogen atoms and one oxygen atom. So, you were told that matter around you is made of various atoms. What is in these atoms? It turns out that an atom can be smashed down into a bunch of three smaller particles: protons (positively charged), electrons (negatively charged) and neutrons (as the name suggests, neutral charge). Protons and neutrons are stuck together and form the nucleus of the atom. Think of electrons as a cloud orbiting around the nucleus.</p>
+<p>Is that it? For the electron, yes. Electrons are fundamental particles. However you can in turn break down protons and neutrons into <code class="docutils literal notranslate"><span class="pre">quarks</span></code>. And that is where our knowledge stops. As far as we know, quarks are irreducible particles.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="https://i.ytimg.com/vi/FYxfQu2GdR0/hqdefault.jpg"><img alt="https://i.ytimg.com/vi/FYxfQu2GdR0/hqdefault.jpg" src="https://i.ytimg.com/vi/FYxfQu2GdR0/hqdefault.jpg" style="height: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="fundamental-interactions">
+<h3>Fundamental interactions<a class="headerlink" href="#fundamental-interactions" title="Permalink to this headline">¶</a></h3>
+<p>You probably have heard that the gravitational force is what keeps you bounded to the Earth and keeps you from flying like a bird (unfortunately). It also keeps planets of our solar system orbiting around the Sun (pretty important). Gravitation is one of the four fundamental interactions. The other one that we have all encountered is the electromagnetic force.</p>
+<ul class="simple">
+<li><p>The strong force (holds the protons and neutrons together to make the nucleus of an atom)</p></li>
+<li><p>The electromagnetic force (interaction between charges)</p></li>
+<li><p>The weak force</p></li>
+<li><p>The gravitational force</p></li>
+</ul>
+</div>
+<div class="section" id="a-wave-of-particles">
+<h3>A wave of particles<a class="headerlink" href="#a-wave-of-particles" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="so-i-still-don-t-know-what-neutrinos-are">
+<h3>So… I still don’t know what neutrinos are.<a class="headerlink" href="#so-i-still-don-t-know-what-neutrinos-are" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="how-do-we-know-that-neutrinos-even-exist">
+<h2>How do we know that neutrinos even exist?<a class="headerlink" href="#how-do-we-know-that-neutrinos-even-exist" title="Permalink to this headline">¶</a></h2>
+<p>Excellent question! Before LArTPC were even invented, there were smart experimenters who figured out various ways to prove the existence of neutrinos and start studying their properties.</p>
+<div class="section" id="are-neutrinos-real">
+<h3>Are neutrinos real?<a class="headerlink" href="#are-neutrinos-real" title="Permalink to this headline">¶</a></h3>
+<p>Neutrinos were theorized in the 1930s starting with Wolfgang Pauli, Enrico Fermi and various other theoretical physicists. But their ghost existence was not proven until the Reines and Cowan experiment in 1956, after which they sent a telegram to Pauli: “We are happy to inform you that we have definitively detected neutrinos.”</p>
+</div>
+<div class="section" id="how-many-neutrinos-are-there-really">
+<h3>How many neutrinos are there, really?<a class="headerlink" href="#how-many-neutrinos-are-there-really" title="Permalink to this headline">¶</a></h3>
+<p>Muon and tau neutrinos discoveries</p>
+</div>
+<div class="section" id="anomalies">
+<h3>Anomalies<a class="headerlink" href="#anomalies" title="Permalink to this headline">¶</a></h3>
+<p>Solar &amp; atmospheric anomalies -&gt; neutrino oscillation</p>
+</div>
+<div class="section" id="the-galaxy-hitchhikers">
+<h3>The galaxy hitchhikers<a class="headerlink" href="#the-galaxy-hitchhikers" title="Permalink to this headline">¶</a></h3>
+<p>Supernova neutrinos detection
+IceCube &amp; blazar neutrinos</p>
+</div>
+</div>
+<div class="section" id="so-we-know-everything-about-neutrinos-right">
+<h2>So we know everything about neutrinos, right?<a class="headerlink" href="#so-we-know-everything-about-neutrinos-right" title="Permalink to this headline">¶</a></h2>
+<p>Not quite. Believe it or not, we still cannot figure out the absolute mass of neutrinos, nor which one is the lighter (dubbed the <code class="docutils literal notranslate"><span class="pre">hierarchy</span> <span class="pre">problem</span></code>). Actually, our Standard Model predicts that the neutrino should NOT have a mass, so this in itself is interesting.</p>
+<p>Are neutrinos their own antiparticles? (We call such particles, which are their own antiparticles, <code class="docutils literal notranslate"><span class="pre">Majorana</span> <span class="pre">particles</span></code>)
+Why is there matter rather than anti-matter in the universe?</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
+            repo: "Temigo/lartpc_mlreco3d_tutorials",
             ref: "master",
         },
         codeMirrorConfig: {

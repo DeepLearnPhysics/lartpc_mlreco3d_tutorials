@@ -44,9 +44,9 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -150,6 +150,11 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="README.html">
+   Overview of the reconstruction chain
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="Data.html">
    Data I/O
@@ -199,12 +204,44 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="Interaction.html">
-     Interaction clustering
+     Interaction clustering, PID and primary particles
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="PID.html">
-     Particle identification
+    <a class="reference internal" href="Kinematics.html">
+     Kinematics and particle hierarchy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Others.html">
+     Others
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Exercises/README.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Michel_electron.html">
+     Exercise 1: Finding Michel electrons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/dEdx.html">
+     Exercise 2: muon dEdx
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Electron_gamma.html">
+     Exercise 3: electron vs gamma separation
     </a>
    </li>
   </ul>
@@ -303,6 +340,29 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-with-plotly">
+   Visualizing with Plotly
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#helper-functions-for-plotly-visualization-in-lartpc-mlreco3d">
+   Helper functions for Plotly visualization in
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     lartpc_mlreco3d
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -313,7 +373,45 @@
                 
   <div class="section" id="reconstruction-outputs">
 <h1>Reconstruction outputs<a class="headerlink" href="#reconstruction-outputs" title="Permalink to this headline">¶</a></h1>
+<p>If you want to visualize the predictions made by the reconstruction chain,
+you are at the right place. Select which specific stage of the chain you are interested
+in the menu on the left, or keep reading.</p>
+<div class="section" id="visualizing-with-plotly">
+<h2>Visualizing with Plotly<a class="headerlink" href="#visualizing-with-plotly" title="Permalink to this headline">¶</a></h2>
+<p>A typical way of visualizing either inputs or outputs of the chain is using Plotly.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="k">as</span> <span class="nn">go</span>
+<span class="kn">from</span> <span class="nn">plotly.offline</span> <span class="kn">import</span> <span class="n">iplot</span><span class="p">,</span> <span class="n">init_notebook_mode</span>
+<span class="n">init_notebook_mode</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">lartpc_mlreco3d</span></code> has a few helpers to facilitate the visualization of common
+quantities. For example, the <code class="docutils literal notranslate"><span class="pre">scatter_points</span></code> function will display a 3D sparse tensor
+and <code class="docutils literal notranslate"><span class="pre">plotly_layout3d</span></code> provides a default layout for the Plotly 3D visualization.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlreco.visualization</span> <span class="kn">import</span> <span class="n">scatter_points</span><span class="p">,</span> <span class="n">plotly_layout3d</span>
+</pre></div>
+</div>
+<p>You can then have just a few lines of code to visualize your tensor:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">trace</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">trace</span><span class="o">+=</span> <span class="n">scatter_points</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">input_data</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">colorscale</span><span class="o">=</span><span class="n">plotly</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">qualitative</span><span class="o">.</span><span class="n">D3</span><span class="p">)</span>
+<span class="n">trace</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;True semantic labels (true no-ghost mask)&#39;</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">trace</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">plotly_layout3d</span><span class="p">())</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.8</span><span class="p">))</span>
+
+<span class="n">iplot</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="helper-functions-for-plotly-visualization-in-lartpc-mlreco3d">
+<h2>Helper functions for Plotly visualization in <code class="docutils literal notranslate"><span class="pre">lartpc_mlreco3d</span></code><a class="headerlink" href="#helper-functions-for-plotly-visualization-in-lartpc-mlreco3d" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>TODO</p>
+</div>
 <div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
@@ -321,7 +419,7 @@
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
+            repo: "Temigo/lartpc_mlreco3d_tutorials",
             ref: "master",
         },
         codeMirrorConfig: {

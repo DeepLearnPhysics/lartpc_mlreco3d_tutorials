@@ -42,18 +42,20 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Using lartpc_mlreco3d" href="Data1.html" />
-    <link rel="prev" title="Liquid Argon Time Projection Chamber (aka LArTPC)" href="../Physics/Lartpc.html" />
+    <link rel="prev" title="Overview of the reconstruction chain" href="README.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -150,6 +152,11 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="README.html">
+   Overview of the reconstruction chain
+  </a>
+ </li>
  <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
    Data I/O
@@ -199,12 +206,44 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="Interaction.html">
-     Interaction clustering
+     Interaction clustering, PID and primary particles
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="PID.html">
-     Particle identification
+    <a class="reference internal" href="Kinematics.html">
+     Kinematics and particle hierarchy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Others.html">
+     Others
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Exercises/README.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Michel_electron.html">
+     Exercise 1: Finding Michel electrons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/dEdx.html">
+     Exercise 2: muon dEdx
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Electron_gamma.html">
+     Exercise 3: electron vs gamma separation
     </a>
    </li>
   </ul>
@@ -313,18 +352,10 @@
                 
   <div class="section" id="data-i-o">
 <h1>Data I/O<a class="headerlink" href="#data-i-o" title="Permalink to this headline">¶</a></h1>
-<div class="tabbed-set docutils">
-<input checked="checked" id="2a1cc79b-5e67-49f5-979b-434c7978bbbd" name="0dd86f23-b55c-45e4-b208-9de6d6472049" type="radio">
-</input><label class="tabbed-label" for="2a1cc79b-5e67-49f5-979b-434c7978bbbd">
-Using lartpc_mlreco3d</label><div class="tabbed-content docutils">
-<p>My first tab</p>
-</div>
-<input id="02ee8e53-1453-4419-9c5b-2b74eacc1d87" name="0dd86f23-b55c-45e4-b208-9de6d6472049" type="radio">
-</input><label class="tabbed-label" for="02ee8e53-1453-4419-9c5b-2b74eacc1d87">
-Using ROOT only</label><div class="tabbed-content docutils">
-<p>My second tab with <code class="docutils literal notranslate"><span class="pre">some</span> <span class="pre">code</span></code>!</p>
-</div>
-</div>
+<p>You are here because you want to take a look by yourself at the datasets.
+The recommended way using <code class="docutils literal notranslate"><span class="pre">lartpc_mlreco3d</span></code> is <a class="reference internal" href="Data1.html"><span class="doc std std-doc">here</span></a>. However
+if you are a ROOT addict, know that you can get your hands dirty and examine
+the data file directly <a class="reference internal" href="Data2.html"><span class="doc std std-doc">here</span></a>.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -333,7 +364,7 @@ Using ROOT only</label><div class="tabbed-content docutils">
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
+            repo: "Temigo/lartpc_mlreco3d_tutorials",
             ref: "master",
         },
         codeMirrorConfig: {
@@ -354,7 +385,7 @@ Using ROOT only</label><div class="tabbed-content docutils">
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../Physics/Lartpc.html" title="previous page">Liquid Argon Time Projection Chamber (aka LArTPC)</a>
+    <a class='left-prev' id="prev-link" href="README.html" title="previous page">Overview of the reconstruction chain</a>
     <a class='right-next' id="next-link" href="Data1.html" title="next page">Using <code class="docutils literal notranslate"><span class="pre">lartpc_mlreco3d</span></code></a>
 
         </div>
