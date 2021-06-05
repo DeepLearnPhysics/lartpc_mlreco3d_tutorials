@@ -12,7 +12,7 @@ kernelspec:
   language: python
   name: python3
 execution:
-  timeout: 60
+  timeout: 240
 ---
 
 # Particle clustering
@@ -133,7 +133,7 @@ class_mask = segment_pred[ghost_mask] == c
 Time to run the fit function that looks at the predicted embeddings and
 does the actual clustering inference for us:
 ```{code-cell}
-cluster_preds, cluster_prob = fit_predict_np(embeddings = embeddings[class_mask],
+cluster_preds = fit_predict_np(embeddings = embeddings[class_mask],
                                           seediness = seediness[class_mask], 
                                           margins = margins[class_mask], 
                                           fitfunc = gaussian_kernel,

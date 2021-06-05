@@ -58,7 +58,7 @@ iotool:
   dataset:
     name: LArCVDataset
     data_keys:
-      - /gpfs/slac/staas/fs1/g/neutrino/kterao/data/wire_mpvmpr_2020_04/test_*.root
+      - ./wire_mpvmpr_2020_04_test_small.root
     limit_num_files: 10
     #event_list: '[6436, 562, 3802, 6175, 15256]'
     schema:
@@ -261,7 +261,7 @@ iotool:
   dataset:
     (...)
     data_keys:
-      - /gpfs/slac/staas/fs1/g/neutrino/kterao/data/mpvmpr_2020_01_v04/train.root
+      - ./wire_mpvmpr_2020_04_test_small.root
     (...)
     schema:
       input_data:
@@ -310,7 +310,7 @@ Note: some stages of the chain might expect a specific name in the input diction
 Sometimes this is configurable in the network configuration. 
 
 ### I/O Configuration - a real example
-Let us run a real I/O configuration example and take a look at some of the parsers output.
+Let us show a real I/O configuration example:
 
 ```
 iotool:
@@ -323,7 +323,7 @@ iotool:
   dataset:
     name: LArCVDataset
     data_keys:
-      - /gpfs/slac/staas/fs1/g/neutrino/kterao/data/mpvmpr_2020_01_v04/train.root
+      - ./wire_mpvmpr_2020_04_test_small.root
     limit_num_files: 10
     schema:
       input_data:

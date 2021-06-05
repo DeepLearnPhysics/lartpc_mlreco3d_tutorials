@@ -39,7 +39,7 @@ from ROOT import  TFile, TChain
 
 Now open the file using ROOT:
 ```{code-cell}
-example = TFile( ' /sdf/home/l/ldomine/larcv.root' )
+example = TFile( './wire_mpvmpr_2020_04_test_small.root' )
 example.ls()
 ```
 
