@@ -160,20 +160,96 @@
    Overview of the reconstruction chain
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Code/Data.html">
    Data I/O
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Data1.html">
+     Using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       lartpc_mlreco3d
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Data2.html">
+     Using ROOT only
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Code/Output.html">
    Reconstruction outputs
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/UResNet_PPN.html">
+     Semantics &amp; points of interest
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Clustering.html">
+     Particle clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Interaction.html">
+     Interaction clustering, PID and primary particles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Kinematics.html">
+     Kinematics and particle hierarchy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Others.html">
+     Others
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Exercises/README.html">
    Exercises
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Michel_electron.html">
+     Exercise 1: Finding Michel electrons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/dEdx.html">
+     Exercise 2: muon dEdx
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Electron_gamma.html">
+     Exercise 3: electron vs gamma separation
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p class="caption">
@@ -518,7 +594,7 @@ Developed in the late 1980s by Dutch research programmer Guido van Rossum. Guido
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We are using python 3.8.5
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We are using python 3.6.9
 </pre></div>
 </div>
 </div>
@@ -885,11 +961,12 @@ y = 4
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on built-in function round in module builtins:
 
-round(number, ndigits=None)
-    Round a number to a given precision in decimal digits.
+round(...)
+    round(number[, ndigits]) -&gt; number
     
-    The return value is an integer if ndigits is omitted or None.  Otherwise
-    the return value has the same type as the number.  ndigits may be negative.
+    Round a number to a given precision in decimal digits (default 0 digits).
+    This returns an int when called with one argument, otherwise the
+    same type as the number. ndigits may be negative.
 </pre></div>
 </div>
 </div>
@@ -1262,7 +1339,9 @@ Hi! I am dell xps15, and I am a laptop. I have 8 CPUs.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hi! I am imac, and I am a desktop. I have 16 CPUs.
-Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 GPUs.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 GPUs.
 </pre></div>
 </div>
 </div>
@@ -1366,7 +1445,7 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iterator at 0x7fe1981ff970&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iterator at 0x7fe2c44c8198&gt;
 </pre></div>
 </div>
 </div>
@@ -1380,7 +1459,10 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 1 2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 2
 </pre></div>
 </div>
 </div>
@@ -1429,10 +1511,10 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>287 µs ± 6.62 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>285 µs ± 1.16 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>241 µs ± 6.06 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>231 µs ± 2.63 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1562,10 +1644,10 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>281 µs ± 8.65 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>285 µs ± 28.5 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>240 µs ± 1.87 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>248 µs ± 857 ns per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1861,18 +1943,22 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/home/drinkingkazu/sw/lartpc_mlreco3d_tutorials/Prerequisites&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/app/larcv2/python&#39;,
+ &#39;/app/root/lib&#39;,
  &#39;/usr/local/root/lib&#39;,
- &#39;/home/drinkingkazu/sw/lartpc_mlreco3d_tutorials/Prerequisites&#39;,
- &#39;/usr/lib/python38.zip&#39;,
- &#39;/usr/lib/python3.8&#39;,
- &#39;/usr/lib/python3.8/lib-dynload&#39;,
+ &#39;/sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/Prerequisites&#39;,
  &#39;&#39;,
- &#39;/home/drinkingkazu/.local/lib/python3.8/site-packages&#39;,
- &#39;/usr/local/lib/python3.8/dist-packages&#39;,
+ &#39;/sdf/home/l/ldomine/.local/lib/python3.6/site-packages&#39;,
+ &#39;/usr/lib/python36.zip&#39;,
+ &#39;/usr/lib/python3.6&#39;,
+ &#39;/usr/lib/python3.6/lib-dynload&#39;,
+ &#39;/sdf/home/l/ldomine/.local/lib/python3.6/site-packages/RoIAlign_extension_3D-0.0.0-py3.6-linux-x86_64.egg&#39;,
+ &#39;/sdf/home/l/ldomine/.local/lib/python3.6/site-packages/nms_extension-0.0.0-py3.6-linux-x86_64.egg&#39;,
+ &#39;/usr/local/lib/python3.6/dist-packages&#39;,
  &#39;/usr/lib/python3/dist-packages&#39;,
- &#39;/usr/local/lib/python3.8/dist-packages/IPython/extensions&#39;,
- &#39;/home/drinkingkazu/.ipython&#39;]
+ &#39;/usr/local/root/lib&#39;,
+ &#39;/usr/local/lib/python3.6/dist-packages/IPython/extensions&#39;,
+ &#39;/sdf/home/l/ldomine/.ipython&#39;]
 </pre></div>
 </div>
 </div>
@@ -1885,7 +1971,7 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/lib/python3.8/platform.py
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/lib/python3.6/platform.py
 </pre></div>
 </div>
 </div>

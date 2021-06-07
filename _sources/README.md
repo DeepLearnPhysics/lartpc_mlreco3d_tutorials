@@ -34,7 +34,8 @@ $ pip install -U ghp-import
 then you can easily update the Github Pages after building:
 
 ```bash
-$ ghp-import -n -p -f lartpc_mlreco3d_tutorials/_build/html
+$ cd lartpc_mlreco3d_tutorials
+$ ghp-import -n -p -f _build/html
 ```
 
 ## Built with
