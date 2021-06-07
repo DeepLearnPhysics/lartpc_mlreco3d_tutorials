@@ -1,0 +1,50 @@
+# Table of content
+# Learn more at https://jupyterbook.org/customize/toc.html
+#
+- file: intro
+
+- part: Prerequisites
+  chapters:
+    - file: Prerequisites/Python.md
+      sections:
+        - file: Prerequisites/Python-01-Jupyter.md
+          title: Using Jupyter
+        - file: Prerequisites/Python-02-Python.md
+        - file: Prerequisites/Python-03-Numpy.md
+        - file: Prerequisites/Python-04-ScientificPython.md
+
+    - file: Prerequisites/Pytorch.md
+      sections:
+        - file: Prerequisites/Python-05-PyTorch.md
+        - file: Prerequisites/Python-06-MNIST-CIFAR10.md
+        
+    - file: Prerequisites/Git.md
+    
+- part: Some Physics
+  chapters:
+    - file: Physics/Neutrinos.md
+    - file: Physics/Lartpc.md
+    
+- part: lartpc_mlreco3d
+  chapters:
+    - file: Code/README.md
+    - file: Code/Data.md
+      sections:
+        - file: Code/Data1.md
+        - file: Code/Data2.md
+    - file: Code/Output.md
+      sections:
+        - file: Code/UResNet_PPN.md
+        - file: Code/Clustering.md
+        - file: Code/Interaction.md
+        - file: Code/Kinematics.md
+        - file: Code/Others.md
+    - file: Exercises/README.md
+      sections:
+        - file: Exercises/Michel_electron.md
+        - file: Exercises/dEdx.md
+        - file: Exercises/Electron_gamma.md
+    
+- part: Using SDF
+  chapters:
+    - file: ComputeAccess/README.md
