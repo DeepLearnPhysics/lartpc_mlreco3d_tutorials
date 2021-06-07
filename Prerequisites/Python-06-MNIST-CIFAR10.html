@@ -55,7 +55,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Version control with Git" href="Git.html" />
-    <link rel="prev" title="Pytorch" href="Python-05-PyTorch.html" />
+    <link rel="prev" title="Pytorch: Machine Learning library" href="Python-05-PyTorch.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -98,35 +98,59 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python-01-Jupyter.html">
-   Using Jupyter
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="Python.html">
+   Python basics
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Python-01-Jupyter.html">
+     Using Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Python-02-Python.html">
+     Introduction to Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Python-03-Numpy.html">
+     Up and Running with Python3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Python-04-ScientificPython.html">
+     Visualization, Fitting, and File Format
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python-02-Python.html">
-   Introduction to Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python-03-Numpy.html">
-   Up and Running with Python3
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python-04-ScientificPython.html">
-   Visualization, Fitting, and File Format
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python-05-PyTorch.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Pytorch.html">
    Pytorch
   </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Practice with MNIST
-  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="Python-05-PyTorch.html">
+     Pytorch: Machine Learning library
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Streaming Input Dataset
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Git.html">
@@ -166,8 +190,8 @@
   <a class="reference internal" href="../Code/Data.html">
    Data I/O
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -193,8 +217,8 @@
   <a class="reference internal" href="../Code/Output.html">
    Reconstruction outputs
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -230,8 +254,8 @@
   <a class="reference internal" href="../Exercises/README.html">
    Exercises
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -304,11 +328,14 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/Prerequisites/Python-06-MNIST-CIFAR10.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+        <a class="dropdown-buttons"
+            href="../_sources/Prerequisites/Python-06-MNIST-CIFAR10.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Prerequisites/Python-06-MNIST-CIFAR10.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -347,18 +374,13 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/DeepLearnPhysics/lartpc_mlreco3d_tutorials/master?urlpath=tree/Prerequisites/Python-06-MNIST-CIFAR10.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/DeepLearnPhysics/lartpc_mlreco3d_tutorials/master?urlpath=tree/Prerequisites/Python-06-MNIST-CIFAR10.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
                     alt="Interact on binder">Binder</button></a>
         
         
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/DeepLearnPhysics/lartpc_mlreco3d_tutorials/blob/master/Prerequisites/Python-06-MNIST-CIFAR10.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
         
         <button type="button" class="btn btn-secondary topbarbtn"
             onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
@@ -432,16 +454,11 @@
 <p>We already covered the basics of an iterable dataset (<span class="xref myst">Python-02-Python</span>) and pytorch’s <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> (<span class="xref myst">Python-05-Pytorch.ipynb</span>). In this notebook, we introduce a few datasets that will be used during the hands-on sessions, and practic looping over the dataset using <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code>!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">SEED</span><span class="o">=</span><span class="mi">123</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch._C.Generator at 0x7f6b7f05bde0&gt;
 </pre></div>
 </div>
 </div>
@@ -454,7 +471,7 @@
 <p>A <code class="docutils literal notranslate"><span class="pre">torchvision</span></code> is a supporting module that has many image-related APIs including an interface (and management) of MNIST dataset. Let’s see how we can construct:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span>
 <span class="c1"># Data file download directory</span>
 <span class="n">LOCAL_DATA_DIR</span> <span class="o">=</span> <span class="s1">&#39;./mnist-data&#39;</span>
 <span class="c1"># Use prepared data handler from pytorch (torchvision)</span>
@@ -463,25 +480,12 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./mnist-data/MNIST/raw/train-images-idx3-ubyte.gz
-</pre></div>
-</div>
-<script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "ec6527e203c94e5d8688d52020b0483f"}
-</script></div>
 </div>
 <p>Here, MNIST is also a type <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> (how? through class inheritance). All torch <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> instance have tow useful and common functions: the length representations and data element access via index.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>  <span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>  <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span> <span class="nb">type</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60000
-&lt;class &#39;tuple&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -489,16 +493,10 @@
 <p>That being said, how each data element is presented depends on a particular <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> implementation. In case of MNIST, it is a tuple of length 2: <strong>data</strong> and <strong>label</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ENTRY</span><span class="o">=</span><span class="mi">0</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ENTRY</span><span class="o">=</span><span class="mi">0</span>
 <span class="n">data</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">ENTRY</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Type of data  :&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>  <span class="s1">&#39;shape&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Type of label :&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">label</span><span class="p">),</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Type of data  : &lt;class &#39;torch.Tensor&#39;&gt; shape torch.Size([1, 28, 28])
-Type of label : &lt;class &#39;int&#39;&gt; value 5
 </pre></div>
 </div>
 </div>
@@ -506,8 +504,8 @@ Type of label : &lt;class &#39;int&#39;&gt; value 5
 <p>MNIST is an image of a hand-written digit in 28x28 pixels, gray scale. Note that the data <code class="docutils literal notranslate"><span class="pre">shape</span></code> is <code class="docutils literal notranslate"><span class="pre">[1,28,28]</span></code>. This follows the convention in Pytorch for image data represented as <span class="math notranslate nohighlight">\((Cannel,Height,Width)\)</span>, or in short <span class="math notranslate nohighlight">\((C,H,W)\)</span>. Let’s visualize using <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.imshow</span></code>. This function can take <span class="math notranslate nohighlight">\((H,W)\)</span> of a gray scale image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 
 <span class="c1"># Draw data</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
@@ -516,17 +514,11 @@ Type of label : &lt;class &#39;int&#39;&gt; value 5
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<img alt="../_images/Python-06-MNIST-CIFAR10_9_1.png" src="../_images/Python-06-MNIST-CIFAR10_9_1.png" />
-</div>
 </div>
 <p>Let us define a function that can list images and labels in the dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_dataset</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span><span class="n">num_image_per_class</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_dataset</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span><span class="n">num_image_per_class</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
     <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
     <span class="n">num_class</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">classes</span> <span class="o">=</span> <span class="p">[]</span>
@@ -560,14 +552,12 @@ Type of label : &lt;class &#39;int&#39;&gt; value 5
 </div>
 </div>
 </div>
+<p>Visualize!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_dataset</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plot_dataset</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/Python-06-MNIST-CIFAR10_12_0.png" src="../_images/Python-06-MNIST-CIFAR10_12_0.png" />
 </div>
 </div>
 </div>
@@ -576,7 +566,7 @@ Type of label : &lt;class &#39;int&#39;&gt; value 5
 <p>Since the MNIST dataset is an iteratable one, we can create pytorch DataLoader!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
 <span class="n">loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span>
                                      <span class="n">batch_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
                                      <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -603,14 +593,8 @@ Type of label : &lt;class &#39;int&#39;&gt; value 5
 <p>So let’s play with it! First of all, it has the concept of “length”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;length of DataLoader:&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">loader</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;length of DataLoader:&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">loader</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;By the way, batch size * length =&#39;</span><span class="p">,</span> <span class="mi">20</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">loader</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>length of DataLoader: 3000
-By the way, batch size * length = 60000
 </pre></div>
 </div>
 </div>
@@ -618,7 +602,7 @@ By the way, batch size * length = 60000
 <p>We know the data total statistics is 60,000 which coincides with the length of <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> instance and the batch size where the latter is the unit of batch data. <strong>Yep, as you guessed</strong>, <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> is iterable:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an iterator for playin in this notebook</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an iterator for playin in this notebook</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">cycle</span>
 <span class="nb">iter</span> <span class="o">=</span> <span class="n">cycle</span><span class="p">(</span><span class="n">loader</span><span class="p">)</span>
 
@@ -629,40 +613,11 @@ By the way, batch size * length = 60000
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 0
-tensor([8, 3, 5, 2, 9, 2, 3, 7, 2, 6, 8, 4, 1, 0, 4, 7, 6, 7, 3, 2])
-Iteration 1
-tensor([5, 0, 5, 2, 7, 2, 7, 7, 3, 7, 0, 9, 8, 9, 0, 7, 4, 7, 3, 3])
-Iteration 2
-tensor([0, 6, 1, 2, 3, 8, 2, 6, 3, 2, 5, 9, 2, 9, 5, 9, 2, 0, 5, 6])
-Iteration 3
-tensor([5, 2, 7, 7, 7, 3, 1, 1, 0, 1, 1, 7, 6, 5, 9, 3, 0, 5, 6, 2])
-Iteration 4
-tensor([5, 2, 4, 9, 6, 8, 4, 1, 5, 8, 1, 7, 5, 5, 9, 3, 1, 7, 8, 5])
-Iteration 5
-tensor([7, 1, 9, 3, 3, 2, 2, 4, 1, 5, 4, 6, 1, 8, 2, 5, 3, 8, 0, 2])
-Iteration 6
-tensor([1, 3, 3, 6, 2, 7, 5, 8, 7, 6, 4, 2, 0, 1, 3, 3, 1, 1, 7, 4])
-Iteration 7
-tensor([4, 9, 8, 4, 4, 7, 1, 1, 5, 3, 5, 1, 8, 0, 7, 2, 7, 5, 3, 3])
-Iteration 8
-tensor([3, 0, 8, 2, 2, 0, 2, 3, 0, 9, 0, 2, 6, 6, 1, 3, 0, 7, 4, 3])
-Iteration 9
-tensor([8, 1, 1, 7, 2, 4, 8, 2, 2, 7, 0, 2, 5, 3, 7, 1, 2, 9, 1, 5])
-</pre></div>
-</div>
-</div>
 </div>
 <p>… and this is how <code class="docutils literal notranslate"><span class="pre">data</span></code> looks like:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Shape of an image batch data&#39;</span><span class="p">,</span><span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape of an image batch data torch.Size([20, 1, 28, 28])
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Shape of an image batch data&#39;</span><span class="p">,</span><span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -675,7 +630,7 @@ tensor([8, 1, 1, 7, 2, 4, 8, 2, 2, 7, 0, 2, 5, 3, 7, 1, 2, 9, 1, 5])
 <p><code class="docutils literal notranslate"><span class="pre">CIFAR10</span></code> is yet another public dataset of 32x32 pixels RGB photographs. It contains 10 classes like MNIST but it is much more complicated than a gray scale, hand-written digits.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span>
 <span class="c1"># Data file download directory</span>
 <span class="n">LOCAL_DATA_DIR</span> <span class="o">=</span> <span class="s1">&#39;./cifar10-data&#39;</span>
 <span class="c1"># Create the dataset</span>
@@ -686,22 +641,11 @@ tensor([8, 1, 1, 7, 2, 4, 8, 2, 2, 7, 0, 2, 5, 3, 7, 1, 2, 9, 1, 5])
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to ./cifar10-data/cifar-10-python.tar.gz
-</pre></div>
-</div>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "cb7849d95a3d484fb5ad447c54641be0", "version_major": 2, "version_minor": 0}
-</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./cifar10-data/cifar-10-python.tar.gz to ./cifar10-data
-</pre></div>
-</div>
-<img alt="../_images/Python-06-MNIST-CIFAR10_23_3.png" src="../_images/Python-06-MNIST-CIFAR10_23_3.png" />
-</div>
 </div>
 <p>Nothing new in terms of how-to, but let’s also create a <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> with <code class="docutils literal notranslate"><span class="pre">CIFAR10</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">pin_memory</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">pin_memory</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">cycle</span><span class="p">(</span><span class="n">loader</span><span class="p">))</span>
 </pre></div>
@@ -711,7 +655,7 @@ tensor([8, 1, 1, 7, 2, 4, 8, 2, 2, 7, 0, 2, 5, 3, 7, 1, 2, 9, 1, 5])
 <p>Let’s take a look at the <code class="docutils literal notranslate"><span class="pre">batch</span></code> data. Recall the shape of this image <span class="math notranslate nohighlight">\((C,H,W)\)</span> where <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.imshow</span></code> takes the format <span class="math notranslate nohighlight">\((H,W,C)\)</span> just like how an ordinary photograph is presented. We use <code class="docutils literal notranslate"><span class="pre">torch.permute</span></code> function to swap the axis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">photos</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="n">batch</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">photos</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="n">batch</span>
 <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">photos</span><span class="p">)):</span>
     <span class="n">photo</span> <span class="o">=</span> <span class="n">photos</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">label</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
@@ -721,42 +665,7 @@ tensor([8, 1, 1, 7, 2, 4, 8, 2, 2, 7, 0, 2, 5, 3, 7, 1, 2, 9, 1, 5])
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dog
-</pre></div>
 </div>
-<img alt="../_images/Python-06-MNIST-CIFAR10_27_1.png" src="../_images/Python-06-MNIST-CIFAR10_27_1.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>frog
-</pre></div>
-</div>
-<img alt="../_images/Python-06-MNIST-CIFAR10_27_3.png" src="../_images/Python-06-MNIST-CIFAR10_27_3.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>frog
-</pre></div>
-</div>
-<img alt="../_images/Python-06-MNIST-CIFAR10_27_5.png" src="../_images/Python-06-MNIST-CIFAR10_27_5.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>horse
-</pre></div>
-</div>
-<img alt="../_images/Python-06-MNIST-CIFAR10_27_7.png" src="../_images/Python-06-MNIST-CIFAR10_27_7.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>truck
-</pre></div>
-</div>
-<img alt="../_images/Python-06-MNIST-CIFAR10_27_9.png" src="../_images/Python-06-MNIST-CIFAR10_27_9.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>airplane
-</pre></div>
-</div>
-<img alt="../_images/Python-06-MNIST-CIFAR10_27_11.png" src="../_images/Python-06-MNIST-CIFAR10_27_11.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>deer
-</pre></div>
-</div>
-<img alt="../_images/Python-06-MNIST-CIFAR10_27_13.png" src="../_images/Python-06-MNIST-CIFAR10_27_13.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>horse
-</pre></div>
-</div>
-<img alt="../_images/Python-06-MNIST-CIFAR10_27_15.png" src="../_images/Python-06-MNIST-CIFAR10_27_15.png" />
-</div>
-</div>
-<p>Any questions? As usual feel free to <a class="reference external" href="mailto:kterao&#37;&#52;&#48;slac&#46;stanford&#46;edu">hit Kazu</a>.</p>
 </div>
 </div>
 
@@ -785,7 +694,7 @@ tensor([8, 1, 1, 7, 2, 4, 8, 2, 2, 7, 0, 2, 5, 3, 7, 1, 2, 9, 1, 5])
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="Python-05-PyTorch.html" title="previous page">Pytorch</a>
+    <a class='left-prev' id="prev-link" href="Python-05-PyTorch.html" title="previous page">Pytorch: Machine Learning library</a>
     <a class='right-next' id="next-link" href="Git.html" title="next page">Version control with Git</a>
 
         </div>

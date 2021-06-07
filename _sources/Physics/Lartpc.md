@@ -98,11 +98,9 @@ The cross-section of particle interactions scales with the density of the materi
 
 ### Why does argon purity matter?
 The higher the liquid argon purity is, the less likely the ionization electrons (which are free electrons
-as they drift) are to be captured by an argon atom before they reach the wire planes.
+as they drift) are to be captured by impurities (e.g. Oxygen) before they reach the charge-sensitive detector elements. Similarly, scintillation photons suffer from an absorption by impurities (e.g. Nitrogen). The larger the volume, the more crucial to remove impurities because of the longer distance ionization electrons and scintillation photons must travel to the detector elements (hence the greater chance of being absorbed). A purification system, which typically consists of a circulation pump and a filters to remove impurities, can be used to reduce the level of impurities. A continuous monitoring of the purity is also important to avoid situations and to apply calibrations to adjust for the lost signal due to impurities.
 
 
-## Other fun facts about LArTPCs
-Ask Kazu about it. He has a whole list.
 
 ## Neutrino LArTPC experiments in our group
 You might hear about them quite often if you work with us. As a quick overview to clear out the confusion,

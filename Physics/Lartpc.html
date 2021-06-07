@@ -96,35 +96,59 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../Prerequisites/Python-01-Jupyter.html">
-   Using Jupyter
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Prerequisites/Python.html">
+   Python basics
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Prerequisites/Python-01-Jupyter.html">
+     Using Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Prerequisites/Python-02-Python.html">
+     Introduction to Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Prerequisites/Python-03-Numpy.html">
+     Up and Running with Python3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Prerequisites/Python-04-ScientificPython.html">
+     Visualization, Fitting, and File Format
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Prerequisites/Python-02-Python.html">
-   Introduction to Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Prerequisites/Python-03-Numpy.html">
-   Up and Running with Python3
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Prerequisites/Python-04-ScientificPython.html">
-   Visualization, Fitting, and File Format
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Prerequisites/Python-05-PyTorch.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Prerequisites/Pytorch.html">
    Pytorch
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Prerequisites/Python-06-MNIST-CIFAR10.html">
-   Practice with MNIST
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Prerequisites/Python-05-PyTorch.html">
+     Pytorch: Machine Learning library
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Prerequisites/Python-06-MNIST-CIFAR10.html">
+     Streaming Input Dataset
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Prerequisites/Git.html">
@@ -164,8 +188,8 @@
   <a class="reference internal" href="../Code/Data.html">
    Data I/O
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -191,8 +215,8 @@
   <a class="reference internal" href="../Code/Output.html">
    Reconstruction outputs
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -228,8 +252,8 @@
   <a class="reference internal" href="../Exercises/README.html">
    Exercises
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -405,11 +429,6 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#other-fun-facts-about-lartpcs">
-   Other fun facts about LArTPCs
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#neutrino-lartpc-experiments-in-our-group">
    Neutrino LArTPC experiments in our group
   </a>
@@ -521,12 +540,8 @@ off these chains of interactions.</p>
 <div class="section" id="why-does-argon-purity-matter">
 <h3>Why does argon purity matter?<a class="headerlink" href="#why-does-argon-purity-matter" title="Permalink to this headline">¶</a></h3>
 <p>The higher the liquid argon purity is, the less likely the ionization electrons (which are free electrons
-as they drift) are to be captured by an argon atom before they reach the wire planes.</p>
+as they drift) are to be captured by impurities (e.g. Oxygen) before they reach the charge-sensitive detector elements. Similarly, scintillation photons suffer from an absorption by impurities (e.g. Nitrogen). The larger the volume, the more crucial to remove impurities because of the longer distance ionization electrons and scintillation photons must travel to the detector elements (hence the greater chance of being absorbed). A purification system, which typically consists of a circulation pump and a filters to remove impurities, can be used to reduce the level of impurities. A continuous monitoring of the purity is also important to avoid situations and to apply calibrations to adjust for the lost signal due to impurities.</p>
 </div>
-</div>
-<div class="section" id="other-fun-facts-about-lartpcs">
-<h2>Other fun facts about LArTPCs<a class="headerlink" href="#other-fun-facts-about-lartpcs" title="Permalink to this headline">¶</a></h2>
-<p>Ask Kazu about it. He has a whole list.</p>
 </div>
 <div class="section" id="neutrino-lartpc-experiments-in-our-group">
 <h2>Neutrino LArTPC experiments in our group<a class="headerlink" href="#neutrino-lartpc-experiments-in-our-group" title="Permalink to this headline">¶</a></h2>

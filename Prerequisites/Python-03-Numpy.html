@@ -96,35 +96,59 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python-01-Jupyter.html">
-   Using Jupyter
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Python.html">
+   Python basics
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="Python-01-Jupyter.html">
+     Using Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Python-02-Python.html">
+     Introduction to Python
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Up and Running with Python3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Python-04-ScientificPython.html">
+     Visualization, Fitting, and File Format
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python-02-Python.html">
-   Introduction to Python
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Up and Running with Python3
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python-04-ScientificPython.html">
-   Visualization, Fitting, and File Format
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python-05-PyTorch.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="Pytorch.html">
    Pytorch
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python-06-MNIST-CIFAR10.html">
-   Practice with MNIST
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Python-05-PyTorch.html">
+     Pytorch: Machine Learning library
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Python-06-MNIST-CIFAR10.html">
+     Streaming Input Dataset
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Git.html">
@@ -164,8 +188,8 @@
   <a class="reference internal" href="../Code/Data.html">
    Data I/O
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -191,8 +215,8 @@
   <a class="reference internal" href="../Code/Output.html">
    Reconstruction outputs
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -228,8 +252,8 @@
   <a class="reference internal" href="../Exercises/README.html">
    Exercises
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -302,11 +326,14 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/Prerequisites/Python-03-Numpy.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+        <a class="dropdown-buttons"
+            href="../_sources/Prerequisites/Python-03-Numpy.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Prerequisites/Python-03-Numpy.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -345,18 +372,13 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/DeepLearnPhysics/lartpc_mlreco3d_tutorials/master?urlpath=tree/Prerequisites/Python-03-Numpy.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/DeepLearnPhysics/lartpc_mlreco3d_tutorials/master?urlpath=tree/Prerequisites/Python-03-Numpy.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
                     alt="Interact on binder">Binder</button></a>
         
         
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/DeepLearnPhysics/lartpc_mlreco3d_tutorials/blob/master/Prerequisites/Python-03-Numpy.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
         
         <button type="button" class="btn btn-secondary topbarbtn"
             onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
@@ -474,18 +496,12 @@ Is a Python library adding support for multi-dimensional arrays and matrices, as
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.19.5
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.20.3
 </pre></div>
 </div>
 </div>
@@ -495,12 +511,12 @@ Is a Python library adding support for multi-dimensional arrays and matrices, as
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masses_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.511</span><span class="p">,</span> <span class="mf">105.66</span><span class="p">,</span> <span class="mf">1.78e3</span><span class="p">]</span>
 <span class="n">masses_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">masses_list</span><span class="p">)</span>
-<span class="n">masses_array</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">masses_array</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([5.1100e-01, 1.0566e+02, 1.7800e+03])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5.1100e-01 1.0566e+02 1.7800e+03]
 </pre></div>
 </div>
 </div>
@@ -509,12 +525,12 @@ Is a Python library adding support for multi-dimensional arrays and matrices, as
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masses_array_gev</span> <span class="o">=</span> <span class="n">masses_array</span> <span class="o">*</span> <span class="mf">1e-3</span>
-<span class="n">masses_array_gev</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">masses_array_gev</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([5.1100e-04, 1.0566e-01, 1.7800e+00])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5.1100e-04 1.0566e-01 1.7800e+00]
 </pre></div>
 </div>
 </div>
@@ -573,15 +589,13 @@ For example you can do <code class="docutils literal notranslate"><span class="p
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXCERCISE: Create an array with zeros that has 11 elements, each of which is a 64-bit integer</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int64&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
-<span class="n">a</span><span class="o">.</span><span class="n">dtype</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0 0 0 0 0 0 0 0 0 0 0] &lt;class &#39;numpy.ndarray&#39;&gt;
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;int64&#39;)
+int64
 </pre></div>
 </div>
 </div>
@@ -594,12 +608,12 @@ For example you can do <code class="docutils literal notranslate"><span class="p
 <span class="n">masses_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.511</span><span class="p">,</span> <span class="mf">105.66</span><span class="p">,</span> <span class="mf">1.78e3</span><span class="p">]</span>
 <span class="n">masses_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="n">j</span><span class="p">)</span>
 <span class="n">masses_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">masses_list</span><span class="p">)</span>
-<span class="n">masses_array</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">masses_array</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([5.1100e-01+0.j, 1.0566e+02+0.j, 1.7800e+03+0.j, 1.0000e+00+2.j])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5.1100e-01+0.j 1.0566e+02+0.j 1.7800e+03+0.j 1.0000e+00+2.j]
 </pre></div>
 </div>
 </div>
@@ -619,12 +633,12 @@ For example you can do <code class="docutils literal notranslate"><span class="p
 <p>For example, to select the last element:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masses_array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">masses_array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>124970.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>124970.0
 </pre></div>
 </div>
 </div>
@@ -632,17 +646,16 @@ For example you can do <code class="docutils literal notranslate"><span class="p
 <p>Or to select the penultimate element:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masses_array</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">masses_array</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>80390.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>80390.0
 </pre></div>
 </div>
 </div>
 </div>
-<p>And so on…</p>
 <div class="section" id="reshape">
 <h3>Reshape<a class="headerlink" href="#reshape" title="Permalink to this headline">¶</a></h3>
 <p>The above array <code class="docutils literal notranslate"><span class="pre">masses_array</span></code> is a 1-D array with 14 elements in it.
@@ -650,18 +663,18 @@ Numpy allows to resphape it easily. For example, we can transform it into a 2-D 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masses_array_2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">masses_array</span><span class="p">,</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="n">masses_array_2d</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">masses_array_2d</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2.2000e+00, 4.7000e+00],
-       [5.1100e-01, 1.2800e+00],
-       [9.6000e+01, 1.0566e+02],
-       [1.7300e+05, 4.1800e+03],
-       [1.7800e+03, 0.0000e+00],
-       [0.0000e+00, 9.1190e+04],
-       [8.0390e+04, 1.2497e+05]])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[2.2000e+00 4.7000e+00]
+ [5.1100e-01 1.2800e+00]
+ [9.6000e+01 1.0566e+02]
+ [1.7300e+05 4.1800e+03]
+ [1.7800e+03 0.0000e+00]
+ [0.0000e+00 9.1190e+04]
+ [8.0390e+04 1.2497e+05]]
 </pre></div>
 </div>
 </div>
@@ -670,18 +683,18 @@ Numpy allows to resphape it easily. For example, we can transform it into a 2-D 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masses_array_2d</span> <span class="o">=</span> <span class="n">masses_array</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-<span class="n">masses_array_2d</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">masses_array_2d</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2.2000e+00, 4.7000e+00],
-       [5.1100e-01, 1.2800e+00],
-       [9.6000e+01, 1.0566e+02],
-       [1.7300e+05, 4.1800e+03],
-       [1.7800e+03, 0.0000e+00],
-       [0.0000e+00, 9.1190e+04],
-       [8.0390e+04, 1.2497e+05]])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[2.2000e+00 4.7000e+00]
+ [5.1100e-01 1.2800e+00]
+ [9.6000e+01 1.0566e+02]
+ [1.7300e+05 4.1800e+03]
+ [1.7800e+03 0.0000e+00]
+ [0.0000e+00 9.1190e+04]
+ [8.0390e+04 1.2497e+05]]
 </pre></div>
 </div>
 </div>
@@ -698,12 +711,12 @@ Numpy allows to resphape it easily. For example, we can transform it into a 2-D 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masses_array_2d</span> <span class="o">=</span> <span class="n">masses_array_2d</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
-<span class="n">masses_array_2d</span><span class="o">.</span><span class="n">shape</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">masses_array_2d</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 7)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 7)
 </pre></div>
 </div>
 </div>
@@ -715,12 +728,12 @@ Numpy allows to resphape it easily. For example, we can transform it into a 2-D 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
-<span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">7</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">7</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 3, 5])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 3 5]
 </pre></div>
 </div>
 </div>
@@ -731,12 +744,12 @@ Numpy allows to resphape it easily. For example, we can transform it into a 2-D 
 <p><strong>Example</strong> <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">3</span></code>, <code class="docutils literal notranslate"><span class="pre">j</span></code> and <code class="docutils literal notranslate"><span class="pre">k</span></code> defaulted to <code class="docutils literal notranslate"><span class="pre">n</span></code> and 1:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">:])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3, 4, 5, 6, 7, 8, 9])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3 4 5 6 7 8 9]
 </pre></div>
 </div>
 </div>
@@ -744,12 +757,12 @@ Numpy allows to resphape it easily. For example, we can transform it into a 2-D 
 <p><strong>Example</strong> <code class="docutils literal notranslate"><span class="pre">i</span></code> defaulted to 0, <code class="docutils literal notranslate"><span class="pre">j</span> <span class="pre">=</span> <span class="pre">4</span></code> and <code class="docutils literal notranslate"><span class="pre">k</span></code> defaulted and 1:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[:</span><span class="mi">4</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 2, 3])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0 1 2 3]
 </pre></div>
 </div>
 </div>
@@ -757,12 +770,12 @@ Numpy allows to resphape it easily. For example, we can transform it into a 2-D 
 <p><strong>Example</strong> <code class="docutils literal notranslate"><span class="pre">i</span></code> defaulted to 0, <code class="docutils literal notranslate"><span class="pre">j</span> <span class="pre">=</span> <span class="pre">4</span></code> and <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">2</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[:</span><span class="mi">4</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[:</span><span class="mi">4</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 2])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0 2]
 </pre></div>
 </div>
 </div>
@@ -795,12 +808,12 @@ Numpy allows to resphape it easily. For example, we can transform it into a 2-D 
 <p>Finally, we can applt this mask to our vector in order to select only elements that are divisible by 7:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vector</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">vector</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 14, -28,   7])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 14 -28   7]
 </pre></div>
 </div>
 </div>
@@ -827,11 +840,12 @@ Numpy allows to resphape it easily. For example, we can transform it into a 2-D 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 ldomine ki 730 Jun  6 23:58 erase.npz
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 drinkingkazu drinkingkazu 730 Jun  7 11:05 erase.npz
 </pre></div>
 </div>
 </div>
 </div>
+<p>Now let’s re-read data from the file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;erase.npz&#39;</span><span class="p">)</span>
@@ -850,18 +864,16 @@ Numpy allows to resphape it easily. For example, we can transform it into a 2-D 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;shape of daniel&#39;</span><span class="p">,</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;daniel&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;contents of kazu&#39;</span><span class="p">)</span>
-<span class="n">data</span><span class="p">[</span><span class="s1">&#39;kazu&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;kazu&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape of daniel (2, 7)
 contents of kazu
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.2000e+00, 4.7000e+00, 5.1100e-01, 1.2800e+00, 9.6000e+01,
-       1.0566e+02, 1.7300e+05, 4.1800e+03, 1.7800e+03, 0.0000e+00,
-       0.0000e+00, 9.1190e+04, 8.0390e+04, 1.2497e+05])
+[2.2000e+00 4.7000e+00 5.1100e-01 1.2800e+00 9.6000e+01 1.0566e+02
+ 1.7300e+05 4.1800e+03 1.7800e+03 0.0000e+00 0.0000e+00 9.1190e+04
+ 8.0390e+04 1.2497e+05]
 </pre></div>
 </div>
 </div>
@@ -879,32 +891,21 @@ contents of kazu
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ckm_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[</span><span class="mf">0.97427</span><span class="p">,</span> <span class="mf">0.22534</span><span class="p">,</span> <span class="mf">0.00351</span> <span class="p">],</span>
                         <span class="p">[</span><span class="mf">0.22520</span><span class="p">,</span> <span class="mf">0.97344</span><span class="p">,</span> <span class="mf">0.0412</span>  <span class="p">],</span>
                         <span class="p">[</span><span class="mf">0.00867</span><span class="p">,</span> <span class="mf">0.0404</span><span class="p">,</span>  <span class="mf">0.999146</span><span class="p">]])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ckm_matrix</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ckm_matarix</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">ckm_matrix</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>matrix([[0.97427 , 0.22534 , 0.00351 ],
-        [0.2252  , 0.97344 , 0.0412  ],
-        [0.00867 , 0.0404  , 0.999146]])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">ckm_matrix</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.matrix
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">26</span><span class="o">-</span><span class="n">b591e1559693</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>                         <span class="p">[</span><span class="mf">0.22520</span><span class="p">,</span> <span class="mf">0.97344</span><span class="p">,</span> <span class="mf">0.0412</span>  <span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>                         <span class="p">[</span><span class="mf">0.00867</span><span class="p">,</span> <span class="mf">0.0404</span><span class="p">,</span>  <span class="mf">0.999146</span><span class="p">]])</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">ckm_matarix</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">ckm_matrix</span><span class="p">))</span>
+
+<span class="ne">NameError</span>: name &#39;ckm_matarix&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -912,12 +913,12 @@ contents of kazu
 <p>Again, we can use the <code class="docutils literal notranslate"><span class="pre">.shape</span></code> attribute to see what is the shape of this matrix:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ckm_matrix</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ckm_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3, 3)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3, 3)
 </pre></div>
 </div>
 </div>
@@ -925,12 +926,12 @@ contents of kazu
 <p>And also <code class="docutils literal notranslate"><span class="pre">ndim</span></code> to see the number of dimensions:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ckm_matrix</span><span class="o">.</span><span class="n">ndim</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ckm_matrix</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
 </pre></div>
 </div>
 </div>
@@ -938,13 +939,13 @@ contents of kazu
 <p>Let’s use the <code class="docutils literal notranslate"><span class="pre">help</span></code> function to see what opetations are available:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># help(np.matrix)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#help(np.matrix)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Let’s the transpose attribute <code class="docutils literal notranslate"><span class="pre">.T</span></code> to calculate the transpose of this matrix.</p>
-<p>Next we’ll use another attribute, <code class="docutils literal notranslate"><span class="pre">.I</span></code>, to calculate the inverse of this matrix. Notice that the inverse is calculated on my first matrix, and not upon the transform of my first matrix.</p>
+<p>The transpose attribute .T to calculate the transpose of this matrix.</p>
+<p>Next we’ll use another attribute, .I, to calculate the inverse of this matrix. Notice that the inverse is calculated on my first matrix, and not upon the transform of my first matrix.</p>
 <p>For example, is the transpose of the CKM matrix:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -960,19 +961,18 @@ contents of kazu
 </div>
 </div>
 </div>
+<p>Let’s check that the CKM matrix is unitary:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXCERCISE: Check that the CKM matrix is unitary:</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">ckm_matrix</span> <span class="o">*</span> <span class="n">ckm_matrix</span><span class="o">.</span><span class="n">I</span><span class="o">.</span><span class="n">T</span>
-<span class="n">result</span><span class="p">[</span><span class="n">result</span> <span class="o">&lt;</span> <span class="mf">1e-2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">result</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">ckm_matrix</span> <span class="o">*</span> <span class="n">ckm_matrix</span><span class="o">.</span><span class="n">I</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>matrix([[0.999931  , 0.        , 0.        ],
-        [0.        , 0.99999997, 0.        ],
-        [0.        , 0.        , 1.00003722]])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 9.99931003e-01  3.78984306e-04 -5.17913575e-03]
+ [-1.46579176e-04  9.99999968e-01  8.01956999e-04]
+ [ 5.79675730e-03 -2.16445093e-03  1.00003722e+00]]
 </pre></div>
 </div>
 </div>
@@ -994,8 +994,8 @@ Here’s an example of a <strong>flat random number</strong> between 0 to 1.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape (100000,)
-mean 0.4997976821153271 std 0.2882538877380375
-min 1.7291094396298945e-06 max 0.9999977025841443
+mean 0.49970837766104165 std 0.2885689807439421
+min 2.060086341393319e-05 max 0.9999726298528011
 </pre></div>
 </div>
 </div>
@@ -1012,8 +1012,8 @@ min 1.7291094396298945e-06 max 0.9999977025841443
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape (100,)
-mean -0.12651520264056482 std 1.0056189620102631
-min -2.590171366328535 max 2.7411184142967966
+mean 0.09011610204641265 std 0.8386470239201483
+min -2.0291606981388064 max 1.9739353804661022
 </pre></div>
 </div>
 </div>
@@ -1060,13 +1060,7 @@ min -2.590171366328535 max 2.7411184142967966
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SEED</span><span class="o">=</span><span class="mi">123</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1076,7 +1070,7 @@ min -2.590171366328535 max 2.7411184142967966
 </div>
 </div>
 </div>
-<p><em>Voila</em> !</p>
+<p><em>Voila</em>!</p>
 <p><a href="conclusion"></a></p>
 </div>
 </div>

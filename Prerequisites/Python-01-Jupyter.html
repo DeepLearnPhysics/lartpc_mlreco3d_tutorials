@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notebook of code &#8212; lartpc_mlreco3d Tutorials</title>
+    <title>Jupyter: notebook of code &#8212; lartpc_mlreco3d Tutorials</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -55,7 +55,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Introduction to Python" href="Python-02-Python.html" />
-    <link rel="prev" title="Getting started" href="../intro.html" />
+    <link rel="prev" title="Python basics" href="Python.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -98,35 +98,59 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Using Jupyter
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Python.html">
+   Python basics
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Using Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Python-02-Python.html">
+     Introduction to Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Python-03-Numpy.html">
+     Up and Running with Python3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Python-04-ScientificPython.html">
+     Visualization, Fitting, and File Format
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python-02-Python.html">
-   Introduction to Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python-03-Numpy.html">
-   Up and Running with Python3
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python-04-ScientificPython.html">
-   Visualization, Fitting, and File Format
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python-05-PyTorch.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="Pytorch.html">
    Pytorch
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python-06-MNIST-CIFAR10.html">
-   Practice with MNIST
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Python-05-PyTorch.html">
+     Pytorch: Machine Learning library
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Python-06-MNIST-CIFAR10.html">
+     Streaming Input Dataset
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Git.html">
@@ -166,8 +190,8 @@
   <a class="reference internal" href="../Code/Data.html">
    Data I/O
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -193,8 +217,8 @@
   <a class="reference internal" href="../Code/Output.html">
    Reconstruction outputs
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -230,8 +254,8 @@
   <a class="reference internal" href="../Exercises/README.html">
    Exercises
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -304,11 +328,14 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/Prerequisites/Python-01-Jupyter.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+        <a class="dropdown-buttons"
+            href="../_sources/Prerequisites/Python-01-Jupyter.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Prerequisites/Python-01-Jupyter.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -347,18 +374,13 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/DeepLearnPhysics/lartpc_mlreco3d_tutorials/master?urlpath=tree/Prerequisites/Python-01-Jupyter.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/DeepLearnPhysics/lartpc_mlreco3d_tutorials/master?urlpath=tree/Prerequisites/Python-01-Jupyter.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
                     alt="Interact on binder">Binder</button></a>
         
         
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/DeepLearnPhysics/lartpc_mlreco3d_tutorials/blob/master/Prerequisites/Python-01-Jupyter.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
         
         <button type="button" class="btn btn-secondary topbarbtn"
             onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
@@ -428,8 +450,8 @@
         
               <div>
                 
-  <div class="section" id="notebook-of-code">
-<h1>Notebook of code<a class="headerlink" href="#notebook-of-code" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="jupyter-notebook-of-code">
+<h1>Jupyter: notebook of code<a class="headerlink" href="#jupyter-notebook-of-code" title="Permalink to this headline">¶</a></h1>
 <p>Probably many of you know know this software better than I know :) but let’s share 5 minutes together to make sure we all are on the same page.</p>
 <p>Jupyter notebook (formerly known as IPython notebook) has been developed for the concept of <em>literate programming</em> and it has become extremely popular within last seveal years (<a class="reference external" href="https://www.nature.com/news/interactive-notebooks-sharing-the-code-1.16261">article on Nature</a>). As its name says (“notebook”), it is designed for users to program with readability and modularization in mind.</p>
 <p>In a notebook, individual block of code execution is done within a <em>cell</em>. All cells in the same notebook live within the same process and namespace scope. You can put explanation of the code (or beyond, like physics for which the code is developed) in a <em>markdown</em> cell. Such explanation can go per code cell. We don’t write a software in a notebook, but usually a higher level program (such as <em>main</em> function) with an explanation of what’s going on.</p>
@@ -449,28 +471,18 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="p">)</span>
 <span class="n">np</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span> <span class="c1"># after you execute this cell, np no longer points to numpy module</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;module &#39;numpy&#39; from &#39;/usr/local/lib/python3.6/dist-packages/numpy/__init__.py&#39;&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;module &#39;numpy&#39; from &#39;/usr/local/lib/python3.8/dist-packages/numpy/__init__.py&#39;&gt;
+foo
 </pre></div>
 </div>
 </div>
 </div>
 <p>… which means the execution order of cells matter (yes, you can execute whichever cell in any order you want). The object <code class="docutils literal notranslate"><span class="pre">np</span></code> no longer points to a numpy module.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>foo
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 <div class="section" id="shell-commands">
 <h2>Shell commands<a class="headerlink" href="#shell-commands" title="Permalink to this headline">¶</a></h2>
@@ -482,13 +494,66 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MinkowskiEngine		  larcv1.root	      larcv_nue_v01
-Output_Chain_Ghost.ipynb  larcv2	      larcv_nue_v02
-Untitled.ipynb		  larcv2.root	      lartpc_mlreco3d
-Vertex_Resolution.ipynb   larcv_nue_ccqe_v00  lartpc_mlreco3d_tutorials
-Visualization.ipynb	  larcv_nue_ccqe_v01  ondemand
-felix_lartpc_mlreco3d	  larcv_nue_ccqe_v02  outreach
-larcv.root		  larcv_nue_ccqe_v04  slacml-kmi2020
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DataVis.ipynb
+DataVisCluster.ipynb
+DataVisGranular.ipynb
+Desktop
+Documents
+Downloads
+E7SAV7LAD-W8V9Z4DC2-7b6645e94a96-512.png
+Music
+Pictures
+Public
+Python-01-Jupyter.ipynb
+Python-02-Python.ipynb
+Python-03-Numpy.ipynb
+Python-04-ScientificPython.ipynb
+Python-05-PyTorch.ipynb
+Python-06-MNIST-CIFAR10.ipynb
+ReviewBook-Clustering
+Templates
+Untitled.ipynb
+Untitled1.ipynb
+Untitled2.ipynb
+Videos
+combined.txt
+combined_00.h5
+combined_01.h5
+combined_02.h5
+combined_03.h5
+combined_04.h5
+fitted
+geant4.10.06.p03
+geant4.10.06.p03-build
+geant4.10.06.p03-install
+geant4.10.06.p03.tar.gz
+images
+kterao@sdf-login.slac.stanford.edu
+larcv.root
+larcv2
+larcv2_ub20.04-cuda11.0-pytorch1.7.1.sif
+larcv_0000.root
+larcv_0001.root
+lartpc_mlreco3d
+logos
+madjax_test-madjax.sif
+math-with-slack.py
+mozilla.pdf
+ondemand
+overlay.py
+reset.sh
+root_build
+root_src
+sshfs
+sw
+test.h5
+test00.root
+test01.root
+test_mixed_00_01.root
+tmp
+tmp.cfg
+train.h5
+ub20.04-cuda11.0-pytorch1.7.1-sw
 </pre></div>
 </div>
 </div>
@@ -506,27 +571,66 @@ ls $HOME
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MinkowskiEngine
-Output_Chain_Ghost.ipynb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DataVis.ipynb
+DataVisCluster.ipynb
+DataVisGranular.ipynb
+Desktop
+Documents
+Downloads
+E7SAV7LAD-W8V9Z4DC2-7b6645e94a96-512.png
+Music
+Pictures
+Public
+Python-01-Jupyter.ipynb
+Python-02-Python.ipynb
+Python-03-Numpy.ipynb
+Python-04-ScientificPython.ipynb
+Python-05-PyTorch.ipynb
+Python-06-MNIST-CIFAR10.ipynb
+ReviewBook-Clustering
+Templates
 Untitled.ipynb
-Vertex_Resolution.ipynb
-Visualization.ipynb
-felix_lartpc_mlreco3d
+Untitled1.ipynb
+Untitled2.ipynb
+Videos
+combined.txt
+combined_00.h5
+combined_01.h5
+combined_02.h5
+combined_03.h5
+combined_04.h5
+fitted
+geant4.10.06.p03
+geant4.10.06.p03-build
+geant4.10.06.p03-install
+geant4.10.06.p03.tar.gz
+images
+kterao@sdf-login.slac.stanford.edu
 larcv.root
-larcv1.root
 larcv2
-larcv2.root
-larcv_nue_ccqe_v00
-larcv_nue_ccqe_v01
-larcv_nue_ccqe_v02
-larcv_nue_ccqe_v04
-larcv_nue_v01
-larcv_nue_v02
+larcv2_ub20.04-cuda11.0-pytorch1.7.1.sif
+larcv_0000.root
+larcv_0001.root
 lartpc_mlreco3d
-lartpc_mlreco3d_tutorials
+logos
+madjax_test-madjax.sif
+math-with-slack.py
+mozilla.pdf
 ondemand
-outreach
-slacml-kmi2020
+overlay.py
+reset.sh
+root_build
+root_src
+sshfs
+sw
+test.h5
+test00.root
+test01.root
+test_mixed_00_01.root
+tmp
+tmp.cfg
+train.h5
+ub20.04-cuda11.0-pytorch1.7.1-sw
 </pre></div>
 </div>
 </div>
@@ -547,6 +651,7 @@ slacml-kmi2020
 </div>
 </div>
 </div>
+<p>Now try:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> <span class="nb">echo</span> <span class="nv">$CUDA_VISIBLE_DEVICES</span>
@@ -559,7 +664,7 @@ slacml-kmi2020
 </div>
 </div>
 </div>
-<p><em>Voila!</em> … but note, the following is not the same</p>
+<p><em>Voila!</em> (you should see <code class="docutils literal notranslate"><span class="pre">0</span></code>) … but note, the following is not the same:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> <span class="nb">export</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">1</span>
@@ -567,7 +672,7 @@ slacml-kmi2020
 </div>
 </div>
 </div>
-<p>Let’s check.</p>
+<p>Let’s check:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> <span class="nb">echo</span> <span class="nv">$CUDA_VISIBLE_DEVICES</span>
@@ -580,62 +685,28 @@ slacml-kmi2020
 </div>
 </div>
 </div>
-<p>… and that’s because <code class="docutils literal notranslate"><span class="pre">!</span> <span class="pre">export</span> </code> executes the command in a <em>sub-shell</em> and the scope is only within the cell.</p>
+<p>You should get <code class="docutils literal notranslate"><span class="pre">0</span></code>, and that’s because <code class="docutils literal notranslate"><span class="pre">!</span> <span class="pre">export</span> </code> executes the command in a <em>sub-shell</em> and the scope is only within the cell.</p>
 </div>
 <div class="section" id="run-a-python-script">
 <h2>Run a python script<a class="headerlink" href="#run-a-python-script" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">%run</span></code> is a handy command to run another python script (or even jupyter notebook actually!)</p>
+<p><code class="docutils literal notranslate"><span class="pre">%run</span></code> is a handy command to run a python script (or even jupyter notebook actually!). Let’s create a simply python script.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> sqrt2.py
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> <span class="nb">echo</span> <span class="s2">&quot;print(&#39;hello world!&#39;)&quot;</span> &gt;&gt; hello.py
+</pre></div>
+</div>
+</div>
+</div>
+<p>and run it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> hello.py
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
-<span class="nn">/usr/local/lib/python3.6/dist-packages/IPython/core/magics/execution.py</span> in <span class="ni">run</span><span class="nt">(self, parameter_s, runner, file_finder)</span>
-<span class="g g-Whitespace">    </span><span class="mi">696</span>             <span class="n">fpath</span> <span class="o">=</span> <span class="n">arg_lst</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="ne">--&gt; </span><span class="mi">697</span>             <span class="n">filename</span> <span class="o">=</span> <span class="n">file_finder</span><span class="p">(</span><span class="n">fpath</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">698</span>         <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-
-<span class="nn">/usr/local/lib/python3.6/dist-packages/IPython/utils/path.py</span> in <span class="ni">get_py_filename</span><span class="nt">(name, force_win32)</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span>     <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">109</span>         <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s1">&#39;File `</span><span class="si">%r</span><span class="s1">` not found.&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">110</span> 
-
-<span class="ne">OSError</span>: File `&#39;sqrt2.py&#39;` not found.
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">Exception</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">728</span><span class="n">bef50ad77</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;run&#39;</span><span class="p">,</span> <span class="s1">&#39;sqrt2.py&#39;</span><span class="p">)</span>
-
-<span class="nn">/usr/local/lib/python3.6/dist-packages/IPython/core/interactiveshell.py</span> in <span class="ni">run_line_magic</span><span class="nt">(self, magic_name, line, _stack_depth)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2324</span>                 <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;local_ns&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">(</span><span class="n">stack_depth</span><span class="p">)</span><span class="o">.</span><span class="n">f_locals</span>
-<span class="g g-Whitespace">   </span><span class="mi">2325</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2326</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2327</span>             <span class="k">return</span> <span class="n">result</span>
-<span class="g g-Whitespace">   </span><span class="mi">2328</span> 
-
-<span class="nn">&lt;decorator-gen-59&gt;</span> in <span class="ni">run</span><span class="nt">(self, parameter_s, runner, file_finder)</span>
-
-<span class="nn">/usr/local/lib/python3.6/dist-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
-<span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="c1"># but it&#39;s overkill for just that one bit of state.</span>
-<span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="k">def</span> <span class="nf">magic_deco</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">187</span>         <span class="n">call</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">188</span> 
-<span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
-
-<span class="nn">/usr/local/lib/python3.6/dist-packages/IPython/core/magics/execution.py</span> in <span class="ni">run</span><span class="nt">(self, parameter_s, runner, file_finder)</span>
-<span class="g g-Whitespace">    </span><span class="mi">706</span>             <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;nt&#39;</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^&#39;.*&#39;$&quot;</span><span class="p">,</span><span class="n">fpath</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">707</span>                 <span class="n">warn</span><span class="p">(</span><span class="s1">&#39;For Windows, use double quotes to wrap a filename: </span><span class="si">%r</span><span class="s1">un &quot;mypath</span><span class="se">\\</span><span class="s1">myfile.py&quot;&#39;</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">708</span>             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">709</span>         <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">710</span>             <span class="k">if</span> <span class="n">fpath</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">meta_path</span><span class="p">:</span>
-
-<span class="ne">Exception</span>: File `&#39;sqrt2.py&#39;` not found.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello world!
+hello world!
 </pre></div>
 </div>
 </div>
@@ -653,8 +724,8 @@ slacml-kmi2020
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.62 ms, sys: 2.29 ms, total: 3.91 ms
-Wall time: 3.33 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 0 ns, sys: 7.35 ms, total: 7.35 ms
+Wall time: 6.67 ms
 </pre></div>
 </div>
 </div>
@@ -662,9 +733,7 @@ Wall time: 3.33 ms
 </div>
 <div class="section" id="latex">
 <h2>Latex<a class="headerlink" href="#latex" title="Permalink to this headline">¶</a></h2>
-<p>Jupyter supports <code class="docutils literal notranslate"><span class="pre">MathJax</span></code>:</p>
-<p>I have to write a formula like $<span class="math notranslate nohighlight">\( \sin^22\theta\left(\frac{1.27\Delta m^2L}{E_\nu}\right) \)</span>$ to get my Ph.D.</p>
-<p>… or you can also just type <code class="docutils literal notranslate"><span class="pre">%%latex</span></code> in the cell to “execute latex code” :)</p>
+<p>Jupyter supports <code class="docutils literal notranslate"><span class="pre">MathJax</span></code>, and also you can just run latex</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%latex</span>
@@ -678,20 +747,6 @@ I have to write a formula like <span class="s">$</span><span class="nv">\sin</sp
 \[I have to write a formula like $\sin^22\theta\left(\frac{1.27\Delta m^2L}{E_\nu}\right)$ to get Ph.D.\]</div>
 </div>
 </div>
-<p>from IPython.display import HTML
-HTML(‘’’<script>
-code_show=false;
-function code_toggle() {
-if (code_show){
-<span class="math notranslate nohighlight">\(('div.input').hide();
- } else {
- \)</span>(‘div.input’).show();
-}
-code_show = !code_show
-}
-$( document ).ready(code_toggle);
-</script>
-To toggle on/off the raw code, click <a href="javascript:code_toggle()">here</a>.’’’)</p>
 </div>
 <div class="section" id="executing-a-web-script">
 <h2>Executing a web script<a class="headerlink" href="#executing-a-web-script" title="Permalink to this headline">¶</a></h2>
@@ -758,7 +813,7 @@ To toggle on/off the raw code, click <a href="javascript:code_toggle()">here</a>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">Getting started</a>
+    <a class='left-prev' id="prev-link" href="Python.html" title="previous page">Python basics</a>
     <a class='right-next' id="next-link" href="Python-02-Python.html" title="next page">Introduction to Python</a>
 
         </div>

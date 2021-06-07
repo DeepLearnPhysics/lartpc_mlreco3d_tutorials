@@ -53,7 +53,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Up and Running with Python3" href="Python-03-Numpy.html" />
-    <link rel="prev" title="Notebook of code" href="Python-01-Jupyter.html" />
+    <link rel="prev" title="Jupyter: notebook of code" href="Python-01-Jupyter.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -96,35 +96,59 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python-01-Jupyter.html">
-   Using Jupyter
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Python.html">
+   Python basics
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="Python-01-Jupyter.html">
+     Using Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Introduction to Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Python-03-Numpy.html">
+     Up and Running with Python3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Python-04-ScientificPython.html">
+     Visualization, Fitting, and File Format
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Introduction to Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python-03-Numpy.html">
-   Up and Running with Python3
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python-04-ScientificPython.html">
-   Visualization, Fitting, and File Format
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python-05-PyTorch.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="Pytorch.html">
    Pytorch
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python-06-MNIST-CIFAR10.html">
-   Practice with MNIST
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Python-05-PyTorch.html">
+     Pytorch: Machine Learning library
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Python-06-MNIST-CIFAR10.html">
+     Streaming Input Dataset
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Git.html">
@@ -164,8 +188,8 @@
   <a class="reference internal" href="../Code/Data.html">
    Data I/O
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -191,8 +215,8 @@
   <a class="reference internal" href="../Code/Output.html">
    Reconstruction outputs
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -228,8 +252,8 @@
   <a class="reference internal" href="../Exercises/README.html">
    Exercises
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -302,11 +326,14 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/Prerequisites/Python-02-Python.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+        <a class="dropdown-buttons"
+            href="../_sources/Prerequisites/Python-02-Python.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Prerequisites/Python-02-Python.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -345,18 +372,13 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/DeepLearnPhysics/lartpc_mlreco3d_tutorials/master?urlpath=tree/Prerequisites/Python-02-Python.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/DeepLearnPhysics/lartpc_mlreco3d_tutorials/master?urlpath=tree/Prerequisites/Python-02-Python.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
                     alt="Interact on binder">Binder</button></a>
         
         
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/DeepLearnPhysics/lartpc_mlreco3d_tutorials/blob/master/Prerequisites/Python-02-Python.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
         
         <button type="button" class="btn btn-secondary topbarbtn"
             onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
@@ -422,11 +444,6 @@
    Blocks and Functions
   </a>
   <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#arguments">
-     Arguments
-    </a>
-   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#argument-list">
      Argument List
@@ -594,7 +611,7 @@ Developed in the late 1980s by Dutch research programmer Guido van Rossum. Guido
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We are using python 3.6.9
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We are using python 3.8.5
 </pre></div>
 </div>
 </div>
@@ -688,7 +705,6 @@ neutrino
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXCERCISE: Access the fifth index of the above string</span>
-
 <span class="n">x</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -938,7 +954,7 @@ A couple of examples of functions in python: <code class="docutils literal notra
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="mf">3.2</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="mf">3.6</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="o">-</span><span class="mf">3.6</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
@@ -946,7 +962,7 @@ A couple of examples of functions in python: <code class="docutils literal notra
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x = 3
-y = 4
+y = 3.6
 </pre></div>
 </div>
 </div>
@@ -961,12 +977,11 @@ y = 4
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on built-in function round in module builtins:
 
-round(...)
-    round(number[, ndigits]) -&gt; number
+round(number, ndigits=None)
+    Round a number to a given precision in decimal digits.
     
-    Round a number to a given precision in decimal digits (default 0 digits).
-    This returns an int when called with one argument, otherwise the
-    same type as the number. ndigits may be negative.
+    The return value is an integer if ndigits is omitted or None.  Otherwise
+    the return value has the same type as the number.  ndigits may be negative.
 </pre></div>
 </div>
 </div>
@@ -1007,6 +1022,7 @@ Argon is in liquid state!
 </div>
 </div>
 </div>
+<p>It’s a good idea to leave some comment in your code. Even better for it to show up on <code class="docutils literal notranslate"><span class="pre">help</span></code>!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">check_temperature</span><span class="p">)</span>
@@ -1023,8 +1039,9 @@ check_temperature(T)
 </div>
 </div>
 </div>
-<div class="section" id="arguments">
-<h3>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="argument-list">
+<h3>Argument List<a class="headerlink" href="#argument-list" title="Permalink to this headline">¶</a></h3>
+<p>Let’s define a simple function that prints out the mass of a particle.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_mass</span><span class="p">(</span><span class="n">particle_name</span><span class="p">):</span>
@@ -1036,6 +1053,7 @@ check_temperature(T)
 </div>
 </div>
 </div>
+<p>Try!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_mass</span><span class="p">(</span><span class="n">particle_name</span><span class="o">=</span><span class="s1">&#39;higgs&#39;</span><span class="p">)</span>
@@ -1048,28 +1066,21 @@ check_temperature(T)
 </div>
 </div>
 </div>
+<p>What if I would like to call this function for <code class="docutils literal notranslate"><span class="pre">higgs</span></code> and <code class="docutils literal notranslate"><span class="pre">electron</span></code>? I can certainly do:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXCERCISE: Define get_mass(particle_name) function implementation in 1 line only</span>
-<span class="c1"># (hint: use dictionary &quot;get&quot; function, or 1 liner if statement)</span>
-
-<span class="k">def</span> <span class="nf">get_mass</span><span class="p">(</span><span class="n">particle_name</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">par_to_mass</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">particle_name</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">get_mass</span><span class="p">(</span><span class="s1">&#39;higgs&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_mass</span><span class="p">(</span><span class="s1">&#39;higgs&#39;</span><span class="p">)</span>
+<span class="n">get_mass</span><span class="p">(</span><span class="s1">&#39;electron&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>124970.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.511
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="argument-list">
-<h3>Argument List<a class="headerlink" href="#argument-list" title="Permalink to this headline">¶</a></h3>
-<p>Python functions allow variable length argument lists.</p>
+<p>But that’s a lot of typing on the user’s end. Actually, Python functions allow variable length argument lists.</p>
 <p>If you add an argument with an asterisk <code class="docutils literal notranslate"><span class="pre">*</span></code> before it (as done below with <code class="docutils literal notranslate"><span class="pre">*args</span></code>), this is a variable length argument list. It is a <code class="docutils literal notranslate"><span class="pre">tuple</span></code>.</p>
 <p>Below we check if it has non-zero length, and then we loop over the arguments.</p>
 <p>Note that we don’t have to specify how many arguments or what kind of arguments we are passing. This feature is useful for situations where you want a function that may be called with different numbers of arguments.</p>
@@ -1086,17 +1097,30 @@ check_temperature(T)
 </div>
 </div>
 </div>
+<p>Now a user can try:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXCERCISE: Try calling the function above</span>
-
-<span class="n">get_mass_2</span><span class="p">(</span><span class="s1">&#39;higgs&#39;</span><span class="p">,</span> <span class="s1">&#39;electron&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_mass_2</span><span class="p">(</span><span class="s1">&#39;higgs&#39;</span><span class="p">,</span><span class="s1">&#39;electron&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>higgs mass is 124970.0 MeV/c^2
 electron mass is 0.511 MeV/c^2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or, one can also do:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;higgs&#39;</span><span class="p">,</span><span class="s1">&#39;electron&#39;</span><span class="p">]</span>
+<span class="n">get_mass_2</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;higgs&#39;, &#39;electron&#39;] not found!
 </pre></div>
 </div>
 </div>
@@ -1114,10 +1138,10 @@ electron mass is 0.511 MeV/c^2
 </div>
 </div>
 </div>
+<p>Let’s try!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXCERICE: Try to get the mass of the Higgs by passing Higgs=124970.0 as argument</span>
-<span class="n">get_mass_3</span><span class="p">(</span><span class="n">Higgs</span><span class="o">=</span><span class="mf">124970.0</span><span class="p">,</span> <span class="n">Electron</span><span class="o">=</span><span class="mf">0.511</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_mass_3</span><span class="p">(</span><span class="n">Higgs</span><span class="o">=</span><span class="mf">124970.0</span><span class="p">,</span> <span class="n">Electron</span><span class="o">=</span><span class="mf">0.511</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1140,6 +1164,7 @@ Particle Electron has mass 0.511
 </div>
 </div>
 </div>
+<p>Let’s try!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">miscellaneous</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">](</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
@@ -1443,7 +1468,7 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iterator at 0x7f2d5d3c8d30&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iterator at 0x7fe68c2256d0&gt;
 </pre></div>
 </div>
 </div>
@@ -1466,19 +1491,19 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 </div>
 <div class="section" id="list-comprehensions">
 <h2>List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Permalink to this headline">¶</a></h2>
-<p>List comprehensions are one of Python’s most beloved and unique features. The easiest way to understand them is probably to just look at a an example.</p>
+<p>List comprehensions are one of Python’s frequently used features. The easiest way to understand them is probably to just look at a an example.</p>
 <p>Let’s assume we want to calculate all the squarer of the numbers between 0 and 9. With a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop we would do:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="n">squares</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">squares</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">squares</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 </pre></div>
 </div>
 </div>
@@ -1487,16 +1512,17 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
-<span class="n">squares</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">squares</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 </pre></div>
 </div>
 </div>
 </div>
+<p>Let’s compare the timing:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1506,14 +1532,15 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>284 µs ± 2.83 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>253 µs ± 3.13 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>230 µs ± 887 ns per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>210 µs ± 1.77 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
 </div>
+<p>It can be also used with an if statement. Suppose we have a list of particle names:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">particles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;up&#39;</span><span class="p">,</span> <span class="s1">&#39;down&#39;</span><span class="p">,</span> <span class="s1">&#39;electron&#39;</span><span class="p">,</span> <span class="s1">&#39;electron_neutrino&#39;</span><span class="p">,</span>
@@ -1525,72 +1552,33 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 </div>
 </div>
 </div>
+<p>Here is how we can create a sub-list of names with less than 6 characters using a list comprehension.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">short_particles</span> <span class="o">=</span> <span class="p">[</span><span class="n">particle</span> <span class="k">for</span> <span class="n">particle</span> <span class="ow">in</span> <span class="n">particles</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">particle</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">]</span>
-<span class="n">short_particles</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">short_particles</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;up&#39;, &#39;down&#39;, &#39;charm&#39;, &#39;muon&#39;, &#39;top&#39;, &#39;tau&#39;, &#39;gluon&#39;, &#39;z&#39;, &#39;w&#39;, &#39;higgs&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;up&#39;, &#39;down&#39;, &#39;charm&#39;, &#39;muon&#39;, &#39;top&#39;, &#39;tau&#39;, &#39;gluon&#39;, &#39;z&#39;, &#39;w&#39;, &#39;higgs&#39;]
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXCERCISE:</span>
-<span class="c1"># Get a list of antiparticles</span>
-
-<span class="n">antiparticles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;anti_&#39;</span> <span class="o">+</span> <span class="n">particle</span> <span class="k">for</span> <span class="n">particle</span> <span class="ow">in</span> <span class="n">particles</span><span class="p">]</span>
-<span class="n">antiparticles</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;anti_up&#39;,
- &#39;anti_down&#39;,
- &#39;anti_electron&#39;,
- &#39;anti_electron_neutrino&#39;,
- &#39;anti_charm&#39;,
- &#39;anti_strange&#39;,
- &#39;anti_muon&#39;,
- &#39;anti_muon_neutrino&#39;,
- &#39;anti_top&#39;,
- &#39;anti_bottom&#39;,
- &#39;anti_tau&#39;,
- &#39;anti_tau_neutrino&#39;,
- &#39;anti_gluon&#39;,
- &#39;anti_photon&#39;,
- &#39;anti_z&#39;,
- &#39;anti_w&#39;,
- &#39;anti_higgs&#39;]
-</pre></div>
-</div>
-</div>
-</div>
+<p>Another exercise to create a sublist of particles that has ‘o’ in it:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXCERCISE:</span>
 <span class="c1"># Get all the particles that contain character &#39;o&#39;, and capitalize them.</span>
 
 <span class="n">selected</span> <span class="o">=</span> <span class="p">[</span><span class="n">particle</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="k">for</span> <span class="n">particle</span> <span class="ow">in</span> <span class="n">particles</span> <span class="k">if</span> <span class="s1">&#39;o&#39;</span> <span class="ow">in</span> <span class="n">particle</span><span class="p">]</span>
-<span class="n">selected</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">selected</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Down&#39;,
- &#39;Electron&#39;,
- &#39;Electron_neutrino&#39;,
- &#39;Muon&#39;,
- &#39;Muon_neutrino&#39;,
- &#39;Top&#39;,
- &#39;Bottom&#39;,
- &#39;Tau_neutrino&#39;,
- &#39;Gluon&#39;,
- &#39;Photon&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Down&#39;, &#39;Electron&#39;, &#39;Electron_neutrino&#39;, &#39;Muon&#39;, &#39;Muon_neutrino&#39;, &#39;Top&#39;, &#39;Bottom&#39;, &#39;Tau_neutrino&#39;, &#39;Gluon&#39;, &#39;Photon&#39;]
 </pre></div>
 </div>
 </div>
@@ -1605,12 +1593,12 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="n">squares</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span>
-<span class="n">squares</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">squares</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
 </pre></div>
 </div>
 </div>
@@ -1619,65 +1607,26 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">{</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">}</span>
-<span class="n">squares</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">squares</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
 </pre></div>
 </div>
 </div>
 </div>
-<p>Lets do a speed test again, it’s not as fast as list comprehensions tho…:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="o">%</span><span class="k">timeit</span> for n in range(1000): squares[n] = n**2
-<span class="o">%</span><span class="k">timeit</span> squares = { n: n**2 for n in range(1000) }
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>268 µs ± 539 ns per loop (mean ± std. dev. of 7 runs, 1000 loops each)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>247 µs ± 1.3 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
-</pre></div>
-</div>
-</div>
-</div>
-<p>So why should I bother you may ask! But we do can a lot more… say we wanted only the even numbers to be squared:</p>
+<p>Like it was the case for a <code class="docutils literal notranslate"><span class="pre">list</span></code>, we can combine with an if statement.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">{</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="k">2</span> == 0}
-<span class="n">squares</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">squares</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 0, 2: 4, 4: 16, 6: 36, 8: 64}
-</pre></div>
-</div>
-</div>
-</div>
-<p>or if we just want to do a simple count of each entry in a list:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">particles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;positron&#39;</span><span class="p">,</span> <span class="s1">&#39;electron&#39;</span><span class="p">,</span> <span class="s1">&#39;electron&#39;</span><span class="p">,</span> <span class="s1">&#39;positron&#39;</span><span class="p">,</span> <span class="s1">&#39;electron&#39;</span><span class="p">,</span> <span class="s1">&#39;positron&#39;</span><span class="p">,</span> <span class="s1">&#39;electron&#39;</span><span class="p">,</span> <span class="s1">&#39;electron&#39;</span><span class="p">,</span> <span class="s1">&#39;electron&#39;</span><span class="p">,</span> <span class="s1">&#39;positron&#39;</span><span class="p">,</span> <span class="s1">&#39;electron&#39;</span><span class="p">,</span> <span class="s1">&#39;positron&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="p">{</span> <span class="n">k</span><span class="p">:</span> <span class="n">particles</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">particles</span> <span class="p">}</span>
-<span class="n">counts</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;positron&#39;: 5, &#39;electron&#39;: 7}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 0, 2: 4, 4: 16, 6: 36, 8: 64}
 </pre></div>
 </div>
 </div>
@@ -1699,7 +1648,7 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">59</span><span class="o">-</span><span class="n">fa16b7499ace</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">56</span><span class="o">-</span><span class="n">fa16b7499ace</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;DanielRatner.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 
 <span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;DanielRatner.py&#39;
@@ -1718,7 +1667,7 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">60</span><span class="o">-</span><span class="mi">18</span><span class="n">c58a918d5d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">57</span><span class="o">-</span><span class="mi">18</span><span class="n">c58a918d5d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">DanielRatner</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;age:&#39;</span><span class="p">,</span><span class="n">DanielRatner</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>
 
@@ -1738,7 +1687,7 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">61</span><span class="o">-</span><span class="mi">2</span><span class="n">ffc377c6d3d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">58</span><span class="o">-</span><span class="mi">2</span><span class="n">ffc377c6d3d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">DanielRatner</span> <span class="kn">import</span> <span class="n">trend</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trend:&#39;</span><span class="p">,</span><span class="n">trend</span><span class="p">)</span>
 
@@ -1781,7 +1730,7 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">63</span><span class="o">-</span><span class="n">af6a97faa849</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">60</span><span class="o">-</span><span class="n">af6a97faa849</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;RealDanielRatner/__init__.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 
 <span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;RealDanielRatner/__init__.py&#39;
@@ -1801,7 +1750,7 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">64</span><span class="o">-</span><span class="n">fb22218dbaf8</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">61</span><span class="o">-</span><span class="n">fb22218dbaf8</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;RealDanielRatner/age.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;RealDanielRatner/favorite.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;RealDanielRatner/trend.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
@@ -1822,7 +1771,7 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">65</span><span class="o">-</span><span class="n">ebd15886c817</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">62</span><span class="o">-</span><span class="n">ebd15886c817</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">RealDanielRatner</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">help</span><span class="p">(</span><span class="n">RealDanielRatner</span><span class="p">)</span>
 
@@ -1842,7 +1791,7 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">66</span><span class="o">-</span><span class="mi">0</span><span class="n">b7b39630eb6</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">63</span><span class="o">-</span><span class="mi">0</span><span class="n">b7b39630eb6</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;age:&#39;</span><span class="p">,</span><span class="n">RealDanielRatner</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trend:&#39;</span><span class="p">,</span><span class="n">RealDanielRatner</span><span class="o">.</span><span class="n">trend</span><span class="p">)</span>
 
@@ -1861,7 +1810,7 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">67</span><span class="o">-</span><span class="mf">8577e21</span><span class="n">b2404</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">64</span><span class="o">-</span><span class="mf">8577e21</span><span class="n">b2404</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">RealDanielRatner</span><span class="p">,</span><span class="s1">&#39;favorite&#39;</span><span class="p">)</span>
 
 <span class="ne">NameError</span>: name &#39;RealDanielRatner&#39; is not defined
@@ -1893,7 +1842,7 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">69</span><span class="o">-</span><span class="mi">399</span><span class="n">b3ac3dbf2</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">66</span><span class="o">-</span><span class="mi">399</span><span class="n">b3ac3dbf2</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">RealDanielRatner</span> <span class="kn">import</span> <span class="n">favorite</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;favorite:&#39;</span><span class="p">,</span><span class="n">favorite</span><span class="o">.</span><span class="n">favorite</span><span class="p">)</span>
 
@@ -1916,7 +1865,7 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">70</span><span class="o">-</span><span class="n">cfc9d21d8093</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">67</span><span class="o">-</span><span class="n">cfc9d21d8093</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">RealDanielRatner</span> <span class="k">as</span> <span class="nn">dan</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Daniels age is&#39;</span><span class="p">,</span><span class="n">dan</span><span class="o">.</span><span class="n">age</span><span class="p">,</span><span class="s1">&#39;and his trend:&#39;</span><span class="p">,</span><span class="n">dan</span><span class="o">.</span><span class="n">trend</span><span class="p">)</span>
 
@@ -1938,22 +1887,18 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/app/larcv2/python&#39;,
- &#39;/app/root/lib&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/home/drinkingkazu/sw/lartpc_mlreco3d_tutorials/book/Prerequisites&#39;,
  &#39;/usr/local/root/lib&#39;,
- &#39;/sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/Prerequisites&#39;,
+ &#39;/home/drinkingkazu/sw/lartpc_mlreco3d_tutorials/book/Prerequisites&#39;,
+ &#39;/usr/lib/python38.zip&#39;,
+ &#39;/usr/lib/python3.8&#39;,
+ &#39;/usr/lib/python3.8/lib-dynload&#39;,
  &#39;&#39;,
- &#39;/sdf/home/l/ldomine/.local/lib/python3.6/site-packages&#39;,
- &#39;/usr/lib/python36.zip&#39;,
- &#39;/usr/lib/python3.6&#39;,
- &#39;/usr/lib/python3.6/lib-dynload&#39;,
- &#39;/sdf/home/l/ldomine/.local/lib/python3.6/site-packages/RoIAlign_extension_3D-0.0.0-py3.6-linux-x86_64.egg&#39;,
- &#39;/sdf/home/l/ldomine/.local/lib/python3.6/site-packages/nms_extension-0.0.0-py3.6-linux-x86_64.egg&#39;,
- &#39;/usr/local/lib/python3.6/dist-packages&#39;,
+ &#39;/home/drinkingkazu/.local/lib/python3.8/site-packages&#39;,
+ &#39;/usr/local/lib/python3.8/dist-packages&#39;,
  &#39;/usr/lib/python3/dist-packages&#39;,
- &#39;/usr/local/root/lib&#39;,
- &#39;/usr/local/lib/python3.6/dist-packages/IPython/extensions&#39;,
- &#39;/sdf/home/l/ldomine/.ipython&#39;]
+ &#39;/usr/local/lib/python3.8/dist-packages/IPython/extensions&#39;,
+ &#39;/home/drinkingkazu/.ipython&#39;]
 </pre></div>
 </div>
 </div>
@@ -1966,7 +1911,7 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/lib/python3.6/platform.py
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/lib/python3.8/platform.py
 </pre></div>
 </div>
 </div>
@@ -2037,7 +1982,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="Python-01-Jupyter.html" title="previous page">Notebook of code</a>
+    <a class='left-prev' id="prev-link" href="Python-01-Jupyter.html" title="previous page">Jupyter: notebook of code</a>
     <a class='right-next' id="next-link" href="Python-03-Numpy.html" title="next page">Up and Running with Python3</a>
 
         </div>
