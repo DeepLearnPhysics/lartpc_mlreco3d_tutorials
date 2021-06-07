@@ -1,0 +1,10 @@
+*~
+*.npz
+*.h5
+*.root
+*/*/hello.py
+book/Prerequisites/hello.py
+book/_build/
+book/Prerequisites/cifar10-data/*
+book/Prerequisites/mnist-data/*
+book/Prerequisites/mnist-data/MNIST/raw/train-images-idx3-ubyte.gz
