@@ -42,8 +42,6 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -54,8 +52,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Reconstruction outputs" href="Output.html" />
-    <link rel="prev" title="Using lartpc_mlreco3d" href="Data1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -156,102 +152,26 @@
   lartpc_mlreco3d
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="README.html">
    Overview of the reconstruction chain
   </a>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1">
   <a class="reference internal" href="Data.html">
    Data I/O
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="Data1.html">
-     Using
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       lartpc_mlreco3d
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Using ROOT only
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1">
   <a class="reference internal" href="Output.html">
    Reconstruction outputs
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="UResNet_PPN.html">
-     Semantics &amp; points of interest
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Clustering.html">
-     Particle clustering
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Interaction.html">
-     Interaction clustering, PID and primary particles
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Kinematics.html">
-     Kinematics and particle hierarchy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Others.html">
-     Others
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1">
   <a class="reference internal" href="../Exercises/README.html">
    Exercises
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Exercises/Michel_electron.html">
-     Exercise 1: Finding Michel electrons
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Exercises/dEdx.html">
-     Exercise 2: muon dEdx
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Exercises/Electron_gamma.html">
-     Exercise 3: electron vs gamma separation
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p class="caption">
@@ -429,7 +349,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to JupyROOT 6.22/02
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mf">6991e5</span><span class="n">ea28ea</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">ROOT</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">ROOT</span> <span class="kn">import</span>  <span class="n">TFile</span><span class="p">,</span> <span class="n">TChain</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;ROOT&#39;
 </pre></div>
 </div>
 </div>
@@ -437,41 +363,19 @@
 <p>Now open the file using ROOT:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example</span> <span class="o">=</span> <span class="n">TFile</span><span class="p">(</span> <span class="s1">&#39; /sdf/home/l/ldomine/larcv.root&#39;</span> <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example</span> <span class="o">=</span> <span class="n">TFile</span><span class="p">(</span> <span class="s1">&#39;./wire_mpvmpr_2020_04_test_small.root&#39;</span> <span class="p">)</span>
 <span class="n">example</span><span class="o">.</span><span class="n">ls</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TFile**		/sdf/home/l/ldomine/larcv.root	
- TFile*		/sdf/home/l/ldomine/larcv.root	
-  KEY: TTree	particle_mpv_tree;1	mpv tree
-  KEY: TTree	cluster3d_mcst_tree;1	mcst tree
-  KEY: TTree	cluster3d_pcluster_tree;1	pcluster tree
-  KEY: TTree	cluster3d_sed_tree;1	sed tree
-  KEY: TTree	cluster3d_masked_true2reco_tree;1	masked_true2reco tree
-  KEY: TTree	sparse3d_reco_tree;1	reco tree
-  KEY: TTree	sparse3d_pcluster_index_tree;1	pcluster_index tree
-  KEY: TTree	sparse3d_masked_true_tree;1	masked_true tree
-  KEY: TTree	cluster3d_pcluster_highE_tree;1	pcluster_highE tree
-  KEY: TTree	cluster3d_pcluster_lowE_tree;1	pcluster_lowE tree
-  KEY: TTree	sparse3d_pcluster_leftover_tree;1	pcluster_leftover tree
-  KEY: TTree	sparse3d_pcluster_semantics_tree;1	pcluster_semantics tree
-  KEY: TTree	particle_pcluster_tree;1	pcluster tree
-  KEY: TTree	cluster3d_sed_at_tree;1	sed_at tree
-  KEY: TTree	sparse3d_reco_charge_asym_tree;1	reco_charge_asym tree
-  KEY: TTree	sparse3d_reco_chi2_tree;1	reco_chi2 tree
-  KEY: TTree	sparse3d_reco_occupancy_tree;1	reco_occupancy tree
-  KEY: TTree	sparse3d_reco_hit_time0_tree;1	reco_hit_time0 tree
-  KEY: TTree	sparse3d_reco_hit_time1_tree;1	reco_hit_time1 tree
-  KEY: TTree	sparse3d_reco_hit_time2_tree;1	reco_hit_time2 tree
-  KEY: TTree	sparse3d_reco_hit_rms0_tree;1	reco_hit_rms0 tree
-  KEY: TTree	sparse3d_reco_hit_rms1_tree;1	reco_hit_rms1 tree
-  KEY: TTree	sparse3d_reco_hit_rms2_tree;1	reco_hit_rms2 tree
-  KEY: TTree	sparse3d_pcluster_tree;1	pcluster tree
-  KEY: TTree	sparse3d_sed_tree;1	sed tree
-  KEY: TTree	sparse3d_pcluster_semantics_ghost_tree;1	pcluster_semantics_ghost tree
-  KEY: TTree	particle_corrected_tree;1	corrected tree
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">e54947e82f09</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">example</span> <span class="o">=</span> <span class="n">TFile</span><span class="p">(</span> <span class="s1">&#39;./wire_mpvmpr_2020_04_test_small.root&#39;</span> <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">example</span><span class="o">.</span><span class="n">ls</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;TFile&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -493,93 +397,16 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of clusters =  4
-	 0
-	 1
-	 11
-	 41
-Number of clusters =  8
-	 0
-	 0
-	 0
-	 0
-	 5
-	 8
-	 16
-	 129
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of clusters =  28
-	 1029
-	 48
-	 2
-	 1
-	 0
-	 9
-	 14
-	 1
-	 12
-	 0
-	 5
-	 12
-	 0
-	 0
-	 8
-	 15
-	 26
-	 24
-	 18
-	 7
-	 9
-	 0
-	 7
-	 0
-	 0
-	 16
-	 8
-	 990
-Number of clusters =  39
-	 1904
-	 5
-	 0
-	 0
-	 12
-	 0
-	 0
-	 0
-	 7
-	 0
-	 8
-	 10
-	 8
-	 0
-	 9
-	 10
-	 0
-	 0
-	 0
-	 7
-	 4
-	 20
-	 0
-	 12
-	 7
-	 8
-	 0
-	 0
-	 2
-	 0
-	 4
-	 7
-	 0
-	 7
-	 9
-	 9
-	 0
-	 12
-	 0
-Number of clusters =  1
-	 225
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mi">06</span><span class="n">ecc3d02136</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">tree</span> <span class="o">=</span> <span class="n">example</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;cluster3d_sed_tree&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">GetEntries</span><span class="p">()):</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">tree</span><span class="o">.</span><span class="n">GetEntry</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">event</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">cluster3d_sed_branch</span>
+
+<span class="ne">NameError</span>: name &#39;example&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -623,8 +450,6 @@ Coming soon</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="Data1.html" title="previous page">Using <code class="docutils literal notranslate"><span class="pre">lartpc_mlreco3d</span></code></a>
-    <a class='right-next' id="next-link" href="Output.html" title="next page">Reconstruction outputs</a>
 
         </div>
         

@@ -42,8 +42,6 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -162,96 +160,20 @@
    Overview of the reconstruction chain
   </a>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1">
   <a class="reference internal" href="../Code/Data.html">
    Data I/O
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/Data1.html">
-     Using
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       lartpc_mlreco3d
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/Data2.html">
-     Using ROOT only
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1">
   <a class="reference internal" href="../Code/Output.html">
    Reconstruction outputs
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/UResNet_PPN.html">
-     Semantics &amp; points of interest
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/Clustering.html">
-     Particle clustering
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/Interaction.html">
-     Interaction clustering, PID and primary particles
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/Kinematics.html">
-     Kinematics and particle hierarchy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/Others.html">
-     Others
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1">
   <a class="reference internal" href="../Exercises/README.html">
    Exercises
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Exercises/Michel_electron.html">
-     Exercise 1: Finding Michel electrons
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Exercises/dEdx.html">
-     Exercise 2: muon dEdx
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Exercises/Electron_gamma.html">
-     Exercise 3: electron vs gamma separation
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p class="caption">
@@ -353,18 +275,33 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#neutrinos-in-particle-physics">
-   Neutrinos in particle physics
+  <a class="reference internal nav-link" href="#particle-physics">
+   Particle Physics
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#think-tiny-tiny-particles">
-     Think tiny, tiny particles
+    <a class="reference internal nav-link" href="#elementary-particles">
+     Elementary particles
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#fundamental-interactions">
      Fundamental interactions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Neutrinos
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-studying-neutrinos">
+     Why studying neutrinos?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#detecting-neutrinos">
+     Detecting neutrinos
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -424,32 +361,72 @@
                 
   <div class="section" id="neutrinos">
 <h1>Neutrinos<a class="headerlink" href="#neutrinos" title="Permalink to this headline">¶</a></h1>
-<p>With fancy machine learning algorithms and LArTPC detectors, what are we actually looking for? Neutrinos? That sounds cute, but what is it about exactly?</p>
-<div class="section" id="neutrinos-in-particle-physics">
-<h2>Neutrinos in particle physics<a class="headerlink" href="#neutrinos-in-particle-physics" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="think-tiny-tiny-particles">
-<h3>Think tiny, tiny particles<a class="headerlink" href="#think-tiny-tiny-particles" title="Permalink to this headline">¶</a></h3>
-<p>You will also meet people who call it <code class="docutils literal notranslate"><span class="pre">high</span> <span class="pre">energy</span> <span class="pre">physics</span></code> or <code class="docutils literal notranslate"><span class="pre">hep</span></code> in short. What is our universe made of? Why is there matter around us? Particle physics is a field of physics that tries to answer these questions by studying the smallest and irreducible (i.e. that cannot be broken down into smaller particles, as far as we know) <code class="docutils literal notranslate"><span class="pre">particles</span></code> and their interactions, often called <code class="docutils literal notranslate"><span class="pre">fundamental</span> <span class="pre">interactions</span></code>.</p>
-<div class="margin sidebar">
-<p class="sidebar-title">Example</p>
-<p>A hydrogen atom is the simplest possible atom. It contains 1 proton, 1 electron, 1 neutron.
-<a class="reference internal" href="https://lh3.googleusercontent.com/proxy/6ug77eNDTYMOYm2xzPuTLjW4SCeZF_Kun0K3gforD-glGhsUbm7Lhtyc0xslZAng1n19EcEetFvCo7YM5_wQXm0noXp_rPkVbyZ9abczInuDho89cr_eyS48VPQlCTZwoOllVjXb"><img alt="https://lh3.googleusercontent.com/proxy/6ug77eNDTYMOYm2xzPuTLjW4SCeZF_Kun0K3gforD-glGhsUbm7Lhtyc0xslZAng1n19EcEetFvCo7YM5_wQXm0noXp_rPkVbyZ9abczInuDho89cr_eyS48VPQlCTZwoOllVjXb" src="https://lh3.googleusercontent.com/proxy/6ug77eNDTYMOYm2xzPuTLjW4SCeZF_Kun0K3gforD-glGhsUbm7Lhtyc0xslZAng1n19EcEetFvCo7YM5_wQXm0noXp_rPkVbyZ9abczInuDho89cr_eyS48VPQlCTZwoOllVjXb" style="width: 150px;" /></a></p>
-</div>
-<p>Most of you have probably heard of atoms and molecules in high school. For example, water is made of <code class="docutils literal notranslate"><span class="pre">H2O</span></code> molecules. <code class="docutils literal notranslate"><span class="pre">H2O</span></code> is made of two hydrogen atoms and one oxygen atom. So, you were told that matter around you is made of various atoms. What is in these atoms? It turns out that an atom can be smashed down into a bunch of three smaller particles: protons (positively charged), electrons (negatively charged) and neutrons (as the name suggests, neutral charge). Protons and neutrons are stuck together and form the nucleus of the atom. Think of electrons as a cloud orbiting around the nucleus.</p>
-<p>Is that it? For the electron, yes. Electrons are fundamental particles. However you can in turn break down protons and neutrons into <code class="docutils literal notranslate"><span class="pre">quarks</span></code>. And that is where our knowledge stops. As far as we know, quarks are irreducible particles.</p>
+<p>Our research focus is an application of machine learning techniques to analyze image of <em>neutrinos</em> recorded using a particle imaging detector technology called <em>LArTPC</em>. OK, what on the earth does this mean? What are we actually looking for? Neutrinos? That sounds cute, but what is this all about exactly?</p>
+<div class="section" id="particle-physics">
+<h2>Particle Physics<a class="headerlink" href="#particle-physics" title="Permalink to this headline">¶</a></h2>
+<p>… is a field of fundamental physics our research belongs to. You will also hear people calling it <code class="docutils literal notranslate"><span class="pre">high</span> <span class="pre">energy</span> <span class="pre">physics</span></code> or <code class="docutils literal notranslate"><span class="pre">hep</span></code> in short. What is our universe made of? Why is there matter around us? Particle physics is a field of physics that tries to answer these questions by studying the elementary (or fundamental) <code class="docutils literal notranslate"><span class="pre">particles</span></code>, the smallest and irreducible constituents of the universe, and <code class="docutils literal notranslate"><span class="pre">interactions</span></code> between those particles.</p>
 <div class="figure align-default">
-<a class="reference internal image-reference" href="https://i.ytimg.com/vi/FYxfQu2GdR0/hqdefault.jpg"><img alt="https://i.ytimg.com/vi/FYxfQu2GdR0/hqdefault.jpg" src="https://i.ytimg.com/vi/FYxfQu2GdR0/hqdefault.jpg" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/Water.png"><img alt="../_images/Water.png" src="../_images/Water.png" style="height: 400px;" /></a>
+</div>
+<p>Most of you have probably heard of atoms and molecules. For example, water is made of <code class="docutils literal notranslate"><span class="pre">H2O</span></code> molecules. <code class="docutils literal notranslate"><span class="pre">H2O</span></code> is made of two hydrogen atoms and one oxygen atom. So, you were told that matter around you is made of various atoms. Atoms, in turn, consist of two elements: a positively charged nucleus, the “core” of an atom, and negatively charged electrons that surround the core. Using our solar system for an analogy, a nucleus is like the Sun and electrons are like the planets. Furthermore, a nucleus consists of two type of particles: protons (positively charged) and neutrons (electrically neutral).</p>
+<p>Is that it? For the electron, yes. Electrons are fundamental particles. However you can in turn break down protons and neutrons into <code class="docutils literal notranslate"><span class="pre">quarks</span></code>. And that is where our knowledge stops. As far as we know, quarks are irreducible particles. A proton is made of two <em>up</em> quarks and one <em>down</em> quark. A neutron is made of one up quark and two down quarks. An up quark carries an electric charge 2/3, and a down quark -1/3. This makes a proton +1 electric charge while a neutron electrically neutral.</p>
+<div class="section" id="elementary-particles">
+<h3>Elementary particles<a class="headerlink" href="#elementary-particles" title="Permalink to this headline">¶</a></h3>
+<p>There are total of six types of quarks known today. An electron is one of six <code class="docutils literal notranslate"><span class="pre">leptons</span></code>, another category of fundamental particles. Quarks and leptons are the constituents of matter particles we encounter in our everyday life. Furthermore, there are particles that are responsible for interactions among quarks and leptons. They are responsible for quarks forming nucleons (protons and neutrons), a nucleus and electrons forming an atom, and all atomic and molecular interactions in chemistry and beyond. These are called <code class="docutils literal notranslate"><span class="pre">gauge</span> <span class="pre">bosons</span></code> in the “periodic table of particle physics” shown below. What differentites quarks from leptons is related to how they interact with peers, and will be discussed in the next.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../_images/SM.png"><img alt="../_images/SM.png" src="../_images/SM.png" style="height: 400px;" /></a>
 </div>
 </div>
 <div class="section" id="fundamental-interactions">
 <h3>Fundamental interactions<a class="headerlink" href="#fundamental-interactions" title="Permalink to this headline">¶</a></h3>
-<p>You probably have heard that the gravitational force is what keeps you bounded to the Earth and keeps you from flying like a bird (unfortunately). It also keeps planets of our solar system orbiting around the Sun (pretty important). Gravitation is one of the four fundamental interactions. The other one that we have all encountered is the electromagnetic force.</p>
+<p>We know there are (at least) four fundamental interactions in the nature, distinguished by the mechanism to propagate the force in charge. You probably have heard that the <code class="docutils literal notranslate"><span class="pre">gravitational</span> <span class="pre">force</span></code> is what keeps you bounded to the Earth and keeps you from flying like a bird (unfortunately). It also keeps planets of our solar system orbiting around the Sun (pretty important). Gravity is one of the four fundamental forces (interactions). The other one that we have all encountered is the <code class="docutils literal notranslate"><span class="pre">electromagnetic</span> <span class="pre">(EM)</span> <span class="pre">force</span></code>. Just like how the gravity is responsible for an Earth orbitting around the Sun, the EM force is responsible for an electron orbitting around a nucleus, hence the formation of atoms. Chemical rections of atoms and molecules are the result of exchanging electrons, and thus also goverened by the EM interactions. What bounds quarks into a proton or a neutron is called the <code class="docutils literal notranslate"><span class="pre">strong</span> <span class="pre">force</span></code>. It is also responsible for binding protons and neutrons into a nucleus, hence the formation of nuclei. Finally, what initiates nuclear fission and fusion processes is the <code class="docutils literal notranslate"><span class="pre">weak</span> <span class="pre">force</span></code>. Without the weak force, the Sun cannot burn and we would not have existed in the way we are present today. Each type of interaction is mediated by a particular type of gauge bosons, shown in the table above. Photons, or light particles, mediate the EM force. Gluons are responsible for the strong interactions. Three weak bosons, W+, W-, and neutral Z boson, are responsible for mediating the weak force.</p>
+<p>So which quarks and leptons participate in these interactions? All leptons and quarks participate in the weak interactions. All quarks participate in the strong interactions while the leptons don’t. All electrically charged particles, including all quarks and charged leptons (electron, muon, and tau), participate in EM interactions.  So, the neutral leptons, aka neutrinos, do not participate in the strong nor the EM interactions, making them the least interacting particles in our periodic table.</p>
+</div>
+<div class="section" id="id1">
+<h3>Neutrinos<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Neutrinos are only weakly interacting, and it is hard to detect.  How ard to detect? To put into a perspective, a light-year thick lead has 50% chance of stopping (or “catching”) neutrinos. This is one reason why neutrinos are one of the least understood particles and lots of mysteries!</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../_images/StoppingNu.png"><img alt="../_images/StoppingNu.png" src="../_images/StoppingNu.png" style="height: 250px;" /></a>
+</div>
+<p>Neutrinos were first postulated by Wolfgang Pauli in order to explain a nuclear beta decay in 1930 (original letter + translation <span class="xref myst">here</span> ). Three major nuclear decay modes include an <code class="docutils literal notranslate"><span class="pre">alpha</span></code>, <code class="docutils literal notranslate"><span class="pre">beta</span></code>, and <code class="docutils literal notranslate"><span class="pre">gamma</span> <span class="pre">decays</span></code>, emitting an alpha particle (Helium nucleus), an electron, and a gamma ray (photon) respectively as a decay product. Detecting the kinetic energy of an alpha particle or an electron is relatively straightforward using an experimental apparatus because they are electrically charged. An alpha decay is a two-body decay. The conservation of energy and momentum results in a mono-energetic peak of an outcoming alpha particle, unique to a parent isotope (this fact is used to identify radioactive elements in the alpha-particle spectroscopy). A beta decay spectrum, on the other hand, is wide and spread, nothing like a mono-energetic peak observed for alpha particles. Back in 1930, however, physicists observed only an electron and resulting nucleus as decay products. A famous physicist Niels Bohr even suggested that, perhaps, energy is not conserved in an individual beta decay process. Pauli’s attempt was to introduce a neutral, rarely interacting ghost particle (practically undetectable at that time) in a beta decay. With this particle, known as a neutrino today, a beta decay is a three-body process and could explain a wide energy spectrum of a decay electron. Furthermore, this particle considered to have <code class="docutils literal notranslate"><span class="pre">zero</span> <span class="pre">or</span> <span class="pre">undetectablly</span> <span class="pre">light</span> <span class="pre">mass</span></code>. For a neutrino to be emitted, at least the energy worth its mass needs to be taken away from the process. Yet, the observed beta decay spectra suggest that an electron may take away all of the available energy (within the experimental resolution). This implied that the mass of a ghost neutrino must be zero or less than the resolution limited by the experimental aparatus.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../_images/betadecay.png"><img alt="../_images/betadecay.png" src="../_images/betadecay.png" style="height: 300px;" /></a>
+</div>
+<p>Fast forward many decades, we know a lot more about neutrinos today. There are three types of neutrinos (electron, muon, and tau <em>flavor</em> of neutrinos). A muon-neutrino with energy more than the muon mass can interact with a neutron to produce a muon and proton (but it cannot produce an electron). Similarly, an electron-neutrino can produce an electron through the same process and would not produce a muon. This is called a <code class="docutils literal notranslate"><span class="pre">lepton</span> <span class="pre">flavor</span> <span class="pre">conservation</span></code> in an weak interaction. Furthermore, neutrinos turned out to be massive particles (i.e. they have non-zero mass) and exhibit an intriguing phenomenon, called <code class="docutils literal notranslate"><span class="pre">neutrino</span> <span class="pre">oscillation</span></code>, through which a neutrino can change its flavor (i.e. an electron neutrino could become a muon neutrino). Multiple Nobel prizes have been awarded to neutrino physics experiments including the first detection of neutrinos by Reins and Cowan to the most recent, discovery of neutrino oscillation and massive neutrinos by Super-Kamiokande ans SNO experiments.</p>
+</div>
+<div class="section" id="why-studying-neutrinos">
+<h3>Why studying neutrinos?<a class="headerlink" href="#why-studying-neutrinos" title="Permalink to this headline">¶</a></h3>
+<p>Despite the progress made in the recent years, many questions about neutrinos remain unanswered. We know neutrinos have mass and the relative mass difference among three neutrinos. <code class="docutils literal notranslate"><span class="pre">But</span> <span class="pre">what</span> <span class="pre">is</span> <span class="pre">their</span> <span class="pre">absolute</span> <span class="pre">mass</span> <span class="pre">scale?</span> <span class="pre">Do</span> <span class="pre">neutrinos</span> <span class="pre">and</span> <span class="pre">anti-neutrinos</span> <span class="pre">behave</span> <span class="pre">same</span> <span class="pre">in</span> <span class="pre">neutrino</span> <span class="pre">oscillation?</span> <span class="pre">Is</span> <span class="pre">a</span> <span class="pre">neutrino</span> <span class="pre">its</span> <span class="pre">own</span> <span class="pre">anti-particle?</span></code> A possible consequence of answers to these questions is an explanation for why our present universe is dominated by matter particles and filled with little anti-matters. Where did anti-matters disappear after the Big Bang, at which there should have been 50-50 fraction of matter and anti-matters? Neutrinos might be a key to explain why we exist today.</p>
+<p>Furthermore, understanding how neutrinos are produced and travel through the space-time (during which they participate in the oscillation) helps us understand many physics phenomena in our universe. While it is difficult to detect, neutrinos are the second most abundant particles in the universe known to date (the most abundant are photons) and they are produced in everywhere: the beginning of the universe, supernova, stars including the Sun, cosmic rays, nuclear decays inside the Earth, nuclear reactors and particle accelerators, and even from bananas. To put into a perspective, there are about <code class="docutils literal notranslate"><span class="pre">65</span> <span class="pre">billion</span> <span class="pre">neutrinos</span> <span class="pre">from</span> <span class="pre">the</span> <span class="pre">Sun</span> <span class="pre">passing</span> <span class="pre">through</span> <span class="pre">your</span> <span class="pre">thumb</span> <span class="pre">nail</span> <span class="pre">every</span> <span class="pre">second</span></code>. That’s just the Sun!</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../_images/NuSource.png"><img alt="../_images/NuSource.png" src="../_images/NuSource.png" style="height: 300px;" /></a>
+</div>
+<p>There are so many of them, and they carry information about the physics behind their source. If we understand how they are produced + how they propagate to our lab, and if we could efficiently detect them, we can study the physics of their source. It is just like how you observe light (photons) and study about stars in the nightsky. Unlike photons, that can be easily blocked by an obstacle between the source and an observer (us), most of neutrinos carry “raw” information without any interruption thanks to its ghostly nature (i.e. participate only in the weak interactions). A great example is the <code class="docutils literal notranslate"><span class="pre">Solar</span> <span class="pre">Model</span></code>, our understanding of how the Sun burns today, which was confirmed by observing neutrino flux from the Sun. Through this process, the neutrino oscillation physics was also studied in details and a great progress was made (a half of a Nobel prize awarded to the SNO experiment).</p>
+<p>Despite all the excitement about neutrinos, we cannot learn anything without being able to detect them, which is a challenging task as briefly mentioned before. The plot below shows the <code class="docutils literal notranslate"><span class="pre">flux</span></code> (i.e. the intensity) and the <code class="docutils literal notranslate"><span class="pre">energy</span></code> of neutrinos coming from various sources. Both axes spans a large region in the logarithmic scale. Detecting them all efficiently is extremely challenging and would certainly require multiple detector technologies. The design of neutrino detectors is what the next section is about.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../_images/NuSpectrum.png"><img alt="../_images/NuSpectrum.png" src="../_images/NuSpectrum.png" style="height: 450px;" /></a>
+</div>
+</div>
+<div class="section" id="detecting-neutrinos">
+<h3>Detecting neutrinos<a class="headerlink" href="#detecting-neutrinos" title="Permalink to this headline">¶</a></h3>
+<p>… is not trivial since they rarely interact (recall a one-light-year thick lead brick)! But it’s not impossible since they often come in a large number (i.e. billions from the Sun through your thumbnail). The very <code class="docutils literal notranslate"><span class="pre">first</span> <span class="pre">detection</span> <span class="pre">of</span> <span class="pre">neutrinos</span> <span class="pre">was</span> <span class="pre">done</span> <span class="pre">by</span> <span class="pre">Reins</span> <span class="pre">and</span> <span class="pre">Cowan</span></code> in 1953 (published in 1956). They detected electron anti-neutrinos from a nuclear reactor using water as the target. Electron anti-neutrinos interact with a proton and produce a positron and a neutron. A positron annihilates with an electron immediately, emitting two gamma rays. Water is doped with Cadominium, which captures a neutron micro-seconds later to emit a high energy gamma ray. The detector was placed underground, close to the reactor core with enough shielding to avoid other radiations such as neutrons.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../_images/ReinsCowan.png"><img alt="../_images/ReinsCowan.png" src="../_images/ReinsCowan.png" style="height: 450px;" /></a>
+</div>
+<p>Much progress has been made in the R&amp;D of neutrino detectors alongside the advancement in our understanding about neutrinos, including the discovery of neutrino oscillation. An important key <code class="docutils literal notranslate"><span class="pre">scalability</span></code>: we want a detector technology that can be scaled to a large volume, hence increasing a chance of detection. For studying neutrino oscillation, there are additional factors. Neutrino oscillation is characterized by the energy of neutrino and the distance of travel. So, the detector needs a good <code class="docutils literal notranslate"><span class="pre">energy</span> <span class="pre">resolution</span></code> to be able to infer the neutrino energy with high precision, and the location needs to be measured accurately. Furthermore, in order to identify that a neutrino flavor has oscillated (or not), we need a detector with a capability of <code class="docutils literal notranslate"><span class="pre">particle</span> <span class="pre">type</span> <span class="pre">identification</span></code> so that we can distinguish electron and muon neutrinos. So three important factors:</p>
 <ul class="simple">
-<li><p>The strong force (holds the protons and neutrons together to make the nucleus of an atom)</p></li>
-<li><p>The electromagnetic force (interaction between charges)</p></li>
-<li><p>The weak force</p></li>
-<li><p>The gravitational force</p></li>
+<li><p>A scalable (in volume) detector technology</p></li>
+<li><p>Good energy resolution</p></li>
+<li><p>Capability to identify particle types</p></li>
 </ul>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../_images/SuperK.png"><img alt="../_images/SuperK.png" src="../_images/SuperK.png" style="height: 250px;" /></a>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Super-Kamiokande</span></code> (left in the above image) is a modern <code class="docutils literal notranslate"><span class="pre">Water-Cherenkov</span> <span class="pre">detector</span></code> (i.e. detects Cherenkov light produced by charged particles traversing in a medium). The detector consists of the target, 50 kiloton of purified water, and 11,000 large PMTs surrounding the target. This is a huge leap from the detectors employed by Reins and Cowan! PMTs are sensitive to photons with a certain band of wavelength (typically overlapping with the visible wavelgnths to human eyes). The photons emitted by Cherenkov radiation has a wavelength determined by an opening angle between its direction and the motion of the emitting particle. As a result, only PMTs that are within the certain angular range will detect photons within their sensitive wavelength, and this can be seen as a <code class="docutils literal notranslate"><span class="pre">Cherenkov</span> <span class="pre">ring</span></code> in the above image. An electron is 200 times lighter than a muon, and its direction is more affected by scattering process. This results in a fuzzier ring for electrons (above middle) compared to muons (above right), and this allows the Super-Kamiokande detector to distinguish those two particle types.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../_images/LArTPC.png"><img alt="../_images/LArTPC.png" src="../_images/LArTPC.png" style="height: 350px;" /></a>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Liquid</span> <span class="pre">Argon</span> <span class="pre">Time</span> <span class="pre">Projection</span> <span class="pre">Chamber</span> <span class="pre">(LArTPC)</span></code> is another detector technology that is actively pursued for neutrino experiments today. Like the Water Cherenkov detectors, LArTPCs are scalable in volume (Ar is cheap!), and have a good capability in reconstructing the energy and type of detected particles. As you can see in an example data taken by <code class="docutils literal notranslate"><span class="pre">MicroBooNE</span></code> LArTPC experiment above, we can observe the details of a particle trajectory including small branches of atomic electrons knocked out along a long trajectory (likely a muon or pion). The color scale of an image reflects the amount of energy deposited per pixel, and is used to infer the energy loss per unit length, or dE/dX, which is a function of particle mass (hence type) and momentum. LArTPCs can record a lot more physics features than the Water Cherenkov detectors. While it is truly beautiful, a <em>big</em> image data with every detail of complex particle trajectories also presents challenges in efficiently identifying neutrino interactions. To put into a perspective, The MicroBooNE detector records 87-tonne volume in an image of 80 mega-pixels. The <code class="docutils literal notranslate"><span class="pre">Deep</span> <span class="pre">Underground</span> <span class="pre">Neutrino</span> <span class="pre">Experiment</span> <span class="pre">(DUNE)</span></code> will be recording 40 kilo-ton of LAr volume. Our group leads the development of a high quality and efficiency data analysis techniques for LArTPC detectors using <code class="docutils literal notranslate"><span class="pre">Computer</span> <span class="pre">Vision</span></code> and <code class="docutils literal notranslate"><span class="pre">Machine</span> <span class="pre">Learning</span></code>.</p>
 </div>
 <div class="section" id="a-wave-of-particles">
 <h3>A wave of particles<a class="headerlink" href="#a-wave-of-particles" title="Permalink to this headline">¶</a></h3>

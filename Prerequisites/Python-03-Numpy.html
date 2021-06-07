@@ -42,8 +42,6 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -162,96 +160,20 @@
    Overview of the reconstruction chain
   </a>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1">
   <a class="reference internal" href="../Code/Data.html">
    Data I/O
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/Data1.html">
-     Using
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       lartpc_mlreco3d
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/Data2.html">
-     Using ROOT only
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1">
   <a class="reference internal" href="../Code/Output.html">
    Reconstruction outputs
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/UResNet_PPN.html">
-     Semantics &amp; points of interest
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/Clustering.html">
-     Particle clustering
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/Interaction.html">
-     Interaction clustering, PID and primary particles
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/Kinematics.html">
-     Kinematics and particle hierarchy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/Others.html">
-     Others
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1">
   <a class="reference internal" href="../Exercises/README.html">
    Exercises
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Exercises/Michel_electron.html">
-     Exercise 1: Finding Michel electrons
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Exercises/dEdx.html">
-     Exercise 2: muon dEdx
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Exercises/Electron_gamma.html">
-     Exercise 3: electron vs gamma separation
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p class="caption">
@@ -487,7 +409,7 @@ Is a Python library adding support for multi-dimensional arrays and matrices, as
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.19.5
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.20.3
 </pre></div>
 </div>
 </div>
@@ -829,7 +751,7 @@ Numpy allows to resphape it easily. For example, we can transform it into a 2-D 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 ldomine ki 730 Jun  4 12:30 erase.npz
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 drinkingkazu drinkingkazu 730 Jun  6 11:41 erase.npz
 </pre></div>
 </div>
 </div>
@@ -996,8 +918,8 @@ Here’s an example of a <strong>flat random number</strong> between 0 to 1.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape (100000,)
-mean 0.5005627378430716 std 0.2887923078118963
-min 3.4335770404680943e-07 max 0.9999974595064113
+mean 0.4996380057936049 std 0.28875307177831744
+min 6.238859105667238e-06 max 0.9999813537014726
 </pre></div>
 </div>
 </div>
@@ -1014,8 +936,8 @@ min 3.4335770404680943e-07 max 0.9999974595064113
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape (100,)
-mean -0.07815157031891701 std 0.9425496046993824
-min -3.1800115825634934 max 2.1308888682328444
+mean -0.18108472949967325 std 1.0468466177660263
+min -2.5671678710268466 max 2.187737423063711
 </pre></div>
 </div>
 </div>

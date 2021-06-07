@@ -42,8 +42,6 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -162,96 +160,20 @@
    Overview of the reconstruction chain
   </a>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1">
   <a class="reference internal" href="../Code/Data.html">
    Data I/O
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/Data1.html">
-     Using
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       lartpc_mlreco3d
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/Data2.html">
-     Using ROOT only
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1">
   <a class="reference internal" href="../Code/Output.html">
    Reconstruction outputs
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/UResNet_PPN.html">
-     Semantics &amp; points of interest
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/Clustering.html">
-     Particle clustering
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/Interaction.html">
-     Interaction clustering, PID and primary particles
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/Kinematics.html">
-     Kinematics and particle hierarchy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Code/Others.html">
-     Others
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1">
   <a class="reference internal" href="../Exercises/README.html">
    Exercises
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Exercises/Michel_electron.html">
-     Exercise 1: Finding Michel electrons
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Exercises/dEdx.html">
-     Exercise 2: muon dEdx
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Exercises/Electron_gamma.html">
-     Exercise 3: electron vs gamma separation
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p class="caption">
@@ -456,7 +378,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch._C.Generator at 0x7f1ff3de4810&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch._C.Generator at 0x7fd0ac097dd0&gt;
 </pre></div>
 </div>
 </div>
@@ -813,7 +735,10 @@ The 0th dimension size: 3
 Batch entry 1 ... batch data tensor([31,  3, 52, 22, 78, 20,  9, 49, 72, 38])
 Batch entry 2 ... batch data tensor([91, 13, 92, 48, 80, 76, 32,  1, 45, 33])
 Batch entry 3 ... batch data tensor([18, 30, 10, 37, 77, 23, 90,  2, 47, 54])
-Batch entry 4 ... batch data tensor([93,  5, 88, 59, 94, 36, 25, 98,  4, 27])
+Batch entry 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4 ... batch data tensor([93,  5, 88, 59, 94, 36, 25, 98,  4, 27])
 Batch entry 5 ... batch data tensor([ 6, 46, 81, 89, 58, 84, 67, 74, 43, 71])
 Batch entry 6 ... batch data tensor([57, 97, 24, 73, 15, 16, 28, 41, 82, 60])
 Batch entry 7 ... batch data tensor([21, 62, 83, 61, 11, 65, 87, 95, 69, 12])
@@ -1054,6 +979,25 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">28</span><span class="o">-</span><span class="mf">4e38</span><span class="n">f5a0dec9</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">data_np</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">data_cpu</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">data_np</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">data_gpu</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">data_np</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+
+<span class="nn">/usr/local/lib/python3.8/dist-packages/torch/cuda/__init__.py</span> in <span class="ni">_lazy_init</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">170</span>         <span class="c1"># This function throws if there&#39;s a driver initialization error, no GPUs</span>
+<span class="g g-Whitespace">    </span><span class="mi">171</span>         <span class="c1"># are found or any other error occurs</span>
+<span class="ne">--&gt; </span><span class="mi">172</span>         <span class="n">torch</span><span class="o">.</span><span class="n">_C</span><span class="o">.</span><span class="n">_cuda_init</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">173</span>         <span class="c1"># Some of the queued calls may reentrantly call _lazy_init();</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span>         <span class="c1"># we need to just return without initializing in that case.</span>
+
+<span class="ne">RuntimeError</span>: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx
+</pre></div>
+</div>
+</div>
 </div>
 <p>Time fifth power of the matrix on CPU</p>
 <div class="cell docutils container">
@@ -1064,7 +1008,7 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.58 ms ± 178 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.46 ms ± 85.1 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -1078,7 +1022,44 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>48.2 µs ± 559 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">30</span><span class="o">-</span><span class="mi">3</span><span class="n">d9f36b55a06</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_cell_magic</span><span class="p">(</span><span class="s1">&#39;timeit&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;mean = (data_gpu ** 5).mean().item()</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.8/dist-packages/IPython/core/interactiveshell.py</span> in <span class="ni">run_cell_magic</span><span class="nt">(self, magic_name, line, cell)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2401</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2402</span>                 <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">magic_arg_s</span><span class="p">,</span> <span class="n">cell</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2403</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2404</span>             <span class="k">return</span> <span class="n">result</span>
+<span class="g g-Whitespace">   </span><span class="mi">2405</span> 
+
+<span class="nn">&lt;decorator-gen-53&gt;</span> in <span class="ni">timeit</span><span class="nt">(self, line, cell, local_ns)</span>
+
+<span class="nn">/usr/local/lib/python3.8/dist-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="c1"># but it&#39;s overkill for just that one bit of state.</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="k">def</span> <span class="nf">magic_deco</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">187</span>         <span class="n">call</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span> 
+<span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+
+<span class="nn">/usr/local/lib/python3.8/dist-packages/IPython/core/magics/execution.py</span> in <span class="ni">timeit</span><span class="nt">(self, line, cell, local_ns)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1167</span>             <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1168</span>                 <span class="n">number</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="n">index</span>
+<span class="ne">-&gt; </span><span class="mi">1169</span>                 <span class="n">time_number</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1170</span>                 <span class="k">if</span> <span class="n">time_number</span> <span class="o">&gt;=</span> <span class="mf">0.2</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1171</span>                     <span class="k">break</span>
+
+<span class="nn">/usr/local/lib/python3.8/dist-packages/IPython/core/magics/execution.py</span> in <span class="ni">timeit</span><span class="nt">(self, number)</span>
+<span class="g g-Whitespace">    </span><span class="mi">167</span>         <span class="n">gc</span><span class="o">.</span><span class="n">disable</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">168</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">169</span>             <span class="n">timing</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">170</span>         <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">171</span>             <span class="k">if</span> <span class="n">gcold</span><span class="p">:</span>
+
+<span class="nn">&lt;magic-timeit&gt;</span> in <span class="ni">inner</span><span class="nt">(_it, _timer)</span>
+
+<span class="ne">NameError</span>: name &#39;data_gpu&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1094,7 +1075,7 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>174 µs ± 1.4 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>227 µs ± 2.45 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1104,11 +1085,6 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
 <span class="n">data_np</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="n">data_gpu</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">data_np</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.13 ms ± 3.96 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
