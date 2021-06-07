@@ -1,4 +1,4 @@
-FROM deeplearnphysics/larcv2:ub18.04-cuda10.2-pytorch1.7.1
+FROM deeplearnphysics/larcv2:ub18.04-cuda10.2-pytorch1.7.1-extra
 
 RUN git clone https://github.com/Temigo/lartpc_mlreco3d.git /app/lartpc_mlreco3d
 WORKDIR /app/lartpc_mlreco3d 
