@@ -19,7 +19,7 @@ The first time that you build, you need to run `sh setup.sh` in the root of the 
 Then every time you want to build:
 
 ```bash
-$ jupyter-book build lartpc_mlreco3d_tutorials/
+$ jupyter-book build book
 ```
 
 You can now open the file `_build/html/index.html` to preview your changes.
@@ -34,8 +34,7 @@ $ pip install -U ghp-import
 then you can easily update the Github Pages after building:
 
 ```bash
-$ cd lartpc_mlreco3d_tutorials
-$ ghp-import -n -p -f _build/html
+$ ghp-import -n -p -f book/_build/html
 ```
 
 ## Built with
