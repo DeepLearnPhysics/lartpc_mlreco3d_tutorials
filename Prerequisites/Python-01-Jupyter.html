@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -499,7 +501,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;module &#39;numpy&#39; from &#39;/usr/local/lib/python3.8/dist-packages/numpy/__init__.py&#39;&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;module &#39;numpy&#39; from &#39;/usr/local/lib/python3.6/dist-packages/numpy/__init__.py&#39;&gt;
 foo
 </pre></div>
 </div>
@@ -517,66 +519,13 @@ foo
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DataVis.ipynb
-DataVisCluster.ipynb
-DataVisGranular.ipynb
-Desktop
-Documents
-Downloads
-E7SAV7LAD-W8V9Z4DC2-7b6645e94a96-512.png
-Music
-Pictures
-Public
-Python-01-Jupyter.ipynb
-Python-02-Python.ipynb
-Python-03-Numpy.ipynb
-Python-04-ScientificPython.ipynb
-Python-05-PyTorch.ipynb
-Python-06-MNIST-CIFAR10.ipynb
-ReviewBook-Clustering
-Templates
-Untitled.ipynb
-Untitled1.ipynb
-Untitled2.ipynb
-Videos
-combined.txt
-combined_00.h5
-combined_01.h5
-combined_02.h5
-combined_03.h5
-combined_04.h5
-fitted
-geant4.10.06.p03
-geant4.10.06.p03-build
-geant4.10.06.p03-install
-geant4.10.06.p03.tar.gz
-images
-kterao@sdf-login.slac.stanford.edu
-larcv.root
-larcv2
-larcv2_ub20.04-cuda11.0-pytorch1.7.1.sif
-larcv_0000.root
-larcv_0001.root
-lartpc_mlreco3d
-logos
-madjax_test-madjax.sif
-math-with-slack.py
-mozilla.pdf
-ondemand
-overlay.py
-reset.sh
-root_build
-root_src
-sshfs
-sw
-test.h5
-test00.root
-test01.root
-test_mixed_00_01.root
-tmp
-tmp.cfg
-train.h5
-ub20.04-cuda11.0-pytorch1.7.1-sw
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MinkowskiEngine		  larcv1.root	      larcv_nue_v01
+Output_Chain_Ghost.ipynb  larcv2	      larcv_nue_v02
+Untitled.ipynb		  larcv2.root	      lartpc_mlreco3d
+Vertex_Resolution.ipynb   larcv_nue_ccqe_v00  lartpc_mlreco3d_tutorials
+Visualization.ipynb	  larcv_nue_ccqe_v01  ondemand
+felix_lartpc_mlreco3d	  larcv_nue_ccqe_v02  outreach
+larcv.root		  larcv_nue_ccqe_v04  slacml-kmi2020
 </pre></div>
 </div>
 </div>
@@ -594,66 +543,27 @@ ls $HOME
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DataVis.ipynb
-DataVisCluster.ipynb
-DataVisGranular.ipynb
-Desktop
-Documents
-Downloads
-E7SAV7LAD-W8V9Z4DC2-7b6645e94a96-512.png
-Music
-Pictures
-Public
-Python-01-Jupyter.ipynb
-Python-02-Python.ipynb
-Python-03-Numpy.ipynb
-Python-04-ScientificPython.ipynb
-Python-05-PyTorch.ipynb
-Python-06-MNIST-CIFAR10.ipynb
-ReviewBook-Clustering
-Templates
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MinkowskiEngine
+Output_Chain_Ghost.ipynb
 Untitled.ipynb
-Untitled1.ipynb
-Untitled2.ipynb
-Videos
-combined.txt
-combined_00.h5
-combined_01.h5
-combined_02.h5
-combined_03.h5
-combined_04.h5
-fitted
-geant4.10.06.p03
-geant4.10.06.p03-build
-geant4.10.06.p03-install
-geant4.10.06.p03.tar.gz
-images
-kterao@sdf-login.slac.stanford.edu
+Vertex_Resolution.ipynb
+Visualization.ipynb
+felix_lartpc_mlreco3d
 larcv.root
+larcv1.root
 larcv2
-larcv2_ub20.04-cuda11.0-pytorch1.7.1.sif
-larcv_0000.root
-larcv_0001.root
+larcv2.root
+larcv_nue_ccqe_v00
+larcv_nue_ccqe_v01
+larcv_nue_ccqe_v02
+larcv_nue_ccqe_v04
+larcv_nue_v01
+larcv_nue_v02
 lartpc_mlreco3d
-logos
-madjax_test-madjax.sif
-math-with-slack.py
-mozilla.pdf
+lartpc_mlreco3d_tutorials
 ondemand
-overlay.py
-reset.sh
-root_build
-root_src
-sshfs
-sw
-test.h5
-test00.root
-test01.root
-test_mixed_00_01.root
-tmp
-tmp.cfg
-train.h5
-ub20.04-cuda11.0-pytorch1.7.1-sw
+outreach
+slacml-kmi2020
 </pre></div>
 </div>
 </div>
@@ -731,14 +641,6 @@ ub20.04-cuda11.0-pytorch1.7.1-sw
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello world!
 hello world!
 hello world!
-hello world!
-hello world!
-hello world!
-hello world!
-hello world!
-hello world!
-hello world!
-hello world!
 </pre></div>
 </div>
 </div>
@@ -756,8 +658,8 @@ hello world!
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 116 µs, sys: 4.1 ms, total: 4.21 ms
-Wall time: 3.7 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 4.24 ms, sys: 0 ns, total: 4.24 ms
+Wall time: 3.67 ms
 </pre></div>
 </div>
 </div>

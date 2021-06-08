@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -474,13 +476,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mf">6991e5</span><span class="n">ea28ea</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">ROOT</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">ROOT</span> <span class="kn">import</span>  <span class="n">TFile</span><span class="p">,</span> <span class="n">TChain</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;ROOT&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to JupyROOT 6.22/02
 </pre></div>
 </div>
 </div>
@@ -494,13 +490,11 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">e54947e82f09</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">example</span> <span class="o">=</span> <span class="n">TFile</span><span class="p">(</span> <span class="s1">&#39;./wire_mpvmpr_2020_04_test_small.root&#39;</span> <span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">example</span><span class="o">.</span><span class="n">ls</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;TFile&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TFile**		./wire_mpvmpr_2020_04_test_small.root	
+ TFile*		./wire_mpvmpr_2020_04_test_small.root	
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in &lt;TFile::TFile&gt;: file ./wire_mpvmpr_2020_04_test_small.root does not exist
 </pre></div>
 </div>
 </div>
@@ -523,15 +517,15 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
 <span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mi">06</span><span class="n">ecc3d02136</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">tree</span> <span class="o">=</span> <span class="n">example</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;cluster3d_sed_tree&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">tree</span> <span class="o">=</span> <span class="n">example</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;cluster3d_sed_tree&quot;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">GetEntries</span><span class="p">()):</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">GetEntries</span><span class="p">()):</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">tree</span><span class="o">.</span><span class="n">GetEntry</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">event</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">cluster3d_sed_branch</span>
 
-<span class="ne">NameError</span>: name &#39;example&#39; is not defined
+<span class="ne">AttributeError</span>: &#39;TObject&#39; object has no attribute &#39;GetEntries&#39;
 </pre></div>
 </div>
 </div>

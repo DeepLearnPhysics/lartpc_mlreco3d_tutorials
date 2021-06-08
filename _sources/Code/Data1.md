@@ -16,7 +16,25 @@ kernelspec:
 # Using `lartpc_mlreco3d`
 Before starting anything, it is good practice to look at your dataset in an event display. This chapter is strictly about the I/O part of `lartpc_mlreco3d` (independently of everything else, models, etc) and how to use it to visualize your dataset.
 
+If needed, you can edit the path to `lartpc_mlreco3d` library and to the data folder.
 ```{code-cell}
+import os
+SOFTWARE_DIR = '%s/lartpc_mlreco3d' % os.environ.get('HOME') 
+DATA_DIR = '../data'
+```
+
+The usual imports and setting the right `PYTHON_PATH`...  click if you need to see them.
+```{code-cell}
+:tags: [hide-cell]
+
+import sys, os
+# set software directory
+sys.path.insert(0, SOFTWARE_DIR)
+```
+
+```{code-cell}
+:tags: [hide-cell]
+
 import numpy as np
 import yaml
 import torch
@@ -24,26 +42,19 @@ import plotly
 import plotly.graph_objs as go
 from plotly.offline import iplot, init_notebook_mode
 init_notebook_mode(connected=False)
-```
 
-Replace with the path to your `lartpc_mlreco3d` if necessary:
-
-```{code-cell}
-import sys, os
-# set software directory
-software_dir = '%s/lartpc_mlreco3d' % os.environ.get('HOME')
-sys.path.insert(0,software_dir)
-```
-
-These are various utils:
-
-```{code-cell}
 from mlreco.visualization import scatter_points, plotly_layout3d
 from mlreco.visualization.gnn import scatter_clusters, network_topology, network_schematic
+from mlreco.utils.ppn import uresnet_ppn_type_point_selector
+from mlreco.utils.cluster.dense_cluster import fit_predict_np, gaussian_kernel
 from mlreco.main_funcs import process_config, prepare
 from mlreco.utils.gnn.cluster import get_cluster_label
 from mlreco.utils.deghosting import adapt_labels_numpy as adapt_labels
+from mlreco.visualization.gnn import network_topology
+
+from larcv import larcv
 ```
+
 
 ## Configuration
 You need to specify a *configuration*, in YAML syntax, which tells `lartpc_mlreco3d` how you want to access the data: how many images (`batch_size`), the path to your dataset, which quantities you want to retrieve from the dataset. You can even limit the I/O to a specific list of entry numbers using `event_list`.
@@ -58,7 +69,7 @@ iotool:
   dataset:
     name: LArCVDataset
     data_keys:
-      - ./wire_mpvmpr_2020_04_test_small.root
+      - DATA_DIR/wire_mpvmpr_2020_04_test_small.root
     limit_num_files: 10
     #event_list: '[6436, 562, 3802, 6175, 15256]'
     schema:
@@ -79,7 +90,7 @@ iotool:
         - parse_particle_points_with_tagging
         - sparse3d_pcluster
         - particle_corrected
-"""
+""".replace('DATA_DIR', DATA_DIR)
 ```
 
 Now that the configuration is defined, you can feed it to `lartpc_mlreco3d`:
@@ -261,7 +272,7 @@ iotool:
   dataset:
     (...)
     data_keys:
-      - ./wire_mpvmpr_2020_04_test_small.root
+      - DATA_DIR/wire_mpvmpr_2020_04_test_small.root
     (...)
     schema:
       input_data:

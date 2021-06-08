@@ -297,10 +297,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Exercises/dEdx.html">
-     Exercise 2: muon
-     <span class="math notranslate nohighlight">
-      \(dE/dx\)
-     </span>
+     Exercise 2: muon stopping power
     </a>
    </li>
    <li class="toctree-l2">
@@ -450,7 +447,26 @@
 <h1>Kinematics and particle hierarchy<a class="headerlink" href="#kinematics-and-particle-hierarchy" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="imports-and-configuration">
 <h2>Imports and configuration<a class="headerlink" href="#imports-and-configuration" title="Permalink to this headline">¶</a></h2>
-<p>The usual imports, click to see the details.</p>
+<p>If needed, you can edit the path to <code class="docutils literal notranslate"><span class="pre">lartpc_mlreco3d</span></code> library and to the data folder.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">SOFTWARE_DIR</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/lartpc_mlreco3d&#39;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;HOME&#39;</span><span class="p">)</span> 
+<span class="n">DATA_DIR</span> <span class="o">=</span> <span class="s1">&#39;../data&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The usual imports and setting the right <code class="docutils literal notranslate"><span class="pre">PYTHON_PATH</span></code>…  click if you need to see them.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
+<span class="c1"># set software directory</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">SOFTWARE_DIR</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -460,6 +476,17 @@
 <span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="k">as</span> <span class="nn">go</span>
 <span class="kn">from</span> <span class="nn">plotly.offline</span> <span class="kn">import</span> <span class="n">iplot</span><span class="p">,</span> <span class="n">init_notebook_mode</span>
 <span class="n">init_notebook_mode</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">mlreco.visualization</span> <span class="kn">import</span> <span class="n">scatter_points</span><span class="p">,</span> <span class="n">plotly_layout3d</span>
+<span class="kn">from</span> <span class="nn">mlreco.visualization.gnn</span> <span class="kn">import</span> <span class="n">scatter_clusters</span><span class="p">,</span> <span class="n">network_topology</span><span class="p">,</span> <span class="n">network_schematic</span>
+<span class="kn">from</span> <span class="nn">mlreco.utils.ppn</span> <span class="kn">import</span> <span class="n">uresnet_ppn_type_point_selector</span>
+<span class="kn">from</span> <span class="nn">mlreco.utils.cluster.dense_cluster</span> <span class="kn">import</span> <span class="n">fit_predict_np</span><span class="p">,</span> <span class="n">gaussian_kernel</span>
+<span class="kn">from</span> <span class="nn">mlreco.main_funcs</span> <span class="kn">import</span> <span class="n">process_config</span><span class="p">,</span> <span class="n">prepare</span>
+<span class="kn">from</span> <span class="nn">mlreco.utils.gnn.cluster</span> <span class="kn">import</span> <span class="n">get_cluster_label</span>
+<span class="kn">from</span> <span class="nn">mlreco.utils.deghosting</span> <span class="kn">import</span> <span class="n">adapt_labels_numpy</span> <span class="k">as</span> <span class="n">adapt_labels</span>
+<span class="kn">from</span> <span class="nn">mlreco.visualization.gnn</span> <span class="kn">import</span> <span class="n">network_topology</span>
+
+<span class="kn">from</span> <span class="nn">larcv</span> <span class="kn">import</span> <span class="n">larcv</span>
 </pre></div>
 </div>
 </div>
@@ -537,64 +564,20 @@ var n,i=t("./lib/build-log"),a=t("./lib/epsilon"),o=t("./lib/intersecter"),s=t("
         });
         }
         </script>
-</div></div>
+</div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.6/dist-packages/MinkowskiEngine/__init__.py:42: UserWarning:
+
+The environment variable `OMP_NUM_THREADS` not set. MinkowskiEngine will automatically set `OMP_NUM_THREADS=16`. If you want to set `OMP_NUM_THREADS` manually, please export it on the command line before running a python script. e.g. `export OMP_NUM_THREADS=12; python your_program.py`. It is recommended to set it below 24.
+</pre></div>
 </div>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
-<span class="c1"># set software directory</span>
-<span class="n">software_dir</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/lartpc_mlreco3d&#39;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;HOME&#39;</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">software_dir</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to JupyROOT 6.22/02
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlreco.visualization</span> <span class="kn">import</span> <span class="n">scatter_points</span><span class="p">,</span> <span class="n">plotly_layout3d</span>
-<span class="kn">from</span> <span class="nn">mlreco.visualization.gnn</span> <span class="kn">import</span> <span class="n">scatter_clusters</span><span class="p">,</span> <span class="n">network_topology</span><span class="p">,</span> <span class="n">network_schematic</span>
-<span class="kn">from</span> <span class="nn">mlreco.utils.ppn</span> <span class="kn">import</span> <span class="n">uresnet_ppn_type_point_selector</span>
-<span class="kn">from</span> <span class="nn">mlreco.utils.cluster.dense_cluster</span> <span class="kn">import</span> <span class="n">fit_predict_np</span><span class="p">,</span> <span class="n">gaussian_kernel</span>
-<span class="kn">from</span> <span class="nn">mlreco.main_funcs</span> <span class="kn">import</span> <span class="n">process_config</span><span class="p">,</span> <span class="n">prepare</span>
-<span class="kn">from</span> <span class="nn">mlreco.utils.gnn.cluster</span> <span class="kn">import</span> <span class="n">get_cluster_label</span>
-<span class="kn">from</span> <span class="nn">mlreco.utils.deghosting</span> <span class="kn">import</span> <span class="n">adapt_labels_numpy</span> <span class="k">as</span> <span class="n">adapt_labels</span>
-<span class="kn">from</span> <span class="nn">mlreco.visualization.gnn</span> <span class="kn">import</span> <span class="n">network_topology</span>
-
-
-<span class="kn">from</span> <span class="nn">larcv</span> <span class="kn">import</span> <span class="n">larcv</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">be3e0ba699c5</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">mlreco.visualization</span> <span class="kn">import</span> <span class="n">scatter_points</span><span class="p">,</span> <span class="n">plotly_layout3d</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">mlreco.visualization.gnn</span> <span class="kn">import</span> <span class="n">scatter_clusters</span><span class="p">,</span> <span class="n">network_topology</span><span class="p">,</span> <span class="n">network_schematic</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">mlreco.utils.ppn</span> <span class="kn">import</span> <span class="n">uresnet_ppn_type_point_selector</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">mlreco.utils.cluster.dense_cluster</span> <span class="kn">import</span> <span class="n">fit_predict_np</span><span class="p">,</span> <span class="n">gaussian_kernel</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">mlreco.main_funcs</span> <span class="kn">import</span> <span class="n">process_config</span><span class="p">,</span> <span class="n">prepare</span>
-
-<span class="o">~/</span><span class="n">lartpc_mlreco3d</span><span class="o">/</span><span class="n">mlreco</span><span class="o">/</span><span class="n">utils</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">.unwrap</span> <span class="kn">import</span> <span class="n">unwrap_2d_scn</span><span class="p">,</span> <span class="n">unwrap_3d_scn</span><span class="p">,</span> <span class="n">list_concat</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="o">~/</span><span class="n">lartpc_mlreco3d</span><span class="o">/</span><span class="n">mlreco</span><span class="o">/</span><span class="n">utils</span><span class="o">/</span><span class="n">utils</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">torch</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">sparseconvnet</span> <span class="k">as</span> <span class="nn">scn</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">time</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> 
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;sparseconvnet&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>And the configuration which is loaded from the file <span class="xref myst">inference.cfg</span>:</p>
+<p>The configuration is loaded from the file <span class="xref myst">inference.cfg</span>.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cfg</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/inference.cfg&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">),</span><span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">Loader</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cfg</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/inference.cfg&#39;</span> <span class="o">%</span> <span class="n">DATA_DIR</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;DATA_DIR&#39;</span><span class="p">,</span> <span class="n">DATA_DIR</span><span class="p">),</span><span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">Loader</span><span class="p">)</span>
 <span class="c1"># pre-process configuration (checks + certain non-specified default settings)</span>
 <span class="n">process_config</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
 <span class="c1"># prepare function configures necessary &quot;handlers&quot;</span>
@@ -603,16 +586,953 @@ var n,i=t("./lib/build-log"),a=t("./lib/epsilon"),o=t("./lib/intersecter"),s=t("
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="mi">12</span><span class="n">fb4e2f55c5</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">cfg</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/inference.cfg&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">),</span><span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">Loader</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># pre-process configuration (checks + certain non-specified default settings)</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">process_config</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># prepare function configures necessary &quot;handlers&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">hs</span><span class="o">=</span><span class="n">prepare</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Config processed at: Linux volt002 3.10.0-1160.21.1.el7.x86_64 #1 SMP Tue Mar 16 18:28:22 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
 
-<span class="ne">NameError</span>: name &#39;process_config&#39; is not defined
+$CUDA_VISIBLE_DEVICES=&quot;0&quot;
+
+{   &#39;iotool&#39;: {   &#39;batch_size&#39;: 4,
+                  &#39;collate_fn&#39;: &#39;CollateSparse&#39;,
+                  &#39;dataset&#39;: {   &#39;data_keys&#39;: [   &#39;../data/wire_mpvmpr_2020_04_test_small.root&#39;],
+                                 &#39;limit_num_files&#39;: 10,
+                                 &#39;name&#39;: &#39;LArCVDataset&#39;,
+                                 &#39;schema&#39;: {   &#39;cluster_label&#39;: [   &#39;parse_cluster3d_clean_full&#39;,
+                                                                    &#39;cluster3d_pcluster&#39;,
+                                                                    &#39;particle_pcluster&#39;,
+                                                                    &#39;particle_mpv&#39;,
+                                                                    &#39;sparse3d_pcluster_semantics&#39;],
+                                               &#39;input_data&#39;: [   &#39;parse_sparse3d_scn&#39;,
+                                                                 &#39;sparse3d_reco&#39;,
+                                                                 &#39;sparse3d_reco_chi2&#39;],
+                                               &#39;kinematics_label&#39;: [   &#39;parse_cluster3d_kinematics_clean&#39;,
+                                                                       &#39;cluster3d_pcluster&#39;,
+                                                                       &#39;particle_corrected&#39;,
+                                                                       &#39;particle_mpv&#39;,
+                                                                       &#39;sparse3d_pcluster_semantics&#39;],
+                                               &#39;particle_graph&#39;: [   &#39;parse_particle_graph_corrected&#39;,
+                                                                     &#39;particle_corrected&#39;,
+                                                                     &#39;cluster3d_pcluster&#39;],
+                                               &#39;particles_asis&#39;: [   &#39;parse_particle_asis&#39;,
+                                                                     &#39;particle_pcluster&#39;,
+                                                                     &#39;cluster3d_pcluster&#39;],
+                                               &#39;particles_label&#39;: [   &#39;parse_particle_points_with_tagging&#39;,
+                                                                      &#39;sparse3d_pcluster&#39;,
+                                                                      &#39;particle_corrected&#39;],
+                                               &#39;segment_label&#39;: [   &#39;parse_sparse3d_scn&#39;,
+                                                                    &#39;sparse3d_pcluster_semantics_ghost&#39;]}},
+                  &#39;minibatch_size&#39;: 4,
+                  &#39;num_workers&#39;: 4,
+                  &#39;shuffle&#39;: False},
+    &#39;model&#39;: {   &#39;loss_input&#39;: [   &#39;segment_label&#39;,
+                                   &#39;particles_label&#39;,
+                                   &#39;cluster_label&#39;,
+                                   &#39;kinematics_label&#39;,
+                                   &#39;particle_graph&#39;],
+                 &#39;modules&#39;: {   &#39;chain&#39;: {   &#39;enable_cnn_clust&#39;: True,
+                                             &#39;enable_cosmic&#39;: True,
+                                             &#39;enable_ghost&#39;: True,
+                                             &#39;enable_gnn_inter&#39;: True,
+                                             &#39;enable_gnn_kinematics&#39;: True,
+                                             &#39;enable_gnn_particle&#39;: False,
+                                             &#39;enable_gnn_shower&#39;: True,
+                                             &#39;enable_gnn_track&#39;: True,
+                                             &#39;enable_ppn&#39;: True,
+                                             &#39;enable_uresnet&#39;: True,
+                                             &#39;use_ppn_in_gnn&#39;: True,
+                                             &#39;verbose&#39;: True},
+                                &#39;cosmic_discriminator&#39;: {   &#39;network_base&#39;: {   &#39;data_dim&#39;: 3,
+                                                                                &#39;features&#39;: 4,
+                                                                                &#39;leakiness&#39;: 0.33,
+                                                                                &#39;spatial_size&#39;: 768},
+                                                            &#39;res_encoder&#39;: {   &#39;coordConv&#39;: True,
+                                                                               &#39;latent_size&#39;: 2,
+                                                                               &#39;pool_mode&#39;: &#39;avg&#39;},
+                                                            &#39;uresnet_encoder&#39;: {   &#39;features&#39;: 16,
+                                                                                   &#39;filters&#39;: 16,
+                                                                                   &#39;num_strides&#39;: 9},
+                                                            &#39;use_input_data&#39;: False,
+                                                            &#39;use_true_interactions&#39;: False},
+                                &#39;cosmic_loss&#39;: {   &#39;node_loss&#39;: {   &#39;balance_classes&#39;: True,
+                                                                    &#39;name&#39;: &#39;type&#39;,
+                                                                    &#39;target_col&#39;: 8}},
+                                &#39;dbscan_frag&#39;: {   &#39;cluster_classes&#39;: [0, 2, 3],
+                                                   &#39;delta_label&#39;: 3,
+                                                   &#39;dim&#39;: 3,
+                                                   &#39;eps&#39;: [   1.999,
+                                                              3.999,
+                                                              1.999,
+                                                              4.999],
+                                                   &#39;michel_label&#39;: 2,
+                                                   &#39;min_samples&#39;: 1,
+                                                   &#39;min_size&#39;: [3, 3, 3, 3],
+                                                   &#39;num_classes&#39;: 4,
+                                                   &#39;ppn_distance_threshold&#39;: 1.999,
+                                                   &#39;ppn_mask_radius&#39;: 5,
+                                                   &#39;ppn_score_threshold&#39;: 0.9,
+                                                   &#39;ppn_type_threshold&#39;: 0.3,
+                                                   &#39;track_clustering_method&#39;: &#39;closest_path&#39;,
+                                                   &#39;track_label&#39;: 1},
+                                &#39;full_chain_loss&#39;: {   &#39;clustering_weight&#39;: 1.0,
+                                                       &#39;cosmic_weight&#39;: 1.0,
+                                                       &#39;flow_weight&#39;: 1.0,
+                                                       &#39;inter_gnn_weight&#39;: 1.0,
+                                                       &#39;kinematics_p_weight&#39;: 1.0,
+                                                       &#39;kinematics_type_weight&#39;: 1.0,
+                                                       &#39;kinematics_weight&#39;: 1.0,
+                                                       &#39;particle_gnn_weight&#39;: 1.0,
+                                                       &#39;ppn_weight&#39;: 1.0,
+                                                       &#39;segmentation_weight&#39;: 1.0,
+                                                       &#39;shower_gnn_weight&#39;: 1.0,
+                                                       &#39;track_gnn_weight&#39;: 1.0},
+                                &#39;grappa_inter&#39;: {   &#39;base&#39;: {   &#39;add_start_dir&#39;: True,
+                                                                &#39;add_start_point&#39;: True,
+                                                                &#39;group_pred&#39;: &#39;score&#39;,
+                                                                &#39;kinematics_mlp&#39;: True,
+                                                                &#39;kinematics_momentum&#39;: False,
+                                                                &#39;kinematics_type&#39;: True,
+                                                                &#39;node_min_size&#39;: 3,
+                                                                &#39;node_type&#39;: [   0,
+                                                                                 1,
+                                                                                 2,
+                                                                                 3],
+                                                                &#39;start_dir_max_dist&#39;: 5,
+                                                                &#39;vertex_mlp&#39;: True},
+                                                    &#39;edge_encoder&#39;: {   &#39;name&#39;: &#39;geo&#39;,
+                                                                        &#39;use_numpy&#39;: False},
+                                                    &#39;gnn_model&#39;: {   &#39;aggr&#39;: &#39;add&#39;,
+                                                                     &#39;edge_classes&#39;: 2,
+                                                                     &#39;edge_feats&#39;: 19,
+                                                                     &#39;edge_output_feats&#39;: 64,
+                                                                     &#39;leakiness&#39;: 0.1,
+                                                                     &#39;name&#39;: &#39;meta&#39;,
+                                                                     &#39;node_classes&#39;: 2,
+                                                                     &#39;node_feats&#39;: 28,
+                                                                     &#39;node_output_feats&#39;: 64,
+                                                                     &#39;num_mp&#39;: 3},
+                                                    &#39;node_encoder&#39;: {   &#39;name&#39;: &#39;geo&#39;,
+                                                                        &#39;use_numpy&#39;: False},
+                                                    &#39;type_net&#39;: {   &#39;num_hidden&#39;: 32},
+                                                    &#39;vertex_net&#39;: {   &#39;num_hidden&#39;: 32}},
+                                &#39;grappa_inter_loss&#39;: {   &#39;edge_loss&#39;: {   &#39;balance_classes&#39;: False,
+                                                                          &#39;high_purity&#39;: False,
+                                                                          &#39;loss&#39;: &#39;CE&#39;,
+                                                                          &#39;name&#39;: &#39;channel&#39;,
+                                                                          &#39;reduction&#39;: &#39;sum&#39;,
+                                                                          &#39;source_col&#39;: 6,
+                                                                          &#39;target&#39;: &#39;group&#39;,
+                                                                          &#39;target_col&#39;: 7},
+                                                         &#39;node_loss&#39;: {   &#39;balance_classes&#39;: True,
+                                                                          &#39;name&#39;: &#39;kinematics&#39;,
+                                                                          &#39;spatial_size&#39;: 768,
+                                                                          &#39;type_loss&#39;: &#39;CE&#39;}},
+                                &#39;grappa_kinematics&#39;: {   &#39;base&#39;: {   &#39;edge_dist_metric&#39;: &#39;set&#39;,
+                                                                     &#39;edge_dist_numpy&#39;: True,
+                                                                     &#39;edge_max_dist&#39;: -1,
+                                                                     &#39;kinematics_mlp&#39;: True,
+                                                                     &#39;kinematics_momentum&#39;: True,
+                                                                     &#39;kinematics_type&#39;: False,
+                                                                     &#39;network&#39;: &#39;complete&#39;,
+                                                                     &#39;node_min_size&#39;: -1,
+                                                                     &#39;node_type&#39;: -1},
+                                                         &#39;edge_encoder&#39;: {   &#39;cnn_encoder&#39;: {   &#39;name&#39;: &#39;cnn2&#39;,
+                                                                                                &#39;network_base&#39;: {   &#39;data_dim&#39;: 3,
+                                                                                                                    &#39;features&#39;: 4,
+                                                                                                                    &#39;leakiness&#39;: 0.33,
+                                                                                                                    &#39;spatial_size&#39;: 768},
+                                                                                                &#39;res_encoder&#39;: {   &#39;coordConv&#39;: True,
+                                                                                                                   &#39;latent_size&#39;: 32,
+                                                                                                                   &#39;pool_mode&#39;: &#39;avg&#39;},
+                                                                                                &#39;uresnet_encoder&#39;: {   &#39;filters&#39;: 32,
+                                                                                                                       &#39;input_kernel&#39;: 3,
+                                                                                                                       &#39;num_classes&#39;: 5,
+                                                                                                                       &#39;num_filters&#39;: 32,
+                                                                                                                       &#39;num_strides&#39;: 9,
+                                                                                                                       &#39;reps&#39;: 2}},
+                                                                             &#39;geo_encoder&#39;: {   &#39;more_feats&#39;: True},
+                                                                             &#39;name&#39;: &#39;mix_debug&#39;,
+                                                                             &#39;normalize&#39;: True},
+                                                         &#39;gnn_model&#39;: {   &#39;aggr&#39;: &#39;add&#39;,
+                                                                          &#39;edge_classes&#39;: 2,
+                                                                          &#39;edge_feats&#39;: 51,
+                                                                          &#39;edge_output_feats&#39;: 64,
+                                                                          &#39;leak&#39;: 0.33,
+                                                                          &#39;name&#39;: &#39;nnconv_old&#39;,
+                                                                          &#39;node_classes&#39;: 5,
+                                                                          &#39;node_feats&#39;: 83,
+                                                                          &#39;node_output_feats&#39;: 128,
+                                                                          &#39;num_mp&#39;: 3},
+                                                         &#39;momentum_net&#39;: {   &#39;num_hidden&#39;: 32},
+                                                         &#39;node_encoder&#39;: {   &#39;cnn_encoder&#39;: {   &#39;name&#39;: &#39;cnn2&#39;,
+                                                                                                &#39;network_base&#39;: {   &#39;data_dim&#39;: 3,
+                                                                                                                    &#39;features&#39;: 4,
+                                                                                                                    &#39;leakiness&#39;: 0.33,
+                                                                                                                    &#39;spatial_size&#39;: 768},
+                                                                                                &#39;res_encoder&#39;: {   &#39;coordConv&#39;: True,
+                                                                                                                   &#39;latent_size&#39;: 64,
+                                                                                                                   &#39;pool_mode&#39;: &#39;avg&#39;},
+                                                                                                &#39;uresnet_encoder&#39;: {   &#39;filters&#39;: 32,
+                                                                                                                       &#39;input_kernel&#39;: 3,
+                                                                                                                       &#39;num_classes&#39;: 5,
+                                                                                                                       &#39;num_filters&#39;: 16,
+                                                                                                                       &#39;num_strides&#39;: 9,
+                                                                                                                       &#39;reps&#39;: 2}},
+                                                                             &#39;geo_encoder&#39;: {   &#39;more_feats&#39;: True},
+                                                                             &#39;name&#39;: &#39;mix_debug&#39;,
+                                                                             &#39;normalize&#39;: True},
+                                                         &#39;use_true_particles&#39;: False},
+                                &#39;grappa_kinematics_loss&#39;: {   &#39;edge_loss&#39;: {   &#39;balance_classes&#39;: False,
+                                                                               &#39;high_purity&#39;: False,
+                                                                               &#39;name&#39;: &#39;channel&#39;,
+                                                                               &#39;reduction&#39;: &#39;sum&#39;,
+                                                                               &#39;target&#39;: &#39;particle_forest&#39;},
+                                                              &#39;node_loss&#39;: {   &#39;name&#39;: &#39;kinematics&#39;,
+                                                                               &#39;reg_loss&#39;: &#39;l2&#39;}},
+                                &#39;grappa_particle&#39;: {   &#39;base&#39;: {   &#39;node_min_size&#39;: 10,
+                                                                   &#39;node_type&#39;: -1},
+                                                       &#39;edge_encoder&#39;: {   &#39;name&#39;: &#39;geo&#39;,
+                                                                           &#39;use_numpy&#39;: True},
+                                                       &#39;gnn_model&#39;: {   &#39;aggr&#39;: &#39;add&#39;,
+                                                                        &#39;edge_classes&#39;: 2,
+                                                                        &#39;edge_feats&#39;: 19,
+                                                                        &#39;edge_output_feats&#39;: 64,
+                                                                        &#39;leakiness&#39;: 0.1,
+                                                                        &#39;name&#39;: &#39;meta&#39;,
+                                                                        &#39;node_classes&#39;: 2,
+                                                                        &#39;node_feats&#39;: 24,
+                                                                        &#39;node_output_feats&#39;: 64,
+                                                                        &#39;num_mp&#39;: 3},
+                                                       &#39;node_encoder&#39;: {   &#39;name&#39;: &#39;geo&#39;,
+                                                                           &#39;use_numpy&#39;: True}},
+                                &#39;grappa_particle_loss&#39;: {   &#39;edge_loss&#39;: {   &#39;balance_classes&#39;: False,
+                                                                             &#39;high_purity&#39;: True,
+                                                                             &#39;loss&#39;: &#39;CE&#39;,
+                                                                             &#39;name&#39;: &#39;channel&#39;,
+                                                                             &#39;reduction&#39;: &#39;sum&#39;,
+                                                                             &#39;source_col&#39;: 5,
+                                                                             &#39;target&#39;: &#39;group&#39;,
+                                                                             &#39;target_col&#39;: 6},
+                                                            &#39;node_loss&#39;: {   &#39;balance_classes&#39;: False,
+                                                                             &#39;group_pred_alg&#39;: &#39;score&#39;,
+                                                                             &#39;high_purity&#39;: True,
+                                                                             &#39;loss&#39;: &#39;CE&#39;,
+                                                                             &#39;name&#39;: &#39;primary&#39;,
+                                                                             &#39;reduction&#39;: &#39;sum&#39;,
+                                                                             &#39;use_group_pred&#39;: True}},
+                                &#39;grappa_shower&#39;: {   &#39;base&#39;: {   &#39;add_start_dir&#39;: True,
+                                                                 &#39;add_start_point&#39;: True,
+                                                                 &#39;node_min_size&#39;: 3,
+                                                                 &#39;node_type&#39;: 0,
+                                                                 &#39;start_dir_max_dist&#39;: 5},
+                                                     &#39;edge_encoder&#39;: {   &#39;name&#39;: &#39;geo&#39;,
+                                                                         &#39;use_numpy&#39;: False},
+                                                     &#39;gnn_model&#39;: {   &#39;aggr&#39;: &#39;add&#39;,
+                                                                      &#39;edge_classes&#39;: 2,
+                                                                      &#39;edge_feats&#39;: 19,
+                                                                      &#39;edge_output_feats&#39;: 64,
+                                                                      &#39;leakiness&#39;: 0.1,
+                                                                      &#39;name&#39;: &#39;meta&#39;,
+                                                                      &#39;node_classes&#39;: 2,
+                                                                      &#39;node_feats&#39;: 28,
+                                                                      &#39;node_output_feats&#39;: 64,
+                                                                      &#39;num_mp&#39;: 3},
+                                                     &#39;node_encoder&#39;: {   &#39;name&#39;: &#39;geo&#39;,
+                                                                         &#39;use_numpy&#39;: False}},
+                                &#39;grappa_shower_loss&#39;: {   &#39;edge_loss&#39;: {   &#39;high_purity&#39;: True,
+                                                                           &#39;name&#39;: &#39;channel&#39;,
+                                                                           &#39;source_col&#39;: 5,
+                                                                           &#39;target_col&#39;: 6},
+                                                          &#39;node_loss&#39;: {   &#39;group_pred_alg&#39;: &#39;score&#39;,
+                                                                           &#39;high_purity&#39;: True,
+                                                                           &#39;name&#39;: &#39;primary&#39;,
+                                                                           &#39;use_group_pred&#39;: True}},
+                                &#39;grappa_track&#39;: {   &#39;base&#39;: {   &#39;add_start_dir&#39;: True,
+                                                                &#39;add_start_point&#39;: True,
+                                                                &#39;node_min_size&#39;: 3,
+                                                                &#39;node_type&#39;: 1,
+                                                                &#39;start_dir_max_dist&#39;: 5},
+                                                    &#39;edge_encoder&#39;: {   &#39;name&#39;: &#39;geo&#39;,
+                                                                        &#39;use_numpy&#39;: False},
+                                                    &#39;gnn_model&#39;: {   &#39;aggr&#39;: &#39;add&#39;,
+                                                                     &#39;edge_classes&#39;: 2,
+                                                                     &#39;edge_feats&#39;: 19,
+                                                                     &#39;edge_output_feats&#39;: 64,
+                                                                     &#39;leakiness&#39;: 0.1,
+                                                                     &#39;name&#39;: &#39;meta&#39;,
+                                                                     &#39;node_classes&#39;: 2,
+                                                                     &#39;node_feats&#39;: 28,
+                                                                     &#39;node_output_feats&#39;: 64,
+                                                                     &#39;num_mp&#39;: 3},
+                                                    &#39;node_encoder&#39;: {   &#39;name&#39;: &#39;geo&#39;,
+                                                                        &#39;use_numpy&#39;: False}},
+                                &#39;grappa_track_loss&#39;: {   &#39;edge_loss&#39;: {   &#39;high_purity&#39;: False,
+                                                                          &#39;name&#39;: &#39;channel&#39;,
+                                                                          &#39;source_col&#39;: 5,
+                                                                          &#39;target_col&#39;: 6}},
+                                &#39;spice&#39;: {   &#39;fragment_clustering&#39;: {   &#39;cluster_all&#39;: False,
+                                                                        &#39;cluster_classes&#39;: [   1],
+                                                                        &#39;min_frag_size&#39;: 10,
+                                                                        &#39;min_voxels&#39;: 2,
+                                                                        &#39;p_thresholds&#39;: [   0.95,
+                                                                                            0.95,
+                                                                                            0.95,
+                                                                                            0.95],
+                                                                        &#39;s_thresholds&#39;: [   0.0,
+                                                                                            0.0,
+                                                                                            0.0,
+                                                                                            0.35]},
+                                             &#39;network_base&#39;: {   &#39;data_dim&#39;: 3,
+                                                                 &#39;features&#39;: 4,
+                                                                 &#39;leakiness&#39;: 0.33,
+                                                                 &#39;spatial_size&#39;: 768},
+                                             &#39;spatial_embeddings&#39;: {   &#39;coordConv&#39;: True,
+                                                                       &#39;embedding_dim&#39;: 3,
+                                                                       &#39;seediness_dim&#39;: 1,
+                                                                       &#39;sigma_dim&#39;: 1},
+                                             &#39;uresnet&#39;: {   &#39;filters&#39;: 64,
+                                                            &#39;input_kernel_size&#39;: 7,
+                                                            &#39;num_strides&#39;: 7,
+                                                            &#39;reps&#39;: 2}},
+                                &#39;spice_loss&#39;: {   &#39;embedding_weight&#39;: 1.0,
+                                                  &#39;mask_loss_fn&#39;: &#39;lovasz_hinge&#39;,
+                                                  &#39;min_voxels&#39;: 2,
+                                                  &#39;name&#39;: &#39;se_vectorized_inter&#39;,
+                                                  &#39;seediness_weight&#39;: 1.0,
+                                                  &#39;smoothing_weight&#39;: 1.0},
+                                &#39;uresnet_ppn&#39;: {   &#39;ppn&#39;: {   &#39;classify_endpoints&#39;: True,
+                                                              &#39;data_dim&#39;: 3,
+                                                              &#39;downsample_ghost&#39;: True,
+                                                              &#39;filters&#39;: 16,
+                                                              &#39;model_name&#39;: &#39;ppn&#39;,
+                                                              &#39;model_path&#39;: &#39;../data/weights_ppn3_snapshot-1999.ckpt&#39;,
+                                                              &#39;num_classes&#39;: 5,
+                                                              &#39;num_strides&#39;: 6,
+                                                              &#39;ppn1_size&#39;: 24,
+                                                              &#39;ppn2_size&#39;: 96,
+                                                              &#39;ppn_num_conv&#39;: 1,
+                                                              &#39;score_threshold&#39;: 0.5,
+                                                              &#39;spatial_size&#39;: 768,
+                                                              &#39;use_encoding&#39;: False,
+                                                              &#39;weight_ppn&#39;: 0.9},
+                                                   &#39;uresnet_lonely&#39;: {   &#39;data_dim&#39;: 3,
+                                                                         &#39;features&#39;: 2,
+                                                                         &#39;filters&#39;: 16,
+                                                                         &#39;freeze&#39;: False,
+                                                                         &#39;ghost&#39;: True,
+                                                                         &#39;leakiness&#39;: 0.0,
+                                                                         &#39;num_classes&#39;: 5,
+                                                                         &#39;num_strides&#39;: 6,
+                                                                         &#39;spatial_size&#39;: 768,
+                                                                         &#39;weight_loss&#39;: True}}},
+                 &#39;name&#39;: &#39;full_chain&#39;,
+                 &#39;network_input&#39;: [&#39;input_data&#39;]},
+    &#39;trainval&#39;: {   &#39;checkpoint_step&#39;: 100,
+                    &#39;concat_result&#39;: [   &#39;seediness&#39;,
+                                         &#39;margins&#39;,
+                                         &#39;embeddings&#39;,
+                                         &#39;fragments&#39;,
+                                         &#39;fragments_seg&#39;,
+                                         &#39;shower_fragments&#39;,
+                                         &#39;shower_edge_index&#39;,
+                                         &#39;shower_edge_pred&#39;,
+                                         &#39;shower_node_pred&#39;,
+                                         &#39;shower_group_pred&#39;,
+                                         &#39;track_fragments&#39;,
+                                         &#39;track_edge_index&#39;,
+                                         &#39;track_node_pred&#39;,
+                                         &#39;track_edge_pred&#39;,
+                                         &#39;track_group_pred&#39;,
+                                         &#39;particle_fragments&#39;,
+                                         &#39;particle_edge_index&#39;,
+                                         &#39;particle_node_pred&#39;,
+                                         &#39;particle_edge_pred&#39;,
+                                         &#39;particle_group_pred&#39;,
+                                         &#39;particles&#39;,
+                                         &#39;inter_edge_index&#39;,
+                                         &#39;inter_node_pred&#39;,
+                                         &#39;inter_edge_pred&#39;,
+                                         &#39;node_pred_p&#39;,
+                                         &#39;node_pred_type&#39;,
+                                         &#39;flow_edge_pred&#39;,
+                                         &#39;kinematics_particles&#39;,
+                                         &#39;kinematics_edge_index&#39;,
+                                         &#39;clust_fragments&#39;,
+                                         &#39;clust_frag_seg&#39;,
+                                         &#39;interactions&#39;,
+                                         &#39;inter_cosmic_pred&#39;,
+                                         &#39;node_pred_vtx&#39;,
+                                         &#39;total_num_points&#39;,
+                                         &#39;total_nonghost_points&#39;],
+                    &#39;debug&#39;: False,
+                    &#39;gpus&#39;: [0],
+                    &#39;iterations&#39;: 652,
+                    &#39;log_dir&#39;: &#39;./log_trash&#39;,
+                    &#39;minibatch_size&#39;: -1,
+                    &#39;model_path&#39;: &#39;../data/weights_full5_snapshot-999.cpkt&#39;,
+                    &#39;optimizer&#39;: {&#39;args&#39;: {&#39;lr&#39;: 0.001}, &#39;name&#39;: &#39;Adam&#39;},
+                    &#39;report_step&#39;: 1,
+                    &#39;seed&#39;: 123,
+                    &#39;train&#39;: False,
+                    &#39;unwrapper&#39;: &#39;unwrap_3d_scn&#39;,
+                    &#39;weight_prefix&#39;: &#39;./weights_trash/snapshot&#39;}}
+Loading file: ../data/wire_mpvmpr_2020_04_test_small.root
+Loading tree sparse3d_reco
+Loading tree sparse3d_reco_chi2
+Loading tree sparse3d_pcluster_semantics_ghost
+Loading tree cluster3d_pcluster
+Loading tree particle_pcluster
+Loading tree particle_mpv
+Loading tree sparse3d_pcluster_semantics
+Loading tree sparse3d_pcluster
+Loading tree particle_corrected
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sequential(
+  (0): Sequential(
+    (0): BatchNormLeakyReLU(64,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+    (1): NetworkInNetwork64-&gt;4
+  )
+  (1): OutputLayer()
+)
+ClusterCNN(
+  (input): Sequential(
+    (0): InputLayer()
+    (1): SubmanifoldConvolution 4-&gt;64 C7
+  )
+  (concat): JoinTable()
+  (add): AddTable()
+  (encoding_block): Sequential(
+    (0): Sequential(
+      (0): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(64,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 64-&gt;64 C3
+          (2): BatchNormLeakyReLU(64,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 64-&gt;64 C3
+        )
+      )
+      (1): AddTable()
+      (2): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(64,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 64-&gt;64 C3
+          (2): BatchNormLeakyReLU(64,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 64-&gt;64 C3
+        )
+      )
+      (3): AddTable()
+    )
+    (1): Sequential(
+      (0): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(128,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 128-&gt;128 C3
+          (2): BatchNormLeakyReLU(128,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 128-&gt;128 C3
+        )
+      )
+      (1): AddTable()
+      (2): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(128,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 128-&gt;128 C3
+          (2): BatchNormLeakyReLU(128,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 128-&gt;128 C3
+        )
+      )
+      (3): AddTable()
+    )
+    (2): Sequential(
+      (0): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(192,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 192-&gt;192 C3
+          (2): BatchNormLeakyReLU(192,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 192-&gt;192 C3
+        )
+      )
+      (1): AddTable()
+      (2): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(192,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 192-&gt;192 C3
+          (2): BatchNormLeakyReLU(192,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 192-&gt;192 C3
+        )
+      )
+      (3): AddTable()
+    )
+    (3): Sequential(
+      (0): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(256,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 256-&gt;256 C3
+          (2): BatchNormLeakyReLU(256,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 256-&gt;256 C3
+        )
+      )
+      (1): AddTable()
+      (2): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(256,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 256-&gt;256 C3
+          (2): BatchNormLeakyReLU(256,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 256-&gt;256 C3
+        )
+      )
+      (3): AddTable()
+    )
+    (4): Sequential(
+      (0): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(320,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 320-&gt;320 C3
+          (2): BatchNormLeakyReLU(320,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 320-&gt;320 C3
+        )
+      )
+      (1): AddTable()
+      (2): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(320,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 320-&gt;320 C3
+          (2): BatchNormLeakyReLU(320,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 320-&gt;320 C3
+        )
+      )
+      (3): AddTable()
+    )
+    (5): Sequential(
+      (0): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(384,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 384-&gt;384 C3
+          (2): BatchNormLeakyReLU(384,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 384-&gt;384 C3
+        )
+      )
+      (1): AddTable()
+      (2): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(384,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 384-&gt;384 C3
+          (2): BatchNormLeakyReLU(384,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 384-&gt;384 C3
+        )
+      )
+      (3): AddTable()
+    )
+    (6): Sequential(
+      (0): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(448,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 448-&gt;448 C3
+          (2): BatchNormLeakyReLU(448,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 448-&gt;448 C3
+        )
+      )
+      (1): AddTable()
+      (2): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(448,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 448-&gt;448 C3
+          (2): BatchNormLeakyReLU(448,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 448-&gt;448 C3
+        )
+      )
+      (3): AddTable()
+    )
+  )
+  (encoding_conv): Sequential(
+    (0): Sequential(
+      (0): BatchNormLeakyReLU(64,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+      (1): Convolution 64-&gt;128 C2/2
+    )
+    (1): Sequential(
+      (0): BatchNormLeakyReLU(128,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+      (1): Convolution 128-&gt;192 C2/2
+    )
+    (2): Sequential(
+      (0): BatchNormLeakyReLU(192,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+      (1): Convolution 192-&gt;256 C2/2
+    )
+    (3): Sequential(
+      (0): BatchNormLeakyReLU(256,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+      (1): Convolution 256-&gt;320 C2/2
+    )
+    (4): Sequential(
+      (0): BatchNormLeakyReLU(320,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+      (1): Convolution 320-&gt;384 C2/2
+    )
+    (5): Sequential(
+      (0): BatchNormLeakyReLU(384,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+      (1): Convolution 384-&gt;448 C2/2
+    )
+    (6): Sequential()
+  )
+  (decoding_block): Sequential(
+    (0): Sequential(
+      (0): ConcatTable(
+        (0): NetworkInNetwork768-&gt;384
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(768,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 768-&gt;384 C3
+          (2): BatchNormLeakyReLU(384,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 384-&gt;384 C3
+        )
+      )
+      (1): AddTable()
+      (2): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(384,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 384-&gt;384 C3
+          (2): BatchNormLeakyReLU(384,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 384-&gt;384 C3
+        )
+      )
+      (3): AddTable()
+    )
+    (1): Sequential(
+      (0): ConcatTable(
+        (0): NetworkInNetwork640-&gt;320
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(640,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 640-&gt;320 C3
+          (2): BatchNormLeakyReLU(320,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 320-&gt;320 C3
+        )
+      )
+      (1): AddTable()
+      (2): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(320,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 320-&gt;320 C3
+          (2): BatchNormLeakyReLU(320,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 320-&gt;320 C3
+        )
+      )
+      (3): AddTable()
+    )
+    (2): Sequential(
+      (0): ConcatTable(
+        (0): NetworkInNetwork512-&gt;256
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(512,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 512-&gt;256 C3
+          (2): BatchNormLeakyReLU(256,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 256-&gt;256 C3
+        )
+      )
+      (1): AddTable()
+      (2): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(256,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 256-&gt;256 C3
+          (2): BatchNormLeakyReLU(256,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 256-&gt;256 C3
+        )
+      )
+      (3): AddTable()
+    )
+    (3): Sequential(
+      (0): ConcatTable(
+        (0): NetworkInNetwork384-&gt;192
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(384,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 384-&gt;192 C3
+          (2): BatchNormLeakyReLU(192,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 192-&gt;192 C3
+        )
+      )
+      (1): AddTable()
+      (2): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(192,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 192-&gt;192 C3
+          (2): BatchNormLeakyReLU(192,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 192-&gt;192 C3
+        )
+      )
+      (3): AddTable()
+    )
+    (4): Sequential(
+      (0): ConcatTable(
+        (0): NetworkInNetwork256-&gt;128
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(256,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 256-&gt;128 C3
+          (2): BatchNormLeakyReLU(128,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 128-&gt;128 C3
+        )
+      )
+      (1): AddTable()
+      (2): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(128,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 128-&gt;128 C3
+          (2): BatchNormLeakyReLU(128,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 128-&gt;128 C3
+        )
+      )
+      (3): AddTable()
+    )
+    (5): Sequential(
+      (0): ConcatTable(
+        (0): NetworkInNetwork128-&gt;64
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(128,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 128-&gt;64 C3
+          (2): BatchNormLeakyReLU(64,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 64-&gt;64 C3
+        )
+      )
+      (1): AddTable()
+      (2): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(64,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 64-&gt;64 C3
+          (2): BatchNormLeakyReLU(64,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 64-&gt;64 C3
+        )
+      )
+      (3): AddTable()
+    )
+  )
+  (decoding_conv): Sequential(
+    (0): Sequential(
+      (0): BatchNormLeakyReLU(448,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+      (1): Deconvolution 448-&gt;384 C2/2
+    )
+    (1): Sequential(
+      (0): BatchNormLeakyReLU(384,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+      (1): Deconvolution 384-&gt;320 C2/2
+    )
+    (2): Sequential(
+      (0): BatchNormLeakyReLU(320,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+      (1): Deconvolution 320-&gt;256 C2/2
+    )
+    (3): Sequential(
+      (0): BatchNormLeakyReLU(256,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+      (1): Deconvolution 256-&gt;192 C2/2
+    )
+    (4): Sequential(
+      (0): BatchNormLeakyReLU(192,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+      (1): Deconvolution 192-&gt;128 C2/2
+    )
+    (5): Sequential(
+      (0): BatchNormLeakyReLU(128,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+      (1): Deconvolution 128-&gt;64 C2/2
+    )
+  )
+  (decoding_block2): Sequential(
+    (0): Sequential(
+      (0): ConcatTable(
+        (0): NetworkInNetwork768-&gt;384
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(768,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 768-&gt;384 C3
+          (2): BatchNormLeakyReLU(384,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 384-&gt;384 C3
+        )
+      )
+      (1): AddTable()
+      (2): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(384,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 384-&gt;384 C3
+          (2): BatchNormLeakyReLU(384,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 384-&gt;384 C3
+        )
+      )
+      (3): AddTable()
+    )
+    (1): Sequential(
+      (0): ConcatTable(
+        (0): NetworkInNetwork640-&gt;320
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(640,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 640-&gt;320 C3
+          (2): BatchNormLeakyReLU(320,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 320-&gt;320 C3
+        )
+      )
+      (1): AddTable()
+      (2): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(320,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 320-&gt;320 C3
+          (2): BatchNormLeakyReLU(320,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 320-&gt;320 C3
+        )
+      )
+      (3): AddTable()
+    )
+    (2): Sequential(
+      (0): ConcatTable(
+        (0): NetworkInNetwork512-&gt;256
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(512,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 512-&gt;256 C3
+          (2): BatchNormLeakyReLU(256,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 256-&gt;256 C3
+        )
+      )
+      (1): AddTable()
+      (2): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(256,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 256-&gt;256 C3
+          (2): BatchNormLeakyReLU(256,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 256-&gt;256 C3
+        )
+      )
+      (3): AddTable()
+    )
+    (3): Sequential(
+      (0): ConcatTable(
+        (0): NetworkInNetwork384-&gt;192
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(384,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 384-&gt;192 C3
+          (2): BatchNormLeakyReLU(192,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 192-&gt;192 C3
+        )
+      )
+      (1): AddTable()
+      (2): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(192,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 192-&gt;192 C3
+          (2): BatchNormLeakyReLU(192,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 192-&gt;192 C3
+        )
+      )
+      (3): AddTable()
+    )
+    (4): Sequential(
+      (0): ConcatTable(
+        (0): NetworkInNetwork256-&gt;128
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(256,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 256-&gt;128 C3
+          (2): BatchNormLeakyReLU(128,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 128-&gt;128 C3
+        )
+      )
+      (1): AddTable()
+      (2): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(128,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 128-&gt;128 C3
+          (2): BatchNormLeakyReLU(128,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 128-&gt;128 C3
+        )
+      )
+      (3): AddTable()
+    )
+    (5): Sequential(
+      (0): ConcatTable(
+        (0): NetworkInNetwork128-&gt;64
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(128,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 128-&gt;64 C3
+          (2): BatchNormLeakyReLU(64,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 64-&gt;64 C3
+        )
+      )
+      (1): AddTable()
+      (2): ConcatTable(
+        (0): Identity()
+        (1): Sequential(
+          (0): BatchNormLeakyReLU(64,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (1): SubmanifoldConvolution 64-&gt;64 C3
+          (2): BatchNormLeakyReLU(64,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+          (3): SubmanifoldConvolution 64-&gt;64 C3
+        )
+      )
+      (3): AddTable()
+    )
+  )
+  (decoding_conv2): Sequential(
+    (0): Sequential(
+      (0): BatchNormLeakyReLU(448,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+      (1): Deconvolution 448-&gt;384 C2/2
+    )
+    (1): Sequential(
+      (0): BatchNormLeakyReLU(384,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+      (1): Deconvolution 384-&gt;320 C2/2
+    )
+    (2): Sequential(
+      (0): BatchNormLeakyReLU(320,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+      (1): Deconvolution 320-&gt;256 C2/2
+    )
+    (3): Sequential(
+      (0): BatchNormLeakyReLU(256,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+      (1): Deconvolution 256-&gt;192 C2/2
+    )
+    (4): Sequential(
+      (0): BatchNormLeakyReLU(192,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+      (1): Deconvolution 192-&gt;128 C2/2
+    )
+    (5): Sequential(
+      (0): BatchNormLeakyReLU(128,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+      (1): Deconvolution 128-&gt;64 C2/2
+    )
+  )
+  (outputEmbeddings): Sequential(
+    (0): Sequential(
+      (0): BatchNormLeakyReLU(64,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+      (1): NetworkInNetwork64-&gt;4
+    )
+    (1): OutputLayer()
+  )
+  (outputSeediness): Sequential(
+    (0): Sequential(
+      (0): BatchNormLeakyReLU(64,eps=0.0001,momentum=0.99,affine=True,leakiness=0.33)
+      (1): NetworkInNetwork64-&gt;1
+    )
+    (1): OutputLayer()
+  )
+  (tanh): Tanh()
+  (sigmoid): Sigmoid()
+)
+Total Number of Trainable Parameters = 175210432
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Restoring weights for  from ../data/weights_full5_snapshot-999.cpkt...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INCOMPATIBLE KEYS!
+[&#39;module.uresnet_lonely.bn.weight&#39;, &#39;module.uresnet_lonely.bn.bias&#39;, &#39;module.uresnet_lonely.bn.running_mean&#39;, &#39;module.uresnet_lonely.bn.running_var&#39;]
+make sure your module is named  
+Done.
+Restoring weights for ppn from ../data/weights_ppn3_snapshot-1999.ckpt...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done.
 </pre></div>
 </div>
 </div>
@@ -628,18 +1548,26 @@ free to take a look if you are curious!</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="n">a8872adcb5d1</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Call forward to run the net, store the output in &quot;res&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">data</span><span class="p">,</span> <span class="n">output</span> <span class="o">=</span> <span class="n">hs</span><span class="o">.</span><span class="n">trainer</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">hs</span><span class="o">.</span><span class="n">data_io_iter</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;hs&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Segmentation Accuracy: 0.9882
+PPN Accuracy: 0.8556
+Clustering Accuracy: 0.9465
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 0.0000
+Track fragment clustering accuracy: 0.9907
+Particle ID accuracy: -1.2915
+Interaction grouping accuracy: 0.9609
+Flow accuracy: 0.9841
+Type accuracy: 0.7500
+Momentum accuracy: -3.7679
+Vertex position accuracy: 0.6862
+Vertex score accuracy: 0.9111
+Cosmic discrimination accuracy: 0.8696
 </pre></div>
 </div>
 </div>
 </div>
-<p>Now we can play with <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">output</span></code> to visualize what we are interested in.</p>
+<p>Now we can play with <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">output</span></code> to visualize what we are interested in. Feel free to change the
+entry index if you want to look at a different entry!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">entry</span> <span class="o">=</span> <span class="mi">0</span>
@@ -656,20 +1584,6 @@ free to take a look if you are curious!</p>
 
 <span class="n">ghost_mask</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="s1">&#39;ghost&#39;</span><span class="p">][</span><span class="n">entry</span><span class="p">]</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
 <span class="n">segment_pred</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="s1">&#39;segmentation&#39;</span><span class="p">][</span><span class="n">entry</span><span class="p">]</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="mi">8</span><span class="n">b9956264b09</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">clust_label</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;cluster_label&#39;</span><span class="p">][</span><span class="n">entry</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">input_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;input_data&#39;</span><span class="p">][</span><span class="n">entry</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">segment_label</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;segment_label&#39;</span><span class="p">][</span><span class="n">entry</span><span class="p">][:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">ghost_mask</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="s1">&#39;ghost&#39;</span><span class="p">][</span><span class="n">entry</span><span class="p">]</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
-
-<span class="ne">NameError</span>: name &#39;data&#39; is not defined
 </pre></div>
 </div>
 </div>

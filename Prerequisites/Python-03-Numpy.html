@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -524,7 +526,7 @@ Is a Python library adding support for multi-dimensional arrays and matrices, as
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.20.3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.19.5
 </pre></div>
 </div>
 </div>
@@ -863,7 +865,7 @@ Numpy allows to resphape it easily. For example, we can transform it into a 2-D 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 drinkingkazu drinkingkazu 730 Jun  7 23:26 erase.npz
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 ldomine ki 730 Jun  8 11:40 erase.npz
 </pre></div>
 </div>
 </div>
@@ -894,9 +896,7 @@ Numpy allows to resphape it easily. For example, we can transform it into a 2-D 
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape of daniel (2, 7)
 contents of kazu
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2.2000e+00 4.7000e+00 5.1100e-01 1.2800e+00 9.6000e+01 1.0566e+02
+[2.2000e+00 4.7000e+00 5.1100e-01 1.2800e+00 9.6000e+01 1.0566e+02
  1.7300e+05 4.1800e+03 1.7800e+03 0.0000e+00 0.0000e+00 9.1190e+04
  8.0390e+04 1.2497e+05]
 </pre></div>
@@ -1019,8 +1019,8 @@ Here’s an example of a <strong>flat random number</strong> between 0 to 1.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape (100000,)
-mean 0.4981686529048879 std 0.28854203535719886
-min 4.013104818345603e-06 max 0.9999968075661155
+mean 0.5005603906442359 std 0.28896584810916387
+min 2.5959549992959907e-06 max 0.9999979031130488
 </pre></div>
 </div>
 </div>
@@ -1037,8 +1037,8 @@ min 4.013104818345603e-06 max 0.9999968075661155
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape (100,)
-mean -0.038363219400369 std 1.0400423771197367
-min -3.2909334688994822 max 2.373430287369346
+mean 0.08998531839719709 std 0.8850075491470061
+min -2.2025835599285397 max 2.2016353358344127
 </pre></div>
 </div>
 </div>

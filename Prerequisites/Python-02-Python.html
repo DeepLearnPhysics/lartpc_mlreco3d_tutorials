@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -634,7 +636,7 @@ Developed in the late 1980s by Dutch research programmer Guido van Rossum. Guido
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We are using python 3.8.5
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We are using python 3.6.9
 </pre></div>
 </div>
 </div>
@@ -1000,11 +1002,12 @@ y = 3.6
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on built-in function round in module builtins:
 
-round(number, ndigits=None)
-    Round a number to a given precision in decimal digits.
+round(...)
+    round(number[, ndigits]) -&gt; number
     
-    The return value is an integer if ndigits is omitted or None.  Otherwise
-    the return value has the same type as the number.  ndigits may be negative.
+    Round a number to a given precision in decimal digits (default 0 digits).
+    This returns an int when called with one argument, otherwise the
+    same type as the number. ndigits may be negative.
 </pre></div>
 </div>
 </div>
@@ -1322,6 +1325,9 @@ This is a laptop.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hi! I am imac, and I am a desktop. I have 8 CPUs.
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </div>
 </div>
 <p>Here we looked at a couple of special methods: <code class="docutils literal notranslate"><span class="pre">init</span></code> and <code class="docutils literal notranslate"><span class="pre">str</span></code>.</p>
@@ -1355,7 +1361,9 @@ This is a laptop.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hi! I am imac, and I am a desktop. I have 16 CPUs.
-Hi! I am dell xps15, and I am a laptop. I have 8 CPUs.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hi! I am dell xps15, and I am a laptop. I have 8 CPUs.
 </pre></div>
 </div>
 </div>
@@ -1491,7 +1499,7 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iterator at 0x7fd2106d0100&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iterator at 0x7f03ac54e278&gt;
 </pre></div>
 </div>
 </div>
@@ -1505,7 +1513,10 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 1 2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 1 2
 </pre></div>
 </div>
 </div>
@@ -1555,10 +1566,10 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>247 µs ± 1.27 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>286 µs ± 1.1 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>205 µs ± 1.07 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>230 µs ± 398 ns per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1910,18 +1921,22 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/home/drinkingkazu/sw/lartpc_mlreco3d_tutorials/book/Prerequisites&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/app/larcv2/python&#39;,
+ &#39;/app/root/lib&#39;,
  &#39;/usr/local/root/lib&#39;,
- &#39;/home/drinkingkazu/sw/lartpc_mlreco3d_tutorials/book/Prerequisites&#39;,
- &#39;/usr/lib/python38.zip&#39;,
- &#39;/usr/lib/python3.8&#39;,
- &#39;/usr/lib/python3.8/lib-dynload&#39;,
+ &#39;/sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/book/Prerequisites&#39;,
  &#39;&#39;,
- &#39;/home/drinkingkazu/.local/lib/python3.8/site-packages&#39;,
- &#39;/usr/local/lib/python3.8/dist-packages&#39;,
+ &#39;/sdf/home/l/ldomine/.local/lib/python3.6/site-packages&#39;,
+ &#39;/usr/lib/python36.zip&#39;,
+ &#39;/usr/lib/python3.6&#39;,
+ &#39;/usr/lib/python3.6/lib-dynload&#39;,
+ &#39;/sdf/home/l/ldomine/.local/lib/python3.6/site-packages/RoIAlign_extension_3D-0.0.0-py3.6-linux-x86_64.egg&#39;,
+ &#39;/sdf/home/l/ldomine/.local/lib/python3.6/site-packages/nms_extension-0.0.0-py3.6-linux-x86_64.egg&#39;,
+ &#39;/usr/local/lib/python3.6/dist-packages&#39;,
  &#39;/usr/lib/python3/dist-packages&#39;,
- &#39;/usr/local/lib/python3.8/dist-packages/IPython/extensions&#39;,
- &#39;/home/drinkingkazu/.ipython&#39;]
+ &#39;/usr/local/root/lib&#39;,
+ &#39;/usr/local/lib/python3.6/dist-packages/IPython/extensions&#39;,
+ &#39;/sdf/home/l/ldomine/.ipython&#39;]
 </pre></div>
 </div>
 </div>
@@ -1934,7 +1949,7 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/lib/python3.8/platform.py
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/lib/python3.6/platform.py
 </pre></div>
 </div>
 </div>
