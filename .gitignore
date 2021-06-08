@@ -7,3 +7,4 @@ book/Prerequisites/hello.py
 book/_build/
 book/Prerequisites/cifar10-data
 book/Prerequisites/mnist-data
+book/*/.ipynb_checkpoints
