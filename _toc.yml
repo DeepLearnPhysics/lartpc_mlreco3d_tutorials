@@ -4,6 +4,7 @@
 - file: intro
 
 - part: Prerequisites
+  - file: Prerequisites/README.md
   chapters:
     - file: Prerequisites/Python.md
       sections:

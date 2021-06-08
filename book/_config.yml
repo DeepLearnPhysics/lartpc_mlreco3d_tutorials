@@ -3,13 +3,13 @@
 
 title: lartpc_mlreco3d Tutorials
 author: SLAC Neutrino Group
-logo: logo.png
+logo:  logo.png
 copyright: "2021"
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: cache
+  execute_notebooks: auto
   allow_errors: true
 
 # Define the name of the latex output file for PDF builds

@@ -4,7 +4,7 @@ This is a collection of Jupyter notebooks and tutorials to get you up to speed o
 
 If you are not familiar yet with Jupyter, Python, Numpy, or PyTorch, please take a look at the [Prerequisites](./Prerequisites/README.md).
 
-If you want to know more about the why: [neutrinos](./Physics/Neutrinos.md) and [LArTPCs detectors](./Physics/Lartpc.md).
+Here is a brief introduction about [our physics research](./Physics/README.md).
 
 A bird's view of the reconstruction chain is [here](./Code/README.md).
 

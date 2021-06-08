@@ -1,7 +1,7 @@
 # Table of content
 # Learn more at https://jupyterbook.org/customize/toc.html
 #
-- file: intro
+- file: index
 
 - part: Prerequisites
   chapters:
@@ -22,8 +22,12 @@
     
 - part: Some Physics
   chapters:
-    - file: Physics/Neutrinos.md
-    - file: Physics/Lartpc.md
+    - file: Physics/README.md
+      sections:
+        - file: Physics/ParticlePhysics.md
+        - file: Physics/Neutrinos.md
+        - file: Physics/DetectingNeutrinos.md
+        - file: Physics/Lartpc.md
     
 - part: lartpc_mlreco3d
   chapters:
@@ -44,7 +48,3 @@
         - file: Exercises/Michel_electron.md
         - file: Exercises/dEdx.md
         - file: Exercises/Electron_gamma.md
-    
-- part: Using SDF
-  chapters:
-    - file: ComputeAccess/README.md
