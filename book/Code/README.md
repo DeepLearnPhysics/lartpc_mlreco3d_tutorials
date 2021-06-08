@@ -2,6 +2,10 @@
 
 Let's look at the big picture first before we dive into the code details of visualization and configuration.
 
+```{figure} ../logo.png
+Overview of the full chain
+```
+
 ```{warning} TODO
 Add event displays for each stage (true label)
 ```

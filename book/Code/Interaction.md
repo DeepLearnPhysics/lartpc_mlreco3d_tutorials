@@ -16,6 +16,11 @@ execution:
 ---
 
 # Interaction clustering, PID and primary particles
+Interaction clustering is done by another Graph Neural Network (GNN). Each node corresponds
+to a predicted particle. In addition to predicting which edge should be kept (i.e. the interaction clustering),
+the chain also predicts for each node a particle type (particle identification, PID) and a binary classification
+into primary/non-primary particles. We call *primary particles* the first particles to come out of an interaction 
+vertex.
 
 ## Imports and configuration
 If needed, you can edit the path to `lartpc_mlreco3d` library and to the data folder.
@@ -91,6 +96,10 @@ ghost_mask = output['ghost'][entry].argmax(axis=1) == 0
 segment_pred = output['segmentation'][entry].argmax(axis=1)
 ```
 ## Visualization of interaction clustering
+Because our small dataset has ghost points, we need to *adapt* the true cluster labels (which do not label
+ghost points by default). This will assign to true ghost points predicted as non-ghost points the label 
+of the closest true non-ghost point. True ghost points which are correctly predicted as ghost points keep
+a label of -1 for everything.
 
 ```{code-cell}
 clust_label_adapted = adapt_labels(output, data['segment_label'], data['cluster_label'])[entry]
@@ -98,6 +107,9 @@ clust_label_adapted = adapt_labels(output, data['segment_label'], data['cluster_
 clust_ids_true = get_cluster_label(torch.tensor(clust_label_adapted), output['particles'][entry], column=7)
 clust_ids_pred = output['inter_group_pred'][entry]
 ```
+Note that the function `get_cluster_label` uses the majority rule to determine the true label of a cluster of voxels (here,
+particles).
+
 
 ```{code-cell}
 trace = []
@@ -137,6 +149,7 @@ And the predictions:
 ```{code-cell}
 vtx_primary_pred = output['node_pred_vtx'][entry][:, 3:].argmax(axis=1)
 ```
+We need to take the argmax of the softmax scores. The predictions are `0` for non-primary and `1` for primary particle.
 
 ```{code-cell}
 trace = []
@@ -162,6 +175,15 @@ The predictions are in `node_pred_type`:
 ```{code-cell}
 type_pred = output['node_pred_type'][entry].argmax(axis=1)
 ```
+Here is the meaning of each integer type:
+
+| Integer    | Particle type        |
+| :---       | ---:                 |
+| 0          | Photon ($\gamma$)    |
+| 1          | Electron ($e$)       |
+| 2          | Muon ($\mu$)         |
+| 3          | Pion ($\pi$)         |
+| 4          | Proton ($p$)         |
 
 ```{code-cell}
 trace = []
