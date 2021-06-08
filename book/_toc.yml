@@ -32,6 +32,7 @@
 - part: lartpc_mlreco3d
   chapters:
     - file: Code/README.md
+    - file: Code/Environment.md
     - file: Code/Data.md
       sections:
         - file: Code/Data1.md
