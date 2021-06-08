@@ -38,8 +38,9 @@ $ git checkout develop
 ```
 
 ## Assets
-You will need a small dataset and weight file in order to run these notebooks. Download everything:
+You will need a small dataset and weight files in order to run these notebooks. Download everything:
 * [weights_full5_snapshot-999.ckpt](https://drive.google.com/file/d/1-ptcD6dHyVtxdgfo6dQLdUSrSZPlnvlz/view?usp=sharing)
+* [weights_ppn3_snapshot_1999.ckpt](https://drive.google.com/file/d/155yaJ6YMEZmZBGkT8DYQijakP919dOuJ/view?usp=sharing)
 * [wire_mpvmpr_2020_04_test_small.root](https://drive.google.com/file/d/1UNPtKemYkUYuLc2kGZmjKftFHKu5uXbG/view?usp=sharing)
 
 [TODO wget and copy to `$HOME/data/` folder?]

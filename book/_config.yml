@@ -45,6 +45,10 @@ launch_buttons:
   thebe: true
   
 parse:
+  myst_substitutions:
+    weight_filename: "weights_full5_snapshot-999.cpkt"
+    cfg_filename: "inference.cfg"
+    dataset_filename: "wire_mpvmpr_2020_04_test_small.root"
   myst_enable_extensions:
     # don't forget to list any other extensions you want enabled,
     # including those that are enabled by default!

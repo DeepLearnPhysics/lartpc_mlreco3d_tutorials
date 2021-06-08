@@ -18,7 +18,21 @@ execution:
 # Others
 
 ## Imports and configuration
-The usual imports, click to see the details.
+If needed, you can edit the path to `lartpc_mlreco3d` library and to the data folder.
+```{code-cell}
+import os
+SOFTWARE_DIR = '%s/lartpc_mlreco3d' % os.environ.get('HOME') 
+DATA_DIR = '../data'
+```
+
+The usual imports and setting the right `PYTHON_PATH`...  click if you need to see them.
+```{code-cell}
+:tags: [hide-cell]
+
+import sys, os
+# set software directory
+sys.path.insert(0, SOFTWARE_DIR)
+```
 
 ```{code-cell}
 :tags: [hide-cell]
@@ -30,19 +44,6 @@ import plotly
 import plotly.graph_objs as go
 from plotly.offline import iplot, init_notebook_mode
 init_notebook_mode(connected=False)
-```
-
-```{code-cell}
-:tags: [hide-cell]
-
-import sys, os
-# set software directory
-software_dir = '%s/lartpc_mlreco3d' % os.environ.get('HOME')
-sys.path.insert(0,software_dir)
-```
-
-```{code-cell}
-:tags: [hide-cell]
 
 from mlreco.visualization import scatter_points, plotly_layout3d
 from mlreco.visualization.gnn import scatter_clusters, network_topology, network_schematic
@@ -53,20 +54,20 @@ from mlreco.utils.gnn.cluster import get_cluster_label
 from mlreco.utils.deghosting import adapt_labels_numpy as adapt_labels
 from mlreco.visualization.gnn import network_topology
 
-
 from larcv import larcv
 ```
 
-And the configuration which is loaded from the file [inference.cfg](./inference.cfg):
+The configuration is loaded from the file [inference.cfg](../data/inference.cfg).
 ```{code-cell}
 :tags: [hide-output]
 
-cfg=yaml.load(open('../data/inference.cfg', 'r'),Loader=yaml.Loader)
+cfg=yaml.load(open('%s/inference.cfg' % DATA_DIR, 'r').read().replace('DATA_DIR', DATA_DIR),Loader=yaml.Loader)
 # pre-process configuration (checks + certain non-specified default settings)
 process_config(cfg)
 # prepare function configures necessary "handlers"
 hs=prepare(cfg)
 ```
+
 The output is hidden because it reprints the entire (lengthy) configuration. Feel 
 free to take a look if you are curious!
 
@@ -75,7 +76,8 @@ Finally we run the chain for 1 iteration:
 # Call forward to run the net, store the output in "res"
 data, output = hs.trainer.forward(hs.data_io_iter)
 ```
-Now we can play with `data` and `output` to visualize what we are interested in.
+Now we can play with `data` and `output` to visualize what we are interested in. Feel free to change the
+entry index if you want to look at a different entry!
 ```{code-cell}
 entry = 0
 ```
@@ -88,7 +90,6 @@ segment_label = data['segment_label'][entry][:, -1]
 ghost_mask = output['ghost'][entry].argmax(axis=1) == 0
 segment_pred = output['segmentation'][entry].argmax(axis=1)
 ```
-
 
 ## Cosmic vs Neutrino discrimination
 
