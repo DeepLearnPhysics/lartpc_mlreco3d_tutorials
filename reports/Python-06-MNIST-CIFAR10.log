@@ -32,9 +32,11 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
+import os
 from torchvision import datasets, transforms
 # Data file download directory
 LOCAL_DATA_DIR = './mnist-data'
+os.makedirs(LOCAL_DATA_DIR,exist_ok=True)
 # Use prepared data handler from pytorch (torchvision)
 dataset = datasets.MNIST(LOCAL_DATA_DIR, train=True, download=True,
                          transform=transforms.Compose([transforms.ToTensor()]))

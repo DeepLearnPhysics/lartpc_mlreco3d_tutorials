@@ -15,7 +15,7 @@ kernelspec:
 
 # Streaming Input Dataset
 
-We already covered the basics of an iterable dataset ([Python-02-Python](Pytorch-02-Python.ipynb)) and pytorch's `DataLoader` ([Python-05-Pytorch.ipynb](Python-05-Pytorch.ipynb)). In this notebook, we introduce a few datasets that will be used during the hands-on sessions, and practic looping over the dataset using `DataLoader`!
+We already covered the basics of an iterable dataset ([Python basics](./Pytorch-02-Python.md)) and pytorch's `DataLoader` ([pytorch introduction](Python-05-Pytorch.md)). In this notebook, we introduce a few datasets that will be used during the hands-on sessions, and practic looping over the dataset using `DataLoader`!
 ```{code-cell}
 import torch
 import numpy as np
@@ -31,9 +31,11 @@ MNIST is widely used for an introductory machine learning (ML) courses/lectures.
 ### Creating MNIST Dataset
 A `torchvision` is a supporting module that has many image-related APIs including an interface (and management) of MNIST dataset. Let's see how we can construct:
 ```{code-cell}
+import os
 from torchvision import datasets, transforms
 # Data file download directory
 LOCAL_DATA_DIR = './mnist-data'
+os.makedirs(LOCAL_DATA_DIR,exist_ok=True)
 # Use prepared data handler from pytorch (torchvision)
 dataset = datasets.MNIST(LOCAL_DATA_DIR, train=True, download=True,
                          transform=transforms.Compose([transforms.ToTensor()]))

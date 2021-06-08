@@ -1,0 +1,533 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detecting neutrinos &#8212; lartpc_mlreco3d Tutorials</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Liquid Argon Time Projection Chamber (aka LArTPC)" href="Lartpc.html" />
+    <link rel="prev" title="Neutrinos" href="Neutrinos.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">lartpc_mlreco3d Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Getting started
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Prerequisites
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Prerequisites/README.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Prerequisites/Python.html">
+   Python basics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Prerequisites/Python-01-Jupyter.html">
+     Using Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Prerequisites/Python-02-Python.html">
+     Python basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Prerequisites/Python-03-Numpy.html">
+     Up and Running with Python3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Prerequisites/Python-04-ScientificPython.html">
+     Data visualization and more
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Prerequisites/Pytorch.html">
+   Pytorch
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Prerequisites/Python-05-PyTorch.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Prerequisites/Python-06-MNIST-CIFAR10.html">
+     Streaming Input Dataset
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Prerequisites/Git.html">
+   Version control with Git
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Some Physics
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="README.html">
+   Overview
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="ParticlePhysics.html">
+     Particle Physics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Neutrinos.html">
+     Neutrinos
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Detecting neutrinos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lartpc.html">
+   Liquid Argon Time Projection Chamber (aka LArTPC)
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  lartpc_mlreco3d
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/README.html">
+   Overview of the reconstruction chain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Environment.html">
+   Setting up your environment
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Code/Data.html">
+   Data I/O
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Data1.html">
+     Using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       lartpc_mlreco3d
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Data2.html">
+     Using ROOT only
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Code/Output.html">
+   Reconstruction outputs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/UResNet_PPN.html">
+     Semantics &amp; points of interest
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Clustering.html">
+     Particle clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Interaction.html">
+     Interaction clustering, PID and primary particles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Kinematics.html">
+     Kinematics and particle hierarchy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Others.html">
+     Others
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Exercises/README.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Michel_electron.html">
+     Exercise 1: Finding Michel electrons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/dEdx.html">
+     Exercise 2: muon
+     <span class="math notranslate nohighlight">
+      \(dE/dx\)
+     </span>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Electron_gamma.html">
+     Exercise 3: electron vs gamma separation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Physics/DetectingNeutrinos.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/DeepLearnPhysics/lartpc_mlreco3d_tutorials"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/DeepLearnPhysics/lartpc_mlreco3d_tutorials/issues/new?title=Issue%20on%20page%20%2FPhysics/DetectingNeutrinos.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#first-neutrino-detection">
+   First neutrino detection
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#detector-design-principles">
+   Detector design principles
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#two-detector-design">
+     Two-detector design
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-super-kamiokande">
+   Example: Super-Kamiokande
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-microboone">
+   Example: MicroBooNE
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="detecting-neutrinos">
+<h1>Detecting neutrinos<a class="headerlink" href="#detecting-neutrinos" title="Permalink to this headline">¶</a></h1>
+<p>Despite all the excitement about neutrinos, we cannot learn anything without being able to detect them, which is a challenging task because they interact so rarely (recall a one-light-year thick lead brick)! It is unlikely to have a single ultimate detector design for all types of neutrinos in the nature we wish to study. The plot below shows the <code class="docutils literal notranslate"><span class="pre">flux</span></code> (i.e. the intensity) and the <code class="docutils literal notranslate"><span class="pre">energy</span></code> of neutrinos coming from various sources. Both axes spans a large region in the logarithmic scale. Detecting them all efficiently is extremely challenging and would certainly require multiple detector technologies. Here, we will briefly discuss basic design principles for neutrino detectors used for studying neutrino oscillation physics and go over a few example detectors.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../_images/NuSpectrum.png"><img alt="../_images/NuSpectrum.png" src="../_images/NuSpectrum.png" style="height: 450px;" /></a>
+</div>
+<div class="section" id="first-neutrino-detection">
+<h2>First neutrino detection<a class="headerlink" href="#first-neutrino-detection" title="Permalink to this headline">¶</a></h2>
+<p>Although neutrinos rarely interact, we can take an advantage of the fact that they often come in a large number (i.e. billions from the Sun through your thumbnail). Even if only one in a million neutrinos interact, if we place our detector under a flux of billion neutrinos passing through, we expect about 1,000 neutrino events!</p>
+<p>The very <code class="docutils literal notranslate"><span class="pre">first</span> <span class="pre">detection</span> <span class="pre">of</span> <span class="pre">neutrinos</span> <span class="pre">by</span> <span class="pre">Reins</span> <span class="pre">and</span> <span class="pre">Cowan</span></code>, reported in 1956, followed the same principle.  In their experiment, they looked for electron anti-neutrinos produced by a nuclear reactor core. The detector was placed in the underground, close to a nuclear reactor core, with enough concrete shielding to avoid other radiations such as neutrons and gamma rays. They used Cadomonium-doped water as a target in their detector. Electron anti-neutrinos interact with a proton in the water and produce a positron and a neutron, a reaction called <code class="docutils literal notranslate"><span class="pre">Inverse</span> <span class="pre">Beta</span> <span class="pre">Decay</span></code> (IBD). The positron annihilates with an electron immediately, emitting two gamma rays. Cadominium in the water captures a neutron micro-seconds later to emit high energy gamma rays. These gamma rays were then detected by <code class="docutils literal notranslate"><span class="pre">Photomultiplier</span> <span class="pre">Tubes</span> <span class="pre">(PMTs)</span></code> and liquid scintillator tanks sandwhicing the target water tank. By looking for two signals (i.e. a positron annihilation and a delayed neutron capture) in time coincidence (micro-seconds apart), they could reject much of the background signals. This method (IBD in a liquid scintillator) invented by Reins and Cowan is used by present neutrino experiments. You can read more interesting details about <a class="reference external" href="https://library.lanl.gov/cgi-bin/getfile?00326606.pdf">Reins-Cowan experiment here</a>.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../_images/ReinsCowan.png"><img alt="../_images/ReinsCowan.png" src="../_images/ReinsCowan.png" style="height: 450px;" /></a>
+</div>
+</div>
+<div class="section" id="detector-design-principles">
+<h2>Detector design principles<a class="headerlink" href="#detector-design-principles" title="Permalink to this headline">¶</a></h2>
+<p>Much progress has been made in the R&amp;D of neutrino detectors alongside the advancement in our understanding about neutrinos, including the discovery of neutrino oscillation. An important key <code class="docutils literal notranslate"><span class="pre">scalability</span></code>: we want a detector technology that can be scaled to a large volume, hence increasing a chance of detection. For studying neutrino oscillation, there are additional factors. Neutrino oscillation is characterized by the energy of neutrino and the distance of travel. So, the detector needs a good <code class="docutils literal notranslate"><span class="pre">energy</span> <span class="pre">resolution</span></code> to be able to infer the neutrino energy with high precision, and the location needs to be measured accurately. Furthermore, in order to identify that a neutrino flavor has oscillated (or not), we need a detector with a capability of <code class="docutils literal notranslate"><span class="pre">particle</span> <span class="pre">type</span> <span class="pre">identification</span></code> so that we can distinguish electron and muon neutrinos. So three important factors:</p>
+<ul class="simple">
+<li><p>A scalable (in volume) detector technology</p></li>
+<li><p>Good energy resolution</p></li>
+<li><p>Capability to identify particle types</p></li>
+</ul>
+<div class="section" id="two-detector-design">
+<h3>Two-detector design<a class="headerlink" href="#two-detector-design" title="Permalink to this headline">¶</a></h3>
+<p>There is another important design pattern that is applicable for oscillation experiments with an accessible neutrino source (e.g. a nuclear reactor core or a particle accelerator). To quantify a neutrino oscillation, we need to quantify how many neutrinos changed the flavor after the oscillation took place. This can be done precisely if we place one detector next to a neutrino source (<code class="docutils literal notranslate"><span class="pre">near</span> <span class="pre">detector</span></code>), and another detector separated by some distance (<code class="docutils literal notranslate"><span class="pre">far</span> <span class="pre">detector</span></code>) for oscillation to happen. The detector mesures the neutrino flux per flavor <em>before</em> the oscillation, and the far detector measures <em>after</em>. Then the oscillation can be quantified by taking a difference.  Experiments our group participate also follow this two-detector design including the <a class="reference external" href="https://sbn.fnal.gov/index.html">Short Baseline Neutrino (SBN) program</a>, <a class="reference external" href="https://www.dunescience.org/">Deep Underground Neutrino Experiment (DUNE)</a>, and <a class="reference external" href="https://en.wikipedia.org/wiki/T2K_experiment">T2K</a>.</p>
+</div>
+</div>
+<div class="section" id="example-super-kamiokande">
+<h2>Example: Super-Kamiokande<a class="headerlink" href="#example-super-kamiokande" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Super-Kamiokande</span></code> (left in the image below) is a modern <code class="docutils literal notranslate"><span class="pre">Water-Cherenkov</span> <span class="pre">detector</span></code> (i.e. detects Cherenkov light produced by charged particles traversing in a medium). The detector consists of the target, 50 kiloton of purified water, and 11,000 large PMTs surrounding the target. This is a huge leap from the detectors employed by Reins and Cowan! PMTs are sensitive to photons with a certain band of wavelength (typically overlapping with the visible wavelgnths to human eyes). The photons emitted by Cherenkov radiation has a wavelength determined by an opening angle between its direction and the motion of the emitting particle. As a result, only PMTs that are within the certain angular range will detect photons within their sensitive wavelength, and this can be seen as a <code class="docutils literal notranslate"><span class="pre">Cherenkov</span> <span class="pre">ring</span></code> in the image below. An electron is 200 times lighter than a muon, and its direction is more affected by scattering process. This results in a fuzzier ring for electrons (below middle) compared to muons (below right), and this allows the Super-Kamiokande detector to distinguish those two particle types. Super-Kamiokande serves as a far detector for the T2K neutrino oscillation experiment in Japan.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../_images/SuperK.png"><img alt="../_images/SuperK.png" src="../_images/SuperK.png" style="height: 250px;" /></a>
+</div>
+</div>
+<div class="section" id="example-microboone">
+<h2>Example: MicroBooNE<a class="headerlink" href="#example-microboone" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Liquid</span> <span class="pre">Argon</span> <span class="pre">Time</span> <span class="pre">Projection</span> <span class="pre">Chamber</span> <span class="pre">(LArTPC)</span></code> is another detector technology that is actively pursued for neutrino experiments today. Like the Water Cherenkov detectors, LArTPCs are scalable in volume (Ar is cheap!), and have a good capability in reconstructing the energy and type of detected particles. As you can see in an example data taken by <code class="docutils literal notranslate"><span class="pre">MicroBooNE</span></code> LArTPC experiment below, we can observe the details of a particle trajectory including small branches of atomic electrons knocked out along a long trajectory (likely a muon or pion). The color scale of an image reflects the amount of energy deposited per pixel, and is used to infer the energy loss per unit length, or dE/dX, which is a function of particle mass (hence type) and momentum. LArTPCs can record a lot more physics features than the Water Cherenkov detectors. While it is truly beautiful, a <em>big</em> image data with every detail of complex particle trajectories also presents challenges in efficiently identifying neutrino interactions. To put into a perspective, The MicroBooNE detector records 87-tonne volume in an image of 80 mega-pixels. The <code class="docutils literal notranslate"><span class="pre">Deep</span> <span class="pre">Underground</span> <span class="pre">Neutrino</span> <span class="pre">Experiment</span> <span class="pre">(DUNE)</span></code> will be recording 40 kilo-ton of LAr volume. Our group leads the development of a high quality and efficiency data analysis techniques for LArTPC detectors using <code class="docutils literal notranslate"><span class="pre">Computer</span> <span class="pre">Vision</span></code> and <code class="docutils literal notranslate"><span class="pre">Machine</span> <span class="pre">Learning</span></code>.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../_images/LArTPC.png"><img alt="../_images/LArTPC.png" src="../_images/LArTPC.png" style="height: 350px;" /></a>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "DeepLearnPhysics/lartpc_mlreco3d_tutorials",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Physics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="Neutrinos.html" title="previous page">Neutrinos</a>
+    <a class='right-next' id="next-link" href="Lartpc.html" title="next page">Liquid Argon Time Projection Chamber (aka LArTPC)</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By SLAC Neutrino Group<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

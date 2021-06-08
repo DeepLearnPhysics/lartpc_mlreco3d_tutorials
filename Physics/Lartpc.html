@@ -53,7 +53,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Overview of the reconstruction chain" href="../Code/README.html" />
-    <link rel="prev" title="Neutrinos" href="Neutrinos.html" />
+    <link rel="prev" title="Detecting neutrinos" href="DetectingNeutrinos.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -85,7 +85,7 @@
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
+  <a class="reference internal" href="../index.html">
    Getting started
   </a>
  </li>
@@ -96,6 +96,11 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Prerequisites/README.html">
+   Overview
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Prerequisites/Python.html">
    Python basics
@@ -113,7 +118,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Prerequisites/Python-02-Python.html">
-     Introduction to Python
+     Python basics
     </a>
    </li>
    <li class="toctree-l2">
@@ -123,7 +128,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Prerequisites/Python-04-ScientificPython.html">
-     Visualization, Fitting, and File Format
+     Data visualization and more
     </a>
    </li>
   </ul>
@@ -140,7 +145,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../Prerequisites/Python-05-PyTorch.html">
-     Pytorch: Machine Learning library
+     Introduction
     </a>
    </li>
    <li class="toctree-l2">
@@ -162,10 +167,32 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Neutrinos.html">
-   Neutrinos
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="README.html">
+   Overview
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ParticlePhysics.html">
+     Particle Physics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Neutrinos.html">
+     Neutrinos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="DetectingNeutrinos.html">
+     Detecting neutrinos
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
@@ -184,12 +211,17 @@
    Overview of the reconstruction chain
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Environment.html">
+   Setting up your environment
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Code/Data.html">
    Data I/O
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -215,8 +247,8 @@
   <a class="reference internal" href="../Code/Output.html">
    Reconstruction outputs
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -252,8 +284,8 @@
   <a class="reference internal" href="../Exercises/README.html">
    Exercises
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -265,7 +297,10 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Exercises/dEdx.html">
-     Exercise 2: muon dEdx
+     Exercise 2: muon
+     <span class="math notranslate nohighlight">
+      \(dE/dx\)
+     </span>
     </a>
    </li>
    <li class="toctree-l2">
@@ -274,18 +309,6 @@
     </a>
    </li>
   </ul>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Using SDF
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../ComputeAccess/README.html">
-   Set up your computing environment
-  </a>
  </li>
 </ul>
 
@@ -467,11 +490,9 @@ that provides us with high resolution 2D or 3D images of charged particle trajec
 </div>
 <div class="section" id="what-it-looks-like">
 <h3>What it looks like<a class="headerlink" href="#what-it-looks-like" title="Permalink to this headline">¶</a></h3>
-<p>The detector is a huge tank filled with liquid argon. Huge can mean 700 tons
-(ICARUS detector, running now) or as much as  70,000 tons (DUNE detector, coming up) of liquid argon.
-It works like a modern bubble chamber. Particles - whether coming from cosmic rays, the accelerator beam, etc - travel through
-the detector volume. Some of them also interact with the argon atoms, sending new particles
-on their way.</p>
+<p>The detector is a huge tank filled with liquid argon (LAr) with a <code class="docutils literal notranslate"><span class="pre">uniform</span> <span class="pre">electric</span> <span class="pre">field</span></code>, typically 500 V/cm. Huge can mean 480 tons
+(ICARUS detector, running now) or as much as  40,000 tons (DUNE detector, coming up) of liquid argon. This LAr volume is sandwiched by an anode and cathode where <em>very</em> high voltage is applied (hundreds of kilovolt to produce 500 V/cm field across meters!).</p>
+<p>In practice, it works like a modern bubble chamber. Charged particles - whether coming from cosmic rays, the accelerator beam, etc - travel through  the detector volume. Some of them also interact with the argon atoms, sending new particles on their way.</p>
 <div class="figure align-default" id="id1">
 <a class="reference internal image-reference" href="https://sites.slac.stanford.edu/neutrino/sites/neutrino.sites.slac.stanford.edu/files/styles/fix_height_400/public/icarus_cryostat.png?itok=39f-0Swu"><img alt="https://sites.slac.stanford.edu/neutrino/sites/neutrino.sites.slac.stanford.edu/files/styles/fix_height_400/public/icarus_cryostat.png?itok=39f-0Swu" src="https://sites.slac.stanford.edu/neutrino/sites/neutrino.sites.slac.stanford.edu/files/styles/fix_height_400/public/icarus_cryostat.png?itok=39f-0Swu" style="height: 300px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">That is only half of the ICARUS detector in Fermilab</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
@@ -483,13 +504,10 @@ on their way.</p>
 </div>
 <div class="section" id="a-tale-of-two-signals">
 <h3>A tale of two signals<a class="headerlink" href="#a-tale-of-two-signals" title="Permalink to this headline">¶</a></h3>
-<p>Whenever a charged particle travels through the LArTPC detector, it ionizes the argon atoms on its way.
-This has 2 consequences:</p>
+<p>When a charged particle travels through the LAr volume with a uniform electric field, two signals are produced:</p>
 <ol class="simple">
-<li><p>it knocks off some ionization electrons that all drift (slowly) in the same direction because of an electric field
-that we create inside the detector. These electrons will eventually meet either wires (if 2D detector, organized in 3 planes of parallel wires, each plane at a different angle, at the edges of the detector) or “pixels” (if 3D, new detector, placed at regular spacing within the volume) sensors.</p></li>
-<li><p>as they lose energy these ionization electrons create scintillation photons which travel fast (speed of light!)
-and are detected by an array of PMTs (photomultipliers) on the walls of the detector.</p></li>
+<li><p>it causes <code class="docutils literal notranslate"><span class="pre">ionization</span></code> along its path, creating Argon ion and ionization electrons. In the presence of a strong electric field, they cannot re-combine and instead start drifting toward the opposite direction. Positively charged Ar ions drift toward a cathod while negatively charged ionization electrons drift toward an anode. A charge-sensitive detector device is placed at the anode plane to collect those ionization electrons. While drifting, which typically takes a few milliseconds for a few meters, all ionization electrons travel toward the anode at the same speed (about 1400 m/s under the electric field 500 V/cm), retaining the shape of the source particle trajectory. The detector at the anode is either a <code class="docutils literal notranslate"><span class="pre">wire</span></code> or <code class="docutils literal notranslate"><span class="pre">pixel</span></code> based detector. A wire-based detector employ 3 planes of parallel wires, each plane at a different wire angle, and records 2D projection image of particle trajectories per plane. All existing and many planned LArTPCs belong to this type. A pixel-based detector employs single plane consists of many small (typically square) pad of sensors instead of wires, and it can record 3D image of particle trajectories. This technology is recently developed, and is planned for one of detectors in the DUNE experiment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scintillation</span></code> lights are produced by de-excitation of Argon ions. There are two marjor paths for this de-excitation, and two time constants associated with them. About 23% of the lights are produced within a few nano-seconds while the rest is produced over the course of micro-seconds. Once produced, these photons are detected by optical detectors within a few to several nano-seconds depending on the detector geometry. One notable point about LAr is, unlike liquid scintillator or water, it is transparent to its own scintillation light. So these scintillation photons can travel straight to optical detectors without absorption and re-emission. However, LAr scintillation photons have the wavelength that is too short for typical optical detectors (e.g. Silicon or ordinary Photomultiplier Tubes, or <code class="docutils literal notranslate"><span class="pre">PMTs</span></code>). A wavelength shifter such as <code class="docutils literal notranslate"><span class="pre">TPB</span></code> is used to coat the detector surface so that these scintillation photons can be detected efficiently.</p></li>
 </ol>
 <div class="margin sidebar">
 <p class="sidebar-title">In summary</p>
@@ -503,35 +521,21 @@ measure both charge and light signals to reconstruct images of charged particle 
 </div>
 <div class="section" id="what-do-you-do-with-charge-and-light-signals">
 <h3>What do you do with charge and light signals?<a class="headerlink" href="#what-do-you-do-with-charge-and-light-signals" title="Permalink to this headline">¶</a></h3>
-<p>The charge signal provides us with two informations: spatial (inferred depending on which wire or pixel it hits) and quantitative (how many electrons, i.e. how much charge did we read out). We can reconstruct a lot of information about the particles based on this. So far <code class="docutils literal notranslate"><span class="pre">lartpc_mlreco3d</span></code> has been focused on this part of the story.</p>
-<p>Light signal is also processed and organized into <em>optical flashes</em> which should match (in spatial location and intensity) with the reconstructed particles in the TPC volume. For example, it can help to weed out cosmic rays that happen outside of the beam time window (no chance that
-it could be a neutrino).</p>
+<p>The charge signal provides us an <code class="docutils literal notranslate"><span class="pre">image</span> <span class="pre">of</span> <span class="pre">charged</span> <span class="pre">particle</span> <span class="pre">trajectories</span></code>. Two key information in an image data are <code class="docutils literal notranslate"><span class="pre">spatial</span></code> (inferred depending on which wire or pixel it hits) and <code class="docutils literal notranslate"><span class="pre">calorimetric</span></code> (how many electrons, i.e. how much charge did we read out). This is the main signal for LArTPCs and the detector design is optimized for the charge signal. So far <code class="docutils literal notranslate"><span class="pre">lartpc_mlreco3d</span></code> has been focused on this part of the story.</p>
+<p>Optical detectors in a LArTPC is typicaly much more sparse than the charge detector. For instance, in ICARUS, there are about 60,000 wires for detecting ionization electrons for imaging while there are only 180 PMTs to detect scintillation light. So the light signal is much more coarse for reconstructing the spatial and energy features of particles (though possible and useful still!). Yet, the optical detectors provide a <code class="docutils literal notranslate"><span class="pre">precise</span> <span class="pre">timing</span> <span class="pre">information</span></code> because scintillation photons are detected within nano-seconds after an event occurs inside the detector. This is much faster compared to the TPC signal, which can take milliseconds before detection due to drift of ionization electrons.</p>
 </div>
 </div>
 <div class="section" id="what-does-it-have-to-do-with-neutrinos">
 <h2>What does it have to do with neutrinos?<a class="headerlink" href="#what-does-it-have-to-do-with-neutrinos" title="Permalink to this headline">¶</a></h2>
-<p>We can use a LArTPC to study cosmic rays, but this would not be very exciting.
-Things become interesting when neutrinos cross the detector volume. Neutrinos have no charge, so we
-cannot see them directly. Bummer. Neutrinos however might knock off a proton or a neutron
-from an argon atom. Protons have a positive charge, so we will see them - both in charge and light.
-Neutrons will only be seen through the light signal and the potential secondary protons that they
-knock off (if they have enough energy).</p>
-<p>In long baseline neutrino oscillation experiments, we are counting neutrinos flavors and energy
-at both a near- and far-detector to see if some neutrinos have changed flavor as they were traveling,
-and for example to measure the neutrino oscillation parameters with high precision. This means that there are two
-fundamental quantities that we are trying to infer about the neutrinos that travel
-through our LArTPC detectors: the <strong>neutrino flavor and energy</strong>.</p>
-<p>We have to <em>reconstruct</em> various intermediate particles: that means identify which energy deposits belong to each of them,
-what kind of particle they were and what kinematics they had, where they interacted with each other, etc.
-That allows further downstream physics analysis (not included in <code class="docutils literal notranslate"><span class="pre">lartpc_mlreco3d</span></code> but hopefully greatly simplified by its output) in order
-to infer these two key properties (flavor and energy) about the original neutrino that was wandering through our LArTPC and luckily set
-off these chains of interactions.</p>
+<p>In neutrino oscillation experiments, we are counting neutrinos at both a near- and far-detector to see how many of them have changed a flavor (i.e. “oscillated”). Using this information and the energy of neutrinos, we can infer the neutrino oscillation parameters and compare if there is any difference in the behavior of neutrinos from anti-neutrinos (called <code class="docutils literal notranslate"><span class="pre">CP</span> <span class="pre">violation</span></code>).</p>
+<p>When neutrinos interact with Argon nucleus, they produce charged particles as products such as a proton, a muon, an electron, charged pions, or maybe sometimes even kaons! LArTPCs allow us to record full details of these charged particles in order to infer the flavor and energy of neutrinos. This, in principle, allows us to perform a high precision oscillation measurement.</p>
+<p>In order to reverse-engineer the neutrino flavor and energy from recorded particle trajectories, we have to <code class="docutils literal notranslate"><span class="pre">reconstruct</span></code> the types and kinematics of them first: that means identify individual particle trajectory in an image, determine the particle type and momentum, and group particles that originated from the same interaction (i.e. one image could contain many independent source of particles, or interactions).  This turns out to be a challenging task, and what <code class="docutils literal notranslate"><span class="pre">lartpc_mlreco3d</span></code> is designed to address as a generic reconstruction tool.</p>
 </div>
 <div class="section" id="misc-questions">
 <h2>Misc. questions<a class="headerlink" href="#misc-questions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="why-argon">
 <h3>Why argon?<a class="headerlink" href="#why-argon" title="Permalink to this headline">¶</a></h3>
-<p>Excellent question! Argon is widely available (most abundant noble gas on Earth) and its liquid phase has excellent scintillation properties (amount of light emitted per unit of energy deposited by the ionizing particle ~ 40,000 photons per MeV). Also, it is cheap and we need loads of it. (See <a class="reference external" href="https://en.wikipedia.org/wiki/Noble_gas#Occurrence_and_production">https://en.wikipedia.org/wiki/Noble_gas#Occurrence_and_production</a>)</p>
+<p>Excellent question! Argon is widely available (most abundant noble gas on Earth), which means it’s cheap! This is an important property for a scalable detector technology. Furthermore, it is relatively easy to handle (e.g. can be cooled with liquid Nitrogen, a cheap, widely available coolant) and has some nice physics properties (e.g. it produces lots of scintillation photons, about 24,000 photons per MeV at 500 V/cm). Read more <a class="reference external" href="https://en.wikipedia.org/wiki/Noble_gas#Occurrence_and_production">here</a>.</p>
 </div>
 <div class="section" id="why-liquid-rather-than-gas">
 <h3>Why liquid rather than gas?<a class="headerlink" href="#why-liquid-rather-than-gas" title="Permalink to this headline">¶</a></h3>
@@ -540,18 +544,15 @@ off these chains of interactions.</p>
 <div class="section" id="why-does-argon-purity-matter">
 <h3>Why does argon purity matter?<a class="headerlink" href="#why-does-argon-purity-matter" title="Permalink to this headline">¶</a></h3>
 <p>The higher the liquid argon purity is, the less likely the ionization electrons (which are free electrons
-as they drift) are to be captured by impurities (e.g. Oxygen) before they reach the charge-sensitive detector elements. Similarly, scintillation photons suffer from an absorption by impurities (e.g. Nitrogen). The larger the volume, the more crucial to remove impurities because of the longer distance ionization electrons and scintillation photons must travel to the detector elements (hence the greater chance of being absorbed). A purification system, which typically consists of a circulation pump and a filters to remove impurities, can be used to reduce the level of impurities. A continuous monitoring of the purity is also important to avoid situations and to apply calibrations to adjust for the lost signal due to impurities.</p>
+as they drift) are to be captured by <code class="docutils literal notranslate"><span class="pre">impurities</span></code> (e.g. Oxygen) before they reach the charge-sensitive detector elements. Similarly, scintillation photons suffer from an absorption by impurities (e.g. Nitrogen). The larger the volume, the more crucial to remove impurities because of the longer distance ionization electrons and scintillation photons must travel to the detector elements (hence the greater chance of being absorbed). A purification system, which typically consists of a circulation pump and a filters to remove impurities, can be used to reduce the level of impurities. A continuous monitoring of the purity is also important to avoid situations and to apply calibrations to adjust for the lost signal due to impurities.</p>
 </div>
 </div>
 <div class="section" id="neutrino-lartpc-experiments-in-our-group">
 <h2>Neutrino LArTPC experiments in our group<a class="headerlink" href="#neutrino-lartpc-experiments-in-our-group" title="Permalink to this headline">¶</a></h2>
-<p>You might hear about them quite often if you work with us. As a quick overview to clear out the confusion,
-without going into the details of the physics they are each looking for and measuring. The main experiments
-that we are involved into include (in increasing LAr volume and historical order):</p>
 <ul class="simple">
-<li><p>MicroBooNE (not running anymore, still analyzing data), 170 ton of LAr</p></li>
-<li><p>ICARUS (760 tons) + SBND (112 tons) = SBN program (currently running)</p></li>
-<li><p>DUNE-ND + DUNE-FD = DUNE program (flagship LArtPC neutrino experiment in the US, under construction, will be 70,000 tons of LAr)</p></li>
+<li><p>MicroBooNE (not running anymore, still analyzing data), 87 ton of LAr</p></li>
+<li><p>ICARUS (480 tons) + SBND (112 tons) = SBN program (currently running)</p></li>
+<li><p>DUNE-ND + DUNE-FD = DUNE program (flagship LArtPC neutrino experiment in the US, under construction, will be 40,000 tons of LAr)</p></li>
 </ul>
 <p>You might also hear about ArgonCube (modular prototype of LArTPC for DUNE-ND) and ProtoDUNE (R&amp;D prototype for DUNE).</p>
 </div>
@@ -593,7 +594,7 @@ that we are involved into include (in increasing LAr volume and historical order
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="Neutrinos.html" title="previous page">Neutrinos</a>
+    <a class='left-prev' id="prev-link" href="DetectingNeutrinos.html" title="previous page">Detecting neutrinos</a>
     <a class='right-next' id="next-link" href="../Code/README.html" title="next page">Overview of the reconstruction chain</a>
 
         </div>

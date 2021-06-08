@@ -85,7 +85,7 @@
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
+  <a class="reference internal" href="../index.html">
    Getting started
   </a>
  </li>
@@ -96,6 +96,11 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="README.html">
+   Overview
+  </a>
+ </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="Python.html">
    Python basics
@@ -113,7 +118,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="Python-02-Python.html">
-     Introduction to Python
+     Python basics
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -123,7 +128,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="Python-04-ScientificPython.html">
-     Visualization, Fitting, and File Format
+     Data visualization and more
     </a>
    </li>
   </ul>
@@ -140,7 +145,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="Python-05-PyTorch.html">
-     Pytorch: Machine Learning library
+     Introduction
     </a>
    </li>
    <li class="toctree-l2">
@@ -162,10 +167,32 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../Physics/Neutrinos.html">
-   Neutrinos
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Physics/README.html">
+   Overview
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Physics/ParticlePhysics.html">
+     Particle Physics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Physics/Neutrinos.html">
+     Neutrinos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Physics/DetectingNeutrinos.html">
+     Detecting neutrinos
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Physics/Lartpc.html">
@@ -184,12 +211,17 @@
    Overview of the reconstruction chain
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Environment.html">
+   Setting up your environment
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Code/Data.html">
    Data I/O
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -215,8 +247,8 @@
   <a class="reference internal" href="../Code/Output.html">
    Reconstruction outputs
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -252,8 +284,8 @@
   <a class="reference internal" href="../Exercises/README.html">
    Exercises
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -265,7 +297,10 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Exercises/dEdx.html">
-     Exercise 2: muon dEdx
+     Exercise 2: muon
+     <span class="math notranslate nohighlight">
+      \(dE/dx\)
+     </span>
     </a>
    </li>
    <li class="toctree-l2">
@@ -274,18 +309,6 @@
     </a>
    </li>
   </ul>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Using SDF
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../ComputeAccess/README.html">
-   Set up your computing environment
-  </a>
  </li>
 </ul>
 
@@ -840,7 +863,7 @@ Numpy allows to resphape it easily. For example, we can transform it into a 2-D 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 drinkingkazu drinkingkazu 730 Jun  7 11:05 erase.npz
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 drinkingkazu drinkingkazu 730 Jun  7 23:26 erase.npz
 </pre></div>
 </div>
 </div>
@@ -871,7 +894,9 @@ Numpy allows to resphape it easily. For example, we can transform it into a 2-D 
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape of daniel (2, 7)
 contents of kazu
-[2.2000e+00 4.7000e+00 5.1100e-01 1.2800e+00 9.6000e+01 1.0566e+02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2.2000e+00 4.7000e+00 5.1100e-01 1.2800e+00 9.6000e+01 1.0566e+02
  1.7300e+05 4.1800e+03 1.7800e+03 0.0000e+00 0.0000e+00 9.1190e+04
  8.0390e+04 1.2497e+05]
 </pre></div>
@@ -994,8 +1019,8 @@ Here’s an example of a <strong>flat random number</strong> between 0 to 1.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape (100000,)
-mean 0.49970837766104165 std 0.2885689807439421
-min 2.060086341393319e-05 max 0.9999726298528011
+mean 0.4981686529048879 std 0.28854203535719886
+min 4.013104818345603e-06 max 0.9999968075661155
 </pre></div>
 </div>
 </div>
@@ -1012,8 +1037,8 @@ min 2.060086341393319e-05 max 0.9999726298528011
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape (100,)
-mean 0.09011610204641265 std 0.8386470239201483
-min -2.0291606981388064 max 1.9739353804661022
+mean -0.038363219400369 std 1.0400423771197367
+min -3.2909334688994822 max 2.373430287369346
 </pre></div>
 </div>
 </div>

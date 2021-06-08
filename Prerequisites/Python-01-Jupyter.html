@@ -87,7 +87,7 @@
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
+  <a class="reference internal" href="../index.html">
    Getting started
   </a>
  </li>
@@ -98,6 +98,11 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="README.html">
+   Overview
+  </a>
+ </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="Python.html">
    Python basics
@@ -115,7 +120,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="Python-02-Python.html">
-     Introduction to Python
+     Python basics
     </a>
    </li>
    <li class="toctree-l2">
@@ -125,7 +130,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="Python-04-ScientificPython.html">
-     Visualization, Fitting, and File Format
+     Data visualization and more
     </a>
    </li>
   </ul>
@@ -142,7 +147,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="Python-05-PyTorch.html">
-     Pytorch: Machine Learning library
+     Introduction
     </a>
    </li>
    <li class="toctree-l2">
@@ -164,10 +169,32 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../Physics/Neutrinos.html">
-   Neutrinos
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Physics/README.html">
+   Overview
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Physics/ParticlePhysics.html">
+     Particle Physics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Physics/Neutrinos.html">
+     Neutrinos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Physics/DetectingNeutrinos.html">
+     Detecting neutrinos
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Physics/Lartpc.html">
@@ -186,12 +213,17 @@
    Overview of the reconstruction chain
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Environment.html">
+   Setting up your environment
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Code/Data.html">
    Data I/O
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -217,8 +249,8 @@
   <a class="reference internal" href="../Code/Output.html">
    Reconstruction outputs
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -254,8 +286,8 @@
   <a class="reference internal" href="../Exercises/README.html">
    Exercises
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -267,7 +299,10 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Exercises/dEdx.html">
-     Exercise 2: muon dEdx
+     Exercise 2: muon
+     <span class="math notranslate nohighlight">
+      \(dE/dx\)
+     </span>
     </a>
    </li>
    <li class="toctree-l2">
@@ -276,18 +311,6 @@
     </a>
    </li>
   </ul>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Using SDF
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../ComputeAccess/README.html">
-   Set up your computing environment
-  </a>
  </li>
 </ul>
 
@@ -707,6 +730,15 @@ ub20.04-cuda11.0-pytorch1.7.1-sw
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello world!
 hello world!
+hello world!
+hello world!
+hello world!
+hello world!
+hello world!
+hello world!
+hello world!
+hello world!
+hello world!
 </pre></div>
 </div>
 </div>
@@ -724,8 +756,8 @@ hello world!
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 0 ns, sys: 7.35 ms, total: 7.35 ms
-Wall time: 6.67 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 116 µs, sys: 4.1 ms, total: 4.21 ms
+Wall time: 3.7 ms
 </pre></div>
 </div>
 </div>

@@ -61,7 +61,7 @@ And the configuration which is loaded from the file [inference.cfg](./inference.
 ```{code-cell}
 :tags: [hide-output]
 
-cfg=yaml.load(open('./inference.cfg', 'r'),Loader=yaml.Loader)
+cfg=yaml.load(open('../data/inference.cfg', 'r'),Loader=yaml.Loader)
 # pre-process configuration (checks + certain non-specified default settings)
 process_config(cfg)
 # prepare function configures necessary "handlers"

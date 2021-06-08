@@ -52,7 +52,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data I/O" href="Data.html" />
+    <link rel="next" title="Setting up your environment" href="Environment.html" />
     <link rel="prev" title="Liquid Argon Time Projection Chamber (aka LArTPC)" href="../Physics/Lartpc.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -85,7 +85,7 @@
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
+  <a class="reference internal" href="../index.html">
    Getting started
   </a>
  </li>
@@ -96,6 +96,11 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Prerequisites/README.html">
+   Overview
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Prerequisites/Python.html">
    Python basics
@@ -113,7 +118,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Prerequisites/Python-02-Python.html">
-     Introduction to Python
+     Python basics
     </a>
    </li>
    <li class="toctree-l2">
@@ -123,7 +128,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Prerequisites/Python-04-ScientificPython.html">
-     Visualization, Fitting, and File Format
+     Data visualization and more
     </a>
    </li>
   </ul>
@@ -140,7 +145,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../Prerequisites/Python-05-PyTorch.html">
-     Pytorch: Machine Learning library
+     Introduction
     </a>
    </li>
    <li class="toctree-l2">
@@ -162,10 +167,32 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../Physics/Neutrinos.html">
-   Neutrinos
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Physics/README.html">
+   Overview
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Physics/ParticlePhysics.html">
+     Particle Physics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Physics/Neutrinos.html">
+     Neutrinos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Physics/DetectingNeutrinos.html">
+     Detecting neutrinos
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Physics/Lartpc.html">
@@ -184,12 +211,17 @@
    Overview of the reconstruction chain
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Environment.html">
+   Setting up your environment
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="Data.html">
    Data I/O
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -215,8 +247,8 @@
   <a class="reference internal" href="Output.html">
    Reconstruction outputs
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -252,8 +284,8 @@
   <a class="reference internal" href="../Exercises/README.html">
    Exercises
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -265,7 +297,10 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Exercises/dEdx.html">
-     Exercise 2: muon dEdx
+     Exercise 2: muon
+     <span class="math notranslate nohighlight">
+      \(dE/dx\)
+     </span>
     </a>
    </li>
    <li class="toctree-l2">
@@ -274,18 +309,6 @@
     </a>
    </li>
   </ul>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Using SDF
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../ComputeAccess/README.html">
-   Set up your computing environment
-  </a>
  </li>
 </ul>
 
@@ -557,7 +580,7 @@ of the chain input/output.</p>
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="../Physics/Lartpc.html" title="previous page">Liquid Argon Time Projection Chamber (aka LArTPC)</a>
-    <a class='right-next' id="next-link" href="Data.html" title="next page">Data I/O</a>
+    <a class='right-next' id="next-link" href="Environment.html" title="next page">Setting up your environment</a>
 
         </div>
         
