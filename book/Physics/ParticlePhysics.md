@@ -1,6 +1,4 @@
 
-
-
 # Particle Physics
 
 ... is a field of fundamental physics our research belongs to. You will also hear people calling it `high energy physics` or `hep` in short. What is our universe made of? Why is there matter around us? Particle physics is a field of physics that tries to answer these questions by studying the elementary (or fundamental) `particles`, the smallest and irreducible constituents of the universe, and `interactions` between those particles.

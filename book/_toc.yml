@@ -5,17 +5,23 @@
 
 - part: Prerequisites
   chapters:
+    - file: Prerequisites/README.md
+      title: Overview
     - file: Prerequisites/Python.md
       sections:
         - file: Prerequisites/Python-01-Jupyter.md
           title: Using Jupyter
         - file: Prerequisites/Python-02-Python.md
+          title: Python basics
         - file: Prerequisites/Python-03-Numpy.md
+          title: Numpy
         - file: Prerequisites/Python-04-ScientificPython.md
+          title: Data visualization and more
 
     - file: Prerequisites/Pytorch.md
       sections:
         - file: Prerequisites/Python-05-PyTorch.md
+          title: Introduction
         - file: Prerequisites/Python-06-MNIST-CIFAR10.md
         
     - file: Prerequisites/Git.md
@@ -23,11 +29,12 @@
 - part: Some Physics
   chapters:
     - file: Physics/README.md
+      title: Overview
       sections:
         - file: Physics/ParticlePhysics.md
         - file: Physics/Neutrinos.md
         - file: Physics/DetectingNeutrinos.md
-        - file: Physics/Lartpc.md
+    - file: Physics/Lartpc.md
     
 - part: lartpc_mlreco3d
   chapters:
