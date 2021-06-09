@@ -48,7 +48,7 @@ to the folder where you want to store the files:
 
 ```bash
 $ wget https://raw.githubusercontent.com/DeepLearnPhysics/lartpc_mlreco3d_tutorials/master/setup.sh
-$ sh setup.sh path/to/your/folder
+$ source setup.sh path/to/your/folder
 ```.
 
 The script will also export the environment variable `DATA_DIR` as `path/to/your/folder` for future reference in the tutorials.

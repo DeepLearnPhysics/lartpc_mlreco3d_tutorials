@@ -43,7 +43,7 @@ else # Get from Google Drive
         echo "- wire_mpvmpr_2020_04_test_small.root [3/3 done]"
 fi
 
-# Save data directory for tutorials
-export DATA_DIR=$DATA_DIR
+# Save data directory for tutorials - absolute path
+export DATA_DIR="$(realpath $DATA_DIR)"
 
 echo "... done."

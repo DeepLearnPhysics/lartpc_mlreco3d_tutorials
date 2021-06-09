@@ -11,12 +11,55 @@ $ pip install -U jupyter-book
 
 ## Contributing
 
+### Writing content
 Create your Markdown files / Jupyter notebooks. Reference them in the TOC (`_toc.yml`). 
 See https://jupyterbook.org/intro.html for more guidance on how to write your pages.
 
-The first time that you build, you need to run `sh setup.sh` in the root of the repository in order to copy the necessary weight files/datasets. This currently requires you to have access to the SDF filesystem where they are stored and then copied to the `Code/` folder.
+For better version control, it is preferred that you write your Jupyter notebook using 
+Markdown. A Jupyter notebook written entirely in Markdown needs a YAML frontmatter and looks like this:
 
-Then every time you want to build:
+```
+---
+jupytext:
+  cell_metadata_filter: -all
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.10.3
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+execution:
+  timeout: 240
+---
+
+# Your title
+
+```{code-cell}
+code that will be executed like a Jupyter notebook cell
+```
+```
+
+See https://jupyterbook.org/file-types/myst-notebooks.html for more information.
+
+### Getting the weight files and dataset to build the tutorials
+The tutorials rely on some weight files and small datasets. You can download them all by running the `setup.sh` script
+from the root of the repository:
+
+```bash
+$ source setup.sh (optional: path/to/your/folder)
+```
+
+Files will be downloaded either from SDF (if you have access)
+or Google Drive and stored by default in the folder `lartpc_mlreco3d_tutorials/book/data`.
+If you provide a custom path, the script will export that path in the environment variable `DATA_DIR`
+which is used by the tutorials.
+
+### Building
+Every time you want to build:
 
 ```bash
 $ jupyter-book build book
