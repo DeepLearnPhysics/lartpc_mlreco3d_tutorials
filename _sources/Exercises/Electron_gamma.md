@@ -63,7 +63,7 @@ If needed, you can edit the path to `lartpc_mlreco3d` library and to the data fo
 ```{code-cell}
 import os
 SOFTWARE_DIR = '%s/lartpc_mlreco3d' % os.environ.get('HOME') 
-DATA_DIR = '../data'
+DATA_DIR = os.environ.get('DATA_DIR')
 ```
 
 The usual imports and setting the right `PYTHON_PATH`...  click if you need to see them.

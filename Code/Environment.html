@@ -297,10 +297,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Exercises/dEdx.html">
-     Exercise 2: muon
-     <span class="math notranslate nohighlight">
-      \(dE/dx\)
-     </span>
+     Exercise 2: muon stopping power
     </a>
    </li>
    <li class="toctree-l2">
@@ -465,13 +462,21 @@ $ git checkout develop
 </div>
 <div class="section" id="assets">
 <h2>Assets<a class="headerlink" href="#assets" title="Permalink to this headline">¶</a></h2>
-<p>You will need a small dataset and weight files in order to run these notebooks. Download everything:</p>
+<p>You will need a small dataset and weight files in order to run these notebooks. Here are the individual links for reference:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://drive.google.com/file/d/1-ptcD6dHyVtxdgfo6dQLdUSrSZPlnvlz/view?usp=sharing">weights_full5_snapshot-999.ckpt</a></p></li>
 <li><p><a class="reference external" href="https://drive.google.com/file/d/155yaJ6YMEZmZBGkT8DYQijakP919dOuJ/view?usp=sharing">weights_ppn3_snapshot_1999.ckpt</a></p></li>
 <li><p><a class="reference external" href="https://drive.google.com/file/d/1UNPtKemYkUYuLc2kGZmjKftFHKu5uXbG/view?usp=sharing">wire_mpvmpr_2020_04_test_small.root</a></p></li>
 </ul>
-<p>[TODO wget and copy to <code class="docutils literal notranslate"><span class="pre">$HOME/data/</span></code> folder?]</p>
+<p>You can download everything at once by running this <code class="docutils literal notranslate"><span class="pre">setup.sh</span></code> script and providing as first argument the path
+to the folder where you want to store the files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget https://raw.githubusercontent.com/DeepLearnPhysics/lartpc_mlreco3d_tutorials/master/setup.sh
+$ <span class="nb">source</span> setup.sh path/to/your/folder
+<span class="sb">```</span>.
+
+The script will also <span class="nb">export</span> the environment variable <span class="sb">`</span>DATA_DIR<span class="sb">`</span> as <span class="sb">`</span>path/to/your/folder<span class="sb">`</span> <span class="k">for</span> future reference <span class="k">in</span> the tutorials.
+</pre></div>
+</div>
 </div>
 </div>
 

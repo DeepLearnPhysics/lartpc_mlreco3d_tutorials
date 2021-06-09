@@ -511,7 +511,7 @@ of the detector by looking at MIP <span class="math notranslate nohighlight">\(d
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="n">SOFTWARE_DIR</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/lartpc_mlreco3d&#39;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;HOME&#39;</span><span class="p">)</span> 
-<span class="n">DATA_DIR</span> <span class="o">=</span> <span class="s1">&#39;../data&#39;</span>
+<span class="n">DATA_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DATA_DIR&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -645,13 +645,13 @@ The environment variable `OMP_NUM_THREADS` not set. MinkowskiEngine will automat
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Config processed at: Linux volt002 3.10.0-1160.21.1.el7.x86_64 #1 SMP Tue Mar 16 18:28:22 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Config processed at: Linux volt005 3.10.0-1160.21.1.el7.x86_64 #1 SMP Tue Mar 16 18:28:22 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
 
 $CUDA_VISIBLE_DEVICES=&quot;0&quot;
 
 {   &#39;iotool&#39;: {   &#39;batch_size&#39;: 4,
                   &#39;collate_fn&#39;: &#39;CollateSparse&#39;,
-                  &#39;dataset&#39;: {   &#39;data_keys&#39;: [   &#39;../data/wire_mpvmpr_2020_04_test_small.root&#39;],
+                  &#39;dataset&#39;: {   &#39;data_keys&#39;: [   &#39;/sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/book/data/wire_mpvmpr_2020_04_test_small.root&#39;],
                                  &#39;limit_num_files&#39;: 10,
                                  &#39;name&#39;: &#39;LArCVDataset&#39;,
                                  &#39;schema&#39;: {   &#39;cluster_label&#39;: [   &#39;parse_cluster3d_clean_full&#39;,
@@ -961,7 +961,7 @@ $CUDA_VISIBLE_DEVICES=&quot;0&quot;
                                                               &#39;downsample_ghost&#39;: True,
                                                               &#39;filters&#39;: 16,
                                                               &#39;model_name&#39;: &#39;ppn&#39;,
-                                                              &#39;model_path&#39;: &#39;../data/weights_ppn3_snapshot-1999.ckpt&#39;,
+                                                              &#39;model_path&#39;: &#39;/sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/book/data/weights_ppn3_snapshot-1999.ckpt&#39;,
                                                               &#39;num_classes&#39;: 5,
                                                               &#39;num_strides&#39;: 6,
                                                               &#39;ppn1_size&#39;: 24,
@@ -1025,18 +1025,19 @@ $CUDA_VISIBLE_DEVICES=&quot;0&quot;
                     &#39;iterations&#39;: 652,
                     &#39;log_dir&#39;: &#39;./log_trash&#39;,
                     &#39;minibatch_size&#39;: -1,
-                    &#39;model_path&#39;: &#39;../data/weights_full5_snapshot-999.cpkt&#39;,
+                    &#39;model_path&#39;: &#39;/sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/book/data/weights_full5_snapshot-999.cpkt&#39;,
                     &#39;optimizer&#39;: {&#39;args&#39;: {&#39;lr&#39;: 0.001}, &#39;name&#39;: &#39;Adam&#39;},
                     &#39;report_step&#39;: 1,
                     &#39;seed&#39;: 123,
                     &#39;train&#39;: False,
                     &#39;unwrapper&#39;: &#39;unwrap_3d_scn&#39;,
                     &#39;weight_prefix&#39;: &#39;./weights_trash/snapshot&#39;}}
-Loading file: ../data/wire_mpvmpr_2020_04_test_small.root
+Loading file: /sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/book/data/wire_mpvmpr_2020_04_test_small.root
+Loading tree sparse3d_reco
+Loading tree
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading tree sparse3d_reco
-Loading tree sparse3d_reco_chi2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> sparse3d_reco_chi2
 Loading tree sparse3d_pcluster_semantics_ghost
 Loading tree cluster3d_pcluster
 Loading tree particle_pcluster
@@ -1583,14 +1584,16 @@ ClusterCNN(
 Total Number of Trainable Parameters = 175210432
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Restoring weights for  from ../data/weights_full5_snapshot-999.cpkt...
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Restoring weights for  from /sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/book/data/weights_full5_snapshot-999.cpkt...
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INCOMPATIBLE KEYS!
 [&#39;module.uresnet_lonely.bn.weight&#39;, &#39;module.uresnet_lonely.bn.bias&#39;, &#39;module.uresnet_lonely.bn.running_mean&#39;, &#39;module.uresnet_lonely.bn.running_var&#39;]
 make sure your module is named  
-Done.
-Restoring weights for ppn from ../data/weights_ppn3_snapshot-1999.ckpt...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done.
+Restoring weights for ppn from /sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/book/data/weights_ppn3_snapshot-1999.ckpt...
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done.
@@ -1802,7 +1805,7 @@ in this batch.</p>
 <span class="n">seaborn</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">dQ</span> <span class="o">/</span> <span class="n">dx</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5000</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;dQ/dx&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;dQ/dx (reconstructed charge / voxels distance)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;(Predicted) Muon Track Segments&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
