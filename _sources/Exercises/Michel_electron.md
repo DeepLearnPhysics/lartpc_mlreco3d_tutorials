@@ -181,7 +181,7 @@ iplot(fig)
 ## Step 2: identify muons and electrons particles.
 ```{code-cell}
 track_label = 1
-michel_label = 3
+michel_label = 2
 ```
 
 Use the predictions that you retrieved and a simple clustering algorithm
