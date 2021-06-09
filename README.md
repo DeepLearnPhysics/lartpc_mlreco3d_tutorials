@@ -18,7 +18,7 @@ See https://jupyterbook.org/intro.html for more guidance on how to write your pa
 For better version control, it is preferred that you write your Jupyter notebook using 
 Markdown. A Jupyter notebook written entirely in Markdown needs a YAML frontmatter and looks like this:
 
-```
+````md
 ---
 jupytext:
   cell_metadata_filter: -all
@@ -41,7 +41,8 @@ execution:
 ```{code-cell}
 code that will be executed like a Jupyter notebook cell
 ```
-```
+
+````
 
 See https://jupyterbook.org/file-types/myst-notebooks.html for more information.
 
