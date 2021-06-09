@@ -15,6 +15,9 @@ kernelspec:
 
 # Exercise 3: electron vs gamma separation
 
+## Motivation
+
+
 ## Setup
 If needed, you can edit the path to `lartpc_mlreco3d` library and to the data folder.
 ```{code-cell}
