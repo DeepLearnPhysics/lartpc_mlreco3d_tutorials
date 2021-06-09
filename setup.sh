@@ -1,9 +1,49 @@
 #! /bin/bash
 # Copy necessary files to build the full book
+# If an argument is provided, files will be sent to that folder.
+# Otherwise default folder is ./book/data
 
-# Copy weight file
-scp /sdf/group/neutrino/ldomine/weights_full5_snapshot-999.cpkt ./book/data/
-scp /sdf/group/neutrino/ldomine/weights_ppn3_snapshot-1999.ckpt ./book/data/
 
-# copy small dataset file
-scp /sdf/group/neutrino/ldomine/wire_mpvmpr_2020_04_test_small.root ./book/data/
+
+if [ $# -eq 0 ]
+    then
+        DATA_DIR="./book/data"
+else
+    DATA_DIR=$1
+fi
+    
+echo "Copying files to $DATA_DIR..."
+
+# Create if non-existent
+[ ! -d $DATA_DIR ] && mkdir $DATA_DIR
+
+download () {
+    # $1 = fileid, $2 = filename
+    wget --load-cookies $DATA_DIR/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies $DATA_DIR/cookies.txt --keep-session-cookies --no-check-certificate "https://docs.google.com/uc?export=download&id=$1" -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=$1" -O $2 && rm -rf $DATA_DIR/cookies.txt
+}
+
+if [ -d /sdf/group/neutrino/ldomine ] # Get from SDF
+    then
+        # Copy weight files
+        [ ! -f $DATA_DIR/weights_full5_snapshot-999.cpkt ] && scp /sdf/group/neutrino/ldomine/weights_full5_snapshot-999.cpkt $DATA_DIR
+        echo "- weights_full5_snapshot-999.cpkt [1/3 done]"
+        [ ! -f $DATA_DIR/weights_ppn3_snapshot-1999.ckpt ] && scp /sdf/group/neutrino/ldomine/weights_ppn3_snapshot-1999.ckpt $DATA_DIR
+        echo "- weights_ppn3_snapshot-1999.ckpt [2/3 done]"
+        # copy small dataset file
+        [ ! -f $DATA_DIR/wire_mpvmpr_2020_04_test_small.root ] && scp /sdf/group/neutrino/ldomine/wire_mpvmpr_2020_04_test_small.root $DATA_DIR
+        echo "- wire_mpvmpr_2020_04_test_small.root [3/3 done]"
+else # Get from Google Drive
+        # Copy weight files
+        [ ! -f $DATA_DIR/weights_full5_snapshot-999.cpkt ] && download "1-ptcD6dHyVtxdgfo6dQLdUSrSZPlnvlz" "weights_full5_snapshot-999.cpkt"
+        echo "- weights_full5_snapshot-999.cpkt [1/3 done]"
+        [ ! -f $DATA_DIR/weights_ppn3_snapshot-1999.ckpt ] && download "155yaJ6YMEZmZBGkT8DYQijakP919dOuJ" "weights_ppn3_snapshot-1999.ckpt"
+        echo "- weights_ppn3_snapshot-1999.ckpt [2/3 done]"
+        # copy small dataset file
+        [ ! -f $DATA_DIR/wire_mpvmpr_2020_04_test_small.root ] && download "1UNPtKemYkUYuLc2kGZmjKftFHKu5uXbG" "wire_mpvmpr_2020_04_test_small.root"
+        echo "- wire_mpvmpr_2020_04_test_small.root [3/3 done]"
+fi
+
+# Save data directory for tutorials
+export DATA_DIR=$DATA_DIR
+
+echo "... done."
