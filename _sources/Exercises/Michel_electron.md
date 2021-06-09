@@ -11,6 +11,8 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
+execution:
+  timeout: 240
 ---
 
 # Exercise 1: Finding Michel electrons
@@ -19,10 +21,6 @@ Michel electrons come out of a muon decay. They are electrons, so they look like
 an electromagnetic shower coming out of a long muon track. 
 
 Stages of the chain required: UResNet only!
-
-```{note} TODO
-Write solutions.
-```
 
 ## Motivation
 Michel electrons are used in LArTPC
@@ -133,47 +131,140 @@ Finally we run the chain for 1 iteration:
 data, output = hs.trainer.forward(hs.data_io_iter)
 ```
 Now we can play with `data` and `output` to visualize what we are interested in. Feel free to change the
-entry index if you want to look at a different entry!
+entry index if you want to look at a different entry! We picked this one because it has a few Michel in it.
+
 ```{code-cell}
-entry = 0
+entry = 2
 ```
+
 Let us grab the interesting quantities:
 ```{code-cell}
 clust_label = data['cluster_label'][entry]
 input_data = data['input_data'][entry]
 segment_label = data['segment_label'][entry][:, -1]
 
+
+
+```
+
+
+## Step 1: extract the semantic segmentation predictions.
+Our gameplan is simple: first, get the UResNet semantic segmentation predictions from the chain output,
+which are stored in `output['segmentation']`. These actually are softmax scores, so don't forget to take
+the argmax. Also remember, if our dataset has ghost points, we need to retrieve the ghost/non-ghost predictions
+from UResNet. These are stored in `output['ghost']`.
+
+```{code-cell}
 ghost_mask = output['ghost'][entry].argmax(axis=1) == 0
 segment_pred = output['segmentation'][entry].argmax(axis=1)
 ```
 
-## Step 1: extract the semantic segmentation predictions.
-Get the UResNet semantic segmentation predictions from the chain output.
+We can even take a look at a visualization to prepare for the next steps:
 
 ```{code-cell}
-:tags: [hide-cell]
+trace = []
 
-some solution code here
+edep = input_data[segment_label < 5]
+
+trace+= scatter_points(input_data[segment_label < 5],markersize=1,color=segment_label[segment_label < 5], cmin=0, cmax=10, colorscale=plotly.colors.qualitative.D3)
+trace[-1].name = 'True semantic labels (true no-ghost mask)'
+
+trace+= scatter_points(input_data[ghost_mask],markersize=1,color=segment_pred[ghost_mask], cmin=0, cmax=10, colorscale=plotly.colors.qualitative.D3)
+trace[-1].name = 'Predicted semantic labels (predicted no-ghost mask)'
+
+fig = go.Figure(data=trace,layout=plotly_layout3d())
+fig.update_layout(legend=dict(x=1.0, y=0.8))
+
+iplot(fig)
 ```
 
 ## Step 2: identify muons and electrons particles.
+```{code-cell}
+track_label = 1
+michel_label = 3
+```
+
 Use the predictions that you retrieved and a simple clustering algorithm
-such as DBSCAN to isolate muons and electron particle instances (groups
+such as DBSCAN to isolate Michel electron particle instances (groups
 of voxels).
 
 ```{code-cell}
-:tags: [hide-cell]
+:tags: [hide-input]
 
-some solution code here
+from sklearn.cluster import DBSCAN
+
+track_mask = (segment_pred == track_label) & ghost_mask
+michel_mask = (segment_pred == michel_label) & ghost_mask
+
+michel_clusters = DBSCAN(eps=3, min_samples=1).fit_predict(data['input_data'][entry][michel_mask][:, :3])
+
+print('Detected %d Michel candidates' % len(np.unique(michel_clusters[michel_clusters>-1])))
 ```
 
 ## Step 3: make sure the electron is touching the end of the muon track.
-There can be many ways to do this check.
+There can be many ways to do this check. 
+
+### Is it touching a track-like particle?
+First let's make sure the Michel electron cluster candidates
+are touching a track, i.e. next to track-like predicted voxels, within `distance_threshold`. 
+By the same occasion we'll make sure the Michel candidates have a minimum voxel count.
+
 
 ```{code-cell}
-:tags: [hide-cell]
+distance_threshold = 3 # in voxels, to account for potential gaps
+min_voxel_count = 10
+```
 
-some solution code here
+```{code-cell}
+:tags: [hide-input]
+
+from scipy.spatial.distance import cdist
+
+track_voxels = data['input_data'][entry][track_mask][:, :3]
+
+candidates = []
+for i in np.unique(michel_clusters[michel_clusters>-1]):
+    candidate_idx = michel_clusters == i
+    candidate_voxels = data['input_data'][entry][michel_mask][candidate_idx][:, :3]
+    
+    d = cdist(candidate_voxels, track_voxels)
+    if d.min() < distance_threshold and np.count_nonzero(candidate_idx) > min_voxel_count:
+        candidates.append(candidate_idx)
+
+candidates = np.array(candidates)
+print("Kept %d / %d Michel candidates" % (len(candidates), len(np.unique(michel_clusters[michel_clusters>-1]))))
+```
+
+### Wait, what if it was a misclassified Delta ray electron?
+Delta ray electrons are knock off electrons that can happen along the trajectory of a muon, so if UResNet
+mispredicted the delta ray voxels as Michel voxels we would be wrong! To avoid that, let's also make sure
+that the point of contact is at the *end* of the track. Again, many ways to do this check, this is just
+one possible heuristic.
+
+```{code-cell}
+radius = 10 # in voxels
+```
+
+```{code-cell}
+track_clusters1 = DBSCAN(eps=1.9, min_samples=1).fit_predict(track_voxels)
+
+candidates2 = []
+for candidate in candidates:
+    candidate_voxels = data['input_data'][entry][michel_mask][candidate][:, :3]
+    d = cdist(candidate_voxels, track_voxels)
+    ci, ti = d.argmin()//d.shape[1], d.argmin()%d.shape[1]
+    
+    d2 = cdist(track_voxels, [track_voxels[ti]])
+    far_voxels = d2.reshape((-1,)) > radius
+    
+    # Is the track still in one piece?
+    track_clusters2 = DBSCAN(eps=1.9, min_samples=1).fit_predict(track_voxels[far_voxels])
+    # i.e., is the cluster count before and after the ablation the same
+    if len(np.unique(track_clusters1[track_clusters1>-1])) == len(np.unique(track_clusters2[track_clusters2>-1])):
+        candidates2.append(candidate)
+        
+candidates2 = np.array(candidates2)
+print("Kept %d / %d Michel candidates" % (len(candidates2), len(np.unique(michel_clusters[michel_clusters>-1]))))
 ```
 
 ## Step 4: make a plot!
@@ -181,11 +272,101 @@ Let's use the voxel count as a substitute for the reconstructed energy. This
 approximation is fairly accurate for shower-like particles. Make a histogram with
 Michel electron candidates voxel counts. 
 
+Since there are only so many Michel electrons
+per entry, you will need to loop over several entries, possibly more than a batch size
+worth of entries. Using the previous steps I wrote a function `find_michel(data, output, entry)`
+which returns to me a list of `candidates`.
+
 ```{code-cell}
 :tags: [hide-cell]
 
-some solution code here
+def find_michel(data, output, entry):
+    clust_label = data['cluster_label'][entry]
+    input_data = data['input_data'][entry]
+    segment_label = data['segment_label'][entry][:, -1]
+
+    ghost_mask = output['ghost'][entry].argmax(axis=1) == 0
+    segment_pred = output['segmentation'][entry].argmax(axis=1)
+    
+    track_mask = (segment_pred == track_label) & ghost_mask
+    michel_mask = (segment_pred == michel_label) & ghost_mask
+    
+    if np.count_nonzero(michel_mask) == 0:
+        return []
+        
+    michel_clusters = DBSCAN(eps=3, min_samples=1).fit_predict(data['input_data'][entry][michel_mask][:, :3])
+
+    # Is it touching?
+    track_voxels = data['input_data'][entry][track_mask][:, :3]
+
+    candidates = []
+    for i in np.unique(michel_clusters[michel_clusters>-1]):
+        candidate_idx = michel_clusters == i
+        candidate_voxels = data['input_data'][entry][michel_mask][candidate_idx][:, :3]
+
+        d = cdist(candidate_voxels, track_voxels)
+        if d.min() < distance_threshold and np.count_nonzero(candidate_idx) > min_voxel_count:
+            candidates.append(candidate_idx)
+
+    candidates = np.array(candidates)
+    
+    # Is it the end of the track?
+    track_clusters1 = DBSCAN(eps=1.9, min_samples=1).fit_predict(track_voxels)
+
+    candidates2 = []
+    for candidate in candidates:
+        candidate_voxels = data['input_data'][entry][michel_mask][candidate][:, :3]
+        d = cdist(candidate_voxels, track_voxels)
+        ci, ti = d.argmin()//d.shape[1], d.argmin()%d.shape[1]
+
+        d2 = cdist(track_voxels, [track_voxels[ti]])
+        far_voxels = d2.reshape((-1,)) > radius
+
+        # Is the track still in one piece?
+        track_clusters2 = DBSCAN(eps=1.9, min_samples=1).fit_predict(track_voxels[far_voxels])
+        # i.e., is the cluster count before and after the ablation the same
+        if len(np.unique(track_clusters1[track_clusters1>-1])) == len(np.unique(track_clusters2[track_clusters2>-1])):
+            candidates2.append(candidate)
+
+    candidates2 = np.array(candidates2)
+    return candidates2
 ```
+
+And I can run it on each entry across several iterations.
+```{code-cell}
+:tags: [hide-output]
+
+iterations = 10
+
+all_candidates = []
+for iteration in range(iterations):
+    data, output = hs.trainer.forward(hs.data_io_iter)
+    for entry in range(len(data['input_data'])):
+        print("Iteration %d / Entry %d " % (iteration, entry))
+        entry_candidates = find_michel(data, output, entry)
+        all_candidates.extend(entry_candidates)
+        
+michel_voxel_count = [np.count_nonzero(candidate) for candidate in all_candidates]
+```
+
+```{code-cell}
+import matplotlib.pyplot as plt
+import seaborn
+seaborn.set(rc={
+    'figure.figsize':(15, 10),
+})
+seaborn.set_context('talk')
+
+plt.hist(michel_voxel_count)
+plt.xlabel("Voxel count")
+plt.ylabel("Michel electron candidates")
+```
+
+## Optional: how well did we do?
+You can keep the exercise going by looking at the true Michel candidates (same heuristic, using the
+true semantic labels), matching them to the predicted Michel candidates and computing some metrics
+such as purity (fraction of predicted candidates that are matched) or efficiency (fraction of true
+Michel that find a match).
 
 ## Other readings
 Michel Electron Reconstruction Using
