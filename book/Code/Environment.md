@@ -8,6 +8,11 @@ We are also working to make this work out of the box with Binder.
 ```
 
 ## Using a Docker image
+
+```{warning}
+Please make sure that you have followed Docker's post-install step that allows you to use `docker` commands without `sudo` permission. See https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user. Otherwise, you may see an error such as `permission denied while trying to connect to the Docker daemon socket` because your user does not have proper permissions to access `/var/run/docker.sock`.
+```
+
 You can pull a Docker image directly from Docker Hub:
 
 ```bash
