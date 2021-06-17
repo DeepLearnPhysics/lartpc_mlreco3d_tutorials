@@ -436,6 +436,10 @@ all the required libraries pre-installed for you.</p>
 </div>
 <div class="section" id="using-a-docker-image">
 <h2>Using a Docker image<a class="headerlink" href="#using-a-docker-image" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please make sure that you have followed Docker’s post-install step that allows you to use <code class="docutils literal notranslate"><span class="pre">docker</span></code> commands without <code class="docutils literal notranslate"><span class="pre">sudo</span></code> permission. See <a class="reference external" href="https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user">https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user</a>. Otherwise, you may see an error such as <code class="docutils literal notranslate"><span class="pre">permission</span> <span class="pre">denied</span> <span class="pre">while</span> <span class="pre">trying</span> <span class="pre">to</span> <span class="pre">connect</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">Docker</span> <span class="pre">daemon</span> <span class="pre">socket</span></code> because your user does not have proper permissions to access <code class="docutils literal notranslate"><span class="pre">/var/run/docker.sock</span></code>.</p>
+</div>
 <p>You can pull a Docker image directly from Docker Hub:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker pull deeplearnphysics/larcv2:ub20.04-cuda11.0-pytorch1.7.1-extra
 </pre></div>
