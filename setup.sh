@@ -43,6 +43,9 @@ else # Get from Google Drive
         echo "- wire_mpvmpr_2020_04_test_small.root [3/3 done]"
 fi
 
+# Copy inference configuration file
+[ ! -f $DATA_DIR/inference.cfg ] && wget -O $DATA_DIR/inference.cfg https://raw.githubusercontent.com/DeepLearnPhysics/lartpc_mlreco3d_tutorials/master/book/data/inference.cfg 
+
 # Save data directory for tutorials - absolute path
 export DATA_DIR="$(realpath $DATA_DIR)"
 
