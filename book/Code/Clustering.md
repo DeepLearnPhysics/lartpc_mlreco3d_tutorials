@@ -53,6 +53,7 @@ from mlreco.main_funcs import process_config, prepare
 from mlreco.utils.gnn.cluster import get_cluster_label
 from mlreco.utils.deghosting import adapt_labels_numpy as adapt_labels
 from mlreco.visualization.gnn import network_topology
+from mlreco.utils.cluster.cluster_graph_constructor import ClusterGraphConstructor
 
 from larcv import larcv
 ```
@@ -94,54 +95,20 @@ segment_pred = output['segmentation'][entry].argmax(axis=1)
 
 ## Track clustering
 
-### Stage 1: SPICE
-SPICE requires to set some tunable thresholds. Here we pick these to favor purity 
-over efficiency, so expect to see many small fragments of tracks at this stage.
+### Stage 1: GraphSPICE
+GraphSPICE is a first pass of CNN-based voxel clustering. We optimize this round for purity, hence there might be many small track fragments predicted by this pass.
+```{code-cell}
+graph = output['graph'][0]
+graph_info = output['graph_info'][0]
+gs_manager = ClusterGraphConstructor(cfg['model']['modules']['graph_spice']['constructor_cfg'], graph_batch=graph, graph_info=graph_info)
 
-```{code-cell}
-p_thresholds = {
-    0: 0.95, #0.14,
-    1: 0.95, #0.24,
-    2: 0.95, #0.48,
-    3: 0.95 #0.48
-}
-s_thresholds = {
-    0: 0.0, #0.8,
-    1: 0.0, #0.90,
-    2: 0.0, #0.55,
-    3: 0.35 #0.80
-}
-```
-We also need to retrieve batch ids for the embeddings (this will be fixed in the future...).
-```{code-cell}
-batch_mask = []
-count = 0
-for e in range(len(data['input_data'])):
-    batch_mask.append(np.ones((data['input_data'][e][output['ghost'][e].argmax(axis=1) == 0].shape[0],)) * e)
-    count += data['input_data'][e].shape[0]
-batch_mask = np.hstack(batch_mask)
+track_label = 1
 ```
 
-Now, SPICE provides us with 3 outputs, embeddings, margins and seediness.
-```{code-cell}
-embeddings = np.array(output['embeddings'])[batch_mask == entry]
-margins = np.array(output['margins'])[batch_mask == entry]
-seediness = np.array(output['seediness'])[batch_mask == entry]
-```
-We only want to run SPICE on predicted track voxels:
-```{code-cell}
-c = 1
-class_mask = segment_pred[ghost_mask] == c
-```
 Time to run the fit function that looks at the predicted embeddings and
 does the actual clustering inference for us:
 ```{code-cell}
-cluster_preds = fit_predict_np(embeddings = embeddings[class_mask],
-                                          seediness = seediness[class_mask], 
-                                          margins = margins[class_mask], 
-                                          fitfunc = gaussian_kernel,
-                                          s_threshold=s_thresholds[c],
-                                          p_threshold=p_thresholds[c])
+pred, G, subgraph = gs_manager.fit_predict_one(entry, gen_numpy_graph=True)
 ```
 
 And visualization time!
@@ -149,23 +116,21 @@ And visualization time!
 ```{code-cell}
 trace = []
 
-edep = data['input_data'][entry][ghost_mask]
+edep = input_data[segment_label < 5]
 
-trace+= scatter_points(clust_label[clust_label[:, -1] == c],
-                       markersize=1,
-                       color=clust_label[clust_label[:, -1] == c, -5],
-                       hovertext=clust_label[clust_label[:, -1] == c, -5],
-                       colorscale=plotly.colors.qualitative.Dark24)
+trace+= scatter_points(clust_label[clust_label[:, -1] == track_label],markersize=1,color=clust_label[clust_label[:, -1] == track_label, 6], cmin=0, cmax=50, colorscale=plotly.colors.qualitative.D3)
+trace[-1].name = 'True cluster labels (true no-ghost mask)'
 
-trace[-1].name = 'True cluster labels'
+clust_label_adapted = adapt_labels(output, data['segment_label'], data['cluster_label'])[entry]
 
-trace+= scatter_points(edep[class_mask],
-                       markersize=1,
-                       color=cluster_preds,
-                       hovertext=cluster_preds,
-                       colorscale=plotly.colors.qualitative.Dark24)
+trace+= scatter_points(clust_label_adapted[segment_pred[ghost_mask] == track_label],markersize=1,color=clust_label_adapted[segment_pred[ghost_mask] == track_label, 6], cmin=0, cmax=50, colorscale=plotly.colors.qualitative.D3)
+trace[-1].name = 'True cluster labels (predicted no-ghost mask & semantic)'
 
-trace[-1].name = 'Clustering predictions'
+trace+= scatter_points(subgraph.pos.cpu().numpy(),markersize=1,color=pred, cmin=0, cmax=50, colorscale=plotly.colors.qualitative.D3)
+trace[-1].name = 'Predicted clusters (predicted no-ghost mask)'
+
+# trace+= scatter_points(clust_label,markersize=1,color=output['graph_spice_label'][entry][:, 5], cmin=0, cmax=10, colorscale=plotly.colors.qualitative.D3)
+# trace[-1].name = 'Input to graph spice'
 
 fig = go.Figure(data=trace,layout=plotly_layout3d())
 fig.update_layout(legend=dict(x=1.0, y=0.8))

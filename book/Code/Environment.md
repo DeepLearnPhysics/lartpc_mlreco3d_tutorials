@@ -16,21 +16,21 @@ Please make sure that you have followed Docker's post-install step that allows y
 You can pull a Docker image directly from Docker Hub:
 
 ```bash
-docker pull deeplearnphysics/larcv2:ub20.04-cuda11.0-pytorch1.7.1-extra
+docker pull deeplearnphysics/larcv2:ub20.04-cuda11.3-cudnn8-pytorch1.10.0-extra
 ```
 
 To see which images are present on your system, you can use `docker images`. It will look something like this:
 
 ```
 $ docker images
-REPOSITORY                TAG                             IMAGE ID            CREATED             SIZE
-deeplearnphysics/larcv2   ub18.04-cuda10.2-pytorch1.7.1   4f24b6e84a1d        1 months ago        8.91GB
+REPOSITORY                TAG                                     IMAGE ID            CREATED             SIZE
+deeplearnphysics/larcv2   ub20.04-cuda11.3-cudnn8-pytorch1.10.0   4f24b6e84a1d        1 months ago        8.91GB
 ```
 
-Then to run it interactively (`8edf37c1bcec` is the image ID):
+Then to run it interactively (`4f24b6e84a1d` is the image ID which you could see above):
 
 ```bash
-docker run -i -t 8edf37c1bcec bash
+docker run -i -t 4f24b6e84a1d bash
 ```
 
 ## Cloning the `lartpc_mlreco3d` repository

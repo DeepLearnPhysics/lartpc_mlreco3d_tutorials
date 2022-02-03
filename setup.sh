@@ -25,14 +25,13 @@ download () {
 if [ -d /sdf/group/neutrino/ldomine ] # Get from SDF
     then
         # Copy weight files
-        [ ! -f $DATA_DIR/weights_full5_snapshot-999.cpkt ] && scp /sdf/group/neutrino/ldomine/weights_full5_snapshot-999.cpkt $DATA_DIR
-        echo "- weights_full5_snapshot-999.cpkt [1/3 done]"
-        [ ! -f $DATA_DIR/weights_ppn3_snapshot-1999.ckpt ] && scp /sdf/group/neutrino/ldomine/weights_ppn3_snapshot-1999.ckpt $DATA_DIR
-        echo "- weights_ppn3_snapshot-1999.ckpt [2/3 done]"
+        [ ! -f $DATA_DIR/weights_full_mpvmpr_082021.ckpt ] && scp /sdf/group/neutrino/ldomine/weights_full_mpvmpr_082021.ckpt $DATA_DIR
+        echo "- weights_full_mpvmpr_082021.ckpt [1/2 done]"
         # copy small dataset file
-        [ ! -f $DATA_DIR/wire_mpvmpr_2020_04_test_small.root ] && scp /sdf/group/neutrino/ldomine/wire_mpvmpr_2020_04_test_small.root $DATA_DIR
-        echo "- wire_mpvmpr_2020_04_test_small.root [3/3 done]"
+        [ ! -f $DATA_DIR/mpvmpr_082021_test_small.root ] && scp /sdf/group/neutrino/ldomine/mpvmpr_082021_test_small.root $DATA_DIR
+        echo "- mpvmpr_082021_test_small.root [2/2 done]"
 else # Get from Google Drive
+        # TODO update
         # Copy weight files
         [ ! -f $DATA_DIR/weights_full5_snapshot-999.cpkt ] && download "1-ptcD6dHyVtxdgfo6dQLdUSrSZPlnvlz" "weights_full5_snapshot-999.cpkt"
         echo "- weights_full5_snapshot-999.cpkt [1/3 done]"
@@ -48,5 +47,5 @@ fi
 
 # Save data directory for tutorials - absolute path
 export DATA_DIR="$(realpath $DATA_DIR)"
-
+echo "Set DATA_DIR = $DATA_DIR"
 echo "... done."
