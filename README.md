@@ -1,6 +1,6 @@
 # lartpc_mlreco3d Tutorials
 
-This is a collection of Jupyter notebooks and tutorials to get you up to speed on [`lartpc_mlreco3d`](https://github.com/DeepLearnPhysics/lartpc_mlreco3d).
+This is a collection of Jupyter notebooks and tutorials to get you up to speed on [`lartpc_mlreco3d`](https://github.com/DeepLearnPhysics/lartpc_mlreco3d). You can view the tutorial page [here](https://deeplearnphysics.org/lartpc_mlreco3d_tutorials/).
 
 ## Install
 Install Jupyter Book to contribute to the repository (see below how to contribute). 
@@ -54,8 +54,22 @@ from the root of the repository:
 $ source setup.sh (optional: path/to/your/folder)
 ```
 
-Files will be downloaded either from SDF (if you have access)
-or Google Drive and stored by default in the folder `lartpc_mlreco3d_tutorials/book/data`.
+Files will be downloaded from SDF and stored by default in the folder `lartpc_mlreco3d_tutorials/book/data`. As such, to view the tutorials properly you need access to the SLAC SDF file system. One way to do this is to mount the remote filesystem to your local machine using [sshfs](https://help.ubuntu.com/community/SSHFS):
+
+```bash
+$ sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 $USERNAME@sdf-login01.slac.stanford.edu:$PATH_TO_TUTORIAL $PATH_TO_TUTORIAL_LOCAL
+```
+where:
+ * `$USERNAME`: your SLAC `sdf` login ID. 
+ * `$PATH_TO_TUTORIAL`: path to the `lartpc_mlreco3d_tutorials` folder inside SDF.
+ * `$PATH_TO_TUTORIAL_LOCAL`: your desired path to the tutorial folder, in your local machine. 
+
+For example, after git cloning this repository in `/sdf/group/neutrino/koh0207/lartpc_mlreco3d_tutorials`, I can make a folder `~/lartpc_mlreco3d_tutorials` in my local Ubuntu, and mount the tutorials folder in SDF to this folder as follows:
+```bash
+sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 koh0207@sdf-login01.slac.stanford.edu:/sdf/group/neutrino/koh0207/lartpc_mlreco3d_tutorials ~/lartpc_mlreco3d_tutorials
+```
+This allows one to view files via the file browser of your local machine. 
+
 If you provide a custom path, the script will export that path in the environment variable `DATA_DIR`
 which is used by the tutorials.
 
@@ -65,6 +79,8 @@ Every time you want to build:
 ```bash
 $ jupyter-book build book
 ```
+
+### Previewing Changes
 
 You can now open the file `_build/html/index.html` to preview your changes.
 
