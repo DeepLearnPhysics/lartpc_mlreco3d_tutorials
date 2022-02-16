@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Event Selection with `lartpc_mlreco3d` Analysis Tools
+# Introduction to `lartpc_mlreco3d` Analysis Tools
 
 This notebook is a tutorial on how to use trained models in `lartpc_mlreco3d` for high level physics analysis, including but not limited to event selection. The purpose of this tutorial is to make inference and physics analysis using neural network models of `lartpc_mlreco3d` more accessible to non-experts and to make the process of asking simple questions (ex. how many particles in given image?) independent from knowing implementation details of separate sub-modules (which may include specific settings on hyperparameters and post-processing scripts). The tutorial is designed as follows:
 
@@ -528,5 +528,9 @@ $ python3 $PATH_TO_LARTPC_MLRECO3D/analysis/run.py $PATH_TO_CFG $PATH_TO_ANALYSI
 ```
 
 ```{code-cell} ipython3
+pwd
+```
 
+```{code-cell} ipython3
+cp /sdf/home/k/koh0207/analysis/Event_t
 ```
