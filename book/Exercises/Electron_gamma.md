@@ -9,11 +9,21 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
+execution:
+  timeout: 300
 ---
+
 
 # Exercise 3: electron vs gamma separation
 
 ## 1. Introduction
+
+```{figure} ./wouter_e_gamma.png
+---
+figclass: margin
+---
+Difference between an electron vs photon is at the start of the electromagnetic shower, where the photon has a gap. From Wouter Van De Pontseele, ICHEP 2020.
+```
 
 Electrons are visible in a LArTPC detector because of the electromagnetic showers that they trigger.
 
@@ -22,6 +32,13 @@ Photons, on the other hand, are neutral (no charge) and thus remain invisible to
 How can we differentiate the two, then? The answer is in the very beginning of the EM shower. For an electron, this shower will be topologically connected to the interaction vertex where the electron was produced. For a photon, there will be a gap (equal to the photon travel path) until the EM shower start (when the photon becomes indirectly visible through pair production or Compton scatter). That seems simple enough, right? Wrong, of course.
 
 Energetic photons could interact at a distance short enough from the interaction vertex, that we would not be able to see the gap. Or, the hadronic activity might be invisible, because it includes neutral particles or because the particles are too low energy to be seen. In that case the interaction vertex might be hard to identify, and the notion of a gap goes away too. For such cases, fortunately, there is another way to tell electrons from gamma showers. Another major difference is in the energy loss rate at the start of the EM shower. An electron would leave ionization corresponding to a single ionizing particle, whereas a pair of electron + positron coming from a photon pair production would add up to two ionizing particle. Thus, we expect the dE/dx at the beginning of the shower to be roughly twice larger in the case of a gamma-induced shower compared to an electron-induced shower.
+
+```{figure} ./wouter_dEdx.png
+---
+height: 300px
+---
+Example from MicroBooNE. Left is the shower $dE/dx$, right is the gap between the vertex and shower start. From Wouter Van De Pontseele, ICHEP 2020.
+```
 
 Why do we care? The difference becomes significant if, for example, you are looking for electron neutrinos. One of the key signatures you would be looking for are electrons.
 
@@ -35,9 +52,9 @@ In this exercise, we will focus on finding the start of EM showers and computing
 
 ### a. Software and data directory
 
-```{code-cell} ipython3
-import os, sys, yaml
-SOFTWARE_DIR = "/home/dae/sdf_home/lartpc_mlreco3d" # YOUR PATH TO LARTPC_MLRECO3D
+```{code-cell}
+import os, sys
+SOFTWARE_DIR = '%s/lartpc_mlreco3d' % os.environ.get('HOME') 
 DATA_DIR = os.environ.get('DATA_DIR')
 # Set software directory
 sys.path.append(SOFTWARE_DIR)
@@ -65,32 +82,30 @@ init_notebook_mode(connected=False)
 ### c. MLRECO specific imports for model loading and configuration setup
 
 ```{code-cell} ipython3
-from mlreco.main_funcs import process_config, cycle
-from mlreco.trainval import trainval
-from mlreco.iotools.factories import loader_factory
-import warnings
+from mlreco.main_funcs import process_config, prepare
+import warnings, yaml
 warnings.filterwarnings('ignore')
-cfg_file = '/home/dae/Desktop/dev/slac/config.cfg' # YOUR PATH TO THE CONFIG FILE
-cfg = yaml.load(open(cfg_file, 'r'), Loader=yaml.Loader)
+
+cfg = yaml.load(open('%s/inference.cfg' % DATA_DIR, 'r').read().replace('DATA_DIR', DATA_DIR),Loader=yaml.Loader)
 process_config(cfg, verbose=False)
 ```
 
 ### d. Initialize and load weights to model using Trainer. 
 
+
 ```{code-cell} ipython3
-loader = loader_factory(cfg, event_list=None)
-dataset = iter(cycle(loader))
-Trainer = trainval(cfg)
-loaded_iteration = Trainer.initialize()
+# prepare function configures necessary "handlers"
+hs = prepare(cfg)
+dataset = hs.data_io_iter
 ```
 
 Let's load one iteration worth of data into our notebook:
 
 ```{code-cell} ipython3
-data, result = Trainer.forward(dataset)
+data, result = hs.trainer.forward(dataset)
 ```
 
-## e. Setup Evaluator
+### e. Setup Evaluator
 
 ```{code-cell} ipython3
 from analysis.classes.ui import FullChainEvaluator
@@ -291,16 +306,13 @@ compute_shower_dqdx(fragments)
 ### Step 4. Collect data over multiple images and plot results
 
 ```{code-cell} ipython3
----
-jupyter:
-  outputs_hidden: true
-tags: []
----
-iterations = 100
+:tags: [hide-output]
+
+iterations = 10
 
 collect_dqdx = []
 for iteration in range(iterations):
-    data, result = Trainer.forward(dataset)
+    data, result = hs.trainer.forward(dataset)
     evaluator = FullChainEvaluator(data, result, cfg, deghosting=True)
     for entry, index in enumerate(evaluator.index):
 #         print("Batch ID: {}, Index: {}".format(entry, index))

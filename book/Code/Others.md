@@ -15,7 +15,6 @@ execution:
   timeout: 60
 ---
 
-
 # Others
 
 ## Imports and configuration

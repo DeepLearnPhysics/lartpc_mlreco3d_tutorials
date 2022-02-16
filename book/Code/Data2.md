@@ -13,6 +13,7 @@ kernelspec:
   name: python3
 ---
 
+
 # Using ROOT only
 
 If you know [ROOT](https://root.cern/), the framework developed by CERN for particle physics data analysis, you can use it to look directly at the data files. 
@@ -39,18 +40,20 @@ from ROOT import  TFile, TChain
 
 Now open the file using ROOT:
 ```{code-cell}
-example = TFile( './wire_mpvmpr_2020_04_test_small.root' )
+import os
+DATA_DIR = os.environ.get('DATA_DIR')
+example = TFile(os.path.join(DATA_DIR, 'mpvmpr_012022_test_small.root' ))
 example.ls()
 ```
 
 You can then manually browse the file. For example, if you wanted to look at the tree `cluster3d_sed_tree`, see how many clusters are there and what is the size of each cluster:
 
 ```{code-cell}
-tree = example.Get("cluster3d_sed_tree")
+tree = example.Get("cluster3d_pcluster_tree")
 
 for entry in range(tree.GetEntries()):
     tree.GetEntry(entry)
-    event = tree.cluster3d_sed_branch
+    event = tree.cluster3d_pcluster_branch
     clusters = event.as_vector()
     print("Number of clusters = ", len(clusters))
     for c in clusters:

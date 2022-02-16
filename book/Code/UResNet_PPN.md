@@ -15,7 +15,6 @@ execution:
   timeout: 180
 ---
 
-
 # Semantics & points of interest
 
 ## Imports and configuration

@@ -15,9 +15,20 @@ kernelspec:
 
 The *stopping power* of a particle usually refers to the energy loss rate $dE/dx$ when it passes through matter. When charged particles travel through our LArTPC detector, they interact with the argon and lose energy.
 
-### MIP and Bragg peak¶
+```{note}
+Currently this tutorial only computes dQ/dx distribution. Need refresh to make a 2D plot of dQ/dx vs residual range.
+```
+
+## MIP and Bragg peak¶
 
 Minimally ionizing particles (MIP) are charged particles which lose energy when passing through matter at a rate close to minimal. Particles such as muons often have energy losses close to the MIP level and are treated in practice as MIP. The only exception is when the muon comes to a stop and experiences a Bragg peak.
+
+```{figure} ./bragg_peak.png
+---
+height: 200px
+---
+Example of muon Bragg peak. The muon is travelling from bottom left to top right. The color scale represents energy deposition. Red means more energy deposited. The sudden increase in deposited (lost) energy towards the end of the muon trajectory is the Bragg peak. From MicroBooNE (arxiv: 1704.02927)
+```
 
 ## I. Motivation
 
@@ -32,10 +43,8 @@ Again, we start by setting our working environment. Some necessary boilerplate c
 #### a. Software and data directory
 
 ```{code-cell} ipython3
-:tags: []
-
-import os, sys, yaml
-SOFTWARE_DIR = "/home/dae/Desktop/dev/slac/lartpc_mlreco3d" # YOUR PATH TO LARTPC_MLRECO3D
+import os, sys
+SOFTWARE_DIR = '%s/lartpc_mlreco3d' % os.environ.get('HOME') 
 DATA_DIR = os.environ.get('DATA_DIR')
 # Set software directory
 sys.path.append(SOFTWARE_DIR)
@@ -54,7 +63,6 @@ seaborn.set(rc={
 })
 seaborn.set_context('talk')
 
-
 import plotly
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
@@ -65,29 +73,26 @@ init_notebook_mode(connected=False)
 #### c. MLRECO specific imports for model loading and configuration setup
 
 ```{code-cell} ipython3
-from mlreco.main_funcs import process_config, cycle
-from mlreco.trainval import trainval
-from mlreco.iotools.factories import loader_factory
-import warnings
+from mlreco.main_funcs import process_config, prepare
+import warnings, yaml
 warnings.filterwarnings('ignore')
-cfg_file = '/home/dae/Desktop/dev/slac/config.cfg' # YOUR PATH TO THE CONFIG FILE
-cfg = yaml.load(open(cfg_file, 'r'), Loader=yaml.Loader)
+
+cfg = yaml.load(open('%s/inference.cfg' % DATA_DIR, 'r').read().replace('DATA_DIR', DATA_DIR),Loader=yaml.Loader)
 process_config(cfg, verbose=False)
 ```
 
 #### d. Initialize and load weights to model using Trainer. 
 
 ```{code-cell} ipython3
-loader = loader_factory(cfg, event_list=None)
-dataset = iter(cycle(loader))
-Trainer = trainval(cfg)
-loaded_iteration = Trainer.initialize()
+# prepare function configures necessary "handlers"
+hs = prepare(cfg)
+dataset = hs.data_io_iter
 ```
 
 As usual, the model is now ready to be used (check for successful weight loading). Let's do one forward iteration to retrieve a handful of events.
 
 ```{code-cell} ipython3
-data, result = Trainer.forward(dataset)
+data, result = hs.trainer.forward(dataset)
 ```
 
 ### Step 1. Find Muons

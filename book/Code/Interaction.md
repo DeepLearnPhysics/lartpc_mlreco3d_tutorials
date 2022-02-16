@@ -15,7 +15,6 @@ execution:
   timeout: 180
 ---
 
-
 # Interaction clustering, PID and primary particles
 Interaction clustering is done by another Graph Neural Network (GNN). Each node corresponds
 to a predicted particle. In addition to predicting which edge should be kept (i.e. the interaction clustering),

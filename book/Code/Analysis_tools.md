@@ -9,6 +9,8 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
+execution:
+  timeout: 180
 ---
 
 # Introduction to `lartpc_mlreco3d` Analysis Tools
@@ -62,55 +64,37 @@ init_notebook_mode(connected=False)
 ```
 
 ```{code-cell} ipython3
-LARTPC_MLRECO_PATH = "/sdf/group/neutrino/koh0207/lartpc_mlreco3d/"    # Replace it with your copy of lartpc_mlreco3d
+import os, sys
+SOFTWARE_DIR = '%s/lartpc_mlreco3d' % os.environ.get('HOME') # Path to your `lartpc_mlreco3d`
+DATA_DIR = os.environ.get('DATA_DIR')
+# Set software directory
+sys.path.append(SOFTWARE_DIR)
 ```
 
-```{code-cell} ipython3
-import sys, os, re
-sys.path.append(LARTPC_MLRECO_PATH)   
+
+```{code-cell} ipython3 
 import torch
 print(torch.cuda.is_available())
 
-from mlreco.main_funcs import process_config, train, inference, make_directories, cycle
-from mlreco.trainval import trainval
-from mlreco.iotools.factories import loader_factory
+from mlreco.main_funcs import process_config, prepare
 import yaml
 ```
 
-The full chain is trained on two datasets (as of 02/02/2022):
- * `/sdf/group/neutrino/data/mpvmpr_2020_01_v04/test.root`: MPVMPR_V04 dataset with no ghost points
-   - latest config file: `/sdf/group/neutrino/koh0207/logs/mpvmpr_chain.cfg`
-   - latest weights: `/sdf/group/neutrino/koh0207/weights/chain/full_chain_test_weights.ckpt`
- * `/sdf/group/neutrino/ldomine/mpvmpr_082021/test.root`: ICARUS dataset with ghost points. 
-   - latest config file: `/sdf/group/neutrino/koh0207/logs/icarus.cfg`
-   - latest weights: `/sdf/group/neutrino/koh0207/weights/chain/icarus_weights.ckpt`
-   
-Since the dataset *with* ghost points are more representative of the full chain behavior, we will use the ICARUS dataset coupled with its latest weight. The following cell loads the full chain configuration file as a dictionary (`cfg`) and builds the full chain neural network model:
+We will use the ICARUS dataset coupled with its latest weight. The following cell loads the full chain configuration file as a dictionary (`cfg`) and builds the full chain neural network model:
 
 ```{code-cell} ipython3
-cfg_file = '/sdf/group/neutrino/koh0207/logs/icarus.cfg'
-cfg = yaml.load(open(cfg_file, 'r'), Loader=yaml.Loader)
+cfg = yaml.load(open('%s/inference.cfg' % DATA_DIR, 'r').read().replace('DATA_DIR', DATA_DIR),Loader=yaml.Loader)
+# pre-process configuration (checks + certain non-specified default settings)
 process_config(cfg, verbose=False)
-loader = loader_factory(cfg)
-dataset = iter(cycle(loader))
-Trainer = trainval(cfg)
-loaded_iteration = Trainer.initialize()
-#make_directories(inference_cfg, loaded_iteration)
+# prepare function configures necessary "handlers"
+hs = prepare(cfg)
+dataset = hs.data_io_iter
 ```
-
-If everything checks out, it should look like:
-> Ghost Masking is enabled for UResNet Segmentation
->
-> Ghost Masking is enabled for MinkPPN.
->
-> Restoring weights for  from /sdf/group/neutrino/koh0207/weights/chain/icarus_weights.ckpt...
->
-> Done.
 
 Now that the full chain and its trained weights are loaded into the notebook, let's do a single forward pass and inspect the results.
 
 ```{code-cell} ipython3
-data_blob, res = Trainer.forward(dataset)
+data_blob, res = hs.trainer.forward(dataset)
 ```
 
 ```{code-cell} ipython3
@@ -460,7 +444,7 @@ analysis:
   name: five_particle_classification
   processor_cfg:
     spatial_size: 768
-  log_dir: /sdf/group/neutrino/koh0207/lartpc_mlreco3d/logs/icarus
+  log_dir: ./logs/icarus
   iteration: 400
   deghosting: True
   fields:
@@ -527,10 +511,3 @@ Once this is done, you call `analysis/run.py` from the terminal as follows:
 $ python3 $PATH_TO_LARTPC_MLRECO3D/analysis/run.py $PATH_TO_CFG $PATH_TO_ANALYSIS_CFG
 ```
 
-```{code-cell} ipython3
-pwd
-```
-
-```{code-cell} ipython3
-cp /sdf/home/k/koh0207/analysis/Event_t
-```
