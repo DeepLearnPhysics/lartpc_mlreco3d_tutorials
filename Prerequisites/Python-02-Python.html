@@ -243,6 +243,17 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Analysis_tools.html">
+   Introduction to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     lartpc_mlreco3d
+    </span>
+   </code>
+   Analysis Tools
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Code/Output.html">
    Reconstruction outputs
@@ -292,12 +303,12 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../Exercises/Michel_electron.html">
-     Exercise 1: Finding Michel electrons
+     Exercise 1: Finding Michel Electrons
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Exercises/dEdx.html">
-     Exercise 2: muon stopping power
+     Exercise 2: Muon stopping power¶
     </a>
    </li>
    <li class="toctree-l2">
@@ -631,7 +642,7 @@ Developed in the late 1980s by Dutch research programmer Guido van Rossum. Guido
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We are using python 3.6.9
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We are using python 3.8.10
 </pre></div>
 </div>
 </div>
@@ -997,12 +1008,11 @@ y = 3.6
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on built-in function round in module builtins:
 
-round(...)
-    round(number[, ndigits]) -&gt; number
+round(number, ndigits=None)
+    Round a number to a given precision in decimal digits.
     
-    Round a number to a given precision in decimal digits (default 0 digits).
-    This returns an int when called with one argument, otherwise the
-    same type as the number. ndigits may be negative.
+    The return value is an integer if ndigits is omitted or None.  Otherwise
+    the return value has the same type as the number.  ndigits may be negative.
 </pre></div>
 </div>
 </div>
@@ -1274,10 +1284,7 @@ This is a laptop.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>imac!
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am imac!
 </pre></div>
 </div>
 </div>
@@ -1424,14 +1431,14 @@ Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 GPUs.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>does it have &quot;tracy&quot;?
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>does it have &quot;tracy&quot;? False
 
 __str__ of tracy... no it does not exist
 
-does it have &quot;data&quot;? True
+does it have &quot;data&quot;?
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> True
 
 __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 GPUs.
 </pre></div>
@@ -1497,7 +1504,7 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iterator at 0x7f564068db38&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iterator at 0x7f12606d93d0&gt;
 </pre></div>
 </div>
 </div>
@@ -1561,10 +1568,10 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>294 µs ± 10.2 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>264 µs ± 3.76 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>235 µs ± 5.91 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>211 µs ± 2.65 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1677,7 +1684,7 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">56</span><span class="o">-</span><span class="n">fa16b7499ace</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_62136</span><span class="o">/</span><span class="mf">257221059.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;DanielRatner.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 
 <span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;DanielRatner.py&#39;
@@ -1696,7 +1703,7 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">57</span><span class="o">-</span><span class="mi">18</span><span class="n">c58a918d5d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_62136</span><span class="o">/</span><span class="mf">3192186524.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">DanielRatner</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;age:&#39;</span><span class="p">,</span><span class="n">DanielRatner</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>
 
@@ -1716,7 +1723,7 @@ __str__ of data... Hi! I am dell xps15, and I am a laptop. I have 8 CPUs and 1 G
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">58</span><span class="o">-</span><span class="mi">2</span><span class="n">ffc377c6d3d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_62136</span><span class="o">/</span><span class="mf">1716875851.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">DanielRatner</span> <span class="kn">import</span> <span class="n">trend</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trend:&#39;</span><span class="p">,</span><span class="n">trend</span><span class="p">)</span>
 
@@ -1759,7 +1766,7 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">60</span><span class="o">-</span><span class="n">af6a97faa849</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_62136</span><span class="o">/</span><span class="mf">1679012053.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;RealDanielRatner/__init__.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 
 <span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;RealDanielRatner/__init__.py&#39;
@@ -1779,7 +1786,7 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">61</span><span class="o">-</span><span class="n">fb22218dbaf8</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_62136</span><span class="o">/</span><span class="mf">1386294848.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;RealDanielRatner/age.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;RealDanielRatner/favorite.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;RealDanielRatner/trend.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
@@ -1800,7 +1807,7 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">62</span><span class="o">-</span><span class="n">ebd15886c817</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_62136</span><span class="o">/</span><span class="mf">2884408567.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">RealDanielRatner</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">help</span><span class="p">(</span><span class="n">RealDanielRatner</span><span class="p">)</span>
 
@@ -1820,7 +1827,7 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">63</span><span class="o">-</span><span class="mi">0</span><span class="n">b7b39630eb6</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_62136</span><span class="o">/</span><span class="mf">3236131480.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;age:&#39;</span><span class="p">,</span><span class="n">RealDanielRatner</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trend:&#39;</span><span class="p">,</span><span class="n">RealDanielRatner</span><span class="o">.</span><span class="n">trend</span><span class="p">)</span>
 
@@ -1839,7 +1846,7 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">64</span><span class="o">-</span><span class="mf">8577e21</span><span class="n">b2404</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_62136</span><span class="o">/</span><span class="mf">3905464450.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">RealDanielRatner</span><span class="p">,</span><span class="s1">&#39;favorite&#39;</span><span class="p">)</span>
 
 <span class="ne">NameError</span>: name &#39;RealDanielRatner&#39; is not defined
@@ -1871,7 +1878,7 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">66</span><span class="o">-</span><span class="mi">399</span><span class="n">b3ac3dbf2</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_62136</span><span class="o">/</span><span class="mf">2194391268.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">RealDanielRatner</span> <span class="kn">import</span> <span class="n">favorite</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;favorite:&#39;</span><span class="p">,</span><span class="n">favorite</span><span class="o">.</span><span class="n">favorite</span><span class="p">)</span>
 
@@ -1894,7 +1901,7 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">67</span><span class="o">-</span><span class="n">cfc9d21d8093</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_62136</span><span class="o">/</span><span class="mf">3383644241.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">RealDanielRatner</span> <span class="k">as</span> <span class="nn">dan</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Daniels age is&#39;</span><span class="p">,</span><span class="n">dan</span><span class="o">.</span><span class="n">age</span><span class="p">,</span><span class="s1">&#39;and his trend:&#39;</span><span class="p">,</span><span class="n">dan</span><span class="o">.</span><span class="n">trend</span><span class="p">)</span>
 
@@ -1916,21 +1923,29 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/app/larcv2/python&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/book/Prerequisites&#39;,
+ &#39;/app/larcv2/python&#39;,
  &#39;/app/root/lib&#39;,
- &#39;/usr/local/root/lib&#39;,
  &#39;/sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/book/Prerequisites&#39;,
  &#39;&#39;,
  &#39;/sdf/home/l/ldomine/.local/lib/python3.6/site-packages&#39;,
- &#39;/usr/lib/python36.zip&#39;,
- &#39;/usr/lib/python3.6&#39;,
- &#39;/usr/lib/python3.6/lib-dynload&#39;,
  &#39;/sdf/home/l/ldomine/.local/lib/python3.6/site-packages/RoIAlign_extension_3D-0.0.0-py3.6-linux-x86_64.egg&#39;,
  &#39;/sdf/home/l/ldomine/.local/lib/python3.6/site-packages/nms_extension-0.0.0-py3.6-linux-x86_64.egg&#39;,
- &#39;/usr/local/lib/python3.6/dist-packages&#39;,
+ &#39;/usr/lib/python38.zip&#39;,
+ &#39;/usr/lib/python3.8&#39;,
+ &#39;/usr/lib/python3.8/lib-dynload&#39;,
+ &#39;/sdf/home/l/ldomine/.local/lib/python3.8/site-packages&#39;,
+ &#39;/usr/local/lib/python3.8/dist-packages&#39;,
+ &#39;/usr/local/lib/python3.8/dist-packages/larndsim-0.1.0-py3.8.egg&#39;,
+ &#39;/usr/local/lib/python3.8/dist-packages/larpix_geometry-0.3.0-py3.8.egg&#39;,
+ &#39;/usr/local/lib/python3.8/dist-packages/larpix_control-3.5.1-py3.8.egg&#39;,
+ &#39;/usr/local/lib/python3.8/dist-packages/numba-0.52.0-py3.8-linux-x86_64.egg&#39;,
+ &#39;/usr/local/lib/python3.8/dist-packages/pyzmq-18.1.1-py3.8-linux-x86_64.egg&#39;,
+ &#39;/usr/local/lib/python3.8/dist-packages/bitarray-0.9.3-py3.8-linux-x86_64.egg&#39;,
+ &#39;/usr/local/lib/python3.8/dist-packages/bidict-0.18.4-py3.8.egg&#39;,
+ &#39;/usr/local/lib/python3.8/dist-packages/llvmlite-0.35.0-py3.8-linux-x86_64.egg&#39;,
  &#39;/usr/lib/python3/dist-packages&#39;,
- &#39;/usr/local/root/lib&#39;,
- &#39;/usr/local/lib/python3.6/dist-packages/IPython/extensions&#39;,
+ &#39;/usr/local/lib/python3.8/dist-packages/IPython/extensions&#39;,
  &#39;/sdf/home/l/ldomine/.ipython&#39;]
 </pre></div>
 </div>
@@ -1944,7 +1959,7 @@ The directory name is called <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/lib/python3.6/platform.py
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/lib/python3.8/platform.py
 </pre></div>
 </div>
 </div>

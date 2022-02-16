@@ -243,6 +243,17 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Analysis_tools.html">
+   Introduction to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     lartpc_mlreco3d
+    </span>
+   </code>
+   Analysis Tools
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Code/Output.html">
    Reconstruction outputs
@@ -292,12 +303,12 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../Exercises/Michel_electron.html">
-     Exercise 1: Finding Michel electrons
+     Exercise 1: Finding Michel Electrons
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Exercises/dEdx.html">
-     Exercise 2: muon stopping power
+     Exercise 2: Muon stopping power¶
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +507,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch._C.Generator at 0x7fe5740cc810&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch._C.Generator at 0x7fa0e1aadfb0&gt;
 </pre></div>
 </div>
 </div>
@@ -533,9 +544,8 @@
 torch.ones:
  tensor([[1., 1., 1.],
         [1., 1., 1.]])
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.arange:
+
+torch.arange:
  tensor([[0., 1., 2.],
         [3., 4., 5.]])
 
@@ -700,9 +710,7 @@ tensor([[1., 0., 0.],
         [0., 0., 0.]])
 
 torch.Tensor matrix multiplication:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[1., 1., 1.],
+tensor([[1., 1., 1.],
         [0., 0., 0.],
         [0., 0., 0.]])
 
@@ -852,16 +860,16 @@ The 0th dimension size: 3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Batch entry 0 ... batch data tensor([14,  7, 53, 63, 50, 96, 39, 64, 19,  8])
-Batch entry 1 ... batch data tensor([31,  3, 52, 22, 78, 20,  9, 49, 72, 38])
-Batch entry 2 ... batch data tensor([91, 13, 92, 48, 80, 76, 32,  1, 45, 33])
-Batch entry 3 ... batch data tensor([18, 30, 10, 37, 77, 23, 90,  2, 47, 54])
-Batch entry 4 ... batch data tensor([93,  5, 88, 59, 94, 36, 25, 98,  4, 27])
-Batch entry 5 ... batch data tensor([ 6, 46, 81, 89, 58, 84, 67, 74, 43, 71])
-Batch entry 6 ... batch data tensor([57, 97, 24, 73, 15, 16, 28, 41, 82, 60])
-Batch entry 7 ... batch data tensor([21, 62, 83, 61, 11, 65, 87, 95, 69, 12])
-Batch entry 8 ... batch data tensor([29, 35, 68, 79, 85, 40, 75, 44,  0, 55])
-Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Batch entry 0 ... batch data tensor([23, 14, 64, 51, 94, 25, 38, 44, 70, 28])
+Batch entry 1 ... batch data tensor([37, 57, 66, 43, 53, 13, 72, 48, 74, 62])
+Batch entry 2 ... batch data tensor([89,  3, 40, 92, 86, 65, 63, 95, 21, 97])
+Batch entry 3 ... batch data tensor([ 9, 42, 45, 54, 31, 87, 99, 46, 98, 26])
+Batch entry 4 ... batch data tensor([41, 80, 36, 90,  0, 59, 52, 69, 17, 56])
+Batch entry 5 ... batch data tensor([16, 61, 82, 30, 77, 73, 96, 33,  6, 83])
+Batch entry 6 ... batch data tensor([39,  5, 24, 32, 85, 35, 50, 60,  1, 78])
+Batch entry 7 ... batch data tensor([18,  2, 71,  7, 34, 20, 49, 10,  8, 84])
+Batch entry 8 ... batch data tensor([76, 93, 12, 81, 22, 55,  4, 19, 11, 27])
+Batch entry 9 ... batch data tensor([29, 15, 47, 88, 75, 68, 67, 58, 79, 91])
 </pre></div>
 </div>
 </div>
@@ -911,11 +919,11 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[-0.0215,  1.0731, -0.1408, -0.5394, -1.2782],
-         [-0.8107,  1.3818, -0.0694,  1.2088, -0.0086],
-         [ 1.8576,  2.1321, -0.5056, -0.7988, -1.8127],
-         [ 1.1846,  1.7602,  1.2117, -0.8632,  1.3337],
-         [ 0.0771, -0.0522, -1.0565,  1.1510, -0.4669]]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[ 1.5810,  1.3010,  1.2753, -0.2010, -0.1606],
+         [-0.4015,  0.6957, -1.8061, -1.1589, -0.4210],
+         [-0.9620,  1.2825,  0.8768,  1.6221, -1.4779],
+         [ 1.1331, -1.2203, -1.1285,  0.4135,  0.2892],
+         [ 2.2473, -0.8036, -0.2808,  0.7697, -0.6596]]])
 </pre></div>
 </div>
 </div>
@@ -929,11 +937,11 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[0.0000, 1.0731, 0.0000, 0.0000, 0.0000],
-         [0.0000, 1.3818, 0.0000, 1.2088, 0.0000],
-         [1.8576, 2.1321, 0.0000, 0.0000, 0.0000],
-         [1.1846, 1.7602, 1.2117, 0.0000, 1.3337],
-         [0.0771, 0.0000, 0.0000, 1.1510, 0.0000]]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[1.5810, 1.3010, 1.2753, 0.0000, 0.0000],
+         [0.0000, 0.6957, 0.0000, 0.0000, 0.0000],
+         [0.0000, 1.2825, 0.8768, 1.6221, 0.0000],
+         [1.1331, 0.0000, 0.0000, 0.4135, 0.2892],
+         [2.2473, 0.0000, 0.0000, 0.7697, 0.0000]]])
 </pre></div>
 </div>
 </div>
@@ -947,11 +955,11 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[0.1737, 0.5191, 0.1542, 0.1035, 0.0494],
-         [0.0458, 0.4105, 0.0962, 0.3453, 0.1022],
-         [0.3991, 0.5251, 0.0376, 0.0280, 0.0102],
-         [0.1963, 0.3490, 0.2016, 0.0253, 0.2278],
-         [0.1752, 0.1540, 0.0564, 0.5128, 0.1017]]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[0.3526, 0.2665, 0.2597, 0.0593, 0.0618],
+         [0.1757, 0.5264, 0.0431, 0.0824, 0.1723],
+         [0.0327, 0.3086, 0.2057, 0.4334, 0.0195],
+         [0.4725, 0.0449, 0.0492, 0.2301, 0.2032],
+         [0.7093, 0.0336, 0.0566, 0.1618, 0.0388]]])
 </pre></div>
 </div>
 </div>
@@ -965,11 +973,15 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[1.0731],
-         [1.3818],
-         [2.1321],
-         [1.7602],
-         [1.1510]]])
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.8/dist-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[1.5810],
+         [0.6957],
+         [1.6221],
+         [1.1331],
+         [2.2473]]])
 </pre></div>
 </div>
 </div>
@@ -982,11 +994,11 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[0.4223],
-         [0.3854],
-         [0.4726],
-         [0.3373],
-         [0.4366]]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[0.3444],
+         [0.3339],
+         [0.3874],
+         [0.3905],
+         [0.6472]]])
 </pre></div>
 </div>
 </div>
@@ -1000,11 +1012,11 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[0.4223],
-         [0.3854],
-         [0.4726],
-         [0.3373],
-         [0.4366]]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[0.3444],
+         [0.3339],
+         [0.3874],
+         [0.3905],
+         [0.6472]]])
 </pre></div>
 </div>
 </div>
@@ -1035,11 +1047,11 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[1.4223],
-         [1.3854],
-         [1.4726],
-         [1.3373],
-         [1.4366]]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[1.3444],
+         [1.3339],
+         [1.3874],
+         [1.3905],
+         [1.6472]]])
 </pre></div>
 </div>
 </div>
@@ -1073,11 +1085,11 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[1.4223],
-         [1.3854],
-         [1.4726],
-         [1.3373],
-         [1.4366]]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[1.3444],
+         [1.3339],
+         [1.3874],
+         [1.3905],
+         [1.6472]]])
 </pre></div>
 </div>
 </div>
@@ -1107,7 +1119,7 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.8 ms ± 176 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.37 ms ± 56.3 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -1123,33 +1135,38 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">30</span><span class="o">-</span><span class="mi">3</span><span class="n">d9f36b55a06</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_62336</span><span class="o">/</span><span class="mf">2823993350.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_cell_magic</span><span class="p">(</span><span class="s1">&#39;timeit&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;mean = (data_gpu ** 5).mean().item()</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
-<span class="nn">/usr/local/lib/python3.6/dist-packages/IPython/core/interactiveshell.py</span> in <span class="ni">run_cell_magic</span><span class="nt">(self, magic_name, line, cell)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2369</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2370</span>                 <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">magic_arg_s</span><span class="p">,</span> <span class="n">cell</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2371</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2372</span>             <span class="k">return</span> <span class="n">result</span>
-<span class="g g-Whitespace">   </span><span class="mi">2373</span> 
+<span class="nn">/usr/local/lib/python3.8/dist-packages/IPython/core/interactiveshell.py</span> in <span class="ni">run_cell_magic</span><span class="nt">(self, magic_name, line, cell)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2401</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2402</span>                 <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">magic_arg_s</span><span class="p">,</span> <span class="n">cell</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2403</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2404</span>             <span class="k">return</span> <span class="n">result</span>
+<span class="g g-Whitespace">   </span><span class="mi">2405</span> 
 
-<span class="nn">&lt;decorator-gen-60&gt;</span> in <span class="ni">timeit</span><span class="nt">(self, line, cell, local_ns)</span>
+<span class="nn">/usr/local/lib/python3.8/dist-packages/decorator.py</span> in <span class="ni">fun</span><span class="nt">(*args, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">230</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">kwsyntax</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">231</span>                 <span class="n">args</span><span class="p">,</span> <span class="n">kw</span> <span class="o">=</span> <span class="n">fix</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kw</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">232</span>             <span class="k">return</span> <span class="n">caller</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">extras</span> <span class="o">+</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span>     <span class="n">fun</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span>     <span class="n">fun</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__doc__</span>
 
-<span class="nn">/usr/local/lib/python3.6/dist-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
+<span class="nn">/usr/local/lib/python3.8/dist-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
 <span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="c1"># but it&#39;s overkill for just that one bit of state.</span>
 <span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="k">def</span> <span class="nf">magic_deco</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">187</span>         <span class="n">call</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">188</span> 
 <span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
 
-<span class="nn">/usr/local/lib/python3.6/dist-packages/IPython/core/magics/execution.py</span> in <span class="ni">timeit</span><span class="nt">(self, line, cell, local_ns)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1161</span>             <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1162</span>                 <span class="n">number</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="n">index</span>
-<span class="ne">-&gt; </span><span class="mi">1163</span>                 <span class="n">time_number</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1164</span>                 <span class="k">if</span> <span class="n">time_number</span> <span class="o">&gt;=</span> <span class="mf">0.2</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1165</span>                     <span class="k">break</span>
+<span class="nn">/usr/local/lib/python3.8/dist-packages/IPython/core/magics/execution.py</span> in <span class="ni">timeit</span><span class="nt">(self, line, cell, local_ns)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1167</span>             <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1168</span>                 <span class="n">number</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="n">index</span>
+<span class="ne">-&gt; </span><span class="mi">1169</span>                 <span class="n">time_number</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1170</span>                 <span class="k">if</span> <span class="n">time_number</span> <span class="o">&gt;=</span> <span class="mf">0.2</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1171</span>                     <span class="k">break</span>
 
-<span class="nn">/usr/local/lib/python3.6/dist-packages/IPython/core/magics/execution.py</span> in <span class="ni">timeit</span><span class="nt">(self, number)</span>
+<span class="nn">/usr/local/lib/python3.8/dist-packages/IPython/core/magics/execution.py</span> in <span class="ni">timeit</span><span class="nt">(self, number)</span>
 <span class="g g-Whitespace">    </span><span class="mi">167</span>         <span class="n">gc</span><span class="o">.</span><span class="n">disable</span><span class="p">()</span>
 <span class="g g-Whitespace">    </span><span class="mi">168</span>         <span class="k">try</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">169</span>             <span class="n">timing</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="p">)</span>
@@ -1174,7 +1191,7 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>205 µs ± 7.13 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>164 µs ± 2.69 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1190,38 +1207,43 @@ Batch entry 9 ... batch data tensor([66, 34, 26, 17, 86, 56, 42, 70, 99, 51])
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">32</span><span class="o">-</span><span class="n">da2bd9a1cbb5</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_62336</span><span class="o">/</span><span class="mf">3126707622.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_cell_magic</span><span class="p">(</span><span class="s1">&#39;timeit&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;#data_np=np.zeros([1000,1000],dtype=np.float32)</span><span class="se">\n</span><span class="s1">#data_gpu = torch.Tensor(data_np).cuda()</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
-<span class="nn">/usr/local/lib/python3.6/dist-packages/IPython/core/interactiveshell.py</span> in <span class="ni">run_cell_magic</span><span class="nt">(self, magic_name, line, cell)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2369</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2370</span>                 <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">magic_arg_s</span><span class="p">,</span> <span class="n">cell</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2371</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2372</span>             <span class="k">return</span> <span class="n">result</span>
-<span class="g g-Whitespace">   </span><span class="mi">2373</span> 
+<span class="nn">/usr/local/lib/python3.8/dist-packages/IPython/core/interactiveshell.py</span> in <span class="ni">run_cell_magic</span><span class="nt">(self, magic_name, line, cell)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2401</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2402</span>                 <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">magic_arg_s</span><span class="p">,</span> <span class="n">cell</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2403</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2404</span>             <span class="k">return</span> <span class="n">result</span>
+<span class="g g-Whitespace">   </span><span class="mi">2405</span> 
 
-<span class="nn">&lt;decorator-gen-60&gt;</span> in <span class="ni">timeit</span><span class="nt">(self, line, cell, local_ns)</span>
+<span class="nn">/usr/local/lib/python3.8/dist-packages/decorator.py</span> in <span class="ni">fun</span><span class="nt">(*args, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">230</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">kwsyntax</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">231</span>                 <span class="n">args</span><span class="p">,</span> <span class="n">kw</span> <span class="o">=</span> <span class="n">fix</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kw</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">232</span>             <span class="k">return</span> <span class="n">caller</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">extras</span> <span class="o">+</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span>     <span class="n">fun</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span>     <span class="n">fun</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__doc__</span>
 
-<span class="nn">/usr/local/lib/python3.6/dist-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
+<span class="nn">/usr/local/lib/python3.8/dist-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
 <span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="c1"># but it&#39;s overkill for just that one bit of state.</span>
 <span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="k">def</span> <span class="nf">magic_deco</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">187</span>         <span class="n">call</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">188</span> 
 <span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
 
-<span class="nn">/usr/local/lib/python3.6/dist-packages/IPython/core/magics/execution.py</span> in <span class="ni">timeit</span><span class="nt">(self, line, cell, local_ns)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1138</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1139</span>         <span class="n">t0</span> <span class="o">=</span> <span class="n">clock</span><span class="p">()</span>
-<span class="ne">-&gt; </span><span class="mi">1140</span>         <span class="n">code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">timeit_ast</span><span class="p">,</span> <span class="s2">&quot;&lt;magic-timeit&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;exec&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1141</span>         <span class="n">tc</span> <span class="o">=</span> <span class="n">clock</span><span class="p">()</span><span class="o">-</span><span class="n">t0</span>
-<span class="g g-Whitespace">   </span><span class="mi">1142</span> 
+<span class="nn">/usr/local/lib/python3.8/dist-packages/IPython/core/magics/execution.py</span> in <span class="ni">timeit</span><span class="nt">(self, line, cell, local_ns)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1144</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1145</span>         <span class="n">t0</span> <span class="o">=</span> <span class="n">clock</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">1146</span>         <span class="n">code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">timeit_ast</span><span class="p">,</span> <span class="s2">&quot;&lt;magic-timeit&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;exec&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1147</span>         <span class="n">tc</span> <span class="o">=</span> <span class="n">clock</span><span class="p">()</span><span class="o">-</span><span class="n">t0</span>
+<span class="g g-Whitespace">   </span><span class="mi">1148</span> 
 
-<span class="nn">/usr/lib/python3.6/codeop.py</span> in <span class="ni">__call__</span><span class="nt">(self, source, filename, symbol)</span>
-<span class="g g-Whitespace">    </span><span class="mi">131</span> 
-<span class="g g-Whitespace">    </span><span class="mi">132</span>     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">symbol</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">133</span>         <span class="n">codeob</span> <span class="o">=</span> <span class="nb">compile</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">flags</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">134</span>         <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">_features</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">135</span>             <span class="k">if</span> <span class="n">codeob</span><span class="o">.</span><span class="n">co_flags</span> <span class="o">&amp;</span> <span class="n">feature</span><span class="o">.</span><span class="n">compiler_flag</span><span class="p">:</span>
+<span class="nn">/usr/lib/python3.8/codeop.py</span> in <span class="ni">__call__</span><span class="nt">(self, source, filename, symbol)</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span> 
+<span class="g g-Whitespace">    </span><span class="mi">142</span>     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">symbol</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">143</span>         <span class="n">codeob</span> <span class="o">=</span> <span class="nb">compile</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">flags</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">144</span>         <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">_features</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span>             <span class="k">if</span> <span class="n">codeob</span><span class="o">.</span><span class="n">co_flags</span> <span class="o">&amp;</span> <span class="n">feature</span><span class="o">.</span><span class="n">compiler_flag</span><span class="p">:</span>
 
 <span class="ne">ValueError</span>: empty body on For
 </pre></div>

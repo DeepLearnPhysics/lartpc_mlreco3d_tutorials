@@ -12,7 +12,7 @@ kernelspec:
   language: python
   name: python3
 execution:
-  timeout: 60
+  timeout: 180
 ---
 
 # Interaction clustering, PID and primary particles
@@ -170,6 +170,7 @@ fig.update_layout(legend=dict(x=1.1, y=0.9))
 iplot(fig)
 ```
 
+
 ## Particle identification (PID)
 The predictions are in `node_pred_type`:
 ```{code-cell}
@@ -188,10 +189,13 @@ Here is the meaning of each integer type:
 ```{code-cell}
 trace = []
 
-trace+= scatter_points(clust_label,markersize=1,color=kinematics_label[:, -2], colorscale=plotly.colors.qualitative.Dark24)
+trace+= scatter_points(kinematics_label,markersize=1,color=kinematics_label[:, 7], colorscale=plotly.colors.qualitative.Dark24)
 trace[-1].name = 'True particle type'
 
-trace+= scatter_points(clust_label,markersize=1,color=type_pred, colorscale=plotly.colors.qualitative.Dark24)
+trace += network_topology(data['input_data'][entry][ghost_mask],
+                         output['inter_particles'][entry],
+                         clust_labels=np.argmax(output['node_pred_type'][entry], axis=1),
+                         markersize=2, cmin=0, cmax=10, colorscale=plotly.colors.qualitative.Dark24)
 trace[-1].name = 'Predicted particle type'
 
 fig = go.Figure(data=trace,layout=plotly_layout3d())

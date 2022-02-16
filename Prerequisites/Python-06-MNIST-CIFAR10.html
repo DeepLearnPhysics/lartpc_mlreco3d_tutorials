@@ -245,6 +245,17 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Analysis_tools.html">
+   Introduction to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     lartpc_mlreco3d
+    </span>
+   </code>
+   Analysis Tools
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Code/Output.html">
    Reconstruction outputs
@@ -294,12 +305,12 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../Exercises/Michel_electron.html">
-     Exercise 1: Finding Michel electrons
+     Exercise 1: Finding Michel Electrons
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Exercises/dEdx.html">
-     Exercise 2: muon stopping power
+     Exercise 2: Muon stopping power¶
     </a>
    </li>
    <li class="toctree-l2">
@@ -483,7 +494,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch._C.Generator at 0x7f0a84498de0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch._C.Generator at 0x7f3cf0050110&gt;
 </pre></div>
 </div>
 </div>
@@ -508,18 +519,23 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./mnist-data/MNIST/raw/train-images-idx3-ubyte.gz
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.8/dist-packages/torchvision/datasets/mnist.py:498: UserWarning: The given NumPy array is not writeable, and PyTorch does not support non-writeable tensors. This means you can write to the underlying (supposedly non-writeable) NumPy array using the tensor. You may want to copy the array to protect its data or make it writeable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at  /pytorch/torch/csrc/utils/tensor_numpy.cpp:180.)
+  return torch.from_numpy(parsed.astype(m[2], copy=False)).view(*s)
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "10d250fbf5ae4edfba5b3b107d7964d6"}
-</script></div>
+</div>
 </div>
 <p>Here, MNIST is also a type <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> (how? through class inheritance). All torch <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> instance have tow useful and common functions: the length representations and data element access via index.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>  <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span> <span class="nb">type</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60000
+&lt;class &#39;tuple&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -531,6 +547,12 @@
 <span class="n">data</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">ENTRY</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Type of data  :&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>  <span class="s1">&#39;shape&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Type of label :&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">label</span><span class="p">),</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Type of data  : &lt;class &#39;torch.Tensor&#39;&gt; shape torch.Size([1, 28, 28])
+Type of label : &lt;class &#39;int&#39;&gt; value 5
 </pre></div>
 </div>
 </div>
@@ -547,6 +569,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Python-06-MNIST-CIFAR10_9_0.png" src="../_images/Python-06-MNIST-CIFAR10_9_0.png" />
 </div>
 </div>
 <p>Let us define a function that can list images and labels in the dataset.</p>
@@ -593,6 +618,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/Python-06-MNIST-CIFAR10_13_0.png" src="../_images/Python-06-MNIST-CIFAR10_13_0.png" />
+</div>
 </div>
 </div>
 <div class="section" id="creating-dataloader">
@@ -632,6 +660,12 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>length of DataLoader: 3000
+By the way, batch size * length = 60000
+</pre></div>
+</div>
+</div>
 </div>
 <p>We know the data total statistics is 60,000 which coincides with the length of <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> instance and the batch size where the latter is the unit of batch data. <strong>Yep, as you guessed</strong>, <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> is iterable:</p>
 <div class="cell docutils container">
@@ -647,11 +681,40 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 0
+tensor([6, 8, 4, 8, 2, 8, 0, 6, 6, 0, 9, 5, 2, 7, 1, 8, 1, 1, 4, 6])
+Iteration 1
+tensor([1, 2, 6, 0, 7, 5, 3, 4, 8, 9, 6, 0, 8, 0, 0, 1, 9, 1, 1, 2])
+Iteration 2
+tensor([9, 8, 8, 6, 9, 2, 1, 1, 2, 5, 2, 2, 1, 7, 4, 4, 0, 3, 5, 2])
+Iteration 3
+tensor([4, 0, 8, 2, 9, 6, 3, 4, 4, 2, 0, 3, 2, 0, 8, 8, 3, 7, 5, 3])
+Iteration 4
+tensor([7, 3, 7, 2, 7, 2, 8, 0, 4, 0, 9, 5, 0, 5, 2, 9, 7, 5, 3, 9])
+Iteration 5
+tensor([4, 5, 7, 9, 4, 4, 0, 2, 4, 8, 2, 4, 2, 1, 6, 5, 1, 2, 7, 5])
+Iteration 6
+tensor([1, 6, 2, 8, 3, 3, 7, 1, 6, 1, 5, 8, 1, 1, 6, 8, 0, 9, 0, 5])
+Iteration 7
+tensor([3, 0, 1, 6, 9, 4, 3, 0, 6, 5, 7, 4, 0, 0, 3, 6, 0, 3, 2, 7])
+Iteration 8
+tensor([8, 6, 2, 9, 3, 0, 7, 2, 3, 2, 5, 7, 1, 2, 4, 0, 7, 7, 5, 0])
+Iteration 9
+tensor([4, 2, 7, 3, 6, 7, 0, 8, 3, 9, 3, 5, 3, 1, 2, 5, 5, 6, 9, 3])
+</pre></div>
+</div>
+</div>
 </div>
 <p>… and this is how <code class="docutils literal notranslate"><span class="pre">data</span></code> looks like:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Shape of an image batch data&#39;</span><span class="p">,</span><span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape of an image batch data torch.Size([20, 1, 28, 28])
 </pre></div>
 </div>
 </div>
@@ -675,6 +738,12 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files already downloaded and verified
+</pre></div>
+</div>
+<img alt="../_images/Python-06-MNIST-CIFAR10_23_1.png" src="../_images/Python-06-MNIST-CIFAR10_23_1.png" />
+</div>
 </div>
 <p>Nothing new in terms of how-to, but let’s also create a <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> with <code class="docutils literal notranslate"><span class="pre">CIFAR10</span></code>.</p>
 <div class="cell docutils container">
@@ -682,6 +751,11 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">pin_memory</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">cycle</span><span class="p">(</span><span class="n">loader</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
 </pre></div>
 </div>
 </div>
@@ -698,6 +772,40 @@
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cat
+</pre></div>
+</div>
+<img alt="../_images/Python-06-MNIST-CIFAR10_27_1.png" src="../_images/Python-06-MNIST-CIFAR10_27_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dog
+</pre></div>
+</div>
+<img alt="../_images/Python-06-MNIST-CIFAR10_27_3.png" src="../_images/Python-06-MNIST-CIFAR10_27_3.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>frog
+</pre></div>
+</div>
+<img alt="../_images/Python-06-MNIST-CIFAR10_27_5.png" src="../_images/Python-06-MNIST-CIFAR10_27_5.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dog
+</pre></div>
+</div>
+<img alt="../_images/Python-06-MNIST-CIFAR10_27_7.png" src="../_images/Python-06-MNIST-CIFAR10_27_7.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>horse
+</pre></div>
+</div>
+<img alt="../_images/Python-06-MNIST-CIFAR10_27_9.png" src="../_images/Python-06-MNIST-CIFAR10_27_9.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dog
+</pre></div>
+</div>
+<img alt="../_images/Python-06-MNIST-CIFAR10_27_11.png" src="../_images/Python-06-MNIST-CIFAR10_27_11.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>horse
+</pre></div>
+</div>
+<img alt="../_images/Python-06-MNIST-CIFAR10_27_13.png" src="../_images/Python-06-MNIST-CIFAR10_27_13.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dog
+</pre></div>
+</div>
+<img alt="../_images/Python-06-MNIST-CIFAR10_27_15.png" src="../_images/Python-06-MNIST-CIFAR10_27_15.png" />
 </div>
 </div>
 </div>

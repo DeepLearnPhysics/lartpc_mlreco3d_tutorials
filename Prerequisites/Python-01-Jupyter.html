@@ -245,6 +245,17 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Analysis_tools.html">
+   Introduction to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     lartpc_mlreco3d
+    </span>
+   </code>
+   Analysis Tools
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Code/Output.html">
    Reconstruction outputs
@@ -294,12 +305,12 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../Exercises/Michel_electron.html">
-     Exercise 1: Finding Michel electrons
+     Exercise 1: Finding Michel Electrons
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Exercises/dEdx.html">
-     Exercise 2: muon stopping power
+     Exercise 2: Muon stopping power¶
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +507,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;module &#39;numpy&#39; from &#39;/usr/local/lib/python3.6/dist-packages/numpy/__init__.py&#39;&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;module &#39;numpy&#39; from &#39;/usr/local/lib/python3.8/dist-packages/numpy/__init__.py&#39;&gt;
 foo
 </pre></div>
 </div>
@@ -514,16 +525,43 @@ foo
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Chain_Training.ipynb	    felix_lartpc_mlreco3d   larcv_nue_v01
- Chain_Training_ME.ipynb    larcv.root		    larcv_nue_v02
- MinkowskiEngine	    larcv1.root		    larcv_run5507.root
- Nue.ipynb		    larcv2		    lartpc_mlreco3d
- Nue_Energy_Study.ipynb     larcv2.root		    lartpc_mlreco3d_tutorials
- Output_Chain_Ghost.ipynb   larcv_mpvmpr.root	    mpvmpr_062021_v00
-&#39;Untitled Folder&#39;	    larcv_nue_ccqe_v00	    ondemand
- Untitled.ipynb		    larcv_nue_ccqe_v01	    outreach
- Vertex_Resolution.ipynb    larcv_nue_ccqe_v02	    sdfgroup
- Visualization.ipynb	    larcv_nue_ccqe_v04	    slacml-kmi2020
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Chain_Performance.ipynb		   Visualization.ipynb
+ Chain_Performance_2022.ipynb		   Visualization_DuneND_Workshop.ipynb
+ Chain_Performance_Plots.ipynb		   Visualization_ME.ipynb
+ Chain_Training.ipynb			   Visualization_ME_Ghost.ipynb
+ Chain_Training_Check.ipynb		   Workshop_Michel.ipynb
+ Chain_Training_ME.ipynb		   Workshop_Muon.ipynb
+ Dataset_Check_AngularDistribution.ipynb   Workshop_Shower_dEdx.ipynb
+ Datasets.ipynb				   apdata.pl
+ Datasets_MPV_Check.ipynb		   cpu_bug.py
+ DebugTrainVal.ipynb			   dkoh0207
+ Debug_Justin.ipynb			   felix_lartpc_mlreco3d
+ Fails.ipynb				   larcv.root
+ Ghost_Statistics.ipynb			   larcv1.root
+ GraphSPICE_Inference.ipynb		   larcv2
+ GraphSpice_Edge_Threshold.ipynb	   larcv2.root
+ Icarus_Michel_electrons.ipynb		   larcv_mpvmpr.root
+ Icarus_Muon_Residual_Range.ipynb	   larcv_nue_ccqe_v00
+ Icarus_Shower_dEdx.ipynb		   larcv_nue_ccqe_v01
+ ME_CPU_Bug.ipynb			   larcv_nue_ccqe_v02
+ Metrics.ipynb				   larcv_nue_ccqe_v04
+ Metrics_Chain_Ghost.ipynb		   larcv_nue_v01
+ MinkowskiEngine			   larcv_nue_v02
+ Nue.ipynb				   larcv_run5507.root
+ Nue_Energy_Study.ipynb			   lartpc_mlreco3d
+ Nue_Selection.ipynb			   lartpc_mlreco3d_tutorials
+ Output_Chain_Ghost.ipynb		   log
+ Sofia_dEdx.ipynb			   log_trash
+ Test.ipynb				   mpvmpr_062021_v00
+&#39;Untitled Folder&#39;			   muE_liquid_argon.txt
+ Untitled.ipynb				   ondemand
+ Untitled1.ipynb			   outreach
+ Untitled2.ipynb			   protons.csv
+ Untitled3.ipynb			   rain.csv
+ Untitled4.ipynb			   sdfgroup
+ Untitled5.ipynb			   slacml-kmi2020
+ Untitled6.ipynb			   weights
+ Vertex_Resolution.ipynb		   weights_trash
 </pre></div>
 </div>
 </div>
@@ -541,16 +579,53 @@ ls $HOME
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chain_Training.ipynb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chain_Performance.ipynb
+Chain_Performance_2022.ipynb
+Chain_Performance_Plots.ipynb
+Chain_Training.ipynb
+Chain_Training_Check.ipynb
 Chain_Training_ME.ipynb
+Dataset_Check_AngularDistribution.ipynb
+Datasets.ipynb
+Datasets_MPV_Check.ipynb
+DebugTrainVal.ipynb
+Debug_Justin.ipynb
+Fails.ipynb
+Ghost_Statistics.ipynb
+GraphSPICE_Inference.ipynb
+GraphSpice_Edge_Threshold.ipynb
+Icarus_Michel_electrons.ipynb
+Icarus_Muon_Residual_Range.ipynb
+Icarus_Shower_dEdx.ipynb
+ME_CPU_Bug.ipynb
+Metrics.ipynb
+Metrics_Chain_Ghost.ipynb
 MinkowskiEngine
 Nue.ipynb
 Nue_Energy_Study.ipynb
+Nue_Selection.ipynb
 Output_Chain_Ghost.ipynb
+Sofia_dEdx.ipynb
+Test.ipynb
 Untitled Folder
 Untitled.ipynb
+Untitled1.ipynb
+Untitled2.ipynb
+Untitled3.ipynb
+Untitled4.ipynb
+Untitled5.ipynb
+Untitled6.ipynb
 Vertex_Resolution.ipynb
 Visualization.ipynb
+Visualization_DuneND_Workshop.ipynb
+Visualization_ME.ipynb
+Visualization_ME_Ghost.ipynb
+Workshop_Michel.ipynb
+Workshop_Muon.ipynb
+Workshop_Shower_dEdx.ipynb
+apdata.pl
+cpu_bug.py
+dkoh0207
 felix_lartpc_mlreco3d
 larcv.root
 larcv1.root
@@ -566,11 +641,18 @@ larcv_nue_v02
 larcv_run5507.root
 lartpc_mlreco3d
 lartpc_mlreco3d_tutorials
+log
+log_trash
 mpvmpr_062021_v00
+muE_liquid_argon.txt
 ondemand
 outreach
+protons.csv
+rain.csv
 sdfgroup
 slacml-kmi2020
+weights
+weights_trash
 </pre></div>
 </div>
 </div>
@@ -651,6 +733,12 @@ hello world!
 hello world!
 hello world!
 hello world!
+hello world!
+hello world!
+hello world!
+hello world!
+hello world!
+hello world!
 </pre></div>
 </div>
 </div>
@@ -668,8 +756,8 @@ hello world!
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.24 ms, sys: 2.16 ms, total: 3.39 ms
-Wall time: 2.96 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2.71 ms, sys: 1.9 ms, total: 4.61 ms
+Wall time: 4.27 ms
 </pre></div>
 </div>
 </div>

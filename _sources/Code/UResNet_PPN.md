@@ -12,7 +12,7 @@ kernelspec:
   language: python
   name: python3
 execution:
-  timeout: 60
+  timeout: 180
 ---
 
 # Semantics & points of interest
@@ -122,7 +122,7 @@ to apply the predicted attention mask and bring down the number of point proposa
 ```{code-cell}
 ppn = uresnet_ppn_type_point_selector(data['input_data'][entry], output, entry=entry,
                                       score_threshold=0.5, type_threshold=2)
-ppn_voxels = ppn[:, :3]
+ppn_voxels = ppn[:, 1:4]
 ppn_score = ppn[:, 5]
 ppn_type = ppn[:, 12]
 ppn_endpoints = np.argmax(ppn[:, 13:], axis=1)
