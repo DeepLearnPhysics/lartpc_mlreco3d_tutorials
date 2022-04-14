@@ -69,56 +69,65 @@ DATA_DIR = os.environ.get('DATA_DIR')
 sys.path.append(SOFTWARE_DIR)
 ```
 
-We will also need `Plotly` for visualization:
+### Imports
+We will also need ``Plotly`` for visualization, ``Numpy``, ``Pandas`` and other libraries for convenience:
 
 ```{code-cell} ipython3
 import numpy as np
-import matplotlib.pyplot as plt 
+import pandas as pd
 import yaml
 
-import plotly
-import plotly.graph_objs as go
-from plotly.subplots import make_subplots
-from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
+from plotly.offline import init_notebook_mode, iplot
 init_notebook_mode(connected=False)
 ```
 
 The imports below load some auxiliary functions and classes required to run the full chain in interactive mode. 
 
 ```{code-cell} ipython3
-from mlreco.main_funcs import process_config, prepare
 import warnings
 warnings.filterwarnings('ignore')
+from mlreco.main_funcs import process_config, prepare
 ```
 
-Let's load the configuration file to setup the full chain architecture and weights. 
+### Run the full chain (once)
+Let’s load the configuration file `inference.cfg` to setup the full chain architecture and weights. This file uses the keyword `DATA_DIR` to symbolize the path to validation set and checkpoint file. We need to replace it with the actual location defined previously.
 
 ```{code-cell} ipython3
 cfg = yaml.load(open('%s/inference.cfg' % DATA_DIR, 'r').read().replace('DATA_DIR', DATA_DIR),Loader=yaml.Loader)
+```
+To keep things simple we will ask the chain to stay quiet and if needed, we can load a bigger dataset than the 100-events default one:
+
+```{code-cell} ipython3
+cfg['model']['modules']['chain']['verbose'] = False
+# cfg['iotool']['dataset']['data_keys'] = ['/sdf/group/neutrino/ldomine/mpvmpr_012022/test.root']
+```
+So far `cfg` was simply a dictionary loaded from a YAML configuration file. It needs to be consumed by a helper function `process_config` to be ready for the full chain usage:
+
+```{code-cell} ipython3
 process_config(cfg, verbose=False)
 ```
 
-This cell loads the dataset and the model to the notebook environment. Optionally, you can specifiy the list of images by listing the image ID numbers:
-```
-prepare(cfg, event_list=[0, 1, 2, ...]
-```
-If the model's trained weights have been loaded correctly, it should display a message like this (`$PATH_TO_WEIGHTS` will be replaced by wherever you placed your trained full chain weights):
-> Restoring weights for from `$PATH_TO_WEIGHTS`...
-> Done.
+This next cell loads the dataset and the model to the notebook environment. `hs` stands for "handlers". It contains various useful access points, such as the I/O iterator `hs.data_io_iter` to directly access the dataset or the trainer instance `hs.trainer` which will enable us to actually *run* the network.
 
 ```{code-cell} ipython3
 # prepare function configures necessary "handlers"
 hs = prepare(cfg)
+# Optionally, you can specifiy a list of images by listing the image entry ID numbers:
+# hs = prepare(cfg, event_list=[0, 1, 2])
 dataset = hs.data_io_iter
 ```
 
-We can perform one forward iteration of the chain as follows:
+If the model’s trained weights have been loaded correctly, this should have displayed a message like this (`$PATH_TO_WEIGHTS` will be replaced by wherever you placed your trained full chain weights):
+
+> Restoring weights for from `$PATH_TO_WEIGHTS`… Done.
+
+We are now all set to perform **one forward iteration** of the chain as follows:
 
 ```{code-cell} ipython3
 data, result = hs.trainer.forward(dataset)
 ```
 
-The input data and label information are loaded onto the `data_blob` variable, while the outputs from the chain are stored inside `result`.
+The input data and label information are loaded onto the `data` variable, while the outputs from the chain are stored inside `result`. We will use the output of this single iteration to demonstrate a simple Michel electron selection, before running with higher statistics (ie. performing many more iterations).
 
 +++
 
@@ -132,11 +141,13 @@ For the tutorial, we will use the analysis tools developed for easier handling o
 from analysis.classes.ui import FullChainEvaluator
 ```
 
-As we did before in the Analysis Tools tutorial, let's setup the `FullChainEvaluator` with deghosting turned on:
+Let’s setup the FullChainEvaluator with deghosting turned on. We also want to make sure true Michel electron are limited to their primary ionization by definition.
 
 ```{code-cell} ipython3
-predictor = FullChainEvaluator(data, result, cfg, deghosting=True)
+predictor = FullChainEvaluator(data, result, cfg, deghosting=True, processor_cfg={'michel_primary_ionization_only': True})
 ```
+
+For explanations purpose we picked an entry that has a Michel electron:
 
 ```{code-cell} ipython3
 entry = 8
@@ -144,53 +155,16 @@ entry = 8
 
 ## IV. Selecting Michel Electrons
 
-### Step 1: Extract the semantic segmentation predictions.
+### Visualizing true and predicted particles
 
 +++
 
-Let's first import plotting libraries for visualization:
+Let’s first import plotting functions from `lartpc_mlreco3d` for easier visualization:
 
 ```{code-cell} ipython3
 from mlreco.visualization import scatter_points, scatter_cubes, plotly_layout3d
 from mlreco.visualization.plotly_layouts import white_layout, trace_particles, trace_interactions, dualplot
 ```
-
-The evaluator will handle ghost masking internally, so all you have to do is retrieve the predicted and true semantic segmentation labels for visualization and analysis:
-
-```{code-cell} ipython3
-pred = predictor._fit_predict_semantics(entry)
-truth = predictor.get_true_label(entry, 'segment_label')
-points = predictor.data_blob['input_data'][entry]
-# Check if dimensions agree
-assert (pred.shape[0] == truth.shape[0])
-```
-
-Let's plot the true and predicted semantic labels side-by-side:
-
-```{code-cell} ipython3
-trace1, trace2 = [], []
-edep = points[:, 5]
-
-trace1 += scatter_points(points,
-                        markersize=1,
-                        color=truth, 
-                        cmin=0, cmax=5, colorscale='rainbow')
-
-trace2 += scatter_points(points,
-                        markersize=1,
-                        color=pred, 
-                        cmin=0, cmax=5, colorscale='rainbow')
-
-fig = dualplot(trace1, trace2, titles=['True semantic labels (true no-ghost mask)', 'Predicted semantic labels (predicted no-ghost mask)' ])
-
-iplot(fig)
-```
-
-The true labels are plotted in the left, predicted on the right
-
-+++
-
-### Step 2. Identify muons and electrons.
 
 By default, the label for tracks and michel electrons are 1 and 2, respectively.
 
@@ -199,178 +173,350 @@ track_label = 1
 michel_label = 2
 ```
 
+We set `only_primaries=False` to not be limited to primary particles only (i.e. particles coming out of a neutrino-like interaction vertex, in our sample that would be a MultiParticleVertex (MPV) interaction as opposed to MultiParticleRain (MPR)). 
+
 ```{code-cell} ipython3
-particles = predictor.get_particles(entry, primaries=False)
-true_particles = predictor.get_true_particles(entry, primaries=False, verbose=False)
+particles = predictor.get_particles(entry, only_primaries=False)
+true_particles = predictor.get_true_particles(entry, only_primaries=False, verbose=False)
+```
+These are simple lists of particles, so you could print them out to take a quick look:
+
+```{code-cell} ipython3
+particles
 ```
 
-Let's look at the list of reconstructed (predicted) particles:
+```{code-cell} ipython3
+true_particles
+```
+
+You see that we have a Michel electron among both true and predicted particles. Let's visualize both of these sets of particles: we create "traces" for Plotly with each set and plot the result.
 
 ```{code-cell} ipython3
 trace1 = trace_particles(particles)
 trace2 = trace_particles(true_particles)
 ```
 
+The left plot shows predicted particles, the right plot shows true particles. The colors are arbitrary and represent the cluster id.
+
 ```{code-cell} ipython3
-fig = make_subplots(rows=1, cols=2,
-                    specs=[[{'type': 'scatter3d'}, {'type': 'scatter3d'}]],
-                    horizontal_spacing=0.05, vertical_spacing=0.04)
-fig.add_traces(trace1, rows=[1] * len(trace1), cols=[1] * len(trace1))
-fig.add_traces(trace2, rows=[1] * len(trace2), cols=[2] * len(trace2))
-fig.layout = white_layout()
-fig.update_layout(showlegend=False,
-                  legend=dict(xanchor="left"),
-                 autosize=True,
-                 height=600,
-                 width=1500,
-                 margin=dict(r=20, l=20, b=20, t=20))
+fig = dualplot(trace1, trace2, titles=['Predicted particles (predicted no-ghost mask)', 'True particles (predicted no-ghost mask)'])
+
 iplot(fig)
 ```
+Ok, so we can rotate the images around and confirm that there is one predicted and true Michel electron in this image.
 
-And the true particles:
+### Selecting Michel candidates
+**Criteria 1: is attached to muon**
+To check if our candidate michel is actually adjacent to a track, we will set a minimum distance threshold (`attached_threshold`) between the Michel electron and the track.
+
+> Wait, what if it was a misclassified Delta ray electron?
+
+Delta ray electrons are knock off electrons that can happen along the trajectory of a muon, so if UResNet mispredicted the delta ray voxels as Michel voxels we would be wrong! To avoid that, let’s also make sure that the point of contact is at the end of the track.
+
+**Criteria 2: is at the edge of muon**
+Again, many ways to do this check, this is just one possible heuristic. We will do an *ablation* study: remove all muon voxels within a certain radius (`ablation_radius`) from the touching point, and compare the DBSCAN cluster count before and after ablation. DBSCAN needs two parameters to run (`ablation_eps` is a distance within which voxels get clustered together by DBSCAN, and `ablation_min_samples` is the minimal cluster voxel count). If the cluster count delta is $\leq 1$, we declare the test successful: the Michel electron is at the edge of the muon.
 
 ```{code-cell} ipython3
-true_particles
+from scipy.spatial.distance import cdist
+from sklearn.cluster import DBSCAN
+
+def is_attached_at_edge(points1, points2,
+                        attached_threshold=5,
+                        ablation_eps=5,
+                        ablation_radius=15,
+                        ablation_min_samples=5):
+    """
+    Checks whether the cluster of coordinates points1
+    is attached at the edge of the cluster points2.
+    
+    Parameters
+    ==========
+    points1: np.ndarray (M, 3)
+    points2: np.ndarray (N, 3)
+    
+    Returns
+    =======
+    bool
+    """
+    #
+    # Criteria 1: is it attached to the muon?
+    #
+    distances = cdist(points1, points2)
+    is_attached = np.min(distances) < attached_threshold
+    
+    #
+    # Criteria 2: is it at the edge of the muon?
+    #
+    
+    # Find the touching point
+    Michel_min, MIP_min = np.unravel_index(np.argmin(distances), distances.shape)
+    min_coords = points2[MIP_min, :]
+    # Define muon voxels after ablation
+    ablated_cluster = points2[np.linalg.norm(points2-min_coords, axis=1) > ablation_radius]
+    # Run DBSCAN before and after ablation
+    new_cluster_count, old_cluster_count = 0, 1
+    if ablated_cluster.shape[0] > 0:
+        dbscan = DBSCAN(eps=ablation_eps, min_samples=ablation_min_samples)
+        old_cluster = dbscan.fit(points2).labels_
+        new_cluster = dbscan.fit(ablated_cluster).labels_
+        # If only one cluster is left, we were at the edge
+        # (accounts for case where a track is fragmented
+        # and put together by Track GNN)
+        is_edge = (old_cluster_count - new_cluster_count) <= 1 and old_cluster_count >= new_cluster_count
+    else: # if nothing is left after ablating, this might be a really small muon... calling it the edge
+        is_edge = True
+
+    return is_attached and is_edge
 ```
 
-Ok, so we see that there is one predicted and true Michel electron in this image. We should first check if the two michel electrons actually correspond to one another. To see this, we first have to match all particles with one another:
+**Selection = criteria 1 + criteria 2**
+
+Now our actual selection code is very simple: pick predicted Michel particles and check whether they meet this criteria (attached at the edge of a predicted muon). Here is a good starting point for the parameters mentioned in the two criterias definition above:
 
 ```{code-cell} ipython3
-matches = predictor.match_particles(entry, primaries=False)
-def get_michels(matches):
-    michels = []
-    # Check if the predicted and true michels actually match to one another:
-    for m in matches:
-        if m[0].semantic_type == michel_label:
-            michels.append(m[0])
+attached_threshold = 10
+ablation_eps = 10
+ablation_radius = 15
+ablation_min_samples = 5
+```
+
+```{code-cell} ipython3
+def get_michels(particles):
+    """
+    Parameters
+    ==========
+    particles: list of Particle
+    
+    Returns
+    =======
+    list of Particle
+    """
+    selected_michels = []
+    for p in particles:
+        if p.semantic_type != michel_label: continue
+
+        # Check whether it is attached to the edge of a track
+        michel_is_attached_at_edge = False
+        for p2 in particles:
+            if p2.semantic_type != track_label: continue
+            if not is_attached_at_edge(p.points, p2.points,
+                                    attached_threshold=attached_threshold,
+                                    ablation_eps=ablation_eps,
+                                    ablation_radius=ablation_radius,
+                                    ablation_min_samples=ablation_min_samples): continue
+            michel_is_attached_at_edge = True
+            break
+
+        # Require that the Michel is attached at the edge of a track
+        if not michel_is_attached_at_edge: continue
+
+        selected_michels.append(p)
+        
+    return selected_michels
+```
+
+We do successfully isolate the only Michel in this specific event:
+
+```{code-cell} ipython3
+selected_michels = get_michels(particles)
+selected_michels
+```
+
+A good cross-check is to run the same selection on the true particles and confirm that it selects the known true Michel in this event
+
+```{code-cell} ipython3
+get_michels(true_particles)
+```
+
+### Matching with true Michel electrons
+
+Although it seems pretty obvious in this specific event, we want to systematically match predicted and true Michel particles. We first have to match all particles with one another in the entire event. Here I ask that two particles have at least 5 voxels overlap (`min_overlap`) with each other before a match can be declared:
+
+```{code-cell} ipython3
+matched_particles = predictor.match_particles(entry, mode='pred_to_true', min_overlap=5, overlap_mode='counts')
+```
+
+
+Now we will loop over previously selected Michel candidates and record voxel count and voxel sum for both the predicted Michel and its matched true Michel:
+
+```{code-cell} ipython3
+def fill_dataframe(selected_michels, matched_particles):
+
+    michels = {
+        "pred_num_pix": [],
+        "pred_sum_pix": [],
+        "true_num_pix": [],
+        "true_sum_pix": [],
+        "true_noghost_primary_num_pix": [],
+        "true_noghost_primary_sum_pix": []
+    }
+
+    for p in selected_michels:
+        michels["pred_num_pix"].append(p.size)
+        michels["pred_sum_pix"].append(p.depositions.sum())
+
+        michels["true_num_pix"].append(-1)
+        michels["true_sum_pix"].append(-1)
+        michels["true_noghost_primary_num_pix"].append(-1)
+        michels["true_noghost_primary_sum_pix"].append(-1)
+        for mp in matched_particles: # matching is done true2pred
+            if mp[0] is None or mp[0].id != p.id: continue
+            if mp[1] is None: continue
+            m = mp[1]        
+            michels["true_num_pix"][-1] = m.size
+            michels["true_sum_pix"][-1] = m.depositions.sum()
+
+            michels["true_noghost_primary_num_pix"][-1] = m.coords_noghost.shape[0]
+            michels["true_noghost_primary_sum_pix"][-1] = m.depositions_noghost.sum()
+
+    michels = pd.DataFrame(michels)
     return michels
 ```
 
 ```{code-cell} ipython3
-michels = get_michels(matches)
+fill_dataframe(selected_michels, matched_particles)
 ```
 
-### Step 3. Check if the Michel electron is adjacent to the end of a muon track.
+Yay, we were able to match the predicted and true Michel particles and record all necessary information to make a spectrum plot.
 
-+++
-
-To check if our candidate michel is actually adjacent to a track, we can set a minimum distance threshold between the michel electron and the track. 
-
-> Wait, what if it was a misclassified Delta ray electron?
-
-Delta ray electrons are knock off electrons that can happen along the trajectory of a muon, so if UResNet mispredicted the delta ray voxels as Michel voxels we would be wrong! To avoid that, let’s also make sure that the point of contact is at the end of the track. Again, many ways to do this check, this is just one possible heuristic. 
-
-If a `Particle` has a track semantic type, it will contain a (2 x 5) `endpoints` array as its attribute. The first three columns of `endpoints` are the voxel coordinates of the track's endpoints. Optionally, we can use this information to be more selective. 
-
-I've wrote a function that checks if a michel electron is adjacent to a track in `check_michel_adjacency` as an example.
+### Repeat with high statistics
+One entry won't get us a very nice-looking spectrum, so we need to repeat this analysis enough times:
 
 ```{code-cell} ipython3
-from scipy.spatial.distance import cdist
+michels = pd.DataFrame({
+        "index": [],
+        "pred_num_pix": [],
+        "pred_sum_pix": [],
+        "true_num_pix": [],
+        "true_sum_pix": [],
+        "true_noghost_primary_num_pix": [],
+        "true_noghost_primary_sum_pix": []
+    })
 
-def check_michel_adjacency(michel_particles, particles, distance_threshold=10, check_endpoints=False):
-    '''
-    Given list of Michel electrons and list of particles,
-    return a list of particle ids that are adjacent. 
-    
-    Inputs:
-        - michel_particles (List[Particle]): list of michel electrons
-        - particles (List[Particle]): list of particles 
-        - distance_threshold: maximum distance to be considered adjacent
-        - check_endpoints: option to use track endpoint information
-        rather than Hausdorff distance.
-        
-    Returns:
-        - adjacency_checks: list of particle ids that are
-        adjacent to michels in <michel_particles> in order.
-        If no adjacent tracks could be found, it will return 
-        None instead of a particle id number (int). 
-    '''
-    # Check input michels are actually michels
-    adjacency_checks = []
-    for mp in michel_particles:
-        is_adjacent = False
-        if mp.semantic_type != 2:
-            raise ValueError("Found non-michel particle {} with "\
-                             "semantic type {} in list of michel electrons.".format(mp.id, mp.semantic_type))
-        min_dist, adj_pid = np.inf, -1
-        for p in particles:
-            if p.semantic_type == 1:
-                if check_endpoints:
-                    dist = cdist(mp.points, p.endpoints[:, :3])
-                else:
-                    dist = cdist(mp.points, p.points)
-                if dist.min() < min_dist:
-                    min_dist = dist.min()
-                    adj_pid = p.id
-        if min_dist < distance_threshold:
-            adjacency_checks.append(adj_pid)
-        else:
-            print("All candidate tracks are more than {}px apart from "\
-                  "michel {}, minimum of {:.2f}px achieved for track {}".format(
-                distance_threshold, mp.id, min_dist, adj_pid))
-            adjacency_checks.append(None)
-    return adjacency_checks
-```
+N_true_michel = 0
 
-```{code-cell} ipython3
-check_michel_adjacency(michels, particles, distance_threshold=10)
-```
-
-### Step 4: Make a plot
-
-Let’s use the voxel count as a substitute for the reconstructed energy. This approximation is fairly accurate for shower-like particles. Make a histogram with Michel electron candidates voxel counts.
-
-Since there are only so many Michel electrons per entry, you will need to loop over several entries, possibly more than a batch size worth of entries. Let's collect all michel electrons that have an adjacent track for 10 iterations-worth of data. 
-
-```{code-cell} ipython3
-iterations = 10
-```
-
-```{code-cell} ipython3
-:tags: [hide-output]
-
-all_candidates = []
-for iteration in range(iterations):
-    print("Iteration: {}...".format(iteration))
+from tqdm import tqdm
+for iteration in tqdm(range(10)):
+    #print("Iteration: {}...".format(iteration))
     data, result = hs.trainer.forward(dataset)
-    # Initialize Evaluator"
-    predictor = FullChainEvaluator(data, result, cfg, deghosting=True)
+    predictor = FullChainEvaluator(data, result, cfg, deghosting=True, processor_cfg={'michel_primary_ionization_only': True})
     for entry, index in enumerate(predictor.index):
-        matches = predictor.match_particles(entry, primaries=False)
-        particles = predictor.get_particles(entry, primaries=False)
-        michels = get_michels(matches)
-        adjacency = check_michel_adjacency(michels, particles)
-        for i, m in enumerate(michels):
-            if adjacency[i] is not None:
-                all_candidates.append(m)
+        particles = predictor.get_particles(entry, only_primaries=False)
+        selected_michels = get_michels(particles)
+        matched_particles = predictor.match_particles(entry, mode='pred_to_true', min_overlap=5, overlap_mode='counts')
+        df = fill_dataframe(selected_michels, matched_particles)
+        df['index'] = index
+        #print(df)
+        #michels.merge(how='left')
+        michels = pd.concat([michels, df])
+        
+        # count true Michels
+        true_particles = predictor.get_true_particles(entry, only_primaries=False, verbose=False)
+        N_true_michel += np.count_nonzero([tp.semantic_type == michel_label for tp in true_particles])
 ```
 
-```{code-cell} ipython3
-michel_voxel_counts = [p.points.shape[0] for p in all_candidates]
-```
+## Selection quality checks
 
 ```{code-cell} ipython3
+import matplotlib
 import matplotlib.pyplot as plt
 import seaborn
 seaborn.set(rc={
     'figure.figsize':(15, 10),
 })
 seaborn.set_context('talk')
+```
+Let's see how many Michel electron candidates we found:
+```{code-cell} ipython3
+N_pred = michels.shape[0]
+N_matched = np.count_nonzero(michels['true_num_pix'] > -1)
+N_true = N_true_michel
+print("Number of predicted candidate Michel electrons = ", N_pred)
+print("Number of matched predicted candidate Michel electrons = ", N_matched)
+print("Number of true Michel electrons = ", N_true)
+print("Identification purity = %.2f %%" % (100* N_matched / N_pred))
+print("Identification efficiency = %.2f %%" % (100 * N_matched / N_true))
+```
 
-plt.hist(michel_voxel_counts)
-plt.xlabel("Voxel count")
-plt.ylabel("Michel electron candidates")
+Note: It is not impossible that several predicted Michel would get matched to the same true Michel cluster.
+
+We can also get a first rough idea of how well we reconstructed the Michel electrons by comparing predicted and true voxel counts (here, the true voxel count is taken after the deghosting stage, i.e. it does not factor the deghosting performance):
+
+```{code-cell} ipython3
+plt.hist2d(michels['true_num_pix'],
+          michels['pred_num_pix'],
+          bins=[40, 40], range=[[0, 200], [0, 200]], cmap='winter', norm=matplotlib.colors.LogNorm())
+plt.colorbar()
+plt.xlabel('Pixels in matched true Michel cluster (predicted nonghost)')
+plt.ylabel('Pixels in candidate Michel cluster')
+```
+
+## Michel spectrum
+This is a helper function to plot boxes later:
+```{code-cell} ipython3
+# Function to plot error boxes
+def makeErrorBoxes(ax, xdata,ydata,xerror,yerror,fc='r',ec='None',alpha=0.5):
+
+    # Create list for all the error patches
+    errorboxes = []
+
+    # Loop over data points; create box from errors at each point
+    for xc,yc,xe,ye in zip(xdata,ydata,xerror.T,yerror.T):
+        rect = matplotlib.patches.Rectangle((xc-xe/2.0,yc-ye/2.0),xe,ye)
+        errorboxes.append(rect)
+
+    # Create patch collection with specified colour/alpha
+    pc = matplotlib.collections.PatchCollection(errorboxes,facecolor=fc,alpha=alpha,edgecolor=ec, label='Primary ionization')
+
+    # Add collection to axes
+    ax.add_collection(pc)
 ```
 
 ```{code-cell} ipython3
+def plot_michel_spectrum(michels, mode='num', min_range=0, max_range=250, bins=20):
+    assert mode == 'num' or mode == 'sum'
 
+    entries, edges, _ = plt.hist(michels['true_noghost_primary_%s_pix' % mode], bins=bins, range=[min_range, max_range], alpha=0.5, histtype='step')
+    bin_centers = 0.5 * (edges[:-1] + edges[1:])
+    entries3, edges3, _ = plt.hist(michels['true_%s_pix' % mode], bins=bins, range=[min_range, max_range], alpha=0.5, histtype='step')
+    bin_centers3 = 0.5 * (edges3[:-1] + edges3[1:])   
+
+    entries2, edges2, _ = plt.hist(michels['pred_%s_pix' % mode], bins=bins, range=[min_range, max_range], alpha=0.5, histtype='step')
+    bin_centers2 = 0.5 * (edges2[:-1] + edges2[1:])
+
+    plt.clf()
+    #h1 = plt.hist(michels['michel_true_num_voxels'], bins=bins, range=[0, max_range], label='True Michel', alpha=0.5, histtype='step')
+    h2 = plt.errorbar(bin_centers2, entries2, yerr=np.sqrt(entries2), fmt='.', label='Predicted candidate Michel electron')
+
+    makeErrorBoxes(plt.gca(), bin_centers,entries,np.ones_like(bin_centers)*max_range/bins,np.sqrt(entries), fc='g')
+    makeErrorBoxes(plt.gca(), bin_centers3,entries3,np.ones_like(bin_centers3)*max_range/bins,np.sqrt(entries3), fc='orange')
+
+    pc = matplotlib.patches.Patch(color='green', label='Primary ionization (true non-ghost)', alpha=0.4, linewidth=0.0)
+    pc3 = matplotlib.patches.Patch(color='orange', label='Primary ionization (predicted non-ghost)', alpha=0.4, linewidth=0.0)
+    handles, labels = plt.gca().get_legend_handles_labels()
+    
+    if mode == 'num':
+        handles = handles+[pc, pc3]
+    else:
+        handles = handles+[pc3]
+    plt.legend(handles=handles, labels=labels+['True primary ionization (true non-ghost mask)', 'True primary ionization (predicted non-ghost mask)'])
+
+    #plt.legend()
+    plt.xlabel('Number of pixels' if mode == 'num' else 'Sum of pixels')
+    plt.ylabel('Michel electrons clusters')
+    #plt.ylim(0, 200)
+    plt.xlim(min_range, max_range)
 ```
 
-## Optional: how well did we do?
-You can keep the exercise going by looking at the true Michel candidates (same heuristic, using the
-true semantic labels), matching them to the predicted Michel candidates and computing some metrics
-such as purity (fraction of predicted candidates that are matched) or efficiency (fraction of true
-Michel that find a match).
+### Pixel count spectrum
+```{code-cell} ipython3
+plot_michel_spectrum(michels, mode='num')
+```
+
+### Pixel sum spectrum
+```{code-cell} ipython3
+plot_michel_spectrum(michels, mode='sum', max_range=3e5)
+```
 
 ## Other readings
 Michel Electron Reconstruction Using
