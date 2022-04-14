@@ -320,6 +320,11 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Metrics/README.html">
+   Shared metrics
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -494,7 +499,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch._C.Generator at 0x7f3cf0050110&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch._C.Generator at 0x7f4be41c20f0&gt;
 </pre></div>
 </div>
 </div>
@@ -682,26 +687,57 @@ By the way, batch size * length = 60000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 0
-tensor([6, 8, 4, 8, 2, 8, 0, 6, 6, 0, 9, 5, 2, 7, 1, 8, 1, 1, 4, 6])
-Iteration 1
-tensor([1, 2, 6, 0, 7, 5, 3, 4, 8, 9, 6, 0, 8, 0, 0, 1, 9, 1, 1, 2])
-Iteration 2
-tensor([9, 8, 8, 6, 9, 2, 1, 1, 2, 5, 2, 2, 1, 7, 4, 4, 0, 3, 5, 2])
-Iteration 3
-tensor([4, 0, 8, 2, 9, 6, 3, 4, 4, 2, 0, 3, 2, 0, 8, 8, 3, 7, 5, 3])
-Iteration 4
-tensor([7, 3, 7, 2, 7, 2, 8, 0, 4, 0, 9, 5, 0, 5, 2, 9, 7, 5, 3, 9])
-Iteration 5
-tensor([4, 5, 7, 9, 4, 4, 0, 2, 4, 8, 2, 4, 2, 1, 6, 5, 1, 2, 7, 5])
-Iteration 6
-tensor([1, 6, 2, 8, 3, 3, 7, 1, 6, 1, 5, 8, 1, 1, 6, 8, 0, 9, 0, 5])
-Iteration 7
-tensor([3, 0, 1, 6, 9, 4, 3, 0, 6, 5, 7, 4, 0, 0, 3, 6, 0, 3, 2, 7])
-Iteration 8
-tensor([8, 6, 2, 9, 3, 0, 7, 2, 3, 2, 5, 7, 1, 2, 4, 0, 7, 7, 5, 0])
-Iteration 9
-tensor([4, 2, 7, 3, 6, 7, 0, 8, 3, 9, 3, 5, 3, 1, 2, 5, 5, 6, 9, 3])
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>THCudaCheck FAIL file=/pytorch/aten/src/THC/THCCachingHostAllocator.cpp line=278 error=2 : out of memory
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_30749</span><span class="o">/</span><span class="mf">3328099877.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">6</span>     <span class="n">batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Iteration&#39;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="nb">print</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># accessing the labels</span>
+
+<span class="nn">/usr/local/lib/python3.8/dist-packages/torch/utils/data/dataloader.py</span> in <span class="ni">__next__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">519</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler_iter</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">520</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">521</span>             <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_next_data</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">522</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_num_yielded</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="g g-Whitespace">    </span><span class="mi">523</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dataset_kind</span> <span class="o">==</span> <span class="n">_DatasetKind</span><span class="o">.</span><span class="n">Iterable</span> <span class="ow">and</span> \
+
+<span class="nn">/usr/local/lib/python3.8/dist-packages/torch/utils/data/dataloader.py</span> in <span class="ni">_next_data</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1201</span>             <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1202</span>                 <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task_info</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+<span class="ne">-&gt; </span><span class="mi">1203</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1204</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1205</span>     <span class="k">def</span> <span class="nf">_try_put_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">/usr/local/lib/python3.8/dist-packages/torch/utils/data/dataloader.py</span> in <span class="ni">_process_data</span><span class="nt">(self, data)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1227</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_try_put_index</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1228</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ExceptionWrapper</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1229</span>             <span class="n">data</span><span class="o">.</span><span class="n">reraise</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1230</span>         <span class="k">return</span> <span class="n">data</span>
+<span class="g g-Whitespace">   </span><span class="mi">1231</span> 
+
+<span class="nn">/usr/local/lib/python3.8/dist-packages/torch/_utils.py</span> in <span class="ni">reraise</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">423</span>             <span class="c1"># have message field</span>
+<span class="g g-Whitespace">    </span><span class="mi">424</span>             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">exc_type</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">425</span>         <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">exc_type</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">426</span> 
+<span class="g g-Whitespace">    </span><span class="mi">427</span> 
+
+<span class="ne">RuntimeError</span>: Caught RuntimeError in pin memory thread for device 0.
+<span class="ne">Original</span><span class="g g-Whitespace"> </span>Traceback (most recent call last):
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.8/dist-packages/torch/utils/data/_utils/pin_memory.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">34</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_pin_memory_loop</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pin_memory</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.8/dist-packages/torch/utils/data/_utils/pin_memory.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">58</span><span class="p">,</span> <span class="ow">in</span> <span class="n">pin_memory</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">pin_memory</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span> <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.8/dist-packages/torch/utils/data/_utils/pin_memory.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">58</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">listcomp</span><span class="o">&gt;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">pin_memory</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span> <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.8/dist-packages/torch/utils/data/_utils/pin_memory.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">50</span><span class="p">,</span> <span class="ow">in</span> <span class="n">pin_memory</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">pin_memory</span><span class="p">()</span>
+<span class="ne">RuntimeError</span>: cuda runtime error (2) : out of memory at /pytorch/aten/src/THC/THCCachingHostAllocator.cpp:278
 </pre></div>
 </div>
 </div>
@@ -714,7 +750,12 @@ tensor([4, 2, 7, 3, 6, 7, 0, 8, 3, 9, 3, 5, 3, 1, 2, 5, 5, 6, 9, 3])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape of an image batch data torch.Size([20, 1, 28, 28])
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_30749</span><span class="o">/</span><span class="mf">911477057.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Shape of an image batch data&#39;</span><span class="p">,</span><span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;batch&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -758,6 +799,54 @@ tensor([4, 2, 7, 3, 6, 7, 0, 8, 3, 9, 3, 5, 3, 1, 2, 5, 5, 6, 9, 3])
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
 </pre></div>
 </div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_30749</span><span class="o">/</span><span class="mf">1749979711.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">pin_memory</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">cycle</span><span class="p">(</span><span class="n">loader</span><span class="p">))</span>
+
+<span class="nn">/usr/local/lib/python3.8/dist-packages/torch/utils/data/dataloader.py</span> in <span class="ni">__next__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">519</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler_iter</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">520</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">521</span>             <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_next_data</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">522</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_num_yielded</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="g g-Whitespace">    </span><span class="mi">523</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dataset_kind</span> <span class="o">==</span> <span class="n">_DatasetKind</span><span class="o">.</span><span class="n">Iterable</span> <span class="ow">and</span> \
+
+<span class="nn">/usr/local/lib/python3.8/dist-packages/torch/utils/data/dataloader.py</span> in <span class="ni">_next_data</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1201</span>             <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1202</span>                 <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task_info</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+<span class="ne">-&gt; </span><span class="mi">1203</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1204</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1205</span>     <span class="k">def</span> <span class="nf">_try_put_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">/usr/local/lib/python3.8/dist-packages/torch/utils/data/dataloader.py</span> in <span class="ni">_process_data</span><span class="nt">(self, data)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1227</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_try_put_index</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1228</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ExceptionWrapper</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1229</span>             <span class="n">data</span><span class="o">.</span><span class="n">reraise</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1230</span>         <span class="k">return</span> <span class="n">data</span>
+<span class="g g-Whitespace">   </span><span class="mi">1231</span> 
+
+<span class="nn">/usr/local/lib/python3.8/dist-packages/torch/_utils.py</span> in <span class="ni">reraise</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">423</span>             <span class="c1"># have message field</span>
+<span class="g g-Whitespace">    </span><span class="mi">424</span>             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">exc_type</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">425</span>         <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">exc_type</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">426</span> 
+<span class="g g-Whitespace">    </span><span class="mi">427</span> 
+
+<span class="ne">RuntimeError</span>: Caught RuntimeError in pin memory thread for device 0.
+<span class="ne">Original</span><span class="g g-Whitespace"> </span>Traceback (most recent call last):
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.8/dist-packages/torch/utils/data/_utils/pin_memory.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">34</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_pin_memory_loop</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pin_memory</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.8/dist-packages/torch/utils/data/_utils/pin_memory.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">58</span><span class="p">,</span> <span class="ow">in</span> <span class="n">pin_memory</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">pin_memory</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span> <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.8/dist-packages/torch/utils/data/_utils/pin_memory.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">58</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">listcomp</span><span class="o">&gt;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">pin_memory</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span> <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.8/dist-packages/torch/utils/data/_utils/pin_memory.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">50</span><span class="p">,</span> <span class="ow">in</span> <span class="n">pin_memory</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">pin_memory</span><span class="p">()</span>
+<span class="ne">RuntimeError</span>: cuda runtime error (2) : out of memory at /pytorch/aten/src/THC/THCCachingHostAllocator.cpp:278
+</pre></div>
+</div>
 </div>
 </div>
 <p>Let’s take a look at the <code class="docutils literal notranslate"><span class="pre">batch</span></code> data. Recall the shape of this image <span class="math notranslate nohighlight">\((C,H,W)\)</span> where <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.imshow</span></code> takes the format <span class="math notranslate nohighlight">\((H,W,C)\)</span> just like how an ordinary photograph is presented. We use <code class="docutils literal notranslate"><span class="pre">torch.permute</span></code> function to swap the axis.</p>
@@ -774,38 +863,18 @@ tensor([4, 2, 7, 3, 6, 7, 0, 8, 3, 9, 3, 5, 3, 1, 2, 5, 5, 6, 9, 3])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cat
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_30749</span><span class="o">/</span><span class="mf">1216954958.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">photos</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="n">batch</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">photos</span><span class="p">)):</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">photo</span> <span class="o">=</span> <span class="n">photos</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">label</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">classes</span><span class="p">[</span><span class="n">label</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;batch&#39; is not defined
 </pre></div>
 </div>
-<img alt="../_images/Python-06-MNIST-CIFAR10_27_1.png" src="../_images/Python-06-MNIST-CIFAR10_27_1.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dog
-</pre></div>
-</div>
-<img alt="../_images/Python-06-MNIST-CIFAR10_27_3.png" src="../_images/Python-06-MNIST-CIFAR10_27_3.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>frog
-</pre></div>
-</div>
-<img alt="../_images/Python-06-MNIST-CIFAR10_27_5.png" src="../_images/Python-06-MNIST-CIFAR10_27_5.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dog
-</pre></div>
-</div>
-<img alt="../_images/Python-06-MNIST-CIFAR10_27_7.png" src="../_images/Python-06-MNIST-CIFAR10_27_7.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>horse
-</pre></div>
-</div>
-<img alt="../_images/Python-06-MNIST-CIFAR10_27_9.png" src="../_images/Python-06-MNIST-CIFAR10_27_9.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dog
-</pre></div>
-</div>
-<img alt="../_images/Python-06-MNIST-CIFAR10_27_11.png" src="../_images/Python-06-MNIST-CIFAR10_27_11.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>horse
-</pre></div>
-</div>
-<img alt="../_images/Python-06-MNIST-CIFAR10_27_13.png" src="../_images/Python-06-MNIST-CIFAR10_27_13.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dog
-</pre></div>
-</div>
-<img alt="../_images/Python-06-MNIST-CIFAR10_27_15.png" src="../_images/Python-06-MNIST-CIFAR10_27_15.png" />
 </div>
 </div>
 </div>

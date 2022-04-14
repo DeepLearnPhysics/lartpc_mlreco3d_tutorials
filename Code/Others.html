@@ -318,6 +318,11 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Metrics/README.html">
+   Shared metrics
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -592,7 +597,7 @@ The environment variable `OMP_NUM_THREADS` not set. MinkowskiEngine will automat
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Config processed at: Linux tur015 3.10.0-1160.42.2.el7.x86_64 #1 SMP Tue Sep 7 14:49:57 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Config processed at: Linux tur024 3.10.0-1160.42.2.el7.x86_64 #1 SMP Tue Sep 7 14:49:57 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
 
 $CUDA_VISIBLE_DEVICES=&quot;0&quot;
 
@@ -662,7 +667,7 @@ $CUDA_VISIBLE_DEVICES=&quot;0&quot;
                                                                                                     3],
                                                                              &#39;delta_label&#39;: 3,
                                                                              &#39;eps&#39;: [   1.999,
-                                                                                        1.999,
+                                                                                        9.999,
                                                                                         4.999],
                                                                              &#39;michel_label&#39;: 2,
                                                                              &#39;num_classes&#39;: 4,
@@ -846,7 +851,13 @@ $CUDA_VISIBLE_DEVICES=&quot;0&quot;
                                       &#39;segment_label&#39;,
                                       &#39;cluster_label&#39;]},
     &#39;trainval&#39;: {   &#39;checkpoint_step&#39;: 100,
-                    &#39;concat_result&#39;: [   &#39;points&#39;,
+                    &#39;concat_result&#39;: [   &#39;input_edge_features&#39;,
+                                         &#39;input_node_features&#39;,
+                                         &#39;points&#39;,
+                                         &#39;particle_node_features&#39;,
+                                         &#39;particle_edge_features&#39;,
+                                         &#39;track_node_features&#39;,
+                                         &#39;shower_node_features&#39;,
                                          &#39;ppn_coords&#39;,
                                          &#39;mask_ppn&#39;,
                                          &#39;ppn_layers&#39;,
@@ -893,7 +904,11 @@ $CUDA_VISIBLE_DEVICES=&quot;0&quot;
                                          &#39;hypergraph_features&#39;,
                                          &#39;features&#39;,
                                          &#39;feature_embeddings&#39;,
-                                         &#39;covariance&#39;],
+                                         &#39;covariance&#39;,
+                                         &#39;clusts&#39;,
+                                         &#39;edge_index&#39;,
+                                         &#39;edge_pred&#39;,
+                                         &#39;node_pred&#39;],
                     &#39;debug&#39;: False,
                     &#39;gpus&#39;: [0],
                     &#39;iterations&#39;: 10,
@@ -920,17 +935,30 @@ Loading tree sparse3d_pcluster
 Loading tree particle_corrected
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        Since one of the GNNs are turned on, process_fragments is turned ON.
-        
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shower GNN: True
+Track GNN: True
+Particle GNN: False
+Interaction GNN: True
+Kinematics GNN: False
+Cosmic GNN: False
+
+            Since one of the GNNs are turned on, process_fragments is turned ON.
+            
 
         Fragment processing is turned ON. When training CNN models from
          scratch, we recommend turning fragment processing OFF as without
          reliable segmentation and/or cnn clustering outputs this could take
          prohibitively large training iterations.
         
+Shower GNN: True
+Track GNN: True
+Particle GNN: False
+Interaction GNN: True
+Kinematics GNN: False
+Cosmic GNN: False
 
-        Since one of the GNNs are turned on, process_fragments is turned ON.
-        
+            Since one of the GNNs are turned on, process_fragments is turned ON.
+            
 
         Fragment processing is turned ON. When training CNN models from
          scratch, we recommend turning fragment processing OFF as without
@@ -938,7 +966,6 @@ Loading tree particle_corrected
          prohibitively large training iterations.
         
 Ghost Masking is enabled for UResNet Segmentation
-Ghost Masking is enabled for MinkPPN.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Restoring weights for  from /sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/book/data/weights_full_mpvmpr_012022.ckpt...
@@ -969,11 +996,11 @@ free to take a look if you are curious!</p>
 PPN Accuracy: 0.8162
 Clustering Accuracy: 0.9279
 Shower fragment clustering accuracy: 0.9255
-Shower primary prediction accuracy: 0.6000
+Shower primary prediction accuracy: 0.7553
 Track fragment clustering accuracy: 0.9480
-Interaction grouping accuracy: 0.9709
+Interaction grouping accuracy: 0.9705
 Particle ID accuracy: 0.8167
-Primary particle score accuracy: 0.8864
+Primary particle score accuracy: 0.8810
 </pre></div>
 </div>
 </div>
@@ -1015,7 +1042,7 @@ entry index if you want to look at a different entry!</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_79331</span><span class="o">/</span><span class="mf">1901229206.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_29406</span><span class="o">/</span><span class="mf">1901229206.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">clust_label_adapted</span> <span class="o">=</span> <span class="n">adapt_labels</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;segment_label&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;cluster_label&#39;</span><span class="p">])[</span><span class="n">entry</span><span class="p">]</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> 
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">cosmic_true</span> <span class="o">=</span> <span class="n">get_cluster_label</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">clust_label_adapted</span><span class="p">),</span> <span class="n">output</span><span class="p">[</span><span class="s1">&#39;interactions&#39;</span><span class="p">][</span><span class="n">entry</span><span class="p">],</span> <span class="n">column</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
@@ -1061,7 +1088,7 @@ entry index if you want to look at a different entry!</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_79331</span><span class="o">/</span><span class="mf">675272470.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_29406</span><span class="o">/</span><span class="mf">675272470.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> 
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">trace</span> <span class="o">+=</span> <span class="n">network_topology</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;input_data&#39;</span><span class="p">][</span><span class="n">entry</span><span class="p">][</span><span class="n">ghost_mask</span><span class="p">],</span>
 <span class="ne">----&gt; </span><span class="mi">4</span>                          <span class="n">output</span><span class="p">[</span><span class="s1">&#39;interactions&#39;</span><span class="p">][</span><span class="n">entry</span><span class="p">],</span>

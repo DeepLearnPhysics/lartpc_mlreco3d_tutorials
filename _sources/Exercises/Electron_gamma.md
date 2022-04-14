@@ -13,7 +13,6 @@ execution:
   timeout: 300
 ---
 
-
 # Exercise 3: electron vs gamma separation
 
 ## 1. Introduction
@@ -127,11 +126,11 @@ print("Batch ID = ", evaluator.index[entry])
 
 +++
 
-By using the `primaries=True` option, we can select out primary particles in this image. We will also load `true_particles` for comparison.
+By using the `only_primaries=True` option, we can select out primary particles in this image. We will also load `true_particles` for comparison.
 
 ```{code-cell} ipython3
-particles = evaluator.get_particles(entry, primaries=True)
-true_particles = evaluator.get_true_particles(entry, primaries=True)
+particles = evaluator.get_particles(entry, only_primaries=True)
+true_particles = evaluator.get_true_particles(entry, only_primaries=True)
 ```
 
 ```{code-cell} ipython3
@@ -142,8 +141,8 @@ pprint(particles)
 Alternatively, as you may have noticed, the primariness information is also stored in the `Particle` instance as an attribute with name `is_primary`. If you prefer to view the full image and then select out primaries manually:
 
 ```{code-cell} ipython3
-particles = evaluator.get_particles(entry, primaries=False)
-true_particles = evaluator.get_true_particles(entry, primaries=False)
+particles = evaluator.get_particles(entry, only_primaries=False)
+true_particles = evaluator.get_true_particles(entry, only_primaries=False)
 ```
 
 ```{code-cell} ipython3
@@ -220,7 +219,7 @@ print("Minimum voxel distance required to assign ppn prediction to particle frag
 ```
 
 ```{code-cell} ipython3
-fragments = evaluator.get_fragments(entry, primaries=False)
+fragments = evaluator.get_fragments(entry, only_primaries=False)
 ```
 
 The first three columns are the $(x,y,z)$ coordinates of the PPN points. The fourth column is the PPN prediction score, and the last column indicates the predicted semantic type of the point. 
@@ -255,7 +254,7 @@ Identifying the primary shower fragments (as above) allow us to select all the v
 For convenience, from now on we will only work with primary fragments:
 
 ```{code-cell} ipython3
-fragments = evaluator.get_fragments(entry, primaries=True)
+fragments = evaluator.get_fragments(entry, only_primaries=True)
 ```
 
 ### Step 3. Compute $dQ/dx$ near the shower start
@@ -290,6 +289,8 @@ def compute_shower_dqdx(frags, r=10, min_segment_size=3):
         dist = cdist(frag.points, ppn_prediction.reshape(1, -1))
         mask = dist.squeeze() < r
         selected_points = frag.points[mask]
+        if selected_points.shape[0] < 2:
+            continue
         proj = pca.fit_transform(selected_points)
         dx = proj[:, 0].max() - proj[:, 0].min()
         if dx < min_segment_size:
@@ -316,7 +317,7 @@ for iteration in range(iterations):
     evaluator = FullChainEvaluator(data, result, cfg, deghosting=True)
     for entry, index in enumerate(evaluator.index):
 #         print("Batch ID: {}, Index: {}".format(entry, index))
-        fragments = evaluator.get_fragments(entry, primaries=True)
+        fragments = evaluator.get_fragments(entry, only_primaries=True)
         dqdx = compute_shower_dqdx(fragments, r=radius, min_segment_size=min_segment_size)
         collect_dqdx.extend(dqdx)
         
