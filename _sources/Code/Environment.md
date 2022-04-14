@@ -7,6 +7,13 @@ all the required libraries pre-installed for you.
 We are also working to make this work out of the box with Binder. 
 ```
 
+```{warning}
+As of now (April 2022) we have an issue with one of our dependencies which **requires**
+you to run ``lartpc_mlreco3d`` on a GPU for it to work as expected. If you do not have
+access to a GPU, until we fix this, we recommend using [Google Collaboratory](https://colab.research.google.com/)
+which allows you to run a notebook on a free GPU.
+```
+
 ## Using a Docker image
 
 ```{warning}
@@ -39,7 +46,12 @@ Most of the notebooks in this section will assume that you have `lartpc_mlreco3d
 ```bash
 $ git clone https://github.com/DeepLearnPhysics/lartpc_mlreco3d.git $HOME/lartpc_mlreco3d
 $ cd $HOME/lartpc_mlreco3d
-$ git checkout develop
+$ git checkout v2.2
+```
+
+```{note}
+The current stable tag is ``v2.2``, but feel free to update/change this as needed. 
+The active development branch is ``develop``.
 ```
 
 ## Assets

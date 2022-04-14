@@ -450,6 +450,13 @@ all the required libraries pre-installed for you.</p>
 <p class="admonition-title">Note</p>
 <p>We are also working to make this work out of the box with Binder.</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>As of now (April 2022) we have an issue with one of our dependencies which <strong>requires</strong>
+you to run <code class="docutils literal notranslate"><span class="pre">lartpc_mlreco3d</span></code> on a GPU for it to work as expected. If you do not have
+access to a GPU, until we fix this, we recommend using <a class="reference external" href="https://colab.research.google.com/">Google Collaboratory</a>
+which allows you to run a notebook on a free GPU.</p>
+</div>
 <div class="section" id="using-a-docker-image">
 <h2>Using a Docker image<a class="headerlink" href="#using-a-docker-image" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
@@ -476,8 +483,13 @@ deeplearnphysics/larcv2   ub20.04-cuda11.3-cudnn8-pytorch1.10.0   4f24b6e84a1d  
 <p>Most of the notebooks in this section will assume that you have <code class="docutils literal notranslate"><span class="pre">lartpc_mlreco3d</span></code> in your <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> directory.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/DeepLearnPhysics/lartpc_mlreco3d.git <span class="nv">$HOME</span>/lartpc_mlreco3d
 $ <span class="nb">cd</span> <span class="nv">$HOME</span>/lartpc_mlreco3d
-$ git checkout develop
+$ git checkout v2.2
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The current stable tag is <code class="docutils literal notranslate"><span class="pre">v2.2</span></code>, but feel free to update/change this as needed.
+The active development branch is <code class="docutils literal notranslate"><span class="pre">develop</span></code>.</p>
 </div>
 </div>
 <div class="section" id="assets">
