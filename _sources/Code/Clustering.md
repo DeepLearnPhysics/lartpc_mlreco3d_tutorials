@@ -109,7 +109,7 @@ track_label = 1
 Time to run the fit function that looks at the predicted embeddings and
 does the actual clustering inference for us:
 ```{code-cell}
-pred, G, subgraph = gs_manager.fit_predict_one(entry, gen_numpy_graph=True)
+pred, G, subgraph = gs_manager.fit_predict_one(entry)
 ```
 
 And visualization time!
