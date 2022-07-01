@@ -15,14 +15,13 @@ execution:
   timeout: 240
 ---
 
-
 # Particle clustering
 
 ## Imports and configuration
 If needed, you can edit the path to `lartpc_mlreco3d` library and to the data folder.
 ```{code-cell}
 import os
-SOFTWARE_DIR = '%s/lartpc_mlreco3d' % os.environ.get('HOME') 
+SOFTWARE_DIR = '%s/lartpc_mlreco3d' % os.environ.get('HOME')
 DATA_DIR = os.environ.get('DATA_DIR')
 ```
 
@@ -70,7 +69,7 @@ process_config(cfg)
 hs=prepare(cfg)
 ```
 
-The output is hidden because it reprints the entire (lengthy) configuration. Feel 
+The output is hidden because it reprints the entire (lengthy) configuration. Feel
 free to take a look if you are curious!
 
 Finally we run the chain for 1 iteration:
@@ -141,7 +140,7 @@ iplot(fig)
 
 ### Stage 2: GNN
 We use a GNN to then cluster these small track fragments together.
-First we need to retrieve true labels that take into account the 
+First we need to retrieve true labels that take into account the
 ghost points. Labels are assigned by nearest non-ghost voxel.
 
 ```{code-cell}
@@ -177,8 +176,8 @@ iplot(fig)
 ```
 
 Note that this uses a different helper function from `lartpc_mlreco3d`: the function
-`network_topology` is useful to visualize the output of a GNN. Its first argument is 
-the input data (to provide the voxel coordinates), its second argument is a list of 
+`network_topology` is useful to visualize the output of a GNN. Its first argument is
+the input data (to provide the voxel coordinates), its second argument is a list of
 list of voxel indices (list of fragments).
 
 ## Shower clustering

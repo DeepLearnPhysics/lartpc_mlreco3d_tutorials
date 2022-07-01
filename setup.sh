@@ -11,7 +11,7 @@ if [ $# -eq 0 ]
 else
     DATA_DIR=$1
 fi
-    
+
 echo "Copying files to $DATA_DIR..."
 
 # Create if non-existent
@@ -25,23 +25,23 @@ download () {
 if [ -d /sdf/group/neutrino/ldomine ] # Get from SDF
     then
         # Copy weight files
-        [ ! -f $DATA_DIR/weights_full_mpvmpr_012022.ckpt ] && scp /sdf/group/neutrino/ldomine/weights_full_mpvmpr_012022.ckpt $DATA_DIR
-        echo "- weights_full_mpvmpr_012022.ckpt [1/2 done]"
+        [ ! -f $DATA_DIR/weights_full_mpvmpr_062022.ckpt ] && scp /sdf/group/neutrino/ldomine/weights_full_mpvmpr_062022.ckpt $DATA_DIR
+        echo "- weights_full_mpvmpr_062022.ckpt [1/2 done]"
         # copy small dataset file
-        [ ! -f $DATA_DIR/mpvmpr_012022_test_small.root ] && scp /sdf/group/neutrino/ldomine/mpvmpr_012022_test_small.root $DATA_DIR
-        echo "- mpvmpr_012022_test_small.root [2/2 done]"
+        [ ! -f $DATA_DIR/mpvmpr_062022_test_small.root ] && scp /sdf/group/neutrino/ldomine/mpvmpr_062022_test_small.root $DATA_DIR
+        echo "- mpvmpr_062022_test_small.root [2/2 done]"
 else # Get from Google Drive
         # TODO update
         # Copy weight files
-        [ ! -f $DATA_DIR/weights_full_mpvmpr_012022.ckpt ] && download "1b12wfBOAhJfkfvLJ2azI52kFkkvJ04hh" "weights_full_mpvmpr_012022.ckpt"
-        echo "- weights_full_mpvmpr_012022.ckpt [1/2 done]"
+        [ ! -f $DATA_DIR/weights_full_mpvmpr_062022.ckpt ] && download "1ZqCMHZBuBQpQYWRBuUv7dDFLvIhtHIwO" "weights_full_mpvmpr_062022.ckpt"
+        echo "- weights_full_mpvmpr_062022.ckpt [1/2 done]"
         # copy small dataset file
-        [ ! -f $DATA_DIR/mpvmpr_012022_test_small.root ] && download "1w2gFzqeOLwfzrv5ocrSeZW2j6l_wjg5t" "mpvmpr_012022_test_small.root"
-        echo "- mpvmpr_012022_test_small.root [2/2 done]"
+        [ ! -f $DATA_DIR/mpvmpr_062022_test_small.root ] && download "1cO0eIXBtD8W6e6MaofT4K8w6KcAFiw5Y" "mpvmpr_062022_test_small.root"
+        echo "- mpvmpr_062022_test_small.root [2/2 done]"
 fi
 
 # Copy inference configuration file
-[ ! -f $DATA_DIR/inference.cfg ] && wget -O $DATA_DIR/inference.cfg https://raw.githubusercontent.com/DeepLearnPhysics/lartpc_mlreco3d_tutorials/master/book/data/inference.cfg 
+[ ! -f $DATA_DIR/inference.cfg ] && wget -O $DATA_DIR/inference.cfg https://raw.githubusercontent.com/DeepLearnPhysics/lartpc_mlreco3d_tutorials/master/book/data/inference.cfg
 
 # Save data directory for tutorials - absolute path
 export DATA_DIR="$(realpath $DATA_DIR)"

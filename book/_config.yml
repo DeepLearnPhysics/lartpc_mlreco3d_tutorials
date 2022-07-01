@@ -38,12 +38,12 @@ sphinx:
   config:
     html_js_files:
     - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
-    
+
 launch_buttons:
   colab_url: "https://colab.research.google.com"
   binderhub_url: "https://mybinder.org"  # The URL for your BinderHub (e.g., https://mybinder.org)
   thebe: true
-  
+
 parse:
   myst_substitutions:
     weight_filename: "weights_full5_snapshot-999.cpkt"

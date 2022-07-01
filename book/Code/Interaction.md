@@ -19,14 +19,14 @@ execution:
 Interaction clustering is done by another Graph Neural Network (GNN). Each node corresponds
 to a predicted particle. In addition to predicting which edge should be kept (i.e. the interaction clustering),
 the chain also predicts for each node a particle type (particle identification, PID) and a binary classification
-into primary/non-primary particles. We call *primary particles* the first particles to come out of an interaction 
+into primary/non-primary particles. We call *primary particles* the first particles to come out of an interaction
 vertex.
 
 ## Imports and configuration
 If needed, you can edit the path to `lartpc_mlreco3d` library and to the data folder.
 ```{code-cell}
 import os
-SOFTWARE_DIR = '%s/lartpc_mlreco3d' % os.environ.get('HOME') 
+SOFTWARE_DIR = '%s/lartpc_mlreco3d' % os.environ.get('HOME')
 DATA_DIR = os.environ.get('DATA_DIR')
 ```
 
@@ -73,7 +73,7 @@ process_config(cfg)
 hs=prepare(cfg)
 ```
 
-The output is hidden because it reprints the entire (lengthy) configuration. Feel 
+The output is hidden because it reprints the entire (lengthy) configuration. Feel
 free to take a look if you are curious!
 
 Finally we run the chain for 1 iteration:
@@ -97,7 +97,7 @@ segment_pred = output['segmentation'][entry].argmax(axis=1)
 ```
 ## Visualization of interaction clustering
 Because our small dataset has ghost points, we need to *adapt* the true cluster labels (which do not label
-ghost points by default). This will assign to true ghost points predicted as non-ghost points the label 
+ghost points by default). This will assign to true ghost points predicted as non-ghost points the label
 of the closest true non-ghost point. True ghost points which are correctly predicted as ghost points keep
 a label of -1 for everything.
 

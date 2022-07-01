@@ -23,9 +23,9 @@
         - file: Prerequisites/Python-05-PyTorch.md
           title: Introduction
         - file: Prerequisites/Python-06-MNIST-CIFAR10.md
-        
+
     - file: Prerequisites/Git.md
-    
+
 - part: Some Physics
   chapters:
     - file: Physics/README.md
@@ -35,7 +35,7 @@
         - file: Physics/Neutrinos.md
         - file: Physics/DetectingNeutrinos.md
     - file: Physics/Lartpc.md
-    
+
 - part: lartpc_mlreco3d
   chapters:
     - file: Code/README.md
@@ -58,3 +58,6 @@
         - file: Exercises/dEdx.md
         - file: Exercises/Electron_gamma.md
     - file: Metrics/README.md
+      sections:
+        - file: Metrics/Raw.md
+        - file: Metrics/Analysis.md
