@@ -316,10 +316,27 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="README.html">
    Shared metrics
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Raw.html">
+     Shared metrics (raw output)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Analysis.html">
+     Shared metrics (convolved with analysis tools)
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -437,6 +454,23 @@
   <a class="reference internal nav-link" href="#">
    UResNet
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ghost-vs-nonghost-confusion-matrix">
+     Ghost vs nonghost confusion matrix
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#semantic-confusion-on-predicted-true-nonghost-voxels">
+     Semantic confusion on (predicted + true) nonghost voxels
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#global-semantic-confusion-matrix-including-ghosts">
+     Global semantic confusion matrix (including ghosts)
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ppn">
@@ -466,6 +500,11 @@
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pid">
    PID
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vertex-heuristic-performance">
+   Vertex heuristic performance
   </a>
  </li>
 </ul>
@@ -498,7 +537,8 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">METRICS_FOLDER</span> <span class="o">=</span> <span class="s1">&#39;/sdf/group/neutrino/ldomine/chain/me/mpvmpr_012022/log_metrics1/&#39;</span>
+<span class="c1">#METRICS_FOLDER = &#39;/sdf/group/neutrino/ldomine/chain/me/mpvmpr_012022/log_metrics1/&#39;</span>
+<span class="n">METRICS_FOLDER</span> <span class="o">=</span> <span class="s1">&#39;/sdf/group/neutrino/ldomine/chain/me/mpvmpr_062022/log_metrics3/&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -512,24 +552,21 @@
                           <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                           <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">,</span>
                          <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Predicted label&#39;</span><span class="p">,</span>
-                         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;True label&#39;</span><span class="p">):</span>
+                         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;True label&#39;</span><span class="p">,</span>
+                         <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Shower&#39;</span><span class="p">,</span> <span class="s1">&#39;Track&#39;</span><span class="p">,</span> <span class="s1">&#39;Michel&#39;</span><span class="p">,</span> <span class="s1">&#39;Delta&#39;</span><span class="p">,</span> <span class="s1">&#39;LowE&#39;</span><span class="p">],</span>
+                         <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Shower&#39;</span><span class="p">,</span> <span class="s1">&#39;Track&#39;</span><span class="p">,</span> <span class="s1">&#39;Michel&#39;</span><span class="p">,</span> <span class="s1">&#39;Delta&#39;</span><span class="p">,</span> <span class="s1">&#39;LowE&#39;</span><span class="p">],</span>
+                         <span class="n">show_colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This function prints and plots the confusion matrix.</span>
 <span class="sd">    Normalization can be applied by setting `normalize=True`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
-    <span class="n">xticklabels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Shower&#39;</span><span class="p">,</span> <span class="s1">&#39;Track&#39;</span><span class="p">,</span> <span class="s1">&#39;Michel&#39;</span><span class="p">,</span> <span class="s1">&#39;Delta&#39;</span><span class="p">,</span> <span class="s1">&#39;LowE&#39;</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="n">xticklabels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Ghost&#39;</span><span class="p">)</span>
-    <span class="c1">#     if cm.shape[1] &gt; 5:</span>
-    <span class="c1">#         xticklabels.append(&#39;Ghost&#39;)</span>
-        
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="c1">#print(cm.shape)</span>
     <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">show_colorbar</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
     <span class="c1">#labels = [&#39;HIP&#39;, &#39;MIP&#39;, &#39;Shower&#39;, &#39;Delta&#39;, &#39;Michel&#39;]</span>
-    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Shower&#39;</span><span class="p">,</span> <span class="s1">&#39;Track&#39;</span><span class="p">,</span> <span class="s1">&#39;Michel&#39;</span><span class="p">,</span> <span class="s1">&#39;Delta&#39;</span><span class="p">,</span> <span class="s1">&#39;LowE&#39;</span><span class="p">]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">yticklabels</span>
     <span class="c1"># We want to show all ticks...</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
            <span class="n">yticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
@@ -562,12 +599,22 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">norm</span>
 <span class="nb">range</span> <span class="o">=</span> <span class="n">__builtins__</span><span class="o">.</span><span class="n">range</span>
+
 <span class="k">def</span> <span class="nf">confusion_matrix</span><span class="p">(</span><span class="n">metrics</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_classes</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_classes</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">c2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_classes</span><span class="p">):</span>
             <span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">c2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;confusion_</span><span class="si">%d</span><span class="s1">_</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">c2</span><span class="p">)])</span>
         <span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;num_true_pix_class</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">c</span><span class="p">]</span><span class="o">-</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;num_true_deghost_pix_class</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">c</span><span class="p">])</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">num_classes</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;ghost2nonghost_class</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">c</span><span class="p">])</span>
+    <span class="n">x</span><span class="p">[</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">((</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;ghost2ghost&#39;</span><span class="p">])</span><span class="o">*</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;num_ghost_points&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">confusion_matrix2</span><span class="p">(</span><span class="n">metrics</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_classes</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">c2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_classes</span><span class="p">):</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">c2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;confusion_</span><span class="si">%d</span><span class="s1">_</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">c2</span><span class="p">)])</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -580,10 +627,25 @@
 </div>
 </div>
 </div>
+<div class="section" id="ghost-vs-nonghost-confusion-matrix">
+<h2>Ghost vs nonghost confusion matrix<a class="headerlink" href="#ghost-vs-nonghost-confusion-matrix" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seaborn</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
-<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">deghosting</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">deghosting</span><span class="p">[</span><span class="s1">&#39;ghost2ghost&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">deghosting</span><span class="p">[</span><span class="s1">&#39;num_ghost_points&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">deghosting</span><span class="p">[</span><span class="s1">&#39;num_ghost_points&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">deghosting</span><span class="p">[</span><span class="s1">&#39;ghost2ghost&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">deghosting</span><span class="p">[</span><span class="s1">&#39;nonghost2nonghost&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">deghosting</span><span class="p">[</span><span class="s1">&#39;num_nonghost_points&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">deghosting</span><span class="p">[</span><span class="s1">&#39;num_nonghost_points&#39;</span><span class="p">]</span><span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span><span class="n">deghosting</span><span class="p">[</span><span class="s1">&#39;nonghost2nonghost&#39;</span><span class="p">]</span> <span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">/=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">/=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cm</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span> 
+                      <span class="n">show_colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                     <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Ghost&#39;</span><span class="p">,</span> <span class="s1">&#39;Nonghost&#39;</span><span class="p">],</span>
+                     <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Ghost&#39;</span><span class="p">,</span> <span class="s1">&#39;Nonghost&#39;</span><span class="p">])</span>
 
 <span class="n">seaborn</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span>
     <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
@@ -593,23 +655,47 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5, 6)
-</pre></div>
-</div>
-<img alt="../_images/Metrics_6_1.png" src="../_images/Metrics_6_1.png" />
+<img alt="../_images/Metrics_7_0.png" src="../_images/Metrics_7_0.png" />
 </div>
 </div>
+</div>
+<div class="section" id="semantic-confusion-on-predicted-true-nonghost-voxels">
+<h2>Semantic confusion on (predicted + true) nonghost voxels<a class="headerlink" href="#semantic-confusion-on-predicted-true-nonghost-voxels" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fraction of ghost2ghost = </span><span class="si">%.2f</span><span class="s1"> </span><span class="si">%%</span><span class="s1">&#39;</span>  <span class="o">%</span> <span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">deghosting</span><span class="p">[</span><span class="s1">&#39;ghost2ghost&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fraction of nonghost2nonghost = </span><span class="si">%.2f</span><span class="s1"> </span><span class="si">%%</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">deghosting</span><span class="p">[</span><span class="s1">&#39;nonghost2nonghost&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seaborn</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">confusion_matrix2</span><span class="p">(</span><span class="n">deghosting</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">})</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fraction of ghost2ghost = 89.04 %
-Fraction of nonghost2nonghost = 92.63 %
+<img alt="../_images/Metrics_9_0.png" src="../_images/Metrics_9_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="global-semantic-confusion-matrix-including-ghosts">
+<h2>Global semantic confusion matrix (including ghosts)<a class="headerlink" href="#global-semantic-confusion-matrix-including-ghosts" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seaborn</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">deghosting</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span>
+                     <span class="n">xticklabels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Shower&#39;</span><span class="p">,</span> <span class="s1">&#39;Track&#39;</span><span class="p">,</span> <span class="s1">&#39;Michel&#39;</span><span class="p">,</span> <span class="s1">&#39;Delta&#39;</span><span class="p">,</span> <span class="s1">&#39;LowE&#39;</span><span class="p">,</span> <span class="s1">&#39;Ghost&#39;</span><span class="p">],</span>
+                     <span class="n">yticklabels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Shower&#39;</span><span class="p">,</span> <span class="s1">&#39;Track&#39;</span><span class="p">,</span> <span class="s1">&#39;Michel&#39;</span><span class="p">,</span> <span class="s1">&#39;Delta&#39;</span><span class="p">,</span> <span class="s1">&#39;LowE&#39;</span><span class="p">,</span> <span class="s1">&#39;Ghost&#39;</span><span class="p">])</span>
+
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">})</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Metrics_11_0.png" src="../_images/Metrics_11_0.png" />
 </div>
 </div>
 </div>
@@ -638,7 +724,7 @@ Fraction of nonghost2nonghost = 92.63 %
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fraction of true points with no predicted point within 3px =  0.2768777614138439
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fraction of true points with no predicted point within 3px =  0.250598441764374
 </pre></div>
 </div>
 </div>
@@ -673,14 +759,14 @@ Fraction of nonghost2nonghost = 92.63 %
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Median of pred. points within 3px of true point =  0.557977
-Median of pred. points within 5px of true point =  0.621472
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Median of pred. points within 3px of true point =  0.73424
+Median of pred. points within 5px of true point =  0.77339
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Points&#39;)
 </pre></div>
 </div>
-<img alt="../_images/Metrics_12_2.png" src="../_images/Metrics_12_2.png" />
+<img alt="../_images/Metrics_15_2.png" src="../_images/Metrics_15_2.png" />
 </div>
 </div>
 </div>
@@ -696,20 +782,32 @@ Median of pred. points within 5px of true point =  0.621472
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nonzero_ari</span> <span class="o">=</span> <span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;ARI&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">nonzero_ari</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">graph_spice</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;ARI&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">],</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ARI (Mean </span><span class="si">%.4f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;ARI&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;purity&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">],</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Purity (Mean </span><span class="si">%.4f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;purity&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;efficiency&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">],</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Efficiency (Mean </span><span class="si">%.4f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;efficiency&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">)</span>
+<span class="c1"># print(np.count_nonzero(nonzero_ari)/len(graph_spice))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;height_ratios&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span>
+    <span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;efficiency&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">],</span>
+    <span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;purity&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">],</span>
+    <span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;ARI&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">]</span>
+    <span class="p">],</span> <span class="n">vert</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">&#39;Efficiency&#39;</span><span class="p">,</span> <span class="s1">&#39;Purity&#39;</span><span class="p">,</span> <span class="s1">&#39;ARI&#39;</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">tick_top</span><span class="p">()</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;ARI&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">],</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ARI (Mean </span><span class="si">%.4f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;ARI&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;purity&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">],</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Purity (Mean </span><span class="si">%.4f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;purity&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;efficiency&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">],</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Efficiency (Mean </span><span class="si">%.4f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;efficiency&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Track Fragment Clustering Metric&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Track Fragment Clustering Metric&#39;)
 </pre></div>
 </div>
-<img alt="../_images/Metrics_15_1.png" src="../_images/Metrics_15_1.png" />
+<img alt="../_images/Metrics_18_1.png" src="../_images/Metrics_18_1.png" />
 </div>
 </div>
 </div>
@@ -718,16 +816,44 @@ Median of pred. points within 5px of true point =  0.621472
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">METRICS_FOLDER</span><span class="p">,</span> <span class="s2">&quot;cluster-gnn-metrics-shower.csv&quot;</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ARI (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Purity (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Efficiency (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;height_ratios&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">],</span> <span class="n">vert</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">&#39;Efficiency&#39;</span><span class="p">,</span> <span class="s1">&#39;Purity&#39;</span><span class="p">,</span> <span class="s1">&#39;ARI&#39;</span><span class="p">,</span> <span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.96</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">tick_top</span><span class="p">()</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ARI (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Purity (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Efficiency (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Shower Clustering Metric&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Metrics_17_0.png" src="../_images/Metrics_17_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Shower Clustering Metric&#39;)
+</pre></div>
+</div>
+<img alt="../_images/Metrics_20_1.png" src="../_images/Metrics_20_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy of primary shower fragment identification: </span><span class="si">%.1f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;primary_accuracy&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy of primary shower fragment identification: 68.6%
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -736,16 +862,32 @@ Median of pred. points within 5px of true point =  0.621472
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">METRICS_FOLDER</span><span class="p">,</span> <span class="s2">&quot;cluster-gnn-metrics-track.csv&quot;</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ARI (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Purity (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Efficiency (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;height_ratios&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">],</span> <span class="n">vert</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">&#39;Efficiency&#39;</span><span class="p">,</span> <span class="s1">&#39;Purity&#39;</span><span class="p">,</span> <span class="s1">&#39;ARI&#39;</span><span class="p">,</span> <span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.97</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">tick_top</span><span class="p">()</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ARI (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Purity (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Efficiency (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Track Clustering Metric&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Metrics_19_0.png" src="../_images/Metrics_19_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Track Clustering Metric&#39;)
+</pre></div>
+</div>
+<img alt="../_images/Metrics_23_1.png" src="../_images/Metrics_23_1.png" />
 </div>
 </div>
 </div>
@@ -754,16 +896,44 @@ Median of pred. points within 5px of true point =  0.621472
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">METRICS_FOLDER</span><span class="p">,</span> <span class="s2">&quot;cluster-gnn-metrics-inter.csv&quot;</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ARI (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Purity (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Efficiency (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;height_ratios&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">],</span> <span class="n">vert</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">&#39;Efficiency&#39;</span><span class="p">,</span> <span class="s1">&#39;Purity&#39;</span><span class="p">,</span> <span class="s1">&#39;ARI&#39;</span><span class="p">,</span> <span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">tick_top</span><span class="p">()</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ARI (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Purity (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Efficiency (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Interaction Clustering Metric&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Metrics_21_0.png" src="../_images/Metrics_21_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Interaction Clustering Metric&#39;)
+</pre></div>
+</div>
+<img alt="../_images/Metrics_25_1.png" src="../_images/Metrics_25_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy of primary particle identification: </span><span class="si">%.2f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;primary_accuracy&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy of primary particle identification: -1.00%
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -860,7 +1030,51 @@ Median of pred. points within 5px of true point =  0.621472
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5, 5)
 </pre></div>
 </div>
-<img alt="../_images/Metrics_26_1.png" src="../_images/Metrics_26_1.png" />
+<img alt="../_images/Metrics_31_1.png" src="../_images/Metrics_31_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="vertex-heuristic-performance">
+<h1>Vertex heuristic performance<a class="headerlink" href="#vertex-heuristic-performance" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_vtx_resolution</span><span class="p">(</span><span class="n">vtx_candidates</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="n">vtx_predicted</span> <span class="o">=</span> <span class="p">(</span><span class="n">vtx_candidates</span><span class="p">[</span><span class="s1">&#39;vtx_resolution&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">min_primaries</span> <span class="o">=</span> <span class="p">(</span><span class="n">vtx_candidates</span><span class="p">[</span><span class="s1">&#39;num_primaries&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">#&amp; (vtx_candidates[&#39;num_pix&#39;] &gt; 20)</span>
+    <span class="n">nu_filter</span> <span class="o">=</span> <span class="p">(</span><span class="n">vtx_candidates</span><span class="p">[</span><span class="s1">&#39;is_nu&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+
+    <span class="n">vtx_filter</span> <span class="o">=</span> <span class="n">vtx_predicted</span> <span class="o">&amp;</span> <span class="n">min_primaries</span> <span class="o">&amp;</span> <span class="n">nu_filter</span>
+
+    <span class="n">no_prediction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="o">~</span><span class="n">vtx_predicted</span> <span class="o">&amp;</span> <span class="n">min_primaries</span> <span class="o">&amp;</span> <span class="n">nu_filter</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">min_primaries</span> <span class="o">&amp;</span> <span class="n">nu_filter</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="n">outside</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">vtx_filter</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">vtx_candidates</span><span class="p">[</span><span class="s1">&#39;vtx_resolution&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">vtx_filter</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+    <span class="n">mean_range</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">vtx_candidates</span><span class="p">[</span><span class="s1">&#39;vtx_resolution&#39;</span><span class="p">][</span><span class="n">vtx_filter</span><span class="p">][(</span><span class="n">vtx_candidates</span><span class="p">[</span><span class="s1">&#39;vtx_resolution&#39;</span><span class="p">][</span><span class="n">vtx_filter</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">mean_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">vtx_candidates</span><span class="p">[</span><span class="s1">&#39;vtx_resolution&#39;</span><span class="p">][</span><span class="n">vtx_filter</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">mean_range</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">vtx_candidates</span><span class="p">[</span><span class="s1">&#39;vtx_resolution&#39;</span><span class="p">][</span><span class="n">vtx_filter</span><span class="p">]</span><span class="o">*</span><span class="mf">0.3</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> (Mean = </span><span class="si">%.2f</span><span class="s1"> | </span><span class="si">%.1f</span><span class="s1"> </span><span class="si">%%</span><span class="s1"> outside of range | </span><span class="si">%.1f</span><span class="s1"> </span><span class="si">%%</span><span class="s1"> w/o prediction)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">outside</span><span class="p">,</span> <span class="n">no_prediction</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Vertex resolution (cm)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Predicted interactions&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">mean_range</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mean_range</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vtx_candidates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">METRICS_FOLDER</span><span class="p">,</span> <span class="s2">&quot;vertex-candidates.csv&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_vtx_resolution</span><span class="p">(</span><span class="n">vtx_candidates</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Metrics_35_0.png" src="../_images/Metrics_35_0.png" />
 </div>
 </div>
 </div>

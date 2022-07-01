@@ -318,10 +318,27 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Metrics/README.html">
    Shared metrics
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Metrics/Raw.html">
+     Shared metrics (raw output)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Metrics/Analysis.html">
+     Shared metrics (convolved with analysis tools)
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -876,7 +893,7 @@ Numpy allows to resphape it easily. For example, we can transform it into a 2-D 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 ldomine ki 730 Apr 13 17:34 erase.npz
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 ldomine ki 730 Jun 30 16:24 erase.npz
 </pre></div>
 </div>
 </div>
@@ -935,7 +952,7 @@ contents of kazu
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_30393</span><span class="o">/</span><span class="mf">2919251912.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_46289</span><span class="o">/</span><span class="mf">2919251912.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span>                         <span class="p">[</span><span class="mf">0.22520</span><span class="p">,</span> <span class="mf">0.97344</span><span class="p">,</span> <span class="mf">0.0412</span>  <span class="p">],</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>                         <span class="p">[</span><span class="mf">0.00867</span><span class="p">,</span> <span class="mf">0.0404</span><span class="p">,</span>  <span class="mf">0.999146</span><span class="p">]])</span>
 <span class="ne">----&gt; </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">ckm_matarix</span><span class="p">)</span>
@@ -1030,8 +1047,8 @@ Here’s an example of a <strong>flat random number</strong> between 0 to 1.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape (100000,)
-mean 0.5010962492485507 std 0.28860233895178655
-min 4.845695237509773e-06 max 0.9999981368526166
+mean 0.500900215150849 std 0.28911272784081987
+min 3.5732453503523054e-05 max 0.9999933452524224
 </pre></div>
 </div>
 </div>
@@ -1048,8 +1065,8 @@ min 4.845695237509773e-06 max 0.9999981368526166
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape (100,)
-mean 0.062301860046873346 std 1.1235591899042934
-min -2.7248812185683673 max 2.75445852296484
+mean -0.051172243085185205 std 0.8910350550591932
+min -2.5038000033125143 max 2.158881960944597
 </pre></div>
 </div>
 </div>

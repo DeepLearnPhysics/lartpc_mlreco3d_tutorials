@@ -53,7 +53,7 @@ In this exercise, we will focus on finding the start of EM showers and computing
 
 ```{code-cell}
 import os, sys
-SOFTWARE_DIR = '%s/lartpc_mlreco3d' % os.environ.get('HOME') 
+SOFTWARE_DIR = '%s/lartpc_mlreco3d' % os.environ.get('HOME')
 DATA_DIR = os.environ.get('DATA_DIR')
 # Set software directory
 sys.path.append(SOFTWARE_DIR)
@@ -89,7 +89,7 @@ cfg = yaml.load(open('%s/inference.cfg' % DATA_DIR, 'r').read().replace('DATA_DI
 process_config(cfg, verbose=False)
 ```
 
-### d. Initialize and load weights to model using Trainer. 
+### d. Initialize and load weights to model using Trainer.
 
 
 ```{code-cell} ipython3
@@ -177,7 +177,7 @@ fig.update_layout(showlegend=False,
 iplot(fig)
 ```
 
-The green voxels are predicted primary particles, while red indicates non-primary. 
+The green voxels are predicted primary particles, while red indicates non-primary.
 
 It is often easier to further break down the shower into different fragments and locate which of the shower fragments actually correspond to a predicted primary.
 
@@ -187,7 +187,7 @@ fragments = evaluator.get_fragments(entry)
 
 ```{code-cell} ipython3
 traces = trace_particles(fragments, color='is_primary', colorscale='rdylgn')   # is_primary for coloring with respect to primary label
-traces_right = trace_particles(fragments, color='id', colorscale='rainbow')   # This time, we'll plot the predicted particle 
+traces_right = trace_particles(fragments, color='id', colorscale='rainbow')   # This time, we'll plot the predicted particle
 ```
 
 ```{code-cell} ipython3
@@ -222,7 +222,7 @@ print("Minimum voxel distance required to assign ppn prediction to particle frag
 fragments = evaluator.get_fragments(entry, only_primaries=False)
 ```
 
-The first three columns are the $(x,y,z)$ coordinates of the PPN points. The fourth column is the PPN prediction score, and the last column indicates the predicted semantic type of the point. 
+The first three columns are the $(x,y,z)$ coordinates of the PPN points. The fourth column is the PPN prediction score, and the last column indicates the predicted semantic type of the point.
 
 We first visualize whether the predicted ppn candidates accurately locate the shower fragment start:
 
@@ -249,7 +249,7 @@ iplot(fig)
 
 The left scatterplot highlighits primary shower fragments and its ppn candidates, while non-primaries are showed with faded color. The right plot shows true particle labels.
 
-Identifying the primary shower fragments (as above) allow us to select all the voxels of the primary fragment which are close to the shower start, i.e. within some radius of the predicted PPN shower point. Of course, as expected from the scatterplot above, we may also include some cuts on the total voxel count to pick shower primary fragments that are large enough for our $dQ/dx$ analysis. 
+Identifying the primary shower fragments (as above) allow us to select all the voxels of the primary fragment which are close to the shower start, i.e. within some radius of the predicted PPN shower point. Of course, as expected from the scatterplot above, we may also include some cuts on the total voxel count to pick shower primary fragments that are large enough for our $dQ/dx$ analysis.
 
 For convenience, from now on we will only work with primary fragments:
 
@@ -259,7 +259,7 @@ fragments = evaluator.get_fragments(entry, only_primaries=True)
 
 ### Step 3. Compute $dQ/dx$ near the shower start
 
-Let's first fix some parameters for our $dQ/dx$ computation. Let's say the we select all points within a radius of 10 voxels from the predicted PPN shower start point of a given primary fragment and require that the selected segment size should at least be 3 voxels long. 
+Let's first fix some parameters for our $dQ/dx$ computation. Let's say the we select all points within a radius of 10 voxels from the predicted PPN shower start point of a given primary fragment and require that the selected segment size should at least be 3 voxels long.
 
 ```{code-cell} ipython3
 from sklearn.decomposition import PCA
@@ -269,14 +269,14 @@ radius = 10 # in voxels
 pca = PCA(n_components=2)
 ```
 
-Write a `compute_shower_dqdx` function that takes a list of primary fragments and returns a list of computed dQ/dx values for each fragment. 
+Write a `compute_shower_dqdx` function that takes a list of primary fragments and returns a list of computed dQ/dx values for each fragment.
 
 ```{code-cell} ipython3
 def compute_shower_dqdx(frags, r=10, min_segment_size=3):
     '''
     Inputs:
         - frags (list of ParticleFragments)
-        
+
     Returns:
         - out: list of computed dQ/dx for each fragment
     '''
@@ -320,7 +320,7 @@ for iteration in range(iterations):
         fragments = evaluator.get_fragments(entry, only_primaries=True)
         dqdx = compute_shower_dqdx(fragments, r=radius, min_segment_size=min_segment_size)
         collect_dqdx.extend(dqdx)
-        
+
 collect_dqdx = np.array(collect_dqdx)
 ```
 

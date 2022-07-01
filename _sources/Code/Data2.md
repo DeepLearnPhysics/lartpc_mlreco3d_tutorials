@@ -16,7 +16,7 @@ kernelspec:
 
 # Using ROOT only
 
-If you know [ROOT](https://root.cern/), the framework developed by CERN for particle physics data analysis, you can use it to look directly at the data files. 
+If you know [ROOT](https://root.cern/), the framework developed by CERN for particle physics data analysis, you can use it to look directly at the data files.
 
 ```{note}
 Ignore this if you do not know ROOT. For most purposes, you do not need to know ROOT in order to use `lartpc_mlreco3d`.
@@ -31,9 +31,9 @@ The ROOT file contains several TTrees (which you can list with `.ls` in the prom
 * `particle_*` refers to a [larcv::EventParticle](https://github.com/DeepLearnPhysics/larcv2/blob/develop/larcv/core/DataFormat/EventParticle.h#L26), a list of `larcv::Particle` objects.
 
 ## In Python
-Another way is to use PyROOT, the Python interface for ROOT. 
+Another way is to use PyROOT, the Python interface for ROOT.
 
-```{code-cell} 
+```{code-cell}
 import ROOT
 from ROOT import  TFile, TChain
 ```
@@ -62,9 +62,9 @@ for entry in range(tree.GetEntries()):
 ```
 
  * [PyROOT - Getting started](https://root.cern/manual/python/#getting-started)
- 
+
  ## Using LArCV to retrieve the image and visualize
- 
+
  ```{note} TODO
  Coming soon
  ```

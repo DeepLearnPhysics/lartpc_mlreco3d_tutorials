@@ -21,7 +21,7 @@ Before starting anything, it is good practice to look at your dataset in an even
 If needed, you can edit the path to `lartpc_mlreco3d` library and to the data folder.
 ```{code-cell}
 import os
-SOFTWARE_DIR = '%s/lartpc_mlreco3d' % os.environ.get('HOME') 
+SOFTWARE_DIR = '%s/lartpc_mlreco3d' % os.environ.get('HOME')
 DATA_DIR = os.environ.get('DATA_DIR')
 ```
 
@@ -247,7 +247,7 @@ iplot(fig)
 ## More about the I/O configuration
 Keep reading if you want to understand more about that YAML configuration block.
 
-`lartpc_mlreco3d` expects a ROOT file (created with LArCV, a C++ library to process 
+`lartpc_mlreco3d` expects a ROOT file (created with LArCV, a C++ library to process
 LArTPC images) as input file. You can explore this file with ROOT alone, if you know
 how to use ROOT, but the most intuitive way to visualize it is to use the I/O module
 of `lartpc_mlreco3d`.
@@ -256,13 +256,13 @@ of `lartpc_mlreco3d`.
 Images are stored in ROOT + LArCV format. Parsers are functions in `lartpc_mlreco3d`
 that read the information stored in the ROOT file, select just what we are interested
 in (e.g. particle information ? energy depositions ?) and format it in a friendly way
-for our chain. 
+for our chain.
 
 They only need to know the names of certain quantities stored in the ROOT file (as TTree,
-if you know what this is). 
+if you know what this is).
 
 ### I/O Configuration - a brief gist
-`lartpc_mlreco3d` uses the YAML format for its configuration. Here is a skeleton config 
+`lartpc_mlreco3d` uses the YAML format for its configuration. Here is a skeleton config
 that shows only the parameters that will matter the most for you:
 ```
 iotool:
@@ -302,7 +302,7 @@ The schema has a simple format: it is a list where each item is formatted as fol
 The parser's arguments are the names of quantities stored in the input ROOT file.
 
  A real life example would look like this:
- 
+
 ```
       input_data:
         - parse_sparse3d_scn
@@ -310,17 +310,17 @@ The parser's arguments are the names of quantities stored in the input ROOT file
 ```
 
 This tells us that we want a field called `input_data` (our choice) in the input data
-dictionary. For the sake of example let's call this input dictionary `data_blob`. 
-The parser name needs to be the first in the list that follows. Hence, 
-`data_blob['input_data']` will be the output of the parser `parse_sparse3d_scn`. 
+dictionary. For the sake of example let's call this input dictionary `data_blob`.
+The parser name needs to be the first in the list that follows. Hence,
+`data_blob['input_data']` will be the output of the parser `parse_sparse3d_scn`.
 That parser will receive as arguments whatever names follow in the list - here, there
 is just one, `sparse3d_pcluster`.
 
 You can have as many such items in the schema list - each of them will be available
 in the input data dictionary under the name that you specify.
 
-Note: some stages of the chain might expect a specific name in the input dictionary. 
-Sometimes this is configurable in the network configuration. 
+Note: some stages of the chain might expect a specific name in the input dictionary.
+Sometimes this is configurable in the network configuration.
 
 ### I/O Configuration - a real example
 Let us show a real I/O configuration example:
@@ -364,4 +364,4 @@ These are typical inputs that you would be looking at:
 ---
 
 Now you should be all set to browse through the images in a dataset
-and loop over them. 
+and loop over them.

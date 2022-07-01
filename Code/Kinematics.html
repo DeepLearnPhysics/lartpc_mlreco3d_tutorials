@@ -318,10 +318,27 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Metrics/README.html">
    Shared metrics
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Metrics/Raw.html">
+     Shared metrics (raw output)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Metrics/Analysis.html">
+     Shared metrics (convolved with analysis tools)
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -467,7 +484,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">SOFTWARE_DIR</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/lartpc_mlreco3d&#39;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;HOME&#39;</span><span class="p">)</span> 
+<span class="n">SOFTWARE_DIR</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/lartpc_mlreco3d&#39;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;HOME&#39;</span><span class="p">)</span>
 <span class="n">DATA_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DATA_DIR&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -602,13 +619,13 @@ The environment variable `OMP_NUM_THREADS` not set. MinkowskiEngine will automat
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Config processed at: Linux tur024 3.10.0-1160.42.2.el7.x86_64 #1 SMP Tue Sep 7 14:49:57 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Config processed at: Linux tur012 3.10.0-1160.42.2.el7.x86_64 #1 SMP Tue Sep 7 14:49:57 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
 
 $CUDA_VISIBLE_DEVICES=&quot;0&quot;
 
 {   &#39;iotool&#39;: {   &#39;batch_size&#39;: 10,
                   &#39;collate_fn&#39;: &#39;CollateSparse&#39;,
-                  &#39;dataset&#39;: {   &#39;data_keys&#39;: [   &#39;/sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/book/data/mpvmpr_012022_test_small.root&#39;],
+                  &#39;dataset&#39;: {   &#39;data_keys&#39;: [   &#39;/sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/book/data/mpvmpr_062022_test_small.root&#39;],
                                  &#39;limit_num_files&#39;: 10,
                                  &#39;name&#39;: &#39;LArCVDataset&#39;,
                                  &#39;schema&#39;: {   &#39;cluster_label&#39;: [   &#39;parse_cluster3d_clean_full&#39;,
@@ -618,7 +635,13 @@ $CUDA_VISIBLE_DEVICES=&quot;0&quot;
                                                                     &#39;sparse3d_pcluster_semantics&#39;],
                                                &#39;input_data&#39;: [   &#39;parse_sparse3d_scn&#39;,
                                                                  &#39;sparse3d_reco&#39;,
-                                                                 &#39;sparse3d_reco_chi2&#39;],
+                                                                 &#39;sparse3d_reco_chi2&#39;,
+                                                                 &#39;sparse3d_reco_hit_charge0&#39;,
+                                                                 &#39;sparse3d_reco_hit_charge1&#39;,
+                                                                 &#39;sparse3d_reco_hit_charge2&#39;,
+                                                                 &#39;sparse3d_reco_hit_key0&#39;,
+                                                                 &#39;sparse3d_reco_hit_key1&#39;,
+                                                                 &#39;sparse3d_reco_hit_key2&#39;],
                                                &#39;kinematics_label&#39;: [   &#39;parse_cluster3d_kinematics_clean&#39;,
                                                                        &#39;cluster3d_pcluster&#39;,
                                                                        &#39;particle_corrected&#39;,
@@ -643,7 +666,8 @@ $CUDA_VISIBLE_DEVICES=&quot;0&quot;
                                    &#39;cluster_label&#39;,
                                    &#39;kinematics_label&#39;,
                                    &#39;particle_graph&#39;],
-                 &#39;modules&#39;: {   &#39;chain&#39;: {   &#39;enable_cnn_clust&#39;: True,
+                 &#39;modules&#39;: {   &#39;chain&#39;: {   &#39;enable_charge_rescaling&#39;: True,
+                                             &#39;enable_cnn_clust&#39;: True,
                                              &#39;enable_cosmic&#39;: False,
                                              &#39;enable_dbscan&#39;: True,
                                              &#39;enable_ghost&#39;: True,
@@ -661,7 +685,7 @@ $CUDA_VISIBLE_DEVICES=&quot;0&quot;
                                 &#39;cosmic_discriminator&#39;: {   &#39;res_encoder&#39;: {   &#39;coordConv&#39;: True,
                                                                                &#39;latent_size&#39;: 2,
                                                                                &#39;pool_mode&#39;: &#39;avg&#39;,
-                                                                               &#39;spatial_size&#39;: 768},
+                                                                               &#39;spatial_size&#39;: 6144},
                                                             &#39;use_input_data&#39;: False,
                                                             &#39;use_true_interactions&#39;: False},
                                 &#39;cosmic_loss&#39;: {   &#39;node_loss&#39;: {   &#39;balance_classes&#39;: True,
@@ -672,7 +696,7 @@ $CUDA_VISIBLE_DEVICES=&quot;0&quot;
                                                                                                     3],
                                                                              &#39;delta_label&#39;: 3,
                                                                              &#39;eps&#39;: [   1.999,
-                                                                                        9.999,
+                                                                                        1.999,
                                                                                         4.999],
                                                                              &#39;michel_label&#39;: 2,
                                                                              &#39;num_classes&#39;: 4,
@@ -703,13 +727,15 @@ $CUDA_VISIBLE_DEVICES=&quot;0&quot;
                                                                                                         &#39;name&#39;: &#39;batch_norm&#39;},
                                                                                       &#39;num_input&#39;: 4,
                                                                                       &#39;reps&#39;: 2,
-                                                                                      &#39;spatial_size&#39;: 768}},
+                                                                                      &#39;spatial_size&#39;: 6144}},
+                                                   &#39;freeze_weights&#39;: True,
                                                    &#39;kernel_cfg&#39;: {   &#39;name&#39;: &#39;bilinear&#39;,
                                                                      &#39;num_features&#39;: 32},
                                                    &#39;min_points&#39;: 3,
                                                    &#39;node_dim&#39;: 22,
                                                    &#39;skip_classes&#39;: [0, 2, 3, 4],
-                                                   &#39;use_raw_features&#39;: True},
+                                                   &#39;use_raw_features&#39;: True,
+                                                   &#39;use_true_labels&#39;: False},
                                 &#39;graph_spice_loss&#39;: {   &#39;edge_loss_cfg&#39;: {   &#39;loss_type&#39;: &#39;LogDice&#39;},
                                                         &#39;eval&#39;: True,
                                                         &#39;invert&#39;: True,
@@ -738,14 +764,15 @@ $CUDA_VISIBLE_DEVICES=&quot;0&quot;
                                                     &#39;node_encoder&#39;: {   &#39;name&#39;: &#39;geo&#39;,
                                                                         &#39;use_numpy&#39;: True},
                                                     &#39;type_net&#39;: {   &#39;num_hidden&#39;: 32},
-                                                    &#39;use_shower_primary&#39;: False,
+                                                    &#39;use_shower_primary&#39;: True,
+                                                    &#39;use_true_particles&#39;: False,
                                                     &#39;vertex_net&#39;: {   &#39;num_hidden&#39;: 32}},
                                 &#39;grappa_inter_loss&#39;: {   &#39;edge_loss&#39;: {   &#39;name&#39;: &#39;channel&#39;,
                                                                           &#39;source_col&#39;: 6,
                                                                           &#39;target_col&#39;: 7},
                                                          &#39;node_loss&#39;: {   &#39;balance_classes&#39;: True,
                                                                           &#39;name&#39;: &#39;kinematics&#39;,
-                                                                          &#39;spatial_size&#39;: 768}},
+                                                                          &#39;spatial_size&#39;: 6144}},
                                 &#39;grappa_kinematics&#39;: {   &#39;base&#39;: {   &#39;edge_dist_metric&#39;: &#39;set&#39;,
                                                                      &#39;edge_dist_numpy&#39;: True,
                                                                      &#39;edge_max_dist&#39;: -1,
@@ -758,7 +785,7 @@ $CUDA_VISIBLE_DEVICES=&quot;0&quot;
                                                                                                 &#39;res_encoder&#39;: {   &#39;coordConv&#39;: True,
                                                                                                                    &#39;latent_size&#39;: 32,
                                                                                                                    &#39;pool_mode&#39;: &#39;avg&#39;,
-                                                                                                                   &#39;spatial_size&#39;: 768}},
+                                                                                                                   &#39;spatial_size&#39;: 6144}},
                                                                              &#39;geo_encoder&#39;: {   &#39;more_feats&#39;: True},
                                                                              &#39;name&#39;: &#39;mix_debug&#39;,
                                                                              &#39;normalize&#39;: True},
@@ -776,7 +803,7 @@ $CUDA_VISIBLE_DEVICES=&quot;0&quot;
                                                                                                                    &#39;input_kernel&#39;: 3,
                                                                                                                    &#39;latent_size&#39;: 64,
                                                                                                                    &#39;pool_mode&#39;: &#39;avg&#39;,
-                                                                                                                   &#39;spatial_size&#39;: 768}},
+                                                                                                                   &#39;spatial_size&#39;: 6144}},
                                                                              &#39;geo_encoder&#39;: {   &#39;more_feats&#39;: True},
                                                                              &#39;name&#39;: &#39;mix_debug&#39;,
                                                                              &#39;normalize&#39;: True},
@@ -787,11 +814,12 @@ $CUDA_VISIBLE_DEVICES=&quot;0&quot;
                                                                                &#39;reg_loss&#39;: &#39;l2&#39;}},
                                 &#39;grappa_shower&#39;: {   &#39;base&#39;: {   &#39;add_start_dir&#39;: True,
                                                                  &#39;add_start_point&#39;: True,
-                                                                 &#39;node_min_size&#39;: 3,
+                                                                 &#39;node_min_size&#39;: -1,
                                                                  &#39;node_type&#39;: 0,
                                                                  &#39;start_dir_max_dist&#39;: 5},
                                                      &#39;edge_encoder&#39;: {   &#39;name&#39;: &#39;geo&#39;,
                                                                          &#39;use_numpy&#39;: True},
+                                                     &#39;freeze_weights&#39;: True,
                                                      &#39;gnn_model&#39;: {   &#39;edge_classes&#39;: 2,
                                                                       &#39;edge_feats&#39;: 19,
                                                                       &#39;edge_output_feats&#39;: 64,
@@ -815,6 +843,7 @@ $CUDA_VISIBLE_DEVICES=&quot;0&quot;
                                                                 &#39;start_dir_max_dist&#39;: 5},
                                                     &#39;edge_encoder&#39;: {   &#39;name&#39;: &#39;geo&#39;,
                                                                         &#39;use_numpy&#39;: True},
+                                                    &#39;freeze_weights&#39;: True,
                                                     &#39;gnn_model&#39;: {   &#39;edge_classes&#39;: 2,
                                                                      &#39;edge_feats&#39;: 19,
                                                                      &#39;edge_output_feats&#39;: 64,
@@ -827,30 +856,43 @@ $CUDA_VISIBLE_DEVICES=&quot;0&quot;
                                 &#39;grappa_track_loss&#39;: {   &#39;edge_loss&#39;: {   &#39;name&#39;: &#39;channel&#39;,
                                                                           &#39;source_col&#39;: 5,
                                                                           &#39;target_col&#39;: 6}},
+                                &#39;uresnet_deghost&#39;: {   &#39;freeze_weights&#39;: True,
+                                                       &#39;uresnet_lonely&#39;: {   &#39;activation&#39;: {   &#39;args&#39;: {   &#39;negative_slope&#39;: 0.33},
+                                                                                               &#39;name&#39;: &#39;lrelu&#39;},
+                                                                             &#39;allow_bias&#39;: False,
+                                                                             &#39;depth&#39;: 5,
+                                                                             &#39;filters&#39;: 32,
+                                                                             &#39;ghost&#39;: False,
+                                                                             &#39;norm_layer&#39;: {   &#39;args&#39;: {   &#39;eps&#39;: 0.0001,
+                                                                                                           &#39;momentum&#39;: 0.01},
+                                                                                               &#39;name&#39;: &#39;batch_norm&#39;},
+                                                                             &#39;num_classes&#39;: 2,
+                                                                             &#39;num_input&#39;: 2,
+                                                                             &#39;reps&#39;: 2,
+                                                                             &#39;spatial_size&#39;: 6144}},
                                 &#39;uresnet_ppn&#39;: {   &#39;ppn&#39;: {   &#39;classify_endpoints&#39;: True,
-                                                              &#39;depth&#39;: 6,
-                                                              &#39;filters&#39;: 16,
-                                                              &#39;ghost&#39;: True,
+                                                              &#39;depth&#39;: 5,
+                                                              &#39;filters&#39;: 32,
+                                                              &#39;freeze_weights&#39;: True,
                                                               &#39;mask_loss_name&#39;: &#39;BCE&#39;,
                                                               &#39;num_classes&#39;: 5,
                                                               &#39;particles_label_seg_col&#39;: -3,
                                                               &#39;ppn_resolution&#39;: 1.0,
                                                               &#39;ppn_score_threshold&#39;: 0.6,
-                                                              &#39;spatial_size&#39;: 768},
-                                                   &#39;uresnet_lonely&#39;: {   &#39;activation&#39;: {   &#39;args&#39;: {   &#39;negative_slope&#39;: 0.0},
+                                                              &#39;spatial_size&#39;: 6144},
+                                                   &#39;uresnet_lonely&#39;: {   &#39;activation&#39;: {   &#39;args&#39;: {   &#39;negative_slope&#39;: 0.33},
                                                                                            &#39;name&#39;: &#39;lrelu&#39;},
                                                                          &#39;allow_bias&#39;: False,
-                                                                         &#39;depth&#39;: 6,
-                                                                         &#39;filters&#39;: 16,
-                                                                         &#39;ghost&#39;: True,
+                                                                         &#39;depth&#39;: 5,
+                                                                         &#39;filters&#39;: 32,
+                                                                         &#39;freeze_weights&#39;: True,
                                                                          &#39;norm_layer&#39;: {   &#39;args&#39;: {   &#39;eps&#39;: 0.0001,
                                                                                                        &#39;momentum&#39;: 0.01},
                                                                                            &#39;name&#39;: &#39;batch_norm&#39;},
                                                                          &#39;num_classes&#39;: 5,
                                                                          &#39;num_input&#39;: 2,
                                                                          &#39;reps&#39;: 2,
-                                                                         &#39;spatial_size&#39;: 768,
-                                                                         &#39;weight_loss&#39;: False}}},
+                                                                         &#39;spatial_size&#39;: 6144}}},
                  &#39;name&#39;: &#39;full_chain&#39;,
                  &#39;network_input&#39;: [   &#39;input_data&#39;,
                                       &#39;segment_label&#39;,
@@ -859,6 +901,7 @@ $CUDA_VISIBLE_DEVICES=&quot;0&quot;
                     &#39;concat_result&#39;: [   &#39;input_edge_features&#39;,
                                          &#39;input_node_features&#39;,
                                          &#39;points&#39;,
+                                         &#39;coordinates&#39;,
                                          &#39;particle_node_features&#39;,
                                          &#39;particle_edge_features&#39;,
                                          &#39;track_node_features&#39;,
@@ -867,6 +910,10 @@ $CUDA_VISIBLE_DEVICES=&quot;0&quot;
                                          &#39;mask_ppn&#39;,
                                          &#39;ppn_layers&#39;,
                                          &#39;classify_endpoints&#39;,
+                                         &#39;vertex_layers&#39;,
+                                         &#39;vertex_coords&#39;,
+                                         &#39;primary_label_scales&#39;,
+                                         &#39;segment_label_scales&#39;,
                                          &#39;seediness&#39;,
                                          &#39;margins&#39;,
                                          &#39;embeddings&#39;,
@@ -891,9 +938,12 @@ $CUDA_VISIBLE_DEVICES=&quot;0&quot;
                                          &#39;inter_edge_index&#39;,
                                          &#39;inter_node_pred&#39;,
                                          &#39;inter_edge_pred&#39;,
+                                         &#39;inter_group_pred&#39;,
                                          &#39;inter_particles&#39;,
                                          &#39;node_pred_p&#39;,
                                          &#39;node_pred_type&#39;,
+                                         &#39;kinematics_node_pred_p&#39;,
+                                         &#39;kinematics_node_pred_type&#39;,
                                          &#39;flow_edge_pred&#39;,
                                          &#39;kinematics_particles&#39;,
                                          &#39;kinematics_edge_index&#39;,
@@ -919,18 +969,24 @@ $CUDA_VISIBLE_DEVICES=&quot;0&quot;
                     &#39;iterations&#39;: 10,
                     &#39;log_dir&#39;: &#39;./log_trash&#39;,
                     &#39;minibatch_size&#39;: -1,
-                    &#39;model_path&#39;: &#39;/sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/book/data/weights_full_mpvmpr_012022.ckpt&#39;,
+                    &#39;model_path&#39;: &#39;/sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/book/data/weights_full_mpvmpr_062022.ckpt&#39;,
                     &#39;optimizer&#39;: {&#39;args&#39;: {&#39;lr&#39;: 0.001}, &#39;name&#39;: &#39;Adam&#39;},
                     &#39;report_step&#39;: 1,
                     &#39;seed&#39;: 123,
                     &#39;train&#39;: False,
                     &#39;unwrapper&#39;: &#39;unwrap_3d_mink&#39;,
                     &#39;weight_prefix&#39;: &#39;./weights_trash/snapshot&#39;}}
-Loading file: /sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/book/data/mpvmpr_012022_test_small.root
+Loading file: /sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/book/data/mpvmpr_062022_test_small.root
 Loading tree sparse3d_reco
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading tree sparse3d_reco_chi2
+Loading tree sparse3d_reco_hit_charge0
+Loading tree sparse3d_reco_hit_charge1
+Loading tree sparse3d_reco_hit_charge2
+Loading tree sparse3d_reco_hit_key0
+Loading tree sparse3d_reco_hit_key1
+Loading tree sparse3d_reco_hit_key2
 Loading tree sparse3d_pcluster_semantics_ghost
 Loading tree cluster3d_pcluster
 Loading tree particle_pcluster
@@ -938,6 +994,7 @@ Loading tree particle_mpv
 Loading tree sparse3d_pcluster_semantics
 Loading tree sparse3d_pcluster
 Loading tree particle_corrected
+Found 101 events in file(s)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shower GNN: True
@@ -970,10 +1027,27 @@ Cosmic GNN: False
          reliable segmentation and/or cnn clustering outputs this could take
          prohibitively large training iterations.
         
-Ghost Masking is enabled for UResNet Segmentation
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Restoring weights for  from /sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/book/data/weights_full_mpvmpr_012022.ckpt...
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Freezing 82 weights for a sub-module ppn
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Freezing 141 weights for a sub-module uresnet_lonely
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Freezing 141 weights for a sub-module uresnet_deghost
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Freezing 146 weights for a sub-module graph_spice
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Freezing 120 weights for a sub-module grappa_track
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Freezing 120 weights for a sub-module grappa_shower
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Restoring weights for  from /sdf/home/l/ldomine/lartpc_mlreco3d_tutorials/book/data/weights_full_mpvmpr_062022.ckpt...
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done.
@@ -997,15 +1071,17 @@ free to take a look if you are curious!</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Segmentation Accuracy: 0.9824
-PPN Accuracy: 0.8162
-Clustering Accuracy: 0.9279
-Shower fragment clustering accuracy: 0.9255
-Shower primary prediction accuracy: 0.7553
-Track fragment clustering accuracy: 0.9480
-Interaction grouping accuracy: 0.9705
-Particle ID accuracy: 0.8167
-Primary particle score accuracy: 0.8810
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Deghosting Accuracy: 0.9830
+Segmentation Accuracy: 0.9900
+PPN Accuracy: 0.8843
+Clustering Accuracy: 0.2691
+Clustering Edge Accuracy: 0.1252
+Shower fragment clustering accuracy: 0.9581
+Shower primary prediction accuracy: 0.9434
+Track fragment clustering accuracy: 0.9937
+Interaction grouping accuracy: 0.9764
+Particle ID accuracy: 0.8409
+Primary particle score accuracy: 0.9755
 </pre></div>
 </div>
 </div>

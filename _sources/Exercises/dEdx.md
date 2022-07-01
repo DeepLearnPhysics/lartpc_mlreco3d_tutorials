@@ -53,7 +53,7 @@ Again, we start by setting our working environment. Some necessary boilerplate c
 
 ```{code-cell} ipython3
 import os, sys
-SOFTWARE_DIR = '%s/lartpc_mlreco3d' % os.environ.get('HOME') 
+SOFTWARE_DIR = '%s/lartpc_mlreco3d' % os.environ.get('HOME')
 DATA_DIR = os.environ.get('DATA_DIR')
 # Set software directory
 sys.path.append(SOFTWARE_DIR)
@@ -95,7 +95,7 @@ So far `cfg` was simply a dictionary loaded from a YAML configuration file. It n
 process_config(cfg, verbose=False)
 ```
 
-### d. Initialize and load weights to model using Trainer. 
+### d. Initialize and load weights to model using Trainer.
 This next cell loads the dataset and the model to the notebook environment. `hs` stands for "handlers". It contains various useful access points, such as the I/O iterator `hs.data_io_iter` to directly access the dataset or the trainer instance `hs.trainer` which will enable us to actually *run* the network.
 
 ```{code-cell} ipython3
@@ -152,12 +152,12 @@ edep = points[:, 5]
 
 trace1 += scatter_points(points,
                         markersize=1,
-                        color=truth, 
+                        color=truth,
                         cmin=0, cmax=5, colorscale='rainbow')
 
 trace2 += scatter_points(points,
                         markersize=1,
-                        color=pred, 
+                        color=pred,
                         cmin=0, cmax=5, colorscale='rainbow')
 
 fig = dualplot(trace1, trace2, titles=['True semantic labels (true no-ghost mask)', 'Predicted semantic labels (predicted no-ghost mask)' ])
@@ -188,10 +188,10 @@ iplot(fig)
 ```
 
 
-The predicted particles, each color-coded according to its semantic type, will be displayed in left; the true particles on right. 
+The predicted particles, each color-coded according to its semantic type, will be displayed in left; the true particles on right.
 
 ## Step 1: Select stopping muons
-We will select track-like predicted particles that are close to a Michel predicted particle. 
+We will select track-like predicted particles that are close to a Michel predicted particle.
 For the stopping muon residual range study purpose, purity is more important than efficiency.
 Hence we only select stopping muons that decay into a Michel electron.
 
@@ -201,7 +201,7 @@ from scipy.spatial.distance import cdist
 def get_stopping_muons(particles, Michel_threshold=10):
     selected_muons = []
     closest_points = []
-    
+
     # Loop over predicted particles
     for p in particles:
         if p.semantic_type != track_label: continue
@@ -218,10 +218,10 @@ def get_stopping_muons(particles, Michel_threshold=10):
             closest_point = d.min(axis=1).argmin()
 
         if not attached_to_Michel: continue
-        
+
         selected_muons.append(p)
         closest_points.append(closest_point)
-        
+
     return selected_muons, closest_points
 ```
 
@@ -287,19 +287,19 @@ Using the rough muon direction, we will define segments by binning the projectio
 def get_dQdx(particles, closest_points, pca_coordinates,
             bin_size=17,
             return_pca=False): # about5cm
-    
+
     df = {
         "dQ": [],
         "dx": [],
         "residual_range": []
     }
-    
+
     pca = PCA(n_components=2)
-    
+
     list_coords, list_pca, list_directions = [], [], []
     for p, closest_point, coords_pca in zip(particles, closest_points, pca_coordinates):
         coords = p.points
-        
+
         # Make sure where the end vs start is
         # if end == 0 we have the right bin ordering, otherwise might need to flip when we record the residual range
         distances_endpoints = [((coords[coords_pca.argmin(), :] - coords[closest_point, :])**2).sum(), ((coords[coords_pca.argmax(), :] - coords[closest_point, :])**2).sum()]
@@ -317,7 +317,7 @@ def get_dQdx(particles, closest_points, pca_coordinates,
             list_coords.append(p.points[mask])
             list_pca.append(pca_axis[:, 0])
             list_directions.append(pca.components_[0, :])
-            
+
             dx = pca_axis[:, 0].max() - pca_axis[:, 0].min()
             dQ = p.depositions[mask].sum()
             residual_range = (i if end == 0 else len(bins)-i-1) * bin_size
@@ -325,16 +325,16 @@ def get_dQdx(particles, closest_points, pca_coordinates,
             df["dx"].append(dx)
             df["dQ"].append(dQ)
             df["residual_range"].append(residual_range)
-        
+
     df = pd.DataFrame(df)
-    
+
     if return_pca:
         return list_coords, list_pca, list_directions
-    
+
     return df     
 ```
 
-For each segment, we compute 
+For each segment, we compute
 * dQ (sum of reconstructed charge of all voxels in the segment)
 * dx (for better precision we recompute a local PCA direction on the segment voxels exclusively)
 * residual range (distance from the muon end, well-defined using the Michel contact point)
@@ -372,7 +372,7 @@ iplot(fig)
 ```
 
 ## Step 4: Repeat with high statistics
-We have computed everything we want, we just need to repeat this with higher statistics. 
+We have computed everything we want, we just need to repeat this with higher statistics.
 
 ```{code-cell} ipython3
 muons = pd.DataFrame({
@@ -419,4 +419,3 @@ plt.colorbar()
 plt.xlabel("Residual range (cm)")
 plt.ylabel("Muon dQ/dx [arbitrary units / cm]")
 ```
-

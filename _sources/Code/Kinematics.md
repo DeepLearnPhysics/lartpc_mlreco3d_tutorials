@@ -15,14 +15,13 @@ execution:
   timeout: 60
 ---
 
-
 # Kinematics and particle hierarchy
 
 ## Imports and configuration
 If needed, you can edit the path to `lartpc_mlreco3d` library and to the data folder.
 ```{code-cell}
 import os
-SOFTWARE_DIR = '%s/lartpc_mlreco3d' % os.environ.get('HOME') 
+SOFTWARE_DIR = '%s/lartpc_mlreco3d' % os.environ.get('HOME')
 DATA_DIR = os.environ.get('DATA_DIR')
 ```
 
@@ -69,7 +68,7 @@ process_config(cfg)
 hs=prepare(cfg)
 ```
 
-The output is hidden because it reprints the entire (lengthy) configuration. Feel 
+The output is hidden because it reprints the entire (lengthy) configuration. Feel
 free to take a look if you are curious!
 
 Finally we run the chain for 1 iteration:

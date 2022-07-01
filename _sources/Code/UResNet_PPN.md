@@ -21,7 +21,7 @@ execution:
 If needed, you can edit the path to `lartpc_mlreco3d` library and to the data folder.
 ```{code-cell}
 import os
-SOFTWARE_DIR = '%s/lartpc_mlreco3d' % os.environ.get('HOME') 
+SOFTWARE_DIR = '%s/lartpc_mlreco3d' % os.environ.get('HOME')
 DATA_DIR = os.environ.get('DATA_DIR')
 ```
 
@@ -68,7 +68,7 @@ process_config(cfg)
 hs=prepare(cfg)
 ```
 
-The output is hidden because it reprints the entire (lengthy) configuration. Feel 
+The output is hidden because it reprints the entire (lengthy) configuration. Feel
 free to take a look if you are curious!
 
 Finally we run the chain for 1 iteration:
@@ -76,7 +76,7 @@ Finally we run the chain for 1 iteration:
 # Call forward to run the net, store the output in "res"
 data, output = hs.trainer.forward(hs.data_io_iter)
 ```
-Now we can play with `data` and `output` to visualize what we are interested in. 
+Now we can play with `data` and `output` to visualize what we are interested in.
 
 ## Semantic segmentation (UResNet)
 Let us take a look at the first entry. Feel free to change the

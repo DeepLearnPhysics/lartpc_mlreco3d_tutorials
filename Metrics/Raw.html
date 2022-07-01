@@ -1,0 +1,1136 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shared metrics (raw output) &#8212; lartpc_mlreco3d Tutorials</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Shared metrics (convolved with analysis tools)" href="Analysis.html" />
+    <link rel="prev" title="Shared metrics" href="README.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">lartpc_mlreco3d Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Getting started
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Prerequisites
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Prerequisites/README.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Prerequisites/Python.html">
+   Python basics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Prerequisites/Python-01-Jupyter.html">
+     Using Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Prerequisites/Python-02-Python.html">
+     Python basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Prerequisites/Python-03-Numpy.html">
+     Up and Running with Python3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Prerequisites/Python-04-ScientificPython.html">
+     Data visualization and more
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Prerequisites/Pytorch.html">
+   Pytorch
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Prerequisites/Python-05-PyTorch.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Prerequisites/Python-06-MNIST-CIFAR10.html">
+     Streaming Input Dataset
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Prerequisites/Git.html">
+   Version control with Git
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Some Physics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Physics/README.html">
+   Overview
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Physics/ParticlePhysics.html">
+     Particle Physics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Physics/Neutrinos.html">
+     Neutrinos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Physics/DetectingNeutrinos.html">
+     Detecting neutrinos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Physics/Lartpc.html">
+   Liquid Argon Time Projection Chamber (aka LArTPC)
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  lartpc_mlreco3d
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/README.html">
+   Overview of the reconstruction chain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Environment.html">
+   Setting up your environment
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Code/Data.html">
+   Data I/O
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Data1.html">
+     Using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       lartpc_mlreco3d
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Data2.html">
+     Using ROOT only
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Code/Analysis_tools.html">
+   Introduction to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     lartpc_mlreco3d
+    </span>
+   </code>
+   Analysis Tools
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Code/Output.html">
+   Reconstruction outputs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/UResNet_PPN.html">
+     Semantics &amp; points of interest
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Clustering.html">
+     Particle clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Interaction.html">
+     Interaction clustering, PID and primary particles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Kinematics.html">
+     Kinematics and particle hierarchy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Code/Others.html">
+     Others
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Exercises/README.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Michel_electron.html">
+     Exercise 1: Finding Michel Electrons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/dEdx.html">
+     Exercise 2: Muon stopping power¶
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Exercises/Electron_gamma.html">
+     Exercise 3: electron vs gamma separation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="README.html">
+   Shared metrics
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Shared metrics (raw output)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Analysis.html">
+     Shared metrics (convolved with analysis tools)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/Metrics/Raw.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Metrics/Raw.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/DeepLearnPhysics/lartpc_mlreco3d_tutorials"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/DeepLearnPhysics/lartpc_mlreco3d_tutorials/issues/new?title=Issue%20on%20page%20%2FMetrics/Raw.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/DeepLearnPhysics/lartpc_mlreco3d_tutorials/master?urlpath=tree/Metrics/Raw.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uresnet">
+   UResNet
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#confusion-matrix">
+     Confusion matrix
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ghost-vs-nonghost-confusion-matrix">
+     Ghost vs nonghost confusion matrix
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#semantic-confusion-matrix-nonghost-only">
+     Semantic confusion matrix, nonghost only
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#global-semantic-confusion-matrix-including-ghosts">
+     Global semantic confusion matrix (including ghosts)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ppn">
+   PPN
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graphspice-cnn-clustering">
+   GraphSpice (CNN clustering)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#grappa">
+   Grappa
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shower-clustering">
+     Shower clustering
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#track-clustering">
+     Track clustering
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interaction-clustering">
+     Interaction clustering
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#others">
+   Others
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pid">
+     PID
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vertex-heuristic-performance">
+     Vertex heuristic performance
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="shared-metrics-raw-output">
+<h1>Shared metrics (raw output)<a class="headerlink" href="#shared-metrics-raw-output" title="Permalink to this headline">¶</a></h1>
+<p>This page is meant to share reproducible metrics for each stage of the
+full chain. Feel free to open it in Binder to customize the visualization.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>None of these metrics are convolved with the analysis tools.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Technical details</p>
+<p>Config location: <code class="docutils literal notranslate"><span class="pre">config/chain/metrics.cfg</span></code></p>
+<p>Sample was generated with MPV/MPR generator using <code class="docutils literal notranslate"><span class="pre">icaruscode</span></code> <code class="docutils literal notranslate"><span class="pre">v09_49_00</span></code>.</p>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">})</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">)</span> <span class="c1"># or paper</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">METRICS_FOLDER</span> <span class="o">=</span> <span class="s1">&#39;/sdf/group/neutrino/ldomine/chain/me/mpvmpr_062022/log_metrics3/&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="uresnet">
+<h2>UResNet<a class="headerlink" href="#uresnet" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="confusion-matrix">
+<h3>Confusion matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_confusion_matrix</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span>
+                          <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                          <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                          <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">,</span>
+                         <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Predicted label&#39;</span><span class="p">,</span>
+                         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;True label&#39;</span><span class="p">,</span>
+                         <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Shower&#39;</span><span class="p">,</span> <span class="s1">&#39;Track&#39;</span><span class="p">,</span> <span class="s1">&#39;Michel&#39;</span><span class="p">,</span> <span class="s1">&#39;Delta&#39;</span><span class="p">,</span> <span class="s1">&#39;LowE&#39;</span><span class="p">],</span>
+                         <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Shower&#39;</span><span class="p">,</span> <span class="s1">&#39;Track&#39;</span><span class="p">,</span> <span class="s1">&#39;Michel&#39;</span><span class="p">,</span> <span class="s1">&#39;Delta&#39;</span><span class="p">,</span> <span class="s1">&#39;LowE&#39;</span><span class="p">],</span>
+                         <span class="n">show_colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function prints and plots the confusion matrix.</span>
+<span class="sd">    Normalization can be applied by setting `normalize=True`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="c1">#print(cm.shape)</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">show_colorbar</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="c1">#labels = [&#39;HIP&#39;, &#39;MIP&#39;, &#39;Shower&#39;, &#39;Delta&#39;, &#39;Michel&#39;]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">yticklabels</span>
+    <span class="c1"># We want to show all ticks...</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+           <span class="n">yticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+           <span class="c1"># ... and label them with the respective list entries</span>
+           <span class="n">xticklabels</span><span class="o">=</span><span class="n">xticklabels</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+           <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+           <span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">,</span>
+           <span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span>
+           <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mf">0.5</span><span class="p">))</span>
+
+    <span class="c1"># Rotate the tick labels and set their alignment.</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span>
+             <span class="n">rotation_mode</span><span class="o">=</span><span class="s2">&quot;anchor&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Loop over data dimensions and create text annotations.</span>
+    <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;.2f&#39;</span>
+    <span class="n">thresh</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">/</span> <span class="mf">2.</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="nb">format</span><span class="p">(</span><span class="n">cm</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">fmt</span><span class="p">),</span>
+                    <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span> <span class="k">if</span> <span class="n">cm</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">thresh</span> <span class="k">else</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">ax</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="nb">range</span> <span class="o">=</span> <span class="n">__builtins__</span><span class="o">.</span><span class="n">range</span>
+
+<span class="k">def</span> <span class="nf">confusion_matrix</span><span class="p">(</span><span class="n">metrics</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_classes</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_classes</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">c2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_classes</span><span class="p">):</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">c2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;confusion_</span><span class="si">%d</span><span class="s1">_</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">c2</span><span class="p">)])</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;num_true_pix_class</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">c</span><span class="p">]</span><span class="o">-</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;num_true_deghost_pix_class</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">c</span><span class="p">])</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">num_classes</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;ghost2nonghost_class</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">c</span><span class="p">])</span>
+    <span class="n">x</span><span class="p">[</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">((</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;ghost2ghost&#39;</span><span class="p">])</span><span class="o">*</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;num_ghost_points&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">confusion_matrix2</span><span class="p">(</span><span class="n">metrics</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_classes</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">c2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_classes</span><span class="p">):</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">c2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;confusion_</span><span class="si">%d</span><span class="s1">_</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">c2</span><span class="p">)])</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deghosting</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">METRICS_FOLDER</span><span class="p">,</span> <span class="s1">&#39;deghosting_metrics.csv&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ghost-vs-nonghost-confusion-matrix">
+<h3>Ghost vs nonghost confusion matrix<a class="headerlink" href="#ghost-vs-nonghost-confusion-matrix" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">deghosting</span><span class="p">[</span><span class="s1">&#39;ghost2ghost&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">deghosting</span><span class="p">[</span><span class="s1">&#39;num_ghost_points&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">deghosting</span><span class="p">[</span><span class="s1">&#39;num_ghost_points&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">deghosting</span><span class="p">[</span><span class="s1">&#39;ghost2ghost&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">deghosting</span><span class="p">[</span><span class="s1">&#39;nonghost2nonghost&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">deghosting</span><span class="p">[</span><span class="s1">&#39;num_nonghost_points&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">deghosting</span><span class="p">[</span><span class="s1">&#39;num_nonghost_points&#39;</span><span class="p">]</span><span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span><span class="n">deghosting</span><span class="p">[</span><span class="s1">&#39;nonghost2nonghost&#39;</span><span class="p">]</span> <span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">/=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">/=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cm</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span>
+                      <span class="n">show_colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                     <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Ghost&#39;</span><span class="p">,</span> <span class="s1">&#39;Nonghost&#39;</span><span class="p">],</span>
+                     <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Ghost&#39;</span><span class="p">,</span> <span class="s1">&#39;Nonghost&#39;</span><span class="p">])</span>
+
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">})</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Raw_8_0.png" src="../_images/Raw_8_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="semantic-confusion-matrix-nonghost-only">
+<h3>Semantic confusion matrix, nonghost only<a class="headerlink" href="#semantic-confusion-matrix-nonghost-only" title="Permalink to this headline">¶</a></h3>
+<p>We restrict the voxels to the true nonghost voxels correctly predicted as nonghost.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seaborn</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">confusion_matrix2</span><span class="p">(</span><span class="n">deghosting</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">})</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Raw_10_0.png" src="../_images/Raw_10_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="global-semantic-confusion-matrix-including-ghosts">
+<h3>Global semantic confusion matrix (including ghosts)<a class="headerlink" href="#global-semantic-confusion-matrix-including-ghosts" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seaborn</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">deghosting</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span>
+                     <span class="n">xticklabels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Shower&#39;</span><span class="p">,</span> <span class="s1">&#39;Track&#39;</span><span class="p">,</span> <span class="s1">&#39;Michel&#39;</span><span class="p">,</span> <span class="s1">&#39;Delta&#39;</span><span class="p">,</span> <span class="s1">&#39;LowE&#39;</span><span class="p">,</span> <span class="s1">&#39;Ghost&#39;</span><span class="p">],</span>
+                     <span class="n">yticklabels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Shower&#39;</span><span class="p">,</span> <span class="s1">&#39;Track&#39;</span><span class="p">,</span> <span class="s1">&#39;Michel&#39;</span><span class="p">,</span> <span class="s1">&#39;Delta&#39;</span><span class="p">,</span> <span class="s1">&#39;LowE&#39;</span><span class="p">,</span> <span class="s1">&#39;Ghost&#39;</span><span class="p">])</span>
+
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">})</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Raw_12_0.png" src="../_images/Raw_12_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ppn">
+<h2>PPN<a class="headerlink" href="#ppn" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logs_gt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">METRICS_FOLDER</span><span class="p">,</span> <span class="s2">&quot;ppn-metrics-gt.csv&quot;</span><span class="p">))</span>
+<span class="n">logs_pred</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">METRICS_FOLDER</span><span class="p">,</span> <span class="s2">&quot;ppn-metrics-pred.csv&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_delta_pred</span> <span class="o">=</span> <span class="n">logs_pred</span><span class="p">[</span><span class="s1">&#39;score_type_3&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.5</span>
+
+<span class="c1">#print(&quot;After removing delta points, keeping:&quot;, np.count_nonzero(no_delta_pred)/no_delta_pred.shape[0])</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="mi">60</span> <span class="c1">#25</span>
+<span class="n">f</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="n">fraction1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">logs_pred</span><span class="p">[</span><span class="n">no_delta_pred</span><span class="p">][</span><span class="s1">&#39;min_distance&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">logs_pred</span><span class="p">[</span><span class="n">no_delta_pred</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs_pred</span><span class="p">[</span><span class="n">no_delta_pred</span><span class="p">][</span><span class="s1">&#39;min_distance&#39;</span><span class="p">],</span> <span class="nb">range</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;To closest true point </span><span class="se">\n</span><span class="s1"> (</span><span class="si">%.2f</span><span class="s1"> </span><span class="si">%%</span><span class="s1"> included in plot)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">fraction1</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+
+<span class="c1">#print(&quot;Fraction of predicted points included in plot = &quot;, fraction1)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Median of pred. points within 3px of true point = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">logs_pred</span><span class="p">[</span><span class="n">no_delta_pred</span><span class="p">][</span><span class="s1">&#39;min_distance&#39;</span><span class="p">][</span><span class="n">logs_pred</span><span class="p">[</span><span class="n">no_delta_pred</span><span class="p">][</span><span class="s1">&#39;min_distance&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Median of pred. points within 5px of true point = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">logs_pred</span><span class="p">[</span><span class="n">no_delta_pred</span><span class="p">][</span><span class="s1">&#39;min_distance&#39;</span><span class="p">][</span><span class="n">logs_pred</span><span class="p">[</span><span class="n">no_delta_pred</span><span class="p">][</span><span class="s1">&#39;min_distance&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">]))</span>
+
+<span class="n">no_delta_gt</span> <span class="o">=</span> <span class="n">logs_gt</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">3</span>
+<span class="n">fraction2</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">logs_gt</span><span class="p">[</span><span class="n">no_delta_gt</span><span class="p">][</span><span class="s1">&#39;min_distance&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">logs_gt</span><span class="p">[</span><span class="n">no_delta_gt</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs_gt</span><span class="p">[</span><span class="n">no_delta_gt</span><span class="p">][</span><span class="s1">&#39;min_distance&#39;</span><span class="p">],</span> <span class="nb">range</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;To closest predicted point </span><span class="se">\n</span><span class="s1"> (</span><span class="si">%.2f</span><span class="s1"> </span><span class="si">%%</span><span class="s1"> included in plot)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">fraction2</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Distance (px)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Points&#39;</span><span class="p">)</span>
+<span class="c1">#print(&quot;Fraction of true points included in plot = &quot;, fraction2)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Median of pred. points within 3px of true point =  0.73424
+Median of pred. points within 5px of true point =  0.77339
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Points&#39;)
+</pre></div>
+</div>
+<img alt="../_images/Raw_15_2.png" src="../_images/Raw_15_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="graphspice-cnn-clustering">
+<h2>GraphSpice (CNN clustering)<a class="headerlink" href="#graphspice-cnn-clustering" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">graph_spice</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">METRICS_FOLDER</span><span class="p">,</span> <span class="s2">&quot;graph-spice-metrics.csv&quot;</span><span class="p">))</span>
+
+<span class="n">nonzero_ari</span> <span class="o">=</span> <span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;ARI&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="c1"># print(np.count_nonzero(nonzero_ari)/len(graph_spice))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;height_ratios&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span>
+    <span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;efficiency&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">],</span>
+    <span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;purity&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">],</span>
+    <span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;ARI&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">]</span>
+    <span class="p">],</span> <span class="n">vert</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">&#39;Efficiency&#39;</span><span class="p">,</span> <span class="s1">&#39;Purity&#39;</span><span class="p">,</span> <span class="s1">&#39;ARI&#39;</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">tick_top</span><span class="p">()</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;ARI&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">],</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ARI (Mean </span><span class="si">%.4f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;ARI&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;purity&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">],</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Purity (Mean </span><span class="si">%.4f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;purity&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;efficiency&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">],</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Efficiency (Mean </span><span class="si">%.4f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">graph_spice</span><span class="p">[</span><span class="s1">&#39;efficiency&#39;</span><span class="p">][</span><span class="n">nonzero_ari</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Track Fragment Clustering Metric&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Track Fragment Clustering Metric&#39;)
+</pre></div>
+</div>
+<img alt="../_images/Raw_17_1.png" src="../_images/Raw_17_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="grappa">
+<h2>Grappa<a class="headerlink" href="#grappa" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="shower-clustering">
+<h3>Shower clustering<a class="headerlink" href="#shower-clustering" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">METRICS_FOLDER</span><span class="p">,</span> <span class="s2">&quot;cluster-gnn-metrics-shower.csv&quot;</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;height_ratios&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">],</span> <span class="n">vert</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">&#39;Efficiency&#39;</span><span class="p">,</span> <span class="s1">&#39;Purity&#39;</span><span class="p">,</span> <span class="s1">&#39;ARI&#39;</span><span class="p">,</span> <span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.96</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">tick_top</span><span class="p">()</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ARI (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Purity (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Efficiency (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Shower Clustering Metric&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Shower Clustering Metric&#39;)
+</pre></div>
+</div>
+<img alt="../_images/Raw_19_1.png" src="../_images/Raw_19_1.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy of primary shower fragment identification: </span><span class="si">%.1f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;primary_accuracy&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy of primary shower fragment identification: 68.6%
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="track-clustering">
+<h3>Track clustering<a class="headerlink" href="#track-clustering" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">METRICS_FOLDER</span><span class="p">,</span> <span class="s2">&quot;cluster-gnn-metrics-track.csv&quot;</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;height_ratios&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">],</span> <span class="n">vert</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">&#39;Efficiency&#39;</span><span class="p">,</span> <span class="s1">&#39;Purity&#39;</span><span class="p">,</span> <span class="s1">&#39;ARI&#39;</span><span class="p">,</span> <span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.97</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">tick_top</span><span class="p">()</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ARI (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Purity (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Efficiency (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Track Clustering Metric&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Track Clustering Metric&#39;)
+</pre></div>
+</div>
+<img alt="../_images/Raw_22_1.png" src="../_images/Raw_22_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="interaction-clustering">
+<h3>Interaction clustering<a class="headerlink" href="#interaction-clustering" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">METRICS_FOLDER</span><span class="p">,</span> <span class="s2">&quot;cluster-gnn-metrics-inter.csv&quot;</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;height_ratios&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">],</span> <span class="n">vert</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">&#39;Efficiency&#39;</span><span class="p">,</span> <span class="s1">&#39;Purity&#39;</span><span class="p">,</span> <span class="s1">&#39;ARI&#39;</span><span class="p">,</span> <span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">tick_top</span><span class="p">()</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ARI (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Purity (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;pur&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">][</span><span class="n">logs</span><span class="p">[</span><span class="s1">&#39;ari&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Efficiency (Mean: </span><span class="si">%.4f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">logs</span><span class="p">[</span><span class="s1">&#39;eff&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Interaction Clustering Metric&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Interaction Clustering Metric&#39;)
+</pre></div>
+</div>
+<img alt="../_images/Raw_24_1.png" src="../_images/Raw_24_1.png" />
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Need to add primary particles accuracy.</p>
+</div>
+</div>
+</div>
+<div class="section" id="others">
+<h2>Others<a class="headerlink" href="#others" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pid">
+<h3>PID<a class="headerlink" href="#pid" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_confusion_matrix</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span>
+                          <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                          <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                          <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">,</span>
+                         <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Predicted label&#39;</span><span class="p">,</span>
+                         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;True label&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function prints and plots the confusion matrix.</span>
+<span class="sd">    Normalization can be applied by setting `normalize=True`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#xticklabels = [&#39;HIP&#39;, &#39;MIP&#39;, &#39;Shower&#39;, &#39;Delta&#39;, &#39;Michel&#39;]</span>
+
+    <span class="n">xticklabels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Photon&#39;</span><span class="p">,</span> <span class="s1">&#39;$e$&#39;</span><span class="p">,</span> <span class="s1">&#39;$\mu$&#39;</span><span class="p">,</span> <span class="s1">&#39;$\pi$&#39;</span><span class="p">,</span> <span class="s1">&#39;Proton&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="n">xticklabels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Ghost&#39;</span><span class="p">)</span>
+    <span class="c1">#     if cm.shape[1] &gt; 5:</span>
+    <span class="c1">#         xticklabels.append(&#39;Ghost&#39;)</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="c1">#labels = [&#39;HIP&#39;, &#39;MIP&#39;, &#39;Shower&#39;, &#39;Delta&#39;, &#39;Michel&#39;]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Photon&#39;</span><span class="p">,</span> <span class="s1">&#39;$e$&#39;</span><span class="p">,</span> <span class="s1">&#39;$\mu$&#39;</span><span class="p">,</span> <span class="s1">&#39;$\pi$&#39;</span><span class="p">,</span> <span class="s1">&#39;Proton&#39;</span><span class="p">]</span>
+    <span class="c1"># We want to show all ticks...</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+           <span class="n">yticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+           <span class="c1"># ... and label them with the respective list entries</span>
+           <span class="n">xticklabels</span><span class="o">=</span><span class="n">xticklabels</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+           <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+           <span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">,</span>
+           <span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span>
+           <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mf">0.5</span><span class="p">))</span>
+
+    <span class="c1"># Rotate the tick labels and set their alignment.</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span>
+             <span class="n">rotation_mode</span><span class="o">=</span><span class="s2">&quot;anchor&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Loop over data dimensions and create text annotations.</span>
+    <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;.2f&#39;</span>
+    <span class="n">thresh</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">/</span> <span class="mf">2.</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="nb">format</span><span class="p">(</span><span class="n">cm</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">fmt</span><span class="p">),</span>
+                    <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span> <span class="k">if</span> <span class="n">cm</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">thresh</span> <span class="k">else</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">ax</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="k">def</span> <span class="nf">confusion_matrix</span><span class="p">(</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_classes</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">c2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_classes</span><span class="p">):</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">c2</span><span class="p">]</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">((</span><span class="n">kinematics</span><span class="p">[</span><span class="s1">&#39;true_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">c</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">kinematics</span><span class="p">[</span><span class="s1">&#39;pred_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">c2</span><span class="p">)</span> <span class="p">)</span>
+        <span class="c1">#x[c][-1] = np.nansum(metrics[&#39;num_true_pix_class%d&#39; % c]-metrics[&#39;num_true_deghost_pix_class%d&#39; % c])</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kinematics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">METRICS_FOLDER</span><span class="p">,</span> <span class="s2">&quot;pid-metrics.csv&quot;</span><span class="p">))</span>
+
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">kinematics</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+<span class="c1">#plt.savefig(&quot;confusion_matrix.png&quot;, transparent=True)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">})</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5, 5)
+</pre></div>
+</div>
+<img alt="../_images/Raw_28_1.png" src="../_images/Raw_28_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="vertex-heuristic-performance">
+<h3>Vertex heuristic performance<a class="headerlink" href="#vertex-heuristic-performance" title="Permalink to this headline">¶</a></h3>
+<p>This plot is computed on MPV (particle gun) interactions with at least 2 primaries.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_vtx_resolution</span><span class="p">(</span><span class="n">vtx_candidates</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="n">vtx_predicted</span> <span class="o">=</span> <span class="p">(</span><span class="n">vtx_candidates</span><span class="p">[</span><span class="s1">&#39;vtx_resolution&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">min_primaries</span> <span class="o">=</span> <span class="p">(</span><span class="n">vtx_candidates</span><span class="p">[</span><span class="s1">&#39;num_primaries&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">#&amp; (vtx_candidates[&#39;num_pix&#39;] &gt; 20)</span>
+    <span class="n">nu_filter</span> <span class="o">=</span> <span class="p">(</span><span class="n">vtx_candidates</span><span class="p">[</span><span class="s1">&#39;is_nu&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+
+    <span class="n">vtx_filter</span> <span class="o">=</span> <span class="n">vtx_predicted</span> <span class="o">&amp;</span> <span class="n">min_primaries</span> <span class="o">&amp;</span> <span class="n">nu_filter</span>
+
+    <span class="n">no_prediction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="o">~</span><span class="n">vtx_predicted</span> <span class="o">&amp;</span> <span class="n">min_primaries</span> <span class="o">&amp;</span> <span class="n">nu_filter</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">min_primaries</span> <span class="o">&amp;</span> <span class="n">nu_filter</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="n">outside</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">vtx_filter</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">vtx_candidates</span><span class="p">[</span><span class="s1">&#39;vtx_resolution&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">vtx_filter</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+    <span class="n">mean_range</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">vtx_candidates</span><span class="p">[</span><span class="s1">&#39;vtx_resolution&#39;</span><span class="p">][</span><span class="n">vtx_filter</span><span class="p">][(</span><span class="n">vtx_candidates</span><span class="p">[</span><span class="s1">&#39;vtx_resolution&#39;</span><span class="p">][</span><span class="n">vtx_filter</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">mean_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">vtx_candidates</span><span class="p">[</span><span class="s1">&#39;vtx_resolution&#39;</span><span class="p">][</span><span class="n">vtx_filter</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">mean_range</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">vtx_candidates</span><span class="p">[</span><span class="s1">&#39;vtx_resolution&#39;</span><span class="p">][</span><span class="n">vtx_filter</span><span class="p">]</span><span class="o">*</span><span class="mf">0.3</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> (Mean = </span><span class="si">%.2f</span><span class="s1"> | </span><span class="si">%.1f</span><span class="s1"> </span><span class="si">%%</span><span class="s1"> outside of range | </span><span class="si">%.1f</span><span class="s1"> </span><span class="si">%%</span><span class="s1"> w/o prediction)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">outside</span><span class="p">,</span> <span class="n">no_prediction</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Vertex resolution (cm)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Predicted interactions&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">mean_range</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mean_range</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vtx_candidates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">METRICS_FOLDER</span><span class="p">,</span> <span class="s2">&quot;vertex-candidates.csv&quot;</span><span class="p">))</span>
+
+<span class="n">plot_vtx_resolution</span><span class="p">(</span><span class="n">vtx_candidates</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Raw_31_0.png" src="../_images/Raw_31_0.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "DeepLearnPhysics/lartpc_mlreco3d_tutorials",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Metrics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="README.html" title="previous page">Shared metrics</a>
+    <a class='right-next' id="next-link" href="Analysis.html" title="next page">Shared metrics (convolved with analysis tools)</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By SLAC Neutrino Group<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
