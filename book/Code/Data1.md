@@ -76,22 +76,27 @@ iotool:
     #event_list: '[6436, 562, 3802, 6175, 15256]'
     schema:
       input_data:
-        - parse_sparse3d_scn
-        - sparse3d_reco
-        - sparse3d_reco_chi2
+        parser: parse_sparse3d
+        args:
+          sparse_event_list: [sparse3d_reco, sparse3d_reco_chi2]
       segment_label:
-        - parse_sparse3d_scn
-        - sparse3d_pcluster_semantics_ghost
+        parser: parse_sparse3d
+        args:
+          sparse_event_list: [sparse3d_pcluster_semantics_ghost]
       cluster_label:
-        - parse_cluster3d_clean_full
-        - cluster3d_pcluster
-        - particle_pcluster
-        - particle_mpv
-        - sparse3d_pcluster_semantics
+        parser: parse_cluster3d
+        args:
+          cluster_event: cluster3d_pcluster
+          particle_event: particle_pcluster
+          particle_mpv_event: particle_mpv
+          sparse_semantics_event: sparse3d_pcluster_semantics
+          add_particle_info: True
+          clean_data: True
       particles_label:
-        - parse_particle_points_with_tagging
-        - sparse3d_pcluster
-        - particle_corrected
+        parser: parse_particles
+        args:
+          particle_event: particle_corrected
+          cluster_event: sparse3d_pcluster
 """.replace('DATA_DIR', DATA_DIR)
 ```
 
